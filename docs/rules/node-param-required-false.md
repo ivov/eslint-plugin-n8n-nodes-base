@@ -2,7 +2,7 @@
 
 # node-param-required-false
 
-`required: false` in node parameter must be removed becaused it is implied.
+`required: false` in node parameter must be removed because it is implied.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
 

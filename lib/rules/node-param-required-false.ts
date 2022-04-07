@@ -7,7 +7,7 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: "`required: false` in node parameter must be removed becaused it is implied.",
+      description: "`required: false` in node parameter must be removed because it is implied.",
       recommended: "error",
     },
     fixable: "code",

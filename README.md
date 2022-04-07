@@ -1,7 +1,7 @@
 # eslint-plugin-n8n-nodes-base
 
 [![NPM version](https://img.shields.io/npm/v/eslint-plugin-n8n-nodes-base.svg?style=flat)](https://npmjs.org/package/eslint-plugin-n8n-nodes-base)
-[![Actions Status](https://github.com/ivov/eslint-plugin-n8n-nodes-base/workflows/checks/badge.svg)](https://github.com/ivov/eslint-plugin-n8n-nodes-base/actions)
+[![Tests](https://github.com/ivov/eslint-plugin-n8n-nodes-base/actions/workflows/checks.yml/badge.svg)](https://github.com/ivov/eslint-plugin-n8n-nodes-base/actions)
 
 ESLint plugin for linting n8n nodes.
 

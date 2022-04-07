@@ -7,8 +7,6 @@ ESLint plugin for linting n8n nodes.
 
 ## Usage
 
-> Required: [ESLint VSCode extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-
 1. Install this plugin:
 
 ```sh

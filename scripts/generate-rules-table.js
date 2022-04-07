@@ -90,7 +90,7 @@ function makeRulesTable() {
       return `| ${[
         link,
         description,
-        rule.isAutofixableUnsafe ? "🔴" : rule.isAutoFixable ? "🟢" : "🔵",
+        rule.isAutofixableUnsafe ? "Yes, unsafe" : rule.isAutoFixable ? "Yes, safe" : "No",
       ].join(" | ")} |`;
     })
     .join("\n");

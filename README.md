@@ -15,7 +15,7 @@ ESLint plugin for linting n8n nodes.
 npm i -D eslint-plugin-n8n-nodes-base
 ```
 
-2. Choose one of the three plugin configs:
+2. Choose a plugin config:
 
 - `recommended` (all rules)
 - `autofixable-safe` (not causing breaking changes)

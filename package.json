@@ -1,0 +1,48 @@
+{
+  "name": "eslint-plugin-n8n-nodes-base",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "author": {
+    "name": "Iván Ovejero",
+    "url": "https://ivov.dev"
+  },
+  "license": "MIT",
+  "files": [
+    "dist/index.js",
+    "dist/lib/**/*"
+  ],
+  "scripts": {
+    "build": "rm -rf dist; find . -name '*.ts' -not -name '*.d.ts' -not -path './node_modules/*'  | xargs esbuild --outdir=dist --platform=node --format=cjs; cp index.js dist/index.js",
+    "lint": "echo 'Linting this plugin...'; eslint lib tests --ext .ts; echo 'Plugin linted successfully'",
+    "test": "jest",
+    "doc": "trap 'Ran all test suites.' SIGINT; npm run doc:generate; node scripts/generate-docs-for-untested-rules.js; npm run doc:format; node scripts/generate-rules-table.js",
+    "doc:generate": "rm -rf docs/rules; DOCGEN=1 npm run test",
+    "doc:format": "node_modules/prettier/bin-prettier.js docs/rules/**.md --write",
+    "prepare": "npm run lint; npm run test; npm run build; npm run doc"
+  },
+  "dependencies": {
+    "@typescript-eslint/utils": "^5.17.0",
+    "camel-case": "^4.1.2",
+    "eslint-docgen": "^0.7.0",
+    "pluralize": "^8.0.0",
+    "title-case": "^3.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.21",
+    "@types/pluralize": "0.0.29",
+    "@typescript-eslint/eslint-plugin": "^5.17.0",
+    "@typescript-eslint/parser": "^5.17.0",
+    "esbuild": "^0.14.27",
+    "esbuild-jest": "^0.5.0",
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb-typescript": "^16.2.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-eslint-plugin": "^4.1.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.5.1",
+    "outdent": "^0.8.0",
+    "prettier": "^2.6.0",
+    "typescript": "^4.6.2"
+  }
+}

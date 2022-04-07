@@ -1,0 +1,55 @@
+import { DYNAMIC_OPTIONS_NODE_PARAMETER } from "../constants";
+import * as utils from "../utils";
+import { identifiers as id } from "../utils/identifiers";
+import { getters } from "../utils/getters";
+
+export default utils.createRule({
+  name: utils.getRuleName(module),
+  meta: {
+    type: "layout",
+    docs: {
+      description: "`description` in dynamic-options-type node parameter must be present.",
+      recommended: "error",
+    },
+    schema: [],
+    fixable: "code",
+    messages: {
+      addStandardDescription: `Add description: '${DYNAMIC_OPTIONS_NODE_PARAMETER.DESCRIPTION}' [autofixable]`,
+    },
+  },
+  defaultOptions: [],
+  create(context) {
+    return {
+      ObjectExpression(node) {
+        if (!id.isNodeParameter(node)) return;
+
+        if (!id.nodeParam.isOptionsType(node)) return;
+
+        const loadOptionsMethod = getters.nodeParam.getLoadOptionsMethod(node);
+
+        if (!loadOptionsMethod) return;
+
+        const description = getters.nodeParam.getDescription(node);
+
+        if (!description) {
+          const type = getters.nodeParam.getType(node); // insertion point
+
+          if (!type) return;
+
+          const { range, indentation } = utils.getInsertionArgs(type);
+
+          context.report({
+            messageId: "addStandardDescription",
+            node: type.ast,
+            fix: (fixer) => {
+              return fixer.insertTextAfterRange(
+                range,
+                `\n${indentation}description: '${DYNAMIC_OPTIONS_NODE_PARAMETER.DESCRIPTION}',`
+              );
+            },
+          });
+        }
+      },
+    };
+  },
+});

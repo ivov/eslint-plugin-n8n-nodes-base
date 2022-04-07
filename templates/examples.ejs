@@ -1,0 +1,9 @@
+<% validInvalid.forEach( ( section ) => { %>
+<%- include( section.valid ? 'exampleValid' : 'exampleInvalid', { section: section } ) %>
+<%- section.examples %>
+<% } ) %>
+
+<% fixed.forEach( ( section ) => { %>
+<%- include( 'exampleFixed', { section: section } ) %>
+<%- section.examples %>
+<% } ) %>

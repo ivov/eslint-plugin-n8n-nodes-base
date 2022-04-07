@@ -1,0 +1,9 @@
+<% if ( linkRule || linkTest || linkDoc ) { %>
+
+<% if ( linkRule ) { %>
+* [Rule source](../..<%- linkRule %>.ts)<% } -%>
+<% if ( linkTest ) { %>
+* [Test source](../..<%- linkTest %>.test.ts)<% } -%>
+<% if ( linkDoc ) { %>
+* [Documentation source](<%- linkDoc %>)<% } -%>
+<% } %>

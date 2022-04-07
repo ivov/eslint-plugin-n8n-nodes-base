@@ -1,0 +1,6 @@
+.vscode
+node_modules
+tests
+docs
+.eslintdocgenrc.js
+jest.config.js

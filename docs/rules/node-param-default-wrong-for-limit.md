@@ -2,7 +2,7 @@
 
 # node-param-default-wrong-for-limit
 
-`default` for a Limit node parameter must be 50
+`default` for a Limit node parameter must be `50`
 
 📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
 

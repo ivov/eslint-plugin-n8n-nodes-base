@@ -2,7 +2,7 @@
 
 # node-class-description-icon-not-svg
 
-`icon` in node class description should be a non-SVG icon.
+`icon` in node class description should be an SVG icon.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
 

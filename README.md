@@ -74,7 +74,7 @@ Optionally, omit `extends` and enable rules individually:
 | [node-class-description-credentials-name-unsuffixed](docs/rules/node-class-description-credentials-name-unsuffixed.md) | `name` under `credentials` in node class description must be suffixed with `-Api`. | Yes, safe |
 | [node-class-description-display-name-unsuffixed-trigger-node](docs/rules/node-class-description-display-name-unsuffixed-trigger-node.md) | `displayName` in node class description for trigger node must be suffixed with `-Trigger`. | Yes, safe |
 | [node-class-description-empty-string](docs/rules/node-class-description-empty-string.md) | `description` in node class description must be filled out. | No |
-| [node-class-description-icon-not-svg](docs/rules/node-class-description-icon-not-svg.md) | `icon` in node class description should be a non-SVG icon. | No |
+| [node-class-description-icon-not-svg](docs/rules/node-class-description-icon-not-svg.md) | `icon` in node class description should be an SVG icon. | No |
 | [node-class-description-inputs-wrong-regular-node](docs/rules/node-class-description-inputs-wrong-regular-node.md) | The number of `inputs` in node class description for regular node should be one, or two for Merge node. | Yes, safe |
 | [node-class-description-inputs-wrong-trigger-node](docs/rules/node-class-description-inputs-wrong-trigger-node.md) | The number of `inputs` in node class description for trigger node should be zero. | Yes, safe |
 | [node-class-description-missing-subtitle](docs/rules/node-class-description-missing-subtitle.md) | `subtitle` in node class description must be present. | Yes, safe |
@@ -89,7 +89,7 @@ Optionally, omit `extends` and enable rules individually:
 | [node-param-default-wrong-for-boolean](docs/rules/node-param-default-wrong-for-boolean.md) | `default` for boolean-type node parameter must be a boolean. | Yes, safe |
 | [node-param-default-wrong-for-collection](docs/rules/node-param-default-wrong-for-collection.md) | `default` for collection-type node parameter must be an object. | Yes, safe |
 | [node-param-default-wrong-for-fixed-collection](docs/rules/node-param-default-wrong-for-fixed-collection.md) | `default` for fixed-collection-type node parameter must be an object. | Yes, safe |
-| [node-param-default-wrong-for-limit](docs/rules/node-param-default-wrong-for-limit.md) | `default` for a Limit node parameter must be 50 | Yes, safe |
+| [node-param-default-wrong-for-limit](docs/rules/node-param-default-wrong-for-limit.md) | `default` for a Limit node parameter must be `50` | Yes, safe |
 | [node-param-default-wrong-for-multi-options](docs/rules/node-param-default-wrong-for-multi-options.md) | `default` for a multi-options-type node parameter must be an array. | Yes, safe |
 | [node-param-default-wrong-for-number](docs/rules/node-param-default-wrong-for-number.md) | `default` for a number-type node parameter must be a number. | Yes, safe |
 | [node-param-default-wrong-for-options](docs/rules/node-param-default-wrong-for-options.md) | `default` for an options-type node parameter must be one of the options. | Yes, safe |

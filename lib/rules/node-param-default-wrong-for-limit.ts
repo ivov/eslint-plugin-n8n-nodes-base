@@ -8,7 +8,7 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: `\`default\` for a Limit node parameter must be ${LIMIT_NODE_PARAMETER.DEFAULT_VALUE}`,
+      description: `\`default\` for a Limit node parameter must be \`${LIMIT_NODE_PARAMETER.DEFAULT_VALUE}\``,
       recommended: "error",
     },
     fixable: "code",

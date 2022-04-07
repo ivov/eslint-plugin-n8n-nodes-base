@@ -10,7 +10,7 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: "`icon` in node class description should be a non-SVG icon.",
+      description: "`icon` in node class description should be an SVG icon.",
       recommended: "error",
     },
     schema: [],

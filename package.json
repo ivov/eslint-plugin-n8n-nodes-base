@@ -15,6 +15,10 @@
     "type": "git",
     "url": "https://github.com/ivov/eslint-plugin-n8n-nodes-base.git"
   },
+  "keywords": [
+    "n8n",
+    "eslint-plugin"
+  ],
   "scripts": {
     "build": "rm -rf dist; find . -name '*.ts' -not -name '*.d.ts' -not -path './node_modules/*'  | xargs esbuild --outdir=dist --platform=node --format=cjs; cp index.js dist/index.js",
     "lint": "echo 'Linting this plugin...'; eslint lib tests --ext .ts; echo 'Plugin linted successfully'",

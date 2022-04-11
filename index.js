@@ -70,9 +70,7 @@ function addSeverity(ruleNames, severity = "warn") {
 }
 
 const BASE_CONFIG = {
-  env: {
-    es2022: true,
-  },
+  env: { es2021: true },
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
@@ -86,7 +84,7 @@ const BASE_CONFIG = {
  * ```js
  * {
  *   recommended: {
- *     env: { es2022: true },
+ *     env: { es2021: true },
  *     parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
  *     plugins: [ 'n8n-nodes-base' ],
  *     rules: {

@@ -155,3 +155,11 @@ export function isUrl(str: string) {
     return false;
   }
 }
+
+export function isKebabCase(str: string) {
+  if (str !== str.toLowerCase()) return false;
+  if (/\s/.test(str)) return false;
+  if (!/-/.test(str)) return false;
+
+  return str === str.toLowerCase().replace(/\s/g, "-");
+}

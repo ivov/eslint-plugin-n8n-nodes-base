@@ -32,6 +32,8 @@ export default utils.createRule({
 
           if (!displayName) return;
 
+          if (utils.isUrl(displayName.value)) return;
+
           if (/[a-z]/.test(displayName.value.charAt(0))) {
             context.report({
               messageId: "uppercaseFirstChar",
@@ -53,7 +55,7 @@ export default utils.createRule({
 
           if (!name) return;
 
-          if (name.value.startsWith("http")) return; // ignore if URL
+          if (utils.isUrl(name.value)) return;
 
           if (/[a-z]/.test(name.value.charAt(0))) {
             context.report({

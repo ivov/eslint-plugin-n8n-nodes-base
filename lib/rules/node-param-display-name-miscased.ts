@@ -33,6 +33,8 @@ export default utils.createRule({
 
           if (!displayName) return;
 
+          if (utils.isUrl(displayName.value)) return;
+
           if (displayName.value !== titleCase(displayName.value)) {
             context.report({
               messageId: "useTitleCase",
@@ -49,6 +51,8 @@ export default utils.createRule({
           const name = getters.nodeParam.getName(node);
 
           if (!name) return;
+
+          if (utils.isUrl(name.value)) return;
 
           if (name.value !== titleCase(name.value)) {
             context.report({

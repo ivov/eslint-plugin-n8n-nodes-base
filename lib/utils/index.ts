@@ -145,3 +145,13 @@ export const getInsertionArgs = (referenceNode: { ast: TSESTree.BaseNode }) => {
     indentation: getIndentationString(referenceNode),
   };
 };
+
+export function isUrl(str: string) {
+  try {
+    if (["com", "org", "net", "io", "edu"].includes(str.slice(-3))) return true;
+    new URL(str);
+    return true;
+  } catch (_) {
+    return false;
+  }
+}

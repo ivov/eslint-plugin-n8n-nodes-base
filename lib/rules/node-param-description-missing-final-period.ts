@@ -30,7 +30,8 @@ export default utils.createRule({
         if (
           description.value.split(". ").length === 2 &&
           !description.value.endsWith(".") &&
-          !description.value.endsWith("</code>") // exception
+          !description.value.endsWith("---") && // final period exception (PEM key)
+          !description.value.endsWith("</code>") // final period exception
         ) {
           context.report({
             messageId: "missingFinalPeriod",

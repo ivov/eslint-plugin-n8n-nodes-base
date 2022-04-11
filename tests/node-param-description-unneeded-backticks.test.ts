@@ -51,5 +51,18 @@ ruleTester().run(getRuleName(module), rule, {
         description: 'The ID of the user',
       };`,
     },
+    {
+      code: `const test = {
+        name: 'Timezone',
+        value: 'timezone',
+        description: \`Seatable server's timezone\`,
+      };`,
+      errors: [{ messageId: "useSingleQuotes" }],
+      output: `const test = {
+        name: 'Timezone',
+        value: 'timezone',
+        description: 'Seatable server\\'s timezone',
+      };`,
+    },
   ],
 });

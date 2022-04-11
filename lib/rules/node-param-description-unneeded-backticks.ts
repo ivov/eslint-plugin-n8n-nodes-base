@@ -28,14 +28,15 @@ export default utils.createRule({
         if (!description) return;
 
         if (description.hasUnneededBackticks) {
+          const fixed = /'/.test(description.value)
+            ? `description: '${description.value.replace(/'/g, "\\'")}'`
+            : `description: '${description.value}'`;
+
           context.report({
             messageId: "useSingleQuotes",
             node: description.ast,
             fix: (fixer) => {
-              return fixer.replaceText(
-                description.ast,
-                `description: '${description.value.replace(/`/g, "'")}'`
-              );
+              return fixer.replaceText(description.ast, fixed);
             },
           });
         }

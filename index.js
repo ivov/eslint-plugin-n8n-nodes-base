@@ -51,9 +51,9 @@ const categorized = allFullRuleNames.reduce(
     const ruleModule = require(path.join(rulesPath, ruleName)).default;
 
     if (ruleModule.meta.fixable) {
-      AUTOFIXABLE_UNSAFE_RULES.includes(fullRuleName)
-        ? acc['autofixable-unsafe'].push(fullRuleName)
-        : acc['autofixable-safe'].push(fullRuleName);
+      AUTOFIXABLE_UNSAFE_RULES.includes(ruleName)
+        ? acc["autofixable-unsafe"].push(fullRuleName)
+        : acc["autofixable-safe"].push(fullRuleName);
     } else {
       acc['non-autofixable'].push(fullRuleName);
     }

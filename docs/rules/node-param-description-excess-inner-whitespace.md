@@ -46,6 +46,22 @@ const test = {
   value: "userId",
   description: "The ID of the user",
 };
+
+const test = {
+  displayName: "Access Token",
+  name: "accessToken",
+  type: "string",
+  default: "",
+  description: `The access token must have the following scopes:
+        <ul>
+          <li>Create/modify webhooks</li>
+          <li>View webhooks</li>
+          <li>View surveys</li>
+          <li>View collectors</li>
+          <li>View responses</li>
+          <li>View response details</li>
+        </ul>`,
+};
 ```
 
 ## Links

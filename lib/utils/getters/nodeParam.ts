@@ -212,6 +212,17 @@ export function getDefault(nodeParam: TSESTree.ObjectExpression) {
       };
     }
 
+    if (id.nodeParam.isTemplateLiteralDefault(property)) {
+      const consolidated = property.value.quasis
+        .map((templateElement) => templateElement.value.cooked)
+        .join();
+
+      return {
+        ast: property,
+        value: consolidated,
+      };
+    }
+
     if (id.nodeParam.isPrimitiveDefault(property)) {
       return {
         ast: property,

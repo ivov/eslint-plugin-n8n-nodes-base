@@ -145,3 +145,25 @@ export const getInsertionArgs = (referenceNode: { ast: TSESTree.BaseNode }) => {
     indentation: getIndentationString(referenceNode),
   };
 };
+
+export function isUrl(str: string) {
+  try {
+    if (["com", "org", "net", "io", "edu"].includes(str.slice(-3))) return true;
+    new URL(str);
+    return true;
+  } catch (_) {
+    return false;
+  }
+}
+
+export function isKebabCase(str: string) {
+  if (str !== str.toLowerCase()) return false;
+  if (/\s/.test(str)) return false;
+  if (!/-/.test(str)) return false;
+
+  return str === str.toLowerCase().replace(/\s/g, "-");
+}
+
+export function isMultiline(node: { ast: TSESTree.BaseNode; value: string }) {
+  return node.ast.loc.start.line !== node.ast.loc.end.line;
+}

@@ -29,6 +29,14 @@ ruleTester().run(getRuleName(module), rule, {
         default: scopes.join(','),
 		  };`,
     },
+    {
+      code: `const test = {
+        displayName: 'Auth URI Query Parameters',
+        name: 'authQueryParameters',
+        type: 'hidden',
+        default: \`user_scope=\${userScopes.join(' ')}\`,
+      }`
+    },
   ],
   invalid: [
     {

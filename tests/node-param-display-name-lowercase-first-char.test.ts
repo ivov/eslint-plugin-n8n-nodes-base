@@ -17,6 +17,48 @@ ruleTester().run(getRuleName(module), rule, {
         value: 'userId',
       };`,
     },
+    {
+      code: `const test = {
+        displayName: "API Domain",
+        name: "apiDomain",
+        type: "options",
+        options: [
+          {
+            name: "api.jotform.com",
+            value: "api.jotform.com",
+          },
+          {
+            name: "eu-api.jotform.com",
+            value: "eu-api.jotform.com",
+          },
+        ],
+        default: "api.jotform.com",
+        description:
+          'The API domain to use. Use "eu-api.jotform.com" if your account is in based in Europe.',
+      },`,
+    },
+    {
+      code: `const test = {
+        displayName: "SASL Mechanism",
+        name: "saslMechanism",
+        type: "options",
+        options: [
+          {
+            name: "Plain",
+            value: "plain",
+          },
+          {
+            name: "scram-sha-256",
+            value: "scram-sha-256",
+          },
+          {
+            name: "scram-sha-512",
+            value: "scram-sha-512",
+          },
+        ],
+        default: "plain",
+      };`,
+    },
   ],
   invalid: [
     {

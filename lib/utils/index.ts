@@ -163,3 +163,7 @@ export function isKebabCase(str: string) {
 
   return str === str.toLowerCase().replace(/\s/g, "-");
 }
+
+export function isMultiline(node: { ast: TSESTree.BaseNode; value: string }) {
+  return node.ast.loc.start.line !== node.ast.loc.end.line;
+}

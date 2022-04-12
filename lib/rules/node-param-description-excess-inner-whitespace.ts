@@ -27,6 +27,8 @@ export default utils.createRule({
 
         if (!description) return;
 
+        if (utils.isMultiline(description)) return;
+
         if (/\s{2,}/.test(description.value)) {
           context.report({
             messageId: "removeInnerWhitespace",

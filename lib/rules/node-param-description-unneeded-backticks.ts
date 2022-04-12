@@ -27,6 +27,8 @@ export default utils.createRule({
 
         if (!description) return;
 
+        if (utils.isMultiline(description)) return;
+
         if (description.hasUnneededBackticks) {
           const fixed = /'/.test(description.value)
             ? `description: '${description.value.replace(/'/g, "\\'")}'`

@@ -12,6 +12,20 @@ ruleTester().run(getRuleName(module), rule, {
         description: 'This is a <b>sentence</b>',
       };`,
     },
+    {
+      code: `const test = {
+        displayName: "Private Key",
+        name: "privateKey",
+        type: "string",
+        typeOptions: {
+          password: true,
+        },
+        default: "",
+        required: true,
+        description:
+          "Use the multiline editor. Make sure it is in standard PEM key format:<br />-----BEGIN PRIVATE KEY-----<br />KEY DATA GOES HERE<br />-----END PRIVATE KEY-----",
+      };`,
+    },
 
     // option
     {

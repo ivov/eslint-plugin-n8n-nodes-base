@@ -30,6 +30,8 @@ export default utils.createRule({
 
         if (!/(<.*>)/.test(description.value)) return;
 
+        if (description.value.includes("PRIVATE KEY")) return; // <br> allowed in PEM key example
+
         if (!VALID_HTML_TAG_REGEX.test(description.value)) {
           context.report({
             messageId: "encodeAngleBrackets",

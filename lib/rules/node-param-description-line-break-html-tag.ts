@@ -27,6 +27,8 @@ export default utils.createRule({
 
         if (!description) return;
 
+        if (description.value.includes("PRIVATE KEY")) return; // <br> allowed in PEM key example
+
         if (LINE_BREAK_HTML_TAG_REGEX.test(description.value)) {
           context.report({
             messageId: "removeTag",

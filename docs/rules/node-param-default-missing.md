@@ -64,6 +64,13 @@ const test = {
   type: "hidden",
   default: scopes.join(","),
 };
+
+const test = {
+  displayName: "Auth URI Query Parameters",
+  name: "authQueryParameters",
+  type: "hidden",
+  default: `user_scope=${userScopes.join(" ")}`,
+};
 ```
 
 ## Links

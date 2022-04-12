@@ -54,6 +54,15 @@ const test = {
   value: "username",
   description: "First sentence. Second sentence.",
 };
+
+const test = {
+  displayName: "Test",
+  name: "test",
+  type: "string",
+  default: "",
+  description:
+    "Use the multiline editor. Make sure it is in standard PEM key format:-----BEGIN PRIVATE KEY-----KEY DATA GOES HERE-----END PRIVATE KEY-----",
+};
 ```
 
 ## Links

@@ -176,6 +176,19 @@ export function isPrimitiveDefault(
   );
 }
 
+export function isTemplateLiteralDefault(
+  property: TSESTree.ObjectLiteralElement
+): property is TemplateStringProperty {
+  return (
+    property.type === AST_NODE_TYPES.Property &&
+    property.computed === false &&
+    property.key.type === AST_NODE_TYPES.Identifier &&
+    property.key.name === "default" &&
+    property.value.type === AST_NODE_TYPES.TemplateLiteral &&
+    property.value.quasis.length > 0
+  );
+}
+
 export function isObjectDefault(
   property: TSESTree.ObjectLiteralElement
 ): property is ObjectProperty {

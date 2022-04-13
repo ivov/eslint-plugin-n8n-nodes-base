@@ -12,7 +12,7 @@ export const MIN_ITEMS_TO_ALPHABETIZE_IN_FULL = "five";
 
 export const WEAK_DESCRIPTIONS = [
   "Resource to consume",
-  "The operation to perform",
+  "Operation to perform",
   "Method of authentication",
 ];
 

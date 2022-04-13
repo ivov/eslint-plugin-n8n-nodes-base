@@ -45,7 +45,7 @@ export default utils.createRule({
           .join(" | ");
 
         if (!utils.areIdenticallySorted(values.value, sortedParams)) {
-          const indentation = utils.getIndentationString(values);
+          const indentation = utils.getIndentationStringForOption(values);
 
           const fixed = utils
             .unquoteKeys(sortedParams)

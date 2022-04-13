@@ -71,5 +71,5 @@ function containsArrayOfNodeParams(node: TSESTree.TSAsExpression) {
 }
 
 function getTrailingBracketIndentation(node: TSESTree.TSAsExpression) {
-  return " ".repeat(node.expression.loc.end.column - 1); // `- 1` to remove bracket column
+  return "\t".repeat(node.expression.loc.end.column - 1); // `- 1` to remove bracket column
 }

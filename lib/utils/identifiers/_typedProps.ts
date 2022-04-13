@@ -77,7 +77,8 @@ export function isArrayPropertyWithKey(
     | "values" // fixed collection section
     | "inputs" // node class description
     | "outputs" // node class description
-    | "credentials", // node class description
+    | "credentials" // node class description
+    | "properties", // node class description
   property: TSESTree.ObjectLiteralElement
 ) {
   return (

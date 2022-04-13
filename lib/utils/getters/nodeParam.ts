@@ -187,10 +187,12 @@ export function getDescription(nodeParam: TSESTree.ObjectExpression) {
       const [templateElement] = property.value.quasis;
       const { value: content } = templateElement;
 
+      const escapedRawContent = content.raw.replace(/\\/g, "");
+
       return {
         ast: property,
         value: content.raw,
-        hasUnneededBackticks: content.raw === content.cooked,
+        hasUnneededBackticks: escapedRawContent === content.cooked,
       };
     }
   }

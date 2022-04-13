@@ -17,6 +17,12 @@ ruleTester().run(getRuleName(module), rule, {
 				value: 'userId',
 			};`,
 		},
+		{
+			code: `const test = {
+				name: 'User Identifier',
+				value: 'userId',
+			};`,
+		},
 	],
 	invalid: [
 		{

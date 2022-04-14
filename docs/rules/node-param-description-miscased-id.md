@@ -60,6 +60,12 @@ const test = {
   value: "userId",
   description: "The ID of the user",
 };
+
+const test = {
+  name: "User ID",
+  value: "userId",
+  description: "Unique identifier",
+};
 ```
 
 ## Links

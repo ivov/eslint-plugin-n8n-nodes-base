@@ -3,6 +3,7 @@
 const outdent = require("outdent");
 const fs = require("fs");
 const path = require("path");
+const { AUTOFIXABLE_UNSAFE_RULES } = require("../index");
 
 // Generate rules table for README.md
 
@@ -12,17 +13,6 @@ const allRuleNames = fs
   .readdirSync(rulesPath)
   .filter((fileName) => fileName.endsWith(".js"))
   .map((fileName) => fileName.replace(/\.js$/, ""));
-
-/**
- * Rules whose autofixes are breaking changes.
- */
-const AUTOFIXABLE_UNSAFE_RULES = [
-  "cred-class-name-unsuffixed",
-  "cred-class-field-name-unsuffixed",
-  "cred-class-field-name-uppercase-first-char",
-  "node-param-array-type-assertion",
-  "node-param-color-type-unused",
-];
 
 updateMarkedSegment("./README.md", makeRulesTable(), {
   start: "<!-- RULES_TABLE -->",
@@ -90,7 +80,11 @@ function makeRulesTable() {
       return `| ${[
         link,
         description,
-        rule.isAutofixableUnsafe ? "Yes, unsafe" : rule.isAutoFixable ? "Yes, safe" : "No",
+        rule.isAutofixableUnsafe
+          ? "Yes, unsafe"
+          : rule.isAutoFixable
+          ? "Yes, safe"
+          : "No",
       ].join(" | ")} |`;
     })
     .join("\n");

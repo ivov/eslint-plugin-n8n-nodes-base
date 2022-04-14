@@ -44,6 +44,8 @@ const AUTOFIXABLE_UNSAFE_RULES = [
   "node-param-array-type-assertion",
   "node-param-color-type-unused",
   "node-class-description-credentials-name-unsuffixed",
+  "node-class-description-display-name-unsuffixed-trigger-node",
+  "node-class-description-name-unsuffixed-trigger-node",
 ];
 
 const categorized = allFullRuleNames.reduce(
@@ -115,3 +117,5 @@ module.exports.configs = {
     rules: addSeverity(categorized['non-autofixable']),
   },
 };
+
+module.exports.AUTOFIXABLE_UNSAFE_RULES = AUTOFIXABLE_UNSAFE_RULES;

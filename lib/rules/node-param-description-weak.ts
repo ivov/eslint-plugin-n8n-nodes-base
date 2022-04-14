@@ -1,4 +1,4 @@
-import { DOCUMENTATION, WEAK_DESCRIPTIONS } from "../constants";
+import { DOCUMENTATION } from "../constants";
 import * as utils from "../utils";
 import { identifiers as id } from "../utils/identifiers";
 import { getters } from "../utils/getters";
@@ -27,7 +27,7 @@ export default utils.createRule({
 
         if (!description) return;
 
-        if (WEAK_DESCRIPTIONS.includes(description.value)) {
+        if (utils.isWeakDescription(description)) {
           const rangeToRemove = utils.getRangeToRemove(description);
 
           context.report({

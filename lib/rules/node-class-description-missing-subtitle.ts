@@ -23,6 +23,17 @@ export default utils.createRule({
       ObjectExpression(node) {
         if (!id.isNodeClassDescription(node)) return;
 
+        const allDisplayNames =
+          getters.nodeClassDescription.getAllDisplayNames(node);
+
+        if (!allDisplayNames) return;
+
+        const hasNoSubtitleComponents = !allDisplayNames.some((dn) =>
+          ["Resource", "Operation"].includes(dn)
+        );
+
+        if (hasNoSubtitleComponents) return;
+
         if (!getters.nodeClassDescription.getSubtitle(node)) {
           const version =
             getters.nodeClassDescription.getVersion(node) ??

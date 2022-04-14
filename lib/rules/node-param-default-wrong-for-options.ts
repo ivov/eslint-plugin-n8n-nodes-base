@@ -7,16 +7,15 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: "`default` for an options-type node parameter must be one of the options.",
+      description:
+        "`default` for an options-type node parameter must be one of the options.",
       recommended: "error",
     },
     fixable: "code",
     schema: [],
     messages: {
-      chooseOption:
-        "Set one of {{ eligibleOptions }} as default [autofixable]",
-      setEmptyString:
-        "Set an empty string as default [autofixable]",
+      chooseOption: "Set one of {{ eligibleOptions }} as default [autofixable]",
+      setEmptyString: "Set an empty string as default [autofixable]",
     },
   },
   defaultOptions: [],
@@ -33,40 +32,49 @@ export default utils.createRule({
 
         const options = getters.nodeParam.getOptions(node);
 
-        if (options) {
-          const eligibleOptions = options.value.reduce<unknown[]>(
-            (acc, option) => {
-              return acc.push(`${option.value}`), acc;
-            },
-            []
-          );
-
-          if (!eligibleOptions.includes(_default.value)) {
-            context.report({
-              messageId: "chooseOption",
-              data: {
-                eligibleOptions: eligibleOptions
-                  .map((option) => `'${option}'`)
-                  .join(" or "),
-              },
-              node: _default.ast,
-              fix: (fixer) => {
-                return fixer.replaceText(
-                  _default.ast,
-                  `default: '${eligibleOptions[0]}'`
-                );
-              },
-            });
-          }
-        } else if (_default.value !== "") {
-          // if no options, assume node parameter is dynamic options, whether
-          // typeOptions.loadOptions has been specified yet or not
-
+        /**
+         * if no options but default exists, assume node param is dynamic options,
+         * regardless of whether `typeOptions.loadOptions` has been specified or not
+         */
+        if (!options && _default.value !== "") {
           context.report({
             messageId: "setEmptyString",
             node: _default.ast,
             fix: (fixer) => {
-              return fixer.replaceText(_default.ast, `default: ''`);
+              return fixer.replaceText(_default.ast, "default: ''");
+            },
+          });
+        }
+
+        if (!options) return;
+
+        if (options.isPropertyPointingToVar) return;
+
+        const eligibleOptions = options.value.reduce<unknown[]>(
+          (acc, option) => {
+            return acc.push(option.value), acc;
+          },
+          []
+        );
+
+        if (!eligibleOptions.includes(_default.value)) {
+          const zerothOption = eligibleOptions[0];
+
+          context.report({
+            messageId: "chooseOption",
+            data: {
+              eligibleOptions: eligibleOptions.join(" or "),
+            },
+            node: _default.ast,
+            fix: (fixer) => {
+              return fixer.replaceText(
+                _default.ast,
+                `default: ${
+                  typeof zerothOption === "string"
+                    ? `'${zerothOption}'`
+                    : zerothOption
+                }`
+              );
             },
           });
         }

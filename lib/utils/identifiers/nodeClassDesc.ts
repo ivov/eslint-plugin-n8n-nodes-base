@@ -64,3 +64,11 @@ export function isName(
 ): property is StringProperty {
   return isStringPropertyWithKey("name", property);
 }
+
+export function isProperties(
+  property: TSESTree.ObjectLiteralElement
+): property is TSESTree.PropertyNonComputedName & {
+  value: { elements: TSESTree.ObjectExpression[] };
+} {
+  return isArrayPropertyWithKey("properties", property);
+}

@@ -33,7 +33,7 @@ export default utils.createRule({
 
           const { indentation: baseIndentation, range } =
             utils.getInsertionArgs(type);
-          const extraIndentation = baseIndentation + " ".repeat(2);
+          const extraIndentation = baseIndentation + "\t";
 
           context.report({
             messageId: "addTypeOptions",

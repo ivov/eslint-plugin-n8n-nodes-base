@@ -98,6 +98,14 @@ export function getOptions(nodeParam: TSESTree.ObjectExpression) {
 
   if (!found) return null;
 
+  if (!found.value.elements) {
+    return {
+      ast: found,
+      value: [{ name: "", value: "" }],
+      isPropertyPointingToVar: true,
+    };
+  }
+
   const elements = found.value.elements.filter(
     (i) => i.type === "ObjectExpression"
   );
@@ -107,6 +115,7 @@ export function getOptions(nodeParam: TSESTree.ObjectExpression) {
   return {
     ast: found,
     value: restoreNodeParamOptions(elements),
+    isPropertyPointingToVar: false,
   };
 }
 
@@ -187,10 +196,12 @@ export function getDescription(nodeParam: TSESTree.ObjectExpression) {
       const [templateElement] = property.value.quasis;
       const { value: content } = templateElement;
 
+      const escapedRawContent = content.raw.replace(/\\/g, "");
+
       return {
         ast: property,
         value: content.raw,
-        hasUnneededBackticks: content.raw === content.cooked,
+        hasUnneededBackticks: escapedRawContent === content.cooked,
       };
     }
   }

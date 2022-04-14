@@ -27,6 +27,9 @@ export default utils.createRule({
 
         if (!description) return;
 
+        // to prevent overlap with node-param-description-weak
+        if (utils.isWeakDescription(description)) return;
+
         if (
           description.value.split(". ").length === 1 &&
           description.value.endsWith(".")

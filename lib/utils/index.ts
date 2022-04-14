@@ -2,6 +2,7 @@ import { ESLintUtils, AST_NODE_TYPES } from "@typescript-eslint/utils";
 import { TSESTree } from "@typescript-eslint/utils";
 // @ts-ignore
 import DocRuleTester from "eslint-docgen/src/rule-tester";
+import { WEAK_DESCRIPTIONS } from "../constants";
 
 export const createRule = ESLintUtils.RuleCreator((ruleName) => {
   return `https://github.com/ivov/eslint-plugin-PENDING/docs/rules/${ruleName}`;
@@ -41,11 +42,20 @@ export function areIdenticallySorted<
 export function unquoteKeys(obj: object) {
   const cleaned = JSON.stringify(obj, null, 2);
 
+  // TODO: Clean this up
+
   return cleaned
     .replace(/^[\t ]*"[^:\n\r]+(?<!\\)":/gm, (m) => m.replace(/"/g, "")) // unquote
     .replace(/"/g, "'") // adjust to single quotes
     .replace(/'\s/g, "',\n") // add trailing comma for last key-value pair
-    .replace(/\}\s/, "},\n"); // add trailing comma for last object
+    .replace(/\}\s/, "},\n") // add trailing comma for last object
+    .replace("]", "\t]")
+    .replace(/ /g, "\t")
+    .replace(/\tname:\t/g, "name: ")
+    .replace(/\tvalue:\t/g, "value: ")
+    .replace(/\tdisplayName:\t/g, "displayName: ")
+    .replace(/\ttype:\t/g, "type: ")
+    .replace(/\tdefault:\t/g, "default: ");
 }
 
 export function addApiSuffix(
@@ -115,7 +125,13 @@ export function isCredClassFile(filePath: string) {
 export const getIndentationString = (referenceNode: {
   ast: TSESTree.BaseNode;
 }) => {
-  return " ".repeat(referenceNode.ast.loc.start.column);
+  return "\t".repeat(referenceNode.ast.loc.start.column);
+};
+
+export const getIndentationStringForOption = (referenceNode: {
+  ast: TSESTree.BaseNode;
+}) => {
+  return "\t".repeat(referenceNode.ast.loc.start.column - 1);
 };
 
 export function getRangeToRemove(referenceNode: { ast: TSESTree.BaseNode }) {
@@ -166,4 +182,10 @@ export function isKebabCase(str: string) {
 
 export function isMultiline(node: { ast: TSESTree.BaseNode; value: string }) {
   return node.ast.loc.start.line !== node.ast.loc.end.line;
+}
+
+export function isWeakDescription({ value }: { value: string }) {
+  return WEAK_DESCRIPTIONS.some((wd) =>
+    value.toLowerCase().includes(wd.toLowerCase())
+  );
 }

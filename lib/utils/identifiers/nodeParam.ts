@@ -16,6 +16,7 @@ import {
   isArrayPropertyWithKey,
   isBooleanPropertyWithKey,
   isObjectPropertyWithKey,
+  isPropertyPointingToVar,
   isStringPropertyWithKey,
 } from "./_typedProps";
 
@@ -204,7 +205,10 @@ export function isArrayDefault(
 export function isOptions(
   property: TSESTree.ObjectLiteralElement
 ): property is OptionsProperty {
-  return isArrayPropertyWithKey("options", property);
+  return (
+    isArrayPropertyWithKey("options", property) ||
+    isPropertyPointingToVar("options", property)
+  );
 }
 
 export function isTypeOptions(

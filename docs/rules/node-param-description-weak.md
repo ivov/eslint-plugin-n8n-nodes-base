@@ -20,13 +20,21 @@ const test = {
   name: "test",
   type: "string",
   default: "",
+  description: "Operation to perform",
+};
+
+const test = {
+  displayName: "Test",
+  name: "test",
+  type: "string",
+  default: "",
   description: "The operation to perform",
 };
 
 const test = {
   name: "User ID",
   value: "userId",
-  description: "The operation to perform",
+  description: "Operation to perform",
 };
 ```
 

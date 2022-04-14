@@ -19,6 +19,27 @@ const test = {
   displayName: "Test",
   name: "test",
   type: "options",
+  options: [
+    {
+      name: "Minus One",
+      value: -1,
+    },
+    {
+      name: "Zero",
+      value: 0,
+    },
+    {
+      name: "One",
+      value: 1,
+    },
+  ],
+  default: "",
+};
+
+const test = {
+  displayName: "Test",
+  name: "test",
+  type: "options",
   default: "wrong",
   options: [
     {
@@ -58,6 +79,17 @@ const test = {
       value: "second",
     },
   ],
+};
+
+const allCurrencies = [];
+const test = {
+  displayName: "Currency",
+  name: "currency",
+  type: "options",
+  default: "eur",
+  required: true,
+  options: allCurrencies,
+  description: "The currency of the deal in 3-character ISO format",
 };
 ```
 

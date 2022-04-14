@@ -3,34 +3,34 @@ import rule from "../lib/rules/node-param-description-wrong-for-simplify";
 import { ruleTester, getRuleName } from "../lib/utils";
 
 ruleTester().run(getRuleName(module), rule, {
-  valid: [
-    {
-      code: `const test = {
-        displayName: 'Simplify',
-        name: 'simple',
-        type: 'boolean',
-        default: true,
-        description: '${SIMPLIFY_NODE_PARAMETER.DESCRIPTION}'
-      };`,
-    },
-  ],
-  invalid: [
-    {
-      code: `const test = {
-        displayName: 'Simplify',
-        name: 'simple',
-        type: 'boolean',
-        default: true,
-        description: 'Wrong'
-      };`,
-      errors: [{ messageId: "useSimplify" }],
-      output: `const test = {
-        displayName: 'Simplify',
-        name: 'simple',
-        type: 'boolean',
-        default: true,
-        description: '${SIMPLIFY_NODE_PARAMETER.DESCRIPTION}'
-      };`,
-    },
-  ],
+	valid: [
+		{
+			code: `const test = {
+				displayName: 'Simplify',
+				name: 'simple',
+				type: 'boolean',
+				default: true,
+				description: '${SIMPLIFY_NODE_PARAMETER.DESCRIPTION}'
+			};`,
+		},
+	],
+	invalid: [
+		{
+			code: `const test = {
+				displayName: 'Simplify',
+				name: 'simple',
+				type: 'boolean',
+				default: true,
+				description: 'Wrong'
+			};`,
+			errors: [{ messageId: "useSimplify" }],
+			output: `const test = {
+				displayName: 'Simplify',
+				name: 'simple',
+				type: 'boolean',
+				default: true,
+				description: '${SIMPLIFY_NODE_PARAMETER.DESCRIPTION}'
+			};`,
+		},
+	],
 });

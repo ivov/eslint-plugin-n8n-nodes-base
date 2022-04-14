@@ -16,13 +16,13 @@ Array of node parameters must be typed, not type-asserted.
 
 ```js
 const test = [
-        {
-          displayName: 'Test',
-          name: 'test',
-          type: 'string',
-          default: '',
-        },
-      ] as INodeProperties[];
+                {
+                    displayName: 'Test',
+                    name: 'test',
+                    type: 'string',
+                    default: '',
+                },
+            ] as INodeProperties[];
 ```
 
 ✅ Example of **correct** code:

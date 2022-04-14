@@ -31,6 +31,8 @@ export default utils.createRule({
 
         if (!options) return;
 
+        if (options.isPropertyPointingToVar) return;
+
         const duplicate = findDuplicateOptionName(options);
 
         if (duplicate) {

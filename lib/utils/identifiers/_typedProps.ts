@@ -77,7 +77,8 @@ export function isArrayPropertyWithKey(
     | "values" // fixed collection section
     | "inputs" // node class description
     | "outputs" // node class description
-    | "credentials", // node class description
+    | "credentials" // node class description
+    | "properties", // node class description
   property: TSESTree.ObjectLiteralElement
 ) {
   return (
@@ -86,5 +87,18 @@ export function isArrayPropertyWithKey(
     property.key.type === AST_NODE_TYPES.Identifier &&
     property.key.name === keyName &&
     property.value.type === AST_NODE_TYPES.ArrayExpression
+  );
+}
+
+export function isPropertyPointingToVar(
+  keyName: "options",
+  property: TSESTree.ObjectLiteralElement
+) {
+  return (
+    property.type === AST_NODE_TYPES.Property &&
+    property.computed === false &&
+    property.key.type === AST_NODE_TYPES.Identifier &&
+    property.key.name === keyName &&
+    property.value.type === AST_NODE_TYPES.Identifier
   );
 }

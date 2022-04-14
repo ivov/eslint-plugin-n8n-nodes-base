@@ -49,6 +49,11 @@ const test = {
   name: "User ID",
   value: "userId",
 };
+
+const test = {
+  name: "User Identifier",
+  value: "userId",
+};
 ```
 
 ## Links

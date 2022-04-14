@@ -43,6 +43,7 @@ const AUTOFIXABLE_UNSAFE_RULES = [
   "cred-class-field-name-uppercase-first-char",
   "node-param-array-type-assertion",
   "node-param-color-type-unused",
+  "node-class-description-credentials-name-unsuffixed",
 ];
 
 const categorized = allFullRuleNames.reduce(

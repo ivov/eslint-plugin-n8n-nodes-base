@@ -2,9 +2,9 @@ import rule from "../lib/rules/node-param-default-wrong-for-options";
 import { ruleTester, getRuleName } from "../lib/utils";
 
 ruleTester().run(getRuleName(module), rule, {
-	valid: [
-		{
-			code: `const test = {
+  valid: [
+    {
+      code: `const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'options',
@@ -20,11 +20,23 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				],
 			};`,
-		},
-	],
-	invalid: [
-		{
-			code: `const test = {
+    },
+    {
+      code: `const allCurrencies = [];
+			const test = {
+				displayName: "Currency",
+				name: "currency",
+				type: "options",
+				default: "eur",
+				required: true,
+				options: allCurrencies,
+				description: "The currency of the deal in 3-character ISO format",
+			};`,
+    },
+  ],
+  invalid: [
+    {
+      code: `const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'options',
@@ -44,13 +56,13 @@ ruleTester().run(getRuleName(module), rule, {
 				],
 				default: '',
 			};`,
-			errors: [
-				{
-					messageId: "chooseOption",
-					data: { eligibleOptions: "-1 or 0 or 1" },
-				},
-			],
-			output: `const test = {
+      errors: [
+        {
+          messageId: "chooseOption",
+          data: { eligibleOptions: "-1 or 0 or 1" },
+        },
+      ],
+      output: `const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'options',
@@ -70,9 +82,9 @@ ruleTester().run(getRuleName(module), rule, {
 				],
 				default: -1,
 			};`,
-		},
-		{
-			code: `const test = {
+    },
+    {
+      code: `const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'options',
@@ -88,13 +100,13 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				]
 			};`,
-			errors: [
-				{
-					messageId: "chooseOption",
-					data: { eligibleOptions: "first or second" },
-				},
-			],
-			output: `const test = {
+      errors: [
+        {
+          messageId: "chooseOption",
+          data: { eligibleOptions: "first or second" },
+        },
+      ],
+      output: `const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'options',
@@ -110,27 +122,27 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				]
 			};`,
-		},
+    },
 
-		// in anticipation of typeOptions.loadOptionsMethod
-		{
-			code: `const test = {
+    // in anticipation of typeOptions.loadOptionsMethod
+    {
+      code: `const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'options',
 				default: 'wrong',
 			};`,
-			errors: [
-				{
-					messageId: "setEmptyString",
-				},
-			],
-			output: `const test = {
+      errors: [
+        {
+          messageId: "setEmptyString",
+        },
+      ],
+      output: `const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'options',
 				default: '',
 			};`,
-		},
-	],
+    },
+  ],
 });

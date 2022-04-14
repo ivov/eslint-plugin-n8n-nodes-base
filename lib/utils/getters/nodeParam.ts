@@ -98,6 +98,14 @@ export function getOptions(nodeParam: TSESTree.ObjectExpression) {
 
   if (!found) return null;
 
+  if (!found.value.elements) {
+    return {
+      ast: found,
+      value: [{ name: "", value: "" }],
+      isPropertyPointingToVar: true,
+    };
+  }
+
   const elements = found.value.elements.filter(
     (i) => i.type === "ObjectExpression"
   );
@@ -107,6 +115,7 @@ export function getOptions(nodeParam: TSESTree.ObjectExpression) {
   return {
     ast: found,
     value: restoreNodeParamOptions(elements),
+    isPropertyPointingToVar: false,
   };
 }
 

@@ -89,3 +89,16 @@ export function isArrayPropertyWithKey(
     property.value.type === AST_NODE_TYPES.ArrayExpression
   );
 }
+
+export function isPropertyPointingToVar(
+  keyName: "options",
+  property: TSESTree.ObjectLiteralElement
+) {
+  return (
+    property.type === AST_NODE_TYPES.Property &&
+    property.computed === false &&
+    property.key.type === AST_NODE_TYPES.Identifier &&
+    property.key.name === keyName &&
+    property.value.type === AST_NODE_TYPES.Identifier
+  );
+}

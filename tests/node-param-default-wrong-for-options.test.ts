@@ -18,11 +18,59 @@ ruleTester().run(getRuleName(module), rule, {
 						name: 'Second',
 						value: 'second',
 					},
-				]
+				],
 			};`,
 		},
 	],
 	invalid: [
+		{
+			code: `const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'options',
+				options: [
+					{
+						name: 'Minus One',
+						value: -1,
+					},
+					{
+						name: 'Zero',
+						value: 0,
+					},
+					{
+						name: 'One',
+						value: 1,
+					},
+				],
+				default: '',
+			};`,
+			errors: [
+				{
+					messageId: "chooseOption",
+					data: { eligibleOptions: "-1 or 0 or 1" },
+				},
+			],
+			output: `const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'options',
+				options: [
+					{
+						name: 'Minus One',
+						value: -1,
+					},
+					{
+						name: 'Zero',
+						value: 0,
+					},
+					{
+						name: 'One',
+						value: 1,
+					},
+				],
+				default: -1,
+			};`,
+		},
 		{
 			code: `const test = {
 				displayName: 'Test',
@@ -43,7 +91,7 @@ ruleTester().run(getRuleName(module), rule, {
 			errors: [
 				{
 					messageId: "chooseOption",
-					data: { eligibleOptions: "'first' or 'second'" },
+					data: { eligibleOptions: "first or second" },
 				},
 			],
 			output: `const test = {

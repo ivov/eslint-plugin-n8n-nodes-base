@@ -7,16 +7,15 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: "`default` for an options-type node parameter must be one of the options.",
+      description:
+        "`default` for an options-type node parameter must be one of the options.",
       recommended: "error",
     },
     fixable: "code",
     schema: [],
     messages: {
-      chooseOption:
-        "Set one of {{ eligibleOptions }} as default [autofixable]",
-      setEmptyString:
-        "Set an empty string as default [autofixable]",
+      chooseOption: "Set one of {{ eligibleOptions }} as default [autofixable]",
+      setEmptyString: "Set an empty string as default [autofixable]",
     },
   },
   defaultOptions: [],
@@ -36,7 +35,7 @@ export default utils.createRule({
         if (options) {
           const eligibleOptions = options.value.reduce<unknown[]>(
             (acc, option) => {
-              return acc.push(`${option.value}`), acc;
+              return acc.push(option.value), acc;
             },
             []
           );
@@ -45,15 +44,17 @@ export default utils.createRule({
             context.report({
               messageId: "chooseOption",
               data: {
-                eligibleOptions: eligibleOptions
-                  .map((option) => `'${option}'`)
-                  .join(" or "),
+                eligibleOptions: eligibleOptions.join(" or "),
               },
               node: _default.ast,
               fix: (fixer) => {
                 return fixer.replaceText(
                   _default.ast,
-                  `default: '${eligibleOptions[0]}'`
+                  `default: ${
+                    typeof eligibleOptions[0] === "string"
+                      ? `'${eligibleOptions[0]}'`
+                      : eligibleOptions[0]
+                  }`
                 );
               },
             });
@@ -66,7 +67,7 @@ export default utils.createRule({
             messageId: "setEmptyString",
             node: _default.ast,
             fix: (fixer) => {
-              return fixer.replaceText(_default.ast, `default: ''`);
+              return fixer.replaceText(_default.ast, "default: ''");
             },
           });
         }

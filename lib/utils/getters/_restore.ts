@@ -19,7 +19,7 @@ export function restoreArray(elements: TSESTree.Expression[]) {
  * in a node param.
  */
 export function restoreObject(objectExpression: TSESTree.ObjectExpression) {
-  const isKey = (
+  const isLiteral = (
     property: TSESTree.ObjectLiteralElement
   ): property is TSESTree.PropertyNonComputedName & {
     key: { name: string };
@@ -33,10 +33,28 @@ export function restoreObject(objectExpression: TSESTree.ObjectExpression) {
     );
   };
 
+  const isUnaryExpression = (
+    property: TSESTree.ObjectLiteralElement
+  ): property is TSESTree.PropertyNonComputedName & {
+    key: { name: string };
+    value: { operator: string; argument: { raw: string } };
+  } => {
+    return (
+      property.type === AST_NODE_TYPES.Property &&
+      property.computed === false &&
+      property.key.type === AST_NODE_TYPES.Identifier &&
+      property.value.type === AST_NODE_TYPES.UnaryExpression
+    );
+  };
+
   return objectExpression.properties.reduce<Record<string, unknown>>(
     (acc, property) => {
-      if (isKey(property)) {
+      if (isLiteral(property)) {
         acc[property.key.name] = property.value.value;
+      } else if (isUnaryExpression(property)) {
+        acc[property.key.name] = parseInt(
+          property.value.operator + property.value.argument.raw // e.g. -1
+        );
       }
       return acc;
     },

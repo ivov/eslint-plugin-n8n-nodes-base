@@ -45,6 +45,39 @@ const test = {
 };
 ```
 
+✅ Example of **correct** code:
+
+```js
+const test = {
+  displayName: "Test",
+  name: "test",
+  type: "multiOptions",
+  default: "a",
+  options: [
+    {
+      name: "A",
+      value: "a",
+    },
+    {
+      name: "B",
+      value: "b",
+    },
+    {
+      name: "C",
+      value: "c",
+    },
+    {
+      name: "D",
+      value: "d",
+    },
+    {
+      name: "E",
+      value: "e",
+    },
+  ],
+};
+```
+
 ## Links
 
 - [Rule source](../../lib/rules/node-param-multi-options-type-unsorted-items.ts)

@@ -28,6 +28,14 @@ const test = {
   value: "userId",
   description: "The ID of the user.",
 };
+
+const test = {
+  displayName: "Address",
+  name: "address",
+  type: "string",
+  default: "",
+  description: "Person's email address.",
+};
 ```
 
 ✅ Example of **correct** code:

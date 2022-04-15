@@ -3,36 +3,36 @@ import { ruleTester, getRuleName } from "../lib/utils";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [
-		// {
-		// 	code: `const test = {
-		// 		displayName: 'Test',
-		// 		name: 'test',
-		// 		type: 'multiOptions',
-		// 		default: 'a',
-		// 		options: [
-		// 			{
-		// 				name: 'A',
-		// 				value: 'a',
-		// 			},
-		// 			{
-		// 				name: 'B',
-		// 				value: 'b',
-		// 			},
-		// 			{
-		// 				name: 'C',
-		// 				value: 'c',
-		// 			},
-		// 			{
-		// 				name: 'D',
-		// 				value: 'd',
-		// 			},
-		// 			{
-		// 				name: 'E',
-		// 				value: 'e',
-		// 			},
-		// 		],
-		// 	};`,
-		// },
+		{
+			code: `const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'multiOptions',
+				default: 'a',
+				options: [
+					{
+						name: 'A',
+						value: 'a',
+					},
+					{
+						name: 'B',
+						value: 'b',
+					},
+					{
+						name: 'C',
+						value: 'c',
+					},
+					{
+						name: 'D',
+						value: 'd',
+					},
+					{
+						name: 'E',
+						value: 'e',
+					},
+				],
+			};`,
+		},
 	],
 	invalid: [
 		{

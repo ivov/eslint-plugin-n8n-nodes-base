@@ -3,3 +3,4 @@ node_modules
 dist
 NOTES.md
 .DS_Store
+.todo

@@ -2,25 +2,25 @@ import rule from "../lib/rules/node-param-description-excess-inner-whitespace";
 import { ruleTester, getRuleName } from "../lib/utils";
 
 ruleTester().run(getRuleName(module), rule, {
-	valid: [
-		{
-			code: `const test = {
+  valid: [
+    {
+      code: `const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'string',
 				default: '',
 				description: 'This a sentence',
 			};`,
-		},
-		{
-			code: `const test = {
+    },
+    {
+      code: `const test = {
 				name: 'User ID',
 				value: 'userId',
 				description: 'The ID of the user',
 			};`,
-		},
-		{
-			code: `const test = {
+    },
+    {
+      code: `const test = {
 				displayName: 'Access Token',
 				name: 'accessToken',
 				type: 'string',
@@ -35,28 +35,71 @@ ruleTester().run(getRuleName(module), rule, {
 					<li>View response details</li>
 				</ul>\`,
 			}`,
-		},
-	],
-	invalid: [
-		{
-			code: `const test = {
+    },
+  ],
+  invalid: [
+    {
+      code: `const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'string',
 				default: '',
 				description: 'This a  sentence',
 			};`,
-			errors: [{ messageId: "removeInnerWhitespace" }],
-			output: `const test = {
+      errors: [{ messageId: "removeInnerWhitespace" }],
+      output: `const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'string',
 				default: '',
 				description: 'This a sentence',
 			};`,
-		},
-		{
-			code: `const test = {
+    },
+    {
+      code: `const test = {
+				displayName: 'Row ID',
+				name: 'rowId',
+				type: 'string',
+				required: true,
+				default: '',
+				displayOptions: {
+					show: {
+						resource: [
+							'table',
+						],
+						operation: [
+							'getRow',
+						],
+					},
+				},
+				description: \`ID or name of the row. Names are discouraged because
+				they're easily prone to being changed by users. If you're
+				using a name, be sure to URI-encode it. If there are
+				multiple rows with the same value in the identifying column,
+				an arbitrary one will be selected\`,
+			};`,
+      errors: [{ messageId: "removeInnerWhitespace" }],
+      output: `const test = {
+				displayName: 'Row ID',
+				name: 'rowId',
+				type: 'string',
+				required: true,
+				default: '',
+				displayOptions: {
+					show: {
+						resource: [
+							'table',
+						],
+						operation: [
+							'getRow',
+						],
+					},
+				},
+				description: 'ID or name of the row. Names are discouraged because they\\'re easily prone to being changed by users. If you\\'re using a name, be sure to URI-encode it. If there are multiple rows with the same value in the identifying column, an arbitrary one will be selected',
+			};`,
+    },
+    {
+      code: `const test = {
 				displayName: "Incident Key",
 				name: "incidentKey",
 				type: "string",
@@ -64,27 +107,27 @@ ruleTester().run(getRuleName(module), rule, {
 				description: \`Sending subsequent requests referencing the same service and with the same incident_key
 							will result in those requests being rejected if an open incident matches that incident_key.\`,
 			}`,
-			errors: [{ messageId: "removeInnerWhitespace" }],
-			output: `const test = {
+      errors: [{ messageId: "removeInnerWhitespace" }],
+      output: `const test = {
 				displayName: "Incident Key",
 				name: "incidentKey",
 				type: "string",
 				default: "",
 				description: 'Sending subsequent requests referencing the same service and with the same incident_key will result in those requests being rejected if an open incident matches that incident_key.',
 			}`,
-		},
-		{
-			code: `const test = {
+    },
+    {
+      code: `const test = {
 				name: 'User ID',
 				value: 'userId',
 				description: 'The ID    of the user',
 			};`,
-			errors: [{ messageId: "removeInnerWhitespace" }],
-			output: `const test = {
+      errors: [{ messageId: "removeInnerWhitespace" }],
+      output: `const test = {
 				name: 'User ID',
 				value: 'userId',
 				description: 'The ID of the user',
 			};`,
-		},
-	],
+    },
+  ],
 });

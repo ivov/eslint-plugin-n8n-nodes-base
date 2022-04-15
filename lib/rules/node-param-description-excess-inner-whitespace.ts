@@ -33,13 +33,15 @@ export default utils.createRule({
         }
 
         if (/\s{2,}/.test(description.value)) {
+          const fixed = utils.escape(description.value.replace(/\s{2,}/g, " "))
+
           context.report({
             messageId: "removeInnerWhitespace",
             node: description.ast,
             fix: (fixer) => {
               return fixer.replaceText(
                 description.ast,
-                `description: '${description.value.replace(/\s{2,}/g, " ")}'`
+                `description: '${fixed}'`
               );
             },
           });

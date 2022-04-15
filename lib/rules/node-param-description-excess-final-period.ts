@@ -34,17 +34,21 @@ export default utils.createRule({
           description.value.split(". ").length === 1 &&
           description.value.endsWith(".")
         ) {
+          // TODO: Clean this up
+          const fixed = /'/.test(description.value)
+            ? `description: '${description.value
+                .replace(/'/g, "\\'")
+                .slice(0, description.value.length)}'` // no -1 to offset escaping char
+            : `description: '${description.value.slice(
+                0,
+                description.value.length - 1
+              )}'`;
+
           context.report({
             messageId: "excessFinalPeriod",
             node: description.ast,
             fix: (fixer) => {
-              return fixer.replaceText(
-                description.ast,
-                `description: '${description.value.slice(
-                  0,
-                  description.value.length - 1
-                )}'`
-              );
+              return fixer.replaceText(description.ast, fixed);
             },
           });
         }

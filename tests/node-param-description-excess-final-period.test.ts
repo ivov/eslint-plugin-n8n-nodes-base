@@ -51,5 +51,22 @@ ruleTester().run(getRuleName(module), rule, {
 				description: 'The ID of the user',
 			};`,
 		},
+		{
+			code: `const test = {
+				displayName: 'Address',
+				name: 'address',
+				type: 'string',
+				default: '',
+				description: 'Person\\'s email address.',
+			};`,
+			errors: [{ messageId: "excessFinalPeriod" }],
+			output: `const test = {
+				displayName: 'Address',
+				name: 'address',
+				type: 'string',
+				default: '',
+				description: 'Person\\'s email address',
+			};`,
+		},
 	],
 });

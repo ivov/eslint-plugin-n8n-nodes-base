@@ -64,7 +64,7 @@ export function getAllDisplayNames(nodeParam: TSESTree.ObjectExpression) {
 
   const displayNames = properties.value.elements.reduce<string[]>(
     (acc, element) => {
-      const found = element.properties.find(id.nodeParam.isDisplayName);
+      const found = element.properties?.find(id.nodeParam.isDisplayName);
 
       if (found) acc.push(found.value.value);
 

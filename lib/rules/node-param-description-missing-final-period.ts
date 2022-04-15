@@ -33,14 +33,16 @@ export default utils.createRule({
           !description.value.endsWith("---") && // final period exception (PEM key)
           !description.value.endsWith("</code>") // final period exception
         ) {
+          // TODO: Deduplicate escaping
+          const fixed = /'/.test(description.value)
+            ? `description: '${description.value.replace(/'/g, "\\'")}.'`
+            : `description: '${description.value}.'`;
+
           context.report({
             messageId: "missingFinalPeriod",
             node: description.ast,
             fix: (fixer) => {
-              return fixer.replaceText(
-                description.ast,
-                `description: '${description.value + "."}'`
-              );
+              return fixer.replaceText(description.ast, fixed);
             },
           });
         }

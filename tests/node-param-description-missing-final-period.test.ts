@@ -69,5 +69,18 @@ ruleTester().run(getRuleName(module), rule, {
 				description: 'First sentence. Second sentence.',
 			};`,
 		},
+		{
+			code: `const test = {
+				name: 'Username',
+				value: 'username',
+				description: 'Person\\'s email address. Another',
+			};`,
+			errors: [{ messageId: "missingFinalPeriod" }],
+			output: `const test = {
+				name: 'Username',
+				value: 'username',
+				description: 'Person\\'s email address. Another.',
+			};`,
+		},
 	],
 });

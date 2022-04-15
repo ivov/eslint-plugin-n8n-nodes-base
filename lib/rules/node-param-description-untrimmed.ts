@@ -27,15 +27,21 @@ export default utils.createRule({
 
         if (!description) return;
 
-        if (description.value !== description.value.trim()) {
+        const trimmed = description.value.trim();
+
+        if (description.value !== trimmed) {
+          const escaped = utils.escape(trimmed);
+          const quotedDescription =
+            utils.isMultiline(description) && description.value.includes("<")
+              ? `\`${escaped}\``
+              : `'${escaped}'`;
+          const fixed = `description: ${quotedDescription}`;
+
           context.report({
             messageId: "trimWhitespace",
             node: description.ast,
             fix: (fixer) => {
-              return fixer.replaceText(
-                description.ast,
-                `description: '${description.value.trim()}'`
-              );
+              return fixer.replaceText(description.ast, fixed);
             },
           });
         }

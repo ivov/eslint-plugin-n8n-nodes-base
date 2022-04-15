@@ -33,18 +33,11 @@ export default utils.createRule({
         // to prevent overlap with node-param-description-weak
         if (utils.isWeakDescription(description)) return;
 
-        if (
-          description.value.split(". ").length === 1 &&
-          description.value.endsWith(".")
-        ) {
-          const fixed = `description: '${utils
-            .escape(description.value)
-            .slice(
-              0,
-              /'/.test(description.value)
-                ? description.value.length
-                : description.value.length - 1
-            )}'`;
+        const { value } = description;
+
+        if (value.split(". ").length === 1 && value.endsWith(".")) {
+          const dotless = value.slice(0, value.length - 1);
+          const fixed = `description: '${utils.escape(dotless)}'`;
 
           context.report({
             messageId: "excessFinalPeriod",

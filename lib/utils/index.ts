@@ -196,4 +196,6 @@ export function isWeakDescription({ value }: { value: string }) {
   );
 }
 
-export const escape = (str: string) => str.replace(/'/g, "\\'");
+// TODO: Improve
+export const escape = (str: string) =>
+  str.replace(/'/g, "\\'").replace(/\\\\/g, "\\");

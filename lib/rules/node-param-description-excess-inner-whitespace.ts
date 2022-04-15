@@ -27,7 +27,10 @@ export default utils.createRule({
 
         if (!description) return;
 
-        if (utils.isMultiline(description)) return;
+        // tolerate multiline to format HTML tags
+        if (utils.isMultiline(description) && /</.test(description.value)) {
+          return;
+        }
 
         if (/\s{2,}/.test(description.value)) {
           context.report({

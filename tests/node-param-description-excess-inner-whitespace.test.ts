@@ -57,6 +57,24 @@ ruleTester().run(getRuleName(module), rule, {
 		},
 		{
 			code: `const test = {
+				displayName: "Incident Key",
+				name: "incidentKey",
+				type: "string",
+				default: "",
+				description: \`Sending subsequent requests referencing the same service and with the same incident_key
+							will result in those requests being rejected if an open incident matches that incident_key.\`,
+			}`,
+			errors: [{ messageId: "removeInnerWhitespace" }],
+			output: `const test = {
+				displayName: "Incident Key",
+				name: "incidentKey",
+				type: "string",
+				default: "",
+				description: 'Sending subsequent requests referencing the same service and with the same incident_key will result in those requests being rejected if an open incident matches that incident_key.',
+			}`,
+		},
+		{
+			code: `const test = {
 				name: 'User ID',
 				value: 'userId',
 				description: 'The ID    of the user',

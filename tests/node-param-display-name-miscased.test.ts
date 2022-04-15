@@ -76,7 +76,19 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 			};`,
 		},
-
+		{
+			code: `const test = {
+				name: 'Using \\'Respond to Webhook\\' node',
+				value: 'responseNode',
+				description: 'Response defined in that node',
+			};`,
+			errors: [{ messageId: "useTitleCase" }],
+			output: `const test = {
+				name: 'Using \\'Respond to Webhook\\' Node',
+				value: 'responseNode',
+				description: 'Response defined in that node',
+			};`,
+		},
 		{
 			code: `const test = {
 				displayName: 'Deal\\'s contact ID',

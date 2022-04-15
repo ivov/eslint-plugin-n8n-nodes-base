@@ -30,9 +30,7 @@ export default utils.createRule({
         if (utils.isMultiline(description)) return;
 
         if (description.hasUnneededBackticks) {
-          const fixed = /'/.test(description.value)
-            ? `description: '${description.value.replace(/'/g, "\\'")}'`
-            : `description: '${description.value}'`;
+          const fixed = `description: '${utils.escape(description.value)}'`;
 
           context.report({
             messageId: "useSingleQuotes",

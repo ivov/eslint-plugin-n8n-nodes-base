@@ -76,6 +76,23 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 			};`,
 		},
+
+		{
+			code: `const test = {
+				displayName: 'Deal\\'s contact ID',
+				name: 'testOfTests',
+				type: 'string',
+				default: '',
+			};`,
+			errors: [{ messageId: "useTitleCase" }],
+			output: `const test = {
+				displayName: 'Deal\\'s Contact ID',
+				name: 'testOfTests',
+				type: 'string',
+				default: '',
+			};`,
+		},
+
 		{
 			code: `const test = {
 				name: 'Test of tests',

@@ -37,14 +37,16 @@ export default utils.createRule({
 
           if (utils.isKebabCase(displayName.value)) return;
 
-          if (displayName.value !== titleCase(displayName.value)) {
+          const titledCased = titleCase(displayName.value);
+
+          if (displayName.value !== titledCased) {
             context.report({
               messageId: "useTitleCase",
               node: displayName.ast,
               fix: (fixer) => {
                 return fixer.replaceText(
                   displayName.ast,
-                  `displayName: '${titleCase(displayName.value)}'`
+                  `displayName: '${utils.escape(titledCased)}'`
                 );
               },
             });

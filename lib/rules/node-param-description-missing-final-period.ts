@@ -27,16 +27,16 @@ export default utils.createRule({
 
         if (!description) return;
 
+        // prevent overlap with node-param-description-untrimmed
+        if (description.value !== description.value.trim()) return;
+
         if (
           description.value.split(". ").length === 2 &&
           !description.value.endsWith(".") &&
           !description.value.endsWith("---") && // final period exception (PEM key)
           !description.value.endsWith("</code>") // final period exception
         ) {
-          // TODO: Deduplicate escaping
-          const fixed = /'/.test(description.value)
-            ? `description: '${description.value.replace(/'/g, "\\'")}.'`
-            : `description: '${description.value}.'`;
+          const fixed = `description: '${utils.escape(description.value)}.'`;
 
           context.report({
             messageId: "missingFinalPeriod",

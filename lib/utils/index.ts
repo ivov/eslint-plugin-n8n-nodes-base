@@ -189,3 +189,5 @@ export function isWeakDescription({ value }: { value: string }) {
     value.toLowerCase().includes(wd.toLowerCase())
   );
 }
+
+export const escape = (str: string) => str.replace(/'/g, "\\'");

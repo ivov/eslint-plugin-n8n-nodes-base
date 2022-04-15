@@ -27,6 +27,9 @@ export default utils.createRule({
 
         if (!description) return;
 
+        // to prevent overlap with node-param-description-excess-inner-whitespace
+        if (/\s{2,}/.test(description.value)) return;
+
         // to prevent overlap with node-param-description-weak
         if (utils.isWeakDescription(description)) return;
 
@@ -34,15 +37,14 @@ export default utils.createRule({
           description.value.split(". ").length === 1 &&
           description.value.endsWith(".")
         ) {
-          // TODO: Clean this up
-          const fixed = /'/.test(description.value)
-            ? `description: '${description.value
-                .replace(/'/g, "\\'")
-                .slice(0, description.value.length)}'` // no -1 to offset escaping char
-            : `description: '${description.value.slice(
-                0,
-                description.value.length - 1
-              )}'`;
+          const fixed = `description: '${utils
+            .escape(description.value)
+            .slice(
+              0,
+              /'/.test(description.value)
+                ? description.value.length
+                : description.value.length - 1
+            )}'`;
 
           context.report({
             messageId: "excessFinalPeriod",

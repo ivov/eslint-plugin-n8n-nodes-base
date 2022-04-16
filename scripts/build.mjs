@@ -3,6 +3,7 @@
 import path from "path";
 import { fileURLToPath } from "url";
 
+import glob from "tiny-glob";
 import shell from "shelljs";
 import esbuild from "esbuild";
 
@@ -12,9 +13,10 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, "..");
 const distDir = path.resolve(rootDir, "dist");
 
-shell.exec("shopt -s extglob");
+const tsFiles = await glob(
+  path.resolve(rootDir, "@(lib|tests)/**/*.ts")
+);
 
-const tsFiles = shell.ls("@(lib|tests)/**/*.ts");
 const filesToTranspile = tsFiles.filter((f) => !f.endsWith(".d.ts"));
 
 shell.rm("-rf", distDir);

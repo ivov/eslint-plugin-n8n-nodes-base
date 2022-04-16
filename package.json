@@ -21,11 +21,10 @@
   ],
   "scripts": {
     "build": "node scripts/build.mjs",
-    "lint": "echo 'Linting this plugin...'; eslint lib tests --ext .ts; echo 'Plugin linted successfully'",
+    "doc": "node scripts/make-docs.mjs",
+    "lint": "eslint lib tests --ext .ts",
+    "fullrun": "node scripts/full-run.mjs",
     "test": "jest",
-    "doc": "npm run build; trap 'Ran all test suites.' SIGINT; npm run doc:generate; node scripts/generate-docs-for-untested-rules.js; npm run doc:format; node scripts/generate-rules-table.js",
-    "doc:generate": "rm -rf docs/rules; DOCGEN=1 npm run test",
-    "doc:format": "node_modules/prettier/bin-prettier.js docs/rules/**.md --write",
     "prepare": "npm run lint; npm run test; npm run build"
   },
   "dependencies": {

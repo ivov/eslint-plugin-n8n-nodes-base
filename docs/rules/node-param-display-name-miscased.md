@@ -23,6 +23,19 @@ const test = {
 };
 
 const test = {
+  name: "Using 'Respond to Webhook' node",
+  value: "responseNode",
+  description: "Response defined in that node",
+};
+
+const test = {
+  displayName: "Deal's contact ID",
+  name: "testOfTests",
+  type: "string",
+  default: "",
+};
+
+const test = {
   name: "Test of tests",
   value: "testOfTests",
 };

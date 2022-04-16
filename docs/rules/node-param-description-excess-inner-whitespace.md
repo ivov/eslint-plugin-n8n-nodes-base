@@ -24,6 +24,34 @@ const test = {
 };
 
 const test = {
+  displayName: "Row ID",
+  name: "rowId",
+  type: "string",
+  required: true,
+  default: "",
+  displayOptions: {
+    show: {
+      resource: ["table"],
+      operation: ["getRow"],
+    },
+  },
+  description: `ID or name of the row. Names are discouraged because
+                they're easily prone to being changed by users. If you're
+                using a name, be sure to URI-encode it. If there are
+                multiple rows with the same value in the identifying column,
+                an arbitrary one will be selected`,
+};
+
+const test = {
+  displayName: "Incident Key",
+  name: "incidentKey",
+  type: "string",
+  default: "",
+  description: `Sending subsequent requests referencing the same service and with the same incident_key
+                            will result in those requests being rejected if an open incident matches that incident_key.`,
+};
+
+const test = {
   name: "User ID",
   value: "userId",
   description: "The ID    of the user",

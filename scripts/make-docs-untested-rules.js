@@ -1,5 +1,7 @@
 "use strict";
 
+// make docs for untested rules
+
 const fs = require("fs");
 const path = require("path");
 const ejs = require("ejs");

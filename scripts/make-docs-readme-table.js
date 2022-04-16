@@ -1,11 +1,11 @@
 "use strict";
 
+// make rules table for README.md
+
 const outdent = require("outdent");
 const fs = require("fs");
 const path = require("path");
 const { AUTOFIXABLE_UNSAFE_RULES } = require("../index");
-
-// Generate rules table for README.md
 
 const rulesPath = path.join(__dirname, "..", "dist", "lib", "rules");
 

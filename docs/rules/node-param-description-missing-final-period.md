@@ -28,6 +28,12 @@ const test = {
   value: "username",
   description: "First sentence. Second sentence",
 };
+
+const test = {
+  name: "Username",
+  value: "username",
+  description: "Person's email address. Another",
+};
 ```
 
 ✅ Example of **correct** code:

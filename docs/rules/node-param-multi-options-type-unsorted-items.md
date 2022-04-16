@@ -43,6 +43,54 @@ const test = {
     },
   ],
 };
+
+const test = {
+  displayName: "Events",
+  name: "events",
+  type: "multiOptions",
+  required: true,
+  default: [],
+  description: "The operation to perform.",
+  options: [
+    {
+      name: "Invoice Generated",
+      value: "invoice_generated",
+      description:
+        'Event triggered when a new invoice is generated. In case of metered billing, this event is triggered when a "Pending" invoice is closed.',
+    },
+    {
+      name: "Date Equal",
+      value: "date_equal",
+      description: "Field is date. Format: 'YYYY-MM-DD'",
+    },
+    {
+      name: "Invoice Deleted",
+      value: "invoice_deleted",
+      description: "Event triggered when an invoice is deleted.",
+    },
+    {
+      name: "Subscription Renewal Reminder",
+      value: "subscription_renewal_reminder",
+      description: "Triggered 3 days before each subscription's renewal.",
+    },
+    {
+      name: "Transaction Created",
+      value: "transaction_created",
+      description: "Triggered when a transaction is recorded.",
+    },
+    {
+      name: "Transaction Updated",
+      value: "transaction_updated",
+      description:
+        "Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.",
+    },
+    {
+      name: "Transaction Deleted",
+      value: "transaction_deleted",
+      description: "Triggered when a transaction is deleted.",
+    },
+  ],
+};
 ```
 
 ✅ Example of **correct** code:

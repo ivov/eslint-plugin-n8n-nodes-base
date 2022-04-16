@@ -36,6 +36,14 @@ const test = {
   default: "",
   description: "Person's email address.",
 };
+
+const test = {
+  displayName: "Name",
+  name: "name",
+  type: "string",
+  default: "",
+  description: `Custom Field\'s name.`,
+};
 ```
 
 ✅ Example of **correct** code:

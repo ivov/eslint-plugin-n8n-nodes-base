@@ -62,6 +62,12 @@ const test = {
 };
 
 const test = {
+  name: "Username",
+  value: "username",
+  description: "Start e.g. end",
+};
+
+const test = {
   displayName: "Test",
   name: "test",
   type: "string",

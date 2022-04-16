@@ -58,12 +58,12 @@ const categorized = allFullRuleNames.reduce(
         ? acc["autofixable-unsafe"].push(fullRuleName)
         : acc["autofixable-safe"].push(fullRuleName);
     } else {
-      acc['non-autofixable'].push(fullRuleName);
+      acc["non-autofixable"].push(fullRuleName);
     }
 
     return acc;
   },
-  { 'autofixable-safe': [], 'autofixable-unsafe': [], 'non-autofixable': [] }
+  { "autofixable-safe": [], "autofixable-unsafe": [], "non-autofixable": [] }
 );
 
 function addSeverity(ruleNames, severity = "warn") {
@@ -104,17 +104,17 @@ module.exports.configs = {
     ...BASE_CONFIG,
     rules: addSeverity(allFullRuleNames),
   },
-  'autofixable-safe': {
+  "autofixable-safe": {
     ...BASE_CONFIG,
-    rules: addSeverity(categorized['autofixable-safe']),
+    rules: addSeverity(categorized["autofixable-safe"]),
   },
-  'autofixable-unsafe': {
+  "autofixable-unsafe": {
     ...BASE_CONFIG,
-    rules: addSeverity(categorized['autofixable-unsafe']),
+    rules: addSeverity(categorized["autofixable-unsafe"]),
   },
-  'non-autofixable': {
+  "non-autofixable": {
     ...BASE_CONFIG,
-    rules: addSeverity(categorized['non-autofixable']),
+    rules: addSeverity(categorized["non-autofixable"]),
   },
 };
 

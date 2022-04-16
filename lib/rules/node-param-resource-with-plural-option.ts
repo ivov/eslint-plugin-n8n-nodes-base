@@ -1,5 +1,5 @@
 import { AST_NODE_TYPES } from "@typescript-eslint/utils";
-import { isPlural, singular } from "pluralize";
+import { isPlural, plural, singular } from "pluralize";
 import { OptionsProperty } from "../types";
 import * as utils from "../utils";
 import { identifiers as id } from "../utils/identifiers";
@@ -59,7 +59,8 @@ function findPluralOption(options: { ast: OptionsProperty }) {
         property.key.name === "name" &&
         property.value.type === AST_NODE_TYPES.Literal &&
         typeof property.value.value === "string" &&
-        isPlural(property.value.value)
+        isPlural(property.value.value) &&
+        singular(property.value.value) !== plural(property.value.value) // ignore if identical singular and plural forms, e.g. software, information
       )
         return {
           ast: property,

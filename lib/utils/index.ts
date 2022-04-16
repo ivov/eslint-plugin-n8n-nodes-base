@@ -47,8 +47,7 @@ export function unquoteKeys(obj: object) {
   const clean = JSON.stringify(obj, null, 2)
     .replace(/\'/g, "\\'")
     .replace(/^[\t ]*"[^:\n\r]+(?<!\\)":/gm, (m) => m.replace(/"/g, "")) // unquote
-    .replace(/"/g, "'") // adjust to single quotes
-
+    .replace(/"/g, "'")
     .replace(/\}\s/, "},\n") // add trailing comma for last object
     .replace("]", "\t]")
     .replace(/ /g, "\t")
@@ -59,9 +58,15 @@ export function unquoteKeys(obj: object) {
     .replace(/\ttype:\t/g, "type: ")
     .replace(/\tdefault:\t/g, "default: ")
     .replace(/(\.)\t\b/g, ". ")
-    .replace(/:\t\\/g, ": \\")
+    .replace(/\t\(/g, " (")
+    .replace(/\)\t/g, ") ")
+    .replace(/,\t\b/g, ", ")
+    .replace(/\t\\/g, " \\")
+    .replace(/'\t/g, "' ")
     .replace(/\b\t\b/g, " ")
-    .replace(/'\s\t/g, "',\n\t"); // add trailing comma for last key-value pair
+    .replace(/'\s\t/g, "',\n\t") // add trailing comma for last key-value pair
+    .replace(/href=\\'/g, 'href="')
+    .replace(/\\'>/g, '">');
 
   return clean;
 }

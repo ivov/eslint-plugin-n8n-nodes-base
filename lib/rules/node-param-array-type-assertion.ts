@@ -21,16 +21,16 @@ export default utils.createRule({
     return {
       TSAsExpression(node) {
         if (containsArrayOfNodeParams(node)) {
+          if (
+            node.parent?.type !== AST_NODE_TYPES.VariableDeclarator ||
+            node.parent?.id.type !== AST_NODE_TYPES.Identifier
+          ) {
+            return;
+          }
+
           const rangeToRemove = utils.getRangeToRemove({
             ast: node.typeAnnotation,
           });
-
-          if (
-            !node.parent ||
-            node.parent.type !== AST_NODE_TYPES.VariableDeclarator ||
-            node.parent.id.type !== AST_NODE_TYPES.Identifier
-          )
-            return;
 
           const { range } = node.parent.id;
 

@@ -15,9 +15,9 @@ shell.rm("-rf", rulesDocsDir);
 
 shell.exec("DOCGEN=1 npm run test");
 
-shell.exec("node scripts/make-docs-untested-rules.js");
+shell.exec(`node ${path.resolve("scripts", "make-docs-untested-rules.js")}`);
 
-shell.exec("node scripts/make-docs-readme-table.js");
+shell.exec(`node ${path.resolve("scripts", "make-docs-readme-table.js")}`);
 
 const formatCommand = [
   path.resolve(rootDir, "node_modules", "prettier", "bin-prettier.js"),

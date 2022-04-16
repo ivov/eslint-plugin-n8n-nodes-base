@@ -33,10 +33,13 @@ export default utils.createRule({
         // prevent overlap with node-param-description-excess-inner-whitespace
         if (/\s{2,}/.test(description.value)) return;
 
+        // disregard "e.g." when checking periods
+        const egLess = description.value.replace("e.g.", "");
+
         if (
-          description.value.split(". ").length === 2 &&
-          !description.value.endsWith(".") &&
-          !isAllowedException(description.value)
+          egLess.split(". ").length === 2 &&
+          !egLess.endsWith(".") &&
+          !isAllowedException(egLess)
         ) {
           const fixed = utils.keyValue("description", description.value + ".");
 

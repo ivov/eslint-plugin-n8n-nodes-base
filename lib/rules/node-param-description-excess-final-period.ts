@@ -35,7 +35,10 @@ export default utils.createRule({
 
         const { value } = description;
 
-        if (value.split(". ").length === 1 && value.endsWith(".")) {
+        // disregard "e.g." when checking periods
+        const egLess = value.replace("e.g.", "");
+
+        if (egLess.split(". ").length === 1 && egLess.endsWith(".")) {
           const withoutExcess = value.slice(0, value.length - 1);
           const fixed = utils.keyValue("description", withoutExcess);
 

@@ -22,6 +22,14 @@ ruleTester().run(getRuleName(module), rule, {
 				description: 'The ID of the user',
 			};`,
     },
+    {
+      code: outdent`
+			const test = {
+				name: 'Username',
+				value: 'username',
+				description: 'Start e.g. end',
+			};`,
+    },
   ],
   invalid: [
     {

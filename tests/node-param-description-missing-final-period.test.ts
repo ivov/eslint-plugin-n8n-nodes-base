@@ -3,9 +3,9 @@ import { ruleTester, getRuleName } from "../lib/utils";
 import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
-	valid: [
-		{
-			code: outdent`
+  valid: [
+    {
+      code: outdent`
 			const test = {
 				displayName: 'Test',
 				name: 'test',
@@ -13,9 +13,9 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				description: 'This a sentence. This is another.',
 			};`,
-		},
-		{
-			code: outdent`
+    },
+    {
+      code: outdent`
 			const test = {
 				displayName: 'Test',
 				name: 'test',
@@ -23,17 +23,25 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				description: 'This a sentence. This is another</code>',
 			};`,
-		},
-		{
-			code: outdent`
+    },
+    {
+      code: outdent`
 			const test = {
 				name: 'Username',
 				value: 'username',
 				description: 'First sentence. Second sentence.',
 			};`,
-		},
-		{
-			code: outdent`
+    },
+    {
+      code: outdent`
+			const test = {
+				name: 'Username',
+				value: 'username',
+				description: 'Start e.g. end',
+			};`,
+    },
+    {
+      code: outdent`
 			const test = {
 				displayName: 'Test',
 				name: 'test',
@@ -41,11 +49,11 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				description: 'Use the multiline editor. Make sure it is in standard PEM key format:-----BEGIN PRIVATE KEY-----KEY DATA GOES HERE-----END PRIVATE KEY-----',
 			};`,
-		},
-	],
-	invalid: [
-		{
-			code: outdent`
+    },
+  ],
+  invalid: [
+    {
+      code: outdent`
 			const test = {
 				displayName: 'Test',
 				name: 'test',
@@ -53,8 +61,8 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				description: 'This a sentence. This is another',
 			};`,
-			errors: [{ messageId: "missingFinalPeriod" }],
-			output: outdent`
+      errors: [{ messageId: "missingFinalPeriod" }],
+      output: outdent`
 			const test = {
 				displayName: 'Test',
 				name: 'test',
@@ -62,36 +70,36 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				description: 'This a sentence. This is another.',
 			};`,
-		},
-		{
-			code: outdent`
+    },
+    {
+      code: outdent`
 			const test = {
 				name: 'Username',
 				value: 'username',
 				description: 'First sentence. Second sentence',
 			};`,
-			errors: [{ messageId: "missingFinalPeriod" }],
-			output: outdent`
+      errors: [{ messageId: "missingFinalPeriod" }],
+      output: outdent`
 			const test = {
 				name: 'Username',
 				value: 'username',
 				description: 'First sentence. Second sentence.',
 			};`,
-		},
-		{
-			code: outdent`
+    },
+    {
+      code: outdent`
 			const test = {
 				name: 'Username',
 				value: 'username',
 				description: 'Person\\'s email address. Another',
 			};`,
-			errors: [{ messageId: "missingFinalPeriod" }],
-			output: outdent`
+      errors: [{ messageId: "missingFinalPeriod" }],
+      output: outdent`
 			const test = {
 				name: 'Username',
 				value: 'username',
 				description: 'Person\\'s email address. Another.',
 			};`,
-		},
-	],
+    },
+  ],
 });

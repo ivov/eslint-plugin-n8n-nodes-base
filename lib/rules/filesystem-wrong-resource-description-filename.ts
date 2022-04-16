@@ -14,7 +14,7 @@ export default utils.createRule({
     },
     schema: [],
     messages: {
-      renameFile: "Rename file to {{ expected }} [non-autofixable]", // filesystem linting
+      renameFile: "Rename file to {{ expected }} [non-autofixable]",
     },
   },
   defaultOptions: [],

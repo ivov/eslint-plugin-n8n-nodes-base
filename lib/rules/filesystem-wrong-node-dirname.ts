@@ -11,7 +11,7 @@ export default utils.createRule({
     },
     schema: [],
     messages: {
-      renameFile: "Rename node dir to {{ expected }} [non-autofixable]", // filesystem linting
+      renameFile: "Rename node dir to {{ expected }} [non-autofixable]",
     },
   },
   defaultOptions: [],

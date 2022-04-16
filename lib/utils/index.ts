@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
 import { ESLintUtils, AST_NODE_TYPES } from "@typescript-eslint/utils";
 import { TSESTree } from "@typescript-eslint/utils";
 // @ts-ignore

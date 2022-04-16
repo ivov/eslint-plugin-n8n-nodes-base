@@ -28,6 +28,8 @@ export default utils.createRule({
 
         if (!icon) return;
 
+        if (icon.value.startsWith('fa:')) return;
+
         if (!icon.value.endsWith(".svg")) {
           context.report({
             messageId: "useSvg",

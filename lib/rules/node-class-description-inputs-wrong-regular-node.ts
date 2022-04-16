@@ -28,15 +28,16 @@ export default utils.createRule({
 
         if (!inputs) return;
 
-        if (!utils.isRegularNodeFile(context.getFilename())) return;
+        const filename = context.getFilename();
+
+        if (!utils.isRegularNodeFile(filename)) return;
+
+        const isMergeNode = filename.endsWith("Merge.node.ts");
 
         const inputsTotal = inputs.value.length;
 
         // merge node is only regular node with two inputs
-        if (
-          getters.nodeParam.getName(node)?.value === "merge" &&
-          inputsTotal !== 2
-        ) {
+        if (isMergeNode && inputsTotal !== 2) {
           context.report({
             messageId: "fixInputsMerge",
             node: inputs.ast,
@@ -47,8 +48,8 @@ export default utils.createRule({
         }
 
         if (
-          inputsTotal !== 1 ||
-          (inputsTotal === 1 && inputs.value[0] !== "main")
+          (!isMergeNode && inputsTotal !== 1) ||
+          (!isMergeNode && inputsTotal === 1 && inputs.value[0] !== "main")
         ) {
           context.report({
             messageId: "fixInputs",

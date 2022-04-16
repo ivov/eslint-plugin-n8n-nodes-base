@@ -27,6 +27,12 @@ module.exports = {
      * https://github.com/prettier/eslint-plugin-prettier
      */
     "eslint-plugin-prettier",
+
+    /**
+     * Plugin to lint ESLint plugins
+     * https://github.com/not-an-aardvark/eslint-plugin-eslint-plugin
+     */
+    "eslint-plugin-eslint-plugin",
   ],
   extends: [
     /**
@@ -50,6 +56,11 @@ module.exports = {
      * https://github.com/prettier/eslint-config-prettier
      */
     "eslint-config-prettier",
+
+    /**
+     * Recommended config for eslint-plugin-eslint-plugin
+     */
+    "plugin:eslint-plugin/recommended",
   ],
   rules: {
     "@typescript-eslint/ban-ts-comment": "off",

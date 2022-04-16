@@ -49,12 +49,8 @@ export default utils.createRule({
           context.report({
             messageId: "enableNoDataExpression",
             node: noDataExpression.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(
-                noDataExpression.ast,
-                `noDataExpression: true`
-              );
-            },
+            fix: (fixer) =>
+              fixer.replaceText(noDataExpression.ast, `noDataExpression: true`),
           });
         }
       },

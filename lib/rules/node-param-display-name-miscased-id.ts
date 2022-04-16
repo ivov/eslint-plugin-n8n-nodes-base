@@ -32,15 +32,13 @@ export default utils.createRule({
           if (!displayName) return;
 
           if (MISCASED_ID_REGEX.test(displayName.value)) {
+            const correctlyCased = displayName.value.replace(/(id|Id)/, "ID");
+            const fixed = utils.keyValue("displayName", correctlyCased);
+
             context.report({
               messageId: "uppercaseId",
               node: displayName.ast,
-              fix: (fixer) => {
-                return fixer.replaceText(
-                  displayName.ast,
-                  `displayName: '${displayName.value.replace(/(id|Id)/, "ID")}'`
-                );
-              },
+              fix: (fixer) => fixer.replaceText(displayName.ast, fixed),
             });
           }
         } else if (isOption) {
@@ -49,15 +47,13 @@ export default utils.createRule({
           if (!name) return;
 
           if (MISCASED_ID_REGEX.test(name.value)) {
+            const correctlyCased = name.value.replace(/(id|Id)/, "ID");
+            const fixed = utils.keyValue("name", correctlyCased);
+
             context.report({
               messageId: "uppercaseId",
               node: name.ast,
-              fix: (fixer) => {
-                return fixer.replaceText(
-                  name.ast,
-                  `name: '${name.value.replace(/(id|Id)/, "ID")}'`
-                );
-              },
+              fix: (fixer) => fixer.replaceText(name.ast, fixed),
             });
           }
         }

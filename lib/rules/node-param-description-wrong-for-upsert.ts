@@ -29,16 +29,15 @@ export default utils.createRule({
 
         if (!description) return;
 
-        if (description.value !== UPSERT_NODE_PARAMETER.DESCRIPTION) {
+        const expected = UPSERT_NODE_PARAMETER.DESCRIPTION;
+
+        if (description.value !== expected) {
+          const fixed = utils.keyValue("description", expected);
+
           context.report({
             messageId: "useUpsertDescription",
             node: description.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(
-                description.ast,
-                `description: '${UPSERT_NODE_PARAMETER.DESCRIPTION}'`
-              );
-            },
+            fix: (fixer) => fixer.replaceText(description.ast, fixed),
           });
         }
       },

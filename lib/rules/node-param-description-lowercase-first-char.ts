@@ -27,20 +27,17 @@ export default utils.createRule({
 
         if (!description) return;
 
-        if (/[a-z]/.test(description.value.charAt(0))) {
+        const { value } = description;
+        const firstChar = value.charAt(0);
+
+        if (/[a-z]/.test(firstChar)) {
+          const correctlyCased = firstChar.toUpperCase() + value.slice(1);
+          const fixed = utils.keyValue("description", correctlyCased);
+
           context.report({
             messageId: "uppercaseFirstChar",
             node: description.ast,
-            fix: (fixer) => {
-              const fixed =
-                description.value.charAt(0).toUpperCase() +
-                description.value.slice(1);
-
-              return fixer.replaceText(
-                description.ast,
-                `description: '${fixed}'`
-              );
-            },
+            fix: (fixer) => fixer.replaceText(description.ast, fixed),
           });
         }
       },

@@ -36,20 +36,17 @@ export default utils.createRule({
 
           if (utils.isKebabCase(displayName.value)) return;
 
-          if (/[a-z]/.test(displayName.value.charAt(0))) {
+          const firstChar = displayName.value.charAt(0);
+
+          if (/[a-z]/.test(firstChar)) {
+            const correctlyCased =
+              firstChar.toUpperCase() + displayName.value.slice(1);
+            const fixed = utils.keyValue("displayName", correctlyCased);
+
             context.report({
               messageId: "uppercaseFirstChar",
               node: displayName.ast,
-              fix: (fixer) => {
-                const fixed =
-                  displayName.value.charAt(0).toUpperCase() +
-                  displayName.value.slice(1);
-
-                return fixer.replaceText(
-                  displayName.ast,
-                  `displayName: '${fixed}'`
-                );
-              },
+              fix: (fixer) => fixer.replaceText(displayName.ast, fixed),
             });
           }
         } else if (isOption) {
@@ -61,16 +58,18 @@ export default utils.createRule({
 
           if (utils.isKebabCase(name.value)) return;
 
-          if (/[a-z]/.test(name.value.charAt(0))) {
+          const firstChar = name.value.charAt(0);
+
+          if (/[a-z]/.test(firstChar)) {
+            const correctlyCased =
+              firstChar.toUpperCase() + name.value.slice(1);
+
+            const fixed = utils.keyValue("name", correctlyCased);
+
             context.report({
               messageId: "uppercaseFirstChar",
               node: name.ast,
-              fix: (fixer) => {
-                const fixed =
-                  name.value.charAt(0).toUpperCase() + name.value.slice(1);
-
-                return fixer.replaceText(name.ast, `name: '${fixed}'`);
-              },
+              fix: (fixer) => fixer.replaceText(name.ast, fixed),
             });
           }
         }

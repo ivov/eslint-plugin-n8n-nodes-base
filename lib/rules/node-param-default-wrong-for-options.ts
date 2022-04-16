@@ -40,9 +40,7 @@ export default utils.createRule({
           context.report({
             messageId: "setEmptyString",
             node: _default.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(_default.ast, "default: ''");
-            },
+            fix: (fixer) => fixer.replaceText(_default.ast, "default: ''"),
           });
         }
 

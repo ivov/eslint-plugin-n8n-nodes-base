@@ -30,23 +30,31 @@ export default utils.createRule({
         // prevent overlap with node-param-description-untrimmed
         if (description.value !== description.value.trim()) return;
 
+        // prevent overlap with node-param-description-excess-inner-whitespace
+        if (/\s{2,}/.test(description.value)) return;
+
         if (
           description.value.split(". ").length === 2 &&
           !description.value.endsWith(".") &&
-          !description.value.endsWith("---") && // final period exception (PEM key)
-          !description.value.endsWith("</code>") // final period exception
+          !isAllowedException(description.value)
         ) {
-          const fixed = `description: '${utils.escape(description.value)}.'`;
+          const fixed = utils.keyValue("description", description.value + ".");
 
           context.report({
             messageId: "missingFinalPeriod",
             node: description.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(description.ast, fixed);
-            },
+            fix: (fixer) => fixer.replaceText(description.ast, fixed),
           });
         }
       },
     };
   },
 });
+
+/**
+ * Check whether a description is an exception to this rule.
+ * - PEM key example
+ * - `</code>` HTML tag
+ */
+const isAllowedException = (descriptionValue: string) =>
+  descriptionValue.endsWith("---") || descriptionValue.endsWith("</code>");

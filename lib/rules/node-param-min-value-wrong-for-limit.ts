@@ -7,7 +7,8 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: "`minValue` for Limit node parameter must be a positive integer.",
+      description:
+        "`minValue` for Limit node parameter must be a positive integer.",
       recommended: "error",
     },
     fixable: "code",
@@ -32,9 +33,7 @@ export default utils.createRule({
           context.report({
             messageId: "setPositiveMinValue",
             node: minValue.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(minValue.ast, "minValue: 1");
-            },
+            fix: (fixer) => fixer.replaceText(minValue.ast, "minValue: 1"),
           });
         }
       },

@@ -7,7 +7,8 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: "`color`-type must be used for color-related node parameter.",
+      description:
+        "`color`-type must be used for color-related node parameter.",
       recommended: "error",
     },
     fixable: "code",
@@ -34,9 +35,7 @@ export default utils.createRule({
           context.report({
             messageId: "useColorParam",
             node: type.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(type.ast, "type: 'color'");
-            },
+            fix: (fixer) => fixer.replaceText(type.ast, "type: 'color'"),
           });
         }
       },

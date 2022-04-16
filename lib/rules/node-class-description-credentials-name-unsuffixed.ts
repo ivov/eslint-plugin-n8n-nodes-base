@@ -31,14 +31,13 @@ export default utils.createRule({
         const unsuffixed = getUnsuffixedCredOptionName(credOptions);
 
         if (unsuffixed) {
-          const fixed = utils.addApiSuffix(unsuffixed.value);
+          const suffixed = utils.addApiSuffix(unsuffixed.value);
+          const fixed = utils.keyValue("name", suffixed);
 
           context.report({
             messageId: "fixSuffix",
             node: unsuffixed.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(unsuffixed.ast, `name: '${fixed}'`);
-            },
+            fix: (fixer) => fixer.replaceText(unsuffixed.ast, fixed),
           });
         }
       },
@@ -66,4 +65,3 @@ export function getUnsuffixedCredOptionName(credOptions: {
 
   return null;
 }
-

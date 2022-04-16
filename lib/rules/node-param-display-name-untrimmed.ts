@@ -32,16 +32,15 @@ export default utils.createRule({
 
           if (!displayName) return;
 
-          if (displayName.value !== displayName.value.trim()) {
+          const trimmed = displayName.value.trim();
+
+          if (displayName.value !== trimmed) {
+            const fixed = utils.keyValue("displayName", trimmed);
+
             context.report({
               messageId: "trimWhitespace",
               node: displayName.ast,
-              fix: (fixer) => {
-                return fixer.replaceText(
-                  displayName.ast,
-                  `displayName: '${displayName.value.trim()}'`
-                );
-              },
+              fix: (fixer) => fixer.replaceText(displayName.ast, fixed),
             });
           }
         } else if (isOption) {
@@ -49,16 +48,15 @@ export default utils.createRule({
 
           if (!name) return;
 
-          if (name.value !== name.value.trim()) {
+          const trimmed = name.value.trim();
+
+          if (name.value !== trimmed) {
+            const fixed = utils.keyValue("name", trimmed);
+
             context.report({
               messageId: "trimWhitespace",
               node: name.ast,
-              fix: (fixer) => {
-                return fixer.replaceText(
-                  name.ast,
-                  `name: '${name.value.trim()}'`
-                );
-              },
+              fix: (fixer) => fixer.replaceText(name.ast, fixed),
             });
           }
         }

@@ -8,8 +8,7 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description:
-        `\`description\` in dynamic-multi-options-type node parameter must be \`${DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER.DESCRIPTION}\``,
+      description: `\`description\` in dynamic-multi-options-type node parameter must be \`${DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER.DESCRIPTION}\``,
       recommended: "error",
     },
     schema: [],
@@ -34,18 +33,15 @@ export default utils.createRule({
 
         if (!description) return;
 
-        if (
-          description.value !== DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER.DESCRIPTION
-        ) {
+        const expected = DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER.DESCRIPTION;
+
+        if (description.value !== expected) {
+          const fixed = utils.keyValue("description", expected);
+
           context.report({
             messageId: "useStandardDescription",
             node: description.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(
-                description.ast,
-                `description: '${DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER.DESCRIPTION}'`
-              );
-            },
+            fix: (fixer) => fixer.replaceText(description.ast, fixed),
           });
         }
       },

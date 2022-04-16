@@ -7,7 +7,8 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: "`default` for a number-type node parameter must be a number.",
+      description:
+        "`default` for a number-type node parameter must be a number.",
       recommended: "error",
     },
     fixable: "code",
@@ -32,9 +33,7 @@ export default utils.createRule({
           context.report({
             messageId: "setNumberDefault",
             node: _default.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(_default.ast, "default: 0");
-            },
+            fix: (fixer) => fixer.replaceText(_default.ast, "default: 0"),
           });
         }
       },

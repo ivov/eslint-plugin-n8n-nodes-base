@@ -7,7 +7,8 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: "`default` for a string-type node parameter must be a string.",
+      description:
+        "`default` for a string-type node parameter must be a string.",
       recommended: "error",
     },
     fixable: "code",
@@ -32,9 +33,7 @@ export default utils.createRule({
           context.report({
             messageId: "setStringDefault",
             node: _default.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(_default.ast, "default: ''");
-            },
+            fix: (fixer) => fixer.replaceText(_default.ast, "default: ''"),
           });
         }
       },

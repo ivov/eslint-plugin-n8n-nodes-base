@@ -36,15 +36,13 @@ export default utils.createRule({
         const { value } = description;
 
         if (value.split(". ").length === 1 && value.endsWith(".")) {
-          const dotless = value.slice(0, value.length - 1);
-          const fixed = `description: '${utils.escape(dotless)}'`;
+          const withoutExcess = value.slice(0, value.length - 1);
+          const fixed = utils.keyValue("description", withoutExcess);
 
           context.report({
             messageId: "excessFinalPeriod",
             node: description.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(description.ast, fixed);
-            },
+            fix: (fixer) => fixer.replaceText(description.ast, fixed),
           });
         }
       },

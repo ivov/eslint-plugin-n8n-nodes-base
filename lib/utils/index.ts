@@ -196,6 +196,28 @@ export function isWeakDescription({ value }: { value: string }) {
   );
 }
 
-// TODO: Improve
-export const escape = (str: string) =>
-  str.replace(/'/g, "\\'").replace(/\\\\/g, "\\");
+/**
+ * Create a key-value pair to insert in an object.
+ *
+ * Formatting:
+ * - Unquoted key
+ * - Single-quoted value, with existing unescaped inner single quotes escaped. Optionally, backticked value.
+ *
+ * ```ts
+ * keyValue("displayName", "User's Name"); // → "displayName: 'User\\'s Name'"
+ * ```
+ */
+export function keyValue(
+  key: "displayName" | "name" | "description" | "type",
+  value: string,
+  { backtickedValue } = { backtickedValue: false }
+) {
+  const unescapedQuote = new RegExp(/(?<!\\)'/, "g"); // only if not already escaped
+  const escapedValue = value.replace(unescapedQuote, "\\'");
+
+  if (backtickedValue) {
+    return `${key}: \`${escapedValue}\``;
+  }
+
+  return `${key}: '${escapedValue}'`;
+}

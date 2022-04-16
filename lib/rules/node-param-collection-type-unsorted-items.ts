@@ -49,7 +49,7 @@ export default utils.createRule({
         if (!utils.areIdenticallySorted(options.value, sortedParams)) {
           const indentation = utils.getIndentationStringForOption(options);
 
-          const fixed = utils
+          const sorted = utils
             .unquoteKeys(sortedParams)
             .replace(/\n/g, `\n${indentation}`);
 
@@ -58,7 +58,7 @@ export default utils.createRule({
             node: options.ast,
             data: { displayOrder },
             fix: (fixer) => {
-              return fixer.replaceText(options.ast, `options: ${fixed}`);
+              return fixer.replaceText(options.ast, `options: ${sorted}`);
             },
           });
         }

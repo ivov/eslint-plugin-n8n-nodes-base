@@ -31,18 +31,16 @@ export default utils.createRule({
           /<a href=/.test(description.value) &&
           !/href="https:\/\//.test(description.value) // opinionated: https, not http
         ) {
+          const withProtocol = description.value.replace(
+            /href="/g,
+            'href="https://'
+          );
+          const fixed = utils.keyValue("description", withProtocol);
+
           context.report({
             messageId: "addProtocol",
             node: description.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(
-                description.ast,
-                `description: '${description.value.replace(
-                  /href="/g,
-                  'href="https://'
-                )}'`
-              );
-            },
+            fix: (fixer) => fixer.replaceText(description.ast, fixed),
           });
         }
       },

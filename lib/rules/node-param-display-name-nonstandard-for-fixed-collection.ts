@@ -39,24 +39,22 @@ export default utils.createRule({
         if (!setting || Object.keys(setting).length === 0) return;
 
         for (const operation of ["create", "update", "getAll"]) {
-          const standardDisplayName =
+          const expected =
             TOP_LEVEL_FIXED_COLLECTION.STANDARD_DISPLAY_NAME[
               operation.toUpperCase()
             ];
 
           if (
             setting.operation.includes(operation) &&
-            displayName.value !== standardDisplayName
+            displayName.value !== expected
           ) {
+            const fixed = utils.keyValue("displayName", expected);
+
             context.report({
               messageId: "renameFixedCollection",
               node: displayName.ast,
-              data: { standardDisplayName },
-              fix: (fixer) =>
-                fixer.replaceText(
-                  displayName.ast,
-                  `displayName: '${standardDisplayName}'`
-                ),
+              data: { standardDisplayName: expected },
+              fix: (fixer) => fixer.replaceText(displayName.ast, fixed),
             });
           }
         }

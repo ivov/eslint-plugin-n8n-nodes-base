@@ -30,17 +30,13 @@ export default utils.createRule({
         if (!displayName) return;
 
         if (!displayName.value.endsWith("Trigger")) {
-          const suffixedDisplayName = `${displayName.value}Trigger`;
+          const suffixed = `${displayName.value}Trigger`;
+          const fixed = utils.keyValue("displayName", suffixed);
 
           context.report({
             messageId: "fixInputs",
             node: displayName.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(
-                displayName.ast,
-                `displayName: '${suffixedDisplayName}'`
-              );
-            },
+            fix: (fixer) => fixer.replaceText(displayName.ast, fixed),
           });
         }
       },

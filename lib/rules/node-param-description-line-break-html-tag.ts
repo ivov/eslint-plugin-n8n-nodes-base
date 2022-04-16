@@ -30,17 +30,16 @@ export default utils.createRule({
         if (description.value.includes("PRIVATE KEY")) return; // <br> allowed in PEM key example
 
         if (LINE_BREAK_HTML_TAG_REGEX.test(description.value)) {
+          const clean = description.value
+            .replace(new RegExp(LINE_BREAK_HTML_TAG_REGEX, "g"), "")
+            .replace(/\s{2,}/, " ");
+
+          const fixed = utils.keyValue("description", clean);
+
           context.report({
             messageId: "removeTag",
             node: description.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(
-                description.ast,
-                `description: '${description.value
-                  .replace(new RegExp(LINE_BREAK_HTML_TAG_REGEX, "g"), "")
-                  .replace(/\s{2,}/, " ")}'`
-              );
-            },
+            fix: (fixer) => fixer.replaceText(description.ast, fixed),
           });
         }
       },

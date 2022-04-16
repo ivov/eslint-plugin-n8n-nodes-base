@@ -32,9 +32,7 @@ export default utils.createRule({
           context.report({
             messageId: "setTrueDefault",
             node: _default.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(_default.ast, "default: true");
-            },
+            fix: (fixer) => fixer.replaceText(_default.ast, "default: true"),
           });
         }
       },

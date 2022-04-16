@@ -35,9 +35,7 @@ export default utils.createRule({
           context.report({
             messageId: "fixInputs",
             node: inputs.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(inputs.ast, "inputs: []");
-            },
+            fix: (fixer) => fixer.replaceText(inputs.ast, "inputs: []"),
           });
         }
       },

@@ -23,20 +23,23 @@ export default utils.createRule({
       ObjectExpression(node) {
         if (!id.isNodeParameter(node) && !id.isOption(node)) return;
 
+        const loadOptionsMethod = getters.nodeParam.getLoadOptionsMethod(node);
+
+        // to prevent overlap with node-param-description-wrong-for-dynamic-options
+        if (loadOptionsMethod) return;
+
         const description = getters.nodeParam.getDescription(node);
 
         if (!description) return;
 
         if (MISCASED_ID_REGEX.test(description.value)) {
+          const correctlyCased = description.value.replace(/(id|Id)/g, "ID");
+          const fixed = utils.keyValue("description", correctlyCased);
+
           context.report({
             messageId: "uppercaseId",
             node: description.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(
-                description.ast,
-                `description: '${description.value.replace(/(id|Id)/, "ID")}'`
-              );
-            },
+            fix: (fixer) => fixer.replaceText(description.ast, fixed),
           });
         }
       },

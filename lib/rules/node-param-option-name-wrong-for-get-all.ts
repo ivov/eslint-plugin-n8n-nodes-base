@@ -32,9 +32,7 @@ export default utils.createRule({
           context.report({
             messageId: "useGetAll",
             node: name.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(name.ast, "name: 'Get All'");
-            },
+            fix: (fixer) => fixer.replaceText(name.ast, "name: 'Get All'"),
           });
         }
       },

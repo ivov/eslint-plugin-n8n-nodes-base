@@ -33,16 +33,15 @@ export default utils.createRule({
 
         if (!description) return;
 
-        if (description.value !== DYNAMIC_OPTIONS_NODE_PARAMETER.DESCRIPTION) {
+        const expected = DYNAMIC_OPTIONS_NODE_PARAMETER.DESCRIPTION;
+
+        if (description.value !== expected) {
+          const fixed = utils.keyValue("description", expected);
+
           context.report({
             messageId: "useStandardDescription",
             node: description.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(
-                description.ast,
-                `description: '${DYNAMIC_OPTIONS_NODE_PARAMETER.DESCRIPTION}'`
-              );
-            },
+            fix: (fixer) => fixer.replaceText(description.ast, fixed),
           });
         }
       },

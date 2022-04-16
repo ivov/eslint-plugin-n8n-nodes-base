@@ -40,15 +40,12 @@ export default utils.createRule({
           const titledCased = titleCase(displayName.value);
 
           if (displayName.value !== titledCased) {
+            const fixed = utils.keyValue("displayName", titledCased);
+
             context.report({
               messageId: "useTitleCase",
               node: displayName.ast,
-              fix: (fixer) => {
-                return fixer.replaceText(
-                  displayName.ast,
-                  `displayName: '${utils.escape(titledCased)}'`
-                );
-              },
+              fix: (fixer) => fixer.replaceText(displayName.ast, fixed),
             });
           }
         } else if (isOption) {
@@ -63,15 +60,12 @@ export default utils.createRule({
           const titleCased = titleCase(name.value);
 
           if (name.value !== titleCased) {
+            const fixed = utils.keyValue("name", titleCased);
+
             context.report({
               messageId: "useTitleCase",
               node: name.ast,
-              fix: (fixer) => {
-                return fixer.replaceText(
-                  name.ast,
-                  `name: '${utils.escape(titleCased)}'`
-                );
-              },
+              fix: (fixer) => fixer.replaceText(name.ast, fixed),
             });
           }
         }

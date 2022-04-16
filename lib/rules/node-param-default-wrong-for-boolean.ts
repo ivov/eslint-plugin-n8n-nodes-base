@@ -7,7 +7,8 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: "`default` for boolean-type node parameter must be a boolean.",
+      description:
+        "`default` for boolean-type node parameter must be a boolean.",
       recommended: "error",
     },
     fixable: "code",
@@ -32,9 +33,7 @@ export default utils.createRule({
           context.report({
             messageId: "setBooleanDefault",
             node: _default.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(_default.ast, "default: false");
-            },
+            fix: (fixer) => fixer.replaceText(_default.ast, "default: false"),
           });
         }
       },

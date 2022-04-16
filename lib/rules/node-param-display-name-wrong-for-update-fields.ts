@@ -29,16 +29,15 @@ export default utils.createRule({
 
         if (!displayName) return;
 
-        if (displayName.value !== UPDATE_FIELDS_NODE_PARAM_DISPLAY_NAME) {
+        const expected = UPDATE_FIELDS_NODE_PARAM_DISPLAY_NAME;
+
+        if (displayName.value !== expected) {
+          const fixed = utils.keyValue("displayName", expected);
+
           context.report({
             messageId: "useUpdateFields",
             node: displayName.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(
-                displayName.ast,
-                `displayName: '${UPDATE_FIELDS_NODE_PARAM_DISPLAY_NAME}'`
-              );
-            },
+            fix: (fixer) => fixer.replaceText(displayName.ast, fixed),
           });
         }
       },

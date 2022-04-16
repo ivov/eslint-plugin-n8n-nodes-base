@@ -27,23 +27,22 @@ export default utils.createRule({
 
         if (!description) return;
 
-        // tolerate multiline to format HTML tags
-        if (utils.isMultiline(description) && /</.test(description.value)) {
-          return;
-        }
+        const isMultiline = utils.isMultiline(description);
+
+        // tolerate multiline when used to format HTML tags
+        if (isMultiline && /</.test(description.value)) return;
 
         if (/\s{2,}/.test(description.value)) {
-          const fixed = utils.escape(description.value.replace(/\s{2,}/g, " "))
+          const withoutExcess = description.value
+            // .replace(/\n\t/g, ". ") // wrong multiline → multiple sentences intended
+            .replace(/\s{2,}/g, " ");
+
+          const fixed = utils.keyValue("description", withoutExcess);
 
           context.report({
             messageId: "removeInnerWhitespace",
             node: description.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(
-                description.ast,
-                `description: '${fixed}'`
-              );
-            },
+            fix: (fixer) => fixer.replaceText(description.ast, fixed),
           });
         }
       },

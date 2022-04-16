@@ -33,15 +33,13 @@ export default utils.createRule({
           if (!displayName) return;
 
           if (/\s{2,}/.test(displayName.value)) {
+            const withoutExcess = displayName.value.replace(/\s{2,}/g, " ");
+            const fixed = utils.keyValue("displayName", withoutExcess);
+
             context.report({
               messageId: "removeInnerWhitespace",
               node: displayName.ast,
-              fix: (fixer) => {
-                return fixer.replaceText(
-                  displayName.ast,
-                  `displayName: '${displayName.value.replace(/\s{2,}/g, " ")}'`
-                );
-              },
+              fix: (fixer) => fixer.replaceText(displayName.ast, fixed),
             });
           }
         } else if (isOption) {
@@ -50,15 +48,13 @@ export default utils.createRule({
           if (!name) return;
 
           if (/\s{2,}/.test(name.value)) {
+            const withoutExcess = name.value.replace(/\s{2,}/g, " ");
+            const fixed = utils.keyValue("name", withoutExcess);
+
             context.report({
               messageId: "removeInnerWhitespace",
               node: name.ast,
-              fix: (fixer) => {
-                return fixer.replaceText(
-                  name.ast,
-                  `name: '${name.value.replace(/\s{2,}/g, " ")}'`
-                );
-              },
+              fix: (fixer) => fixer.replaceText(name.ast, fixed),
             });
           }
         }

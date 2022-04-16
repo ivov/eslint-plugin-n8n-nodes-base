@@ -10,7 +10,8 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: "Option `name` for a Resource node parameter must be singular.",
+      description:
+        "Option `name` for a Resource node parameter must be singular.",
       recommended: "error",
     },
     fixable: "code",
@@ -34,15 +35,13 @@ export default utils.createRule({
         const pluralOption = findPluralOption(options);
 
         if (pluralOption) {
+          const singularized = singular(pluralOption.value);
+          const fixed = utils.keyValue("name", singularized);
+
           context.report({
             messageId: "useSingular",
             node: pluralOption.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(
-                pluralOption.ast,
-                `name: '${singular(pluralOption.value)}'`
-              );
-            },
+            fix: (fixer) => fixer.replaceText(pluralOption.ast, fixed),
           });
         }
       },

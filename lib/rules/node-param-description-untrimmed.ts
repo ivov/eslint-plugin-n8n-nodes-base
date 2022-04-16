@@ -30,19 +30,14 @@ export default utils.createRule({
         const trimmed = description.value.trim();
 
         if (description.value !== trimmed) {
-          const escaped = utils.escape(trimmed);
-          const quotedDescription =
-            utils.isMultiline(description) && description.value.includes("<")
-              ? `\`${escaped}\``
-              : `'${escaped}'`;
-          const fixed = `description: ${quotedDescription}`;
+          const fixed = utils.keyValue("description", trimmed, {
+            backtickedValue: utils.isMultiline(description),
+          });
 
           context.report({
             messageId: "trimWhitespace",
             node: description.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(description.ast, fixed);
-            },
+            fix: (fixer) => fixer.replaceText(description.ast, fixed),
           });
         }
       },

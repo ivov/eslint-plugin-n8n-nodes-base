@@ -23,7 +23,6 @@
     "build": "node scripts/build.mjs",
     "doc": "node scripts/make-docs.mjs",
     "lint": "eslint lib tests --ext .ts",
-    "fullrun": "node scripts/full-run.mjs",
     "test": "jest",
     "prepare": "npm run lint; npm run test; npm run build"
   },

@@ -1,10 +1,12 @@
 import rule from "../lib/rules/node-param-display-name-untrimmed";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Operation',
 				name: 'operation',
 				type: 'string',
@@ -12,7 +14,8 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				name: 'Operation',
 				value: 'operation',
 			};`,
@@ -20,14 +23,16 @@ ruleTester().run(getRuleName(module), rule, {
 	],
 	invalid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Operation   ',
 				name: 'operation',
 				type: 'string',
 				default: '',
 			};`,
 			errors: [{ messageId: "trimWhitespace" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				displayName: 'Operation',
 				name: 'operation',
 				type: 'string',
@@ -35,19 +40,22 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				name: 'Operation   ',
 				value: 'operation',
 			};`,
 			errors: [{ messageId: "trimWhitespace" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				name: 'Operation',
 				value: 'operation',
 			};`,
 		},
 
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'fixedCollection',
@@ -68,7 +76,8 @@ ruleTester().run(getRuleName(module), rule, {
 				],
 			};`,
 			errors: [{ messageId: "trimWhitespace" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'fixedCollection',

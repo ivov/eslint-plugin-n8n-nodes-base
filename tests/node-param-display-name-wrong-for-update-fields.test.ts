@@ -1,10 +1,12 @@
 import rule from "../lib/rules/node-param-display-name-wrong-for-update-fields";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Update Fields',
 				name: 'updateFields',
 				type: 'collection',
@@ -24,7 +26,8 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'User ID',
 				name: 'userId',
 				type: 'collection',
@@ -46,7 +49,8 @@ ruleTester().run(getRuleName(module), rule, {
 	],
 	invalid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Wrong',
 				name: 'updateFields',
 				type: 'collection',
@@ -65,7 +69,8 @@ ruleTester().run(getRuleName(module), rule, {
 				options: [],
 			};`,
 			errors: [{ messageId: "useUpdateFields" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				displayName: 'Update Fields',
 				name: 'updateFields',
 				type: 'collection',

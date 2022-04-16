@@ -1,11 +1,13 @@
 import { DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER } from "../lib/constants";
 import rule from "../lib/rules/node-param-description-wrong-for-dynamic-multi-options";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Field Name or ID',
 				name: 'field',
 				type: 'multiOptions',
@@ -19,7 +21,8 @@ ruleTester().run(getRuleName(module), rule, {
 	],
 	invalid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Field Name or ID',
 				name: 'field',
 				type: 'multiOptions',
@@ -30,7 +33,8 @@ ruleTester().run(getRuleName(module), rule, {
 				description: 'Wrong',
 			};`,
 			errors: [{ messageId: "useStandardDescription" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				displayName: 'Field Name or ID',
 				name: 'field',
 				type: 'multiOptions',

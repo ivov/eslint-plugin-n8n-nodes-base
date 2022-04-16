@@ -1,10 +1,12 @@
 import rule from "../lib/rules/node-param-description-missing-from-limit";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Limit',
 				name: 'limit',
 				default: 50,
@@ -18,7 +20,8 @@ ruleTester().run(getRuleName(module), rule, {
 	],
 	invalid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Limit',
 				name: 'limit',
 				default: 50,
@@ -28,7 +31,8 @@ ruleTester().run(getRuleName(module), rule, {
 				type: 'number',
 			};`,
 			errors: [{ messageId: "addDescription" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				displayName: 'Limit',
 				name: 'limit',
 				default: 50,

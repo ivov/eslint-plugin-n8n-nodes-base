@@ -1,10 +1,12 @@
 import rule from "../lib/rules/node-param-description-untrimmed";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Operation',
 				name: 'operation',
 				type: 'string',
@@ -13,7 +15,8 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				name: 'User ID',
 				value: 'userId',
 				description: 'The ID of the user',
@@ -22,7 +25,8 @@ ruleTester().run(getRuleName(module), rule, {
 	],
 	invalid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Operation',
 				name: 'operation',
 				type: 'string',
@@ -30,7 +34,8 @@ ruleTester().run(getRuleName(module), rule, {
 				description: 'This is a description   ',
 			};`,
 			errors: [{ messageId: "trimWhitespace" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				displayName: 'Operation',
 				name: 'operation',
 				type: 'string',
@@ -39,13 +44,15 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				name: 'User ID',
 				value: 'userId',
 				description: 'The ID of the user   ',
 			};`,
 			errors: [{ messageId: "trimWhitespace" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				name: 'User ID',
 				value: 'userId',
 				description: 'The ID of the user',

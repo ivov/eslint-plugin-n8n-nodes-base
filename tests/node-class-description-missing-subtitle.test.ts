@@ -1,11 +1,13 @@
 import { NODE_CLASS_DESCRIPTION_SUBTITLE } from "../lib/constants";
 import rule from "../lib/rules/node-class-description-missing-subtitle";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
   valid: [
     {
-      code: `class TestNode {
+      code: outdent`
+			class TestNode {
 				description = {
 					displayName: 'Test',
 					name: 'test',
@@ -33,7 +35,8 @@ ruleTester().run(getRuleName(module), rule, {
 
 		// tolerate `subtitle` absence if no subtitle components (resource + operation)
     {
-      code: `class TestTriggerNode {
+      code: outdent`
+			class TestTriggerNode {
 				description = {
 					displayName: 'Test Trigger',
 					name: 'testTrigger',
@@ -53,7 +56,8 @@ ruleTester().run(getRuleName(module), rule, {
   ],
   invalid: [
     {
-      code: `class TestNode {
+      code: outdent`
+			class TestNode {
 				description = {
 					displayName: 'Test',
 					name: 'test',
@@ -77,7 +81,8 @@ ruleTester().run(getRuleName(module), rule, {
 				};
 			}`,
       errors: [{ messageId: "addSubtitle" }],
-      output: `class TestNode {
+      output: outdent`
+			class TestNode {
 				description = {
 					displayName: 'Test',
 					name: 'test',

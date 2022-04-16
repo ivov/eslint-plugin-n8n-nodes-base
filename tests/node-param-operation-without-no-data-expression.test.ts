@@ -1,10 +1,12 @@
 import rule from "../lib/rules/node-param-operation-without-no-data-expression";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Operation',
 				name: 'operation',
 				type: 'options',
@@ -21,7 +23,8 @@ ruleTester().run(getRuleName(module), rule, {
 	],
 	invalid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Operation',
 				name: 'operation',
 				type: 'options',
@@ -35,7 +38,8 @@ ruleTester().run(getRuleName(module), rule, {
 				default: 'contact',
 			};`,
 			errors: [{ messageId: "enableNoDataExpression" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				displayName: 'Operation',
 				name: 'operation',
 				type: 'options',
@@ -51,7 +55,8 @@ ruleTester().run(getRuleName(module), rule, {
 		},
 
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Operation',
 				name: 'operation',
 				type: 'options',
@@ -64,7 +69,8 @@ ruleTester().run(getRuleName(module), rule, {
 				default: 'contact',
 			};`,
 			errors: [{ messageId: "addNoDataExpression" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				displayName: 'Operation',
 				name: 'operation',
 				type: 'options',

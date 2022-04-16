@@ -1,10 +1,12 @@
 import rule from "../lib/rules/node-param-description-missing-final-period";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'string',
@@ -13,7 +15,8 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'string',
@@ -22,14 +25,16 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				name: 'Username',
 				value: 'username',
 				description: 'First sentence. Second sentence.',
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'string',
@@ -40,7 +45,8 @@ ruleTester().run(getRuleName(module), rule, {
 	],
 	invalid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'string',
@@ -48,7 +54,8 @@ ruleTester().run(getRuleName(module), rule, {
 				description: 'This a sentence. This is another',
 			};`,
 			errors: [{ messageId: "missingFinalPeriod" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'string',
@@ -57,26 +64,30 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				name: 'Username',
 				value: 'username',
 				description: 'First sentence. Second sentence',
 			};`,
 			errors: [{ messageId: "missingFinalPeriod" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				name: 'Username',
 				value: 'username',
 				description: 'First sentence. Second sentence.',
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				name: 'Username',
 				value: 'username',
 				description: 'Person\\'s email address. Another',
 			};`,
 			errors: [{ messageId: "missingFinalPeriod" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				name: 'Username',
 				value: 'username',
 				description: 'Person\\'s email address. Another.',

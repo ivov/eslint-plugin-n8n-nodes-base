@@ -1,10 +1,12 @@
 import rule from "../lib/rules/node-param-description-excess-final-period";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
   valid: [
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'string',
@@ -13,7 +15,8 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
     },
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
 				name: 'User ID',
 				value: 'userId',
 				description: 'The ID of the user',
@@ -22,7 +25,8 @@ ruleTester().run(getRuleName(module), rule, {
   ],
   invalid: [
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'string',
@@ -30,7 +34,8 @@ ruleTester().run(getRuleName(module), rule, {
 				description: 'This a sentence.',
 			};`,
       errors: [{ messageId: "excessFinalPeriod" }],
-      output: `const test = {
+      output: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'string',
@@ -39,20 +44,23 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
     },
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
 				name: 'User ID',
 				value: 'userId',
 				description: 'The ID of the user.',
 			};`,
       errors: [{ messageId: "excessFinalPeriod" }],
-      output: `const test = {
+      output: outdent`
+			const test = {
 				name: 'User ID',
 				value: 'userId',
 				description: 'The ID of the user',
 			};`,
     },
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
 				displayName: 'Address',
 				name: 'address',
 				type: 'string',
@@ -60,7 +68,8 @@ ruleTester().run(getRuleName(module), rule, {
 				description: 'Person\\'s email address.',
 			};`,
       errors: [{ messageId: "excessFinalPeriod" }],
-      output: `const test = {
+      output: outdent`
+			const test = {
 				displayName: 'Address',
 				name: 'address',
 				type: 'string',
@@ -69,7 +78,8 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
     },
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
 				displayName: 'Name',
 				name: 'name',
 				type: 'string',
@@ -77,7 +87,8 @@ ruleTester().run(getRuleName(module), rule, {
 				description: \`Custom Field\\'s name.\`,
 			};`,
       errors: [{ messageId: "excessFinalPeriod" }],
-      output: `const test = {
+      output: outdent`
+			const test = {
 				displayName: 'Name',
 				name: 'name',
 				type: 'string',

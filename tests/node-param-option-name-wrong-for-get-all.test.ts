@@ -1,10 +1,12 @@
 import rule from "../lib/rules/node-param-option-name-wrong-for-get-all";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				name: 'Get All',
 				value: 'getAll',
 			};`,
@@ -12,12 +14,14 @@ ruleTester().run(getRuleName(module), rule, {
 	],
 	invalid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				name: 'List',
 				value: 'getAll',
 			};`,
 			errors: [{ messageId: "useGetAll" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				name: 'Get All',
 				value: 'getAll',
 			};`,

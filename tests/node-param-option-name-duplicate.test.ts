@@ -1,10 +1,12 @@
 import rule from "../lib/rules/node-param-option-name-duplicate";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'options',
@@ -24,7 +26,8 @@ ruleTester().run(getRuleName(module), rule, {
 	],
 	invalid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'options',
@@ -41,7 +44,8 @@ ruleTester().run(getRuleName(module), rule, {
 				default: 'a',
 			};`,
 			errors: [{ messageId: "removeDuplicate" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'options',

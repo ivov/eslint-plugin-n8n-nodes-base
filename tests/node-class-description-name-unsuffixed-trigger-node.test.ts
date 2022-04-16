@@ -1,11 +1,13 @@
 import { NODE_CLASS_DESCRIPTION_SUBTITLE } from "../lib/constants";
 import rule from "../lib/rules/node-class-description-name-unsuffixed-trigger-node";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [
 		{
-			code: `class TestNode {
+			code: outdent`
+			class TestNode {
 				description = {
 					displayName: 'TestTrigger',
 					name: 'testTrigger',
@@ -25,7 +27,8 @@ ruleTester().run(getRuleName(module), rule, {
 	],
 	invalid: [
 		{
-			code: `class TestNode {
+			code: outdent`
+			class TestNode {
 				description = {
 					displayName: 'TestTrigger',
 					name: 'test',
@@ -42,7 +45,8 @@ ruleTester().run(getRuleName(module), rule, {
 				};
 			}`,
 			errors: [{ messageId: "fixInputs" }],
-			output: `class TestNode {
+			output: outdent`
+			class TestNode {
 				description = {
 					displayName: 'TestTrigger',
 					name: 'testTrigger',

@@ -1,10 +1,12 @@
 import rule from "../lib/rules/node-param-type-options-missing-from-limit";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Limit',
 				name: 'limit',
 				default: 50,
@@ -17,14 +19,16 @@ ruleTester().run(getRuleName(module), rule, {
 	],
 	invalid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Limit',
 				name: 'limit',
 				default: 50,
 				type: 'number',
 			};`,
 			errors: [{ messageId: "addTypeOptions" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				displayName: 'Limit',
 				name: 'limit',
 				default: 50,

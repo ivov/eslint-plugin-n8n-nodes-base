@@ -1,10 +1,12 @@
 import rule from "../lib/rules/cred-class-field-placeholder-url-missing-eg";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [
 		{
-			code: `class MyTestOAuth2Api implements ICredentialType {
+			code: outdent`
+			class MyTestOAuth2Api implements ICredentialType {
 				name = 'myTestOAuth2Api';
 				displayName = 'My Test OAuth2 API';
 				documentationUrl = 'myTest';
@@ -17,7 +19,8 @@ ruleTester().run(getRuleName(module), rule, {
 	],
 	invalid: [
 		{
-			code: `class MyTestOAuth2Api implements ICredentialType {
+			code: outdent`
+			class MyTestOAuth2Api implements ICredentialType {
 				name = 'myTestOAuth2Api';
 				displayName = 'My Test OAuth2 API';
 				documentationUrl = 'myTest';
@@ -27,7 +30,8 @@ ruleTester().run(getRuleName(module), rule, {
 				placeholder = 'https://n8n.io';
 			}`,
 			errors: [{ messageId: "prependEg" }],
-			output: `class MyTestOAuth2Api implements ICredentialType {
+			output: outdent`
+			class MyTestOAuth2Api implements ICredentialType {
 				name = 'myTestOAuth2Api';
 				displayName = 'My Test OAuth2 API';
 				documentationUrl = 'myTest';

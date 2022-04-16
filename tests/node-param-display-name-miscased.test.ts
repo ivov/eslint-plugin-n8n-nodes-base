@@ -1,10 +1,12 @@
 import rule from "../lib/rules/node-param-display-name-miscased";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Test of Tests',
 				name: 'testOfTests',
 				type: 'string',
@@ -12,13 +14,15 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				name: 'Test of Tests',
 				value: 'testOfTests',
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: "API Domain",
 				name: "apiDomain",
 				type: "options",
@@ -38,7 +42,8 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: "SASL Mechanism",
 				name: "saslMechanism",
 				type: "options",
@@ -62,14 +67,16 @@ ruleTester().run(getRuleName(module), rule, {
 	],
 	invalid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Test of tests',
 				name: 'testOfTests',
 				type: 'string',
 				default: '',
 			};`,
 			errors: [{ messageId: "useTitleCase" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				displayName: 'Test of Tests',
 				name: 'testOfTests',
 				type: 'string',
@@ -77,27 +84,31 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				name: 'Using \\'Respond to Webhook\\' node',
 				value: 'responseNode',
 				description: 'Response defined in that node',
 			};`,
 			errors: [{ messageId: "useTitleCase" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				name: 'Using \\'Respond to Webhook\\' Node',
 				value: 'responseNode',
 				description: 'Response defined in that node',
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Deal\\'s contact ID',
 				name: 'testOfTests',
 				type: 'string',
 				default: '',
 			};`,
 			errors: [{ messageId: "useTitleCase" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				displayName: 'Deal\\'s Contact ID',
 				name: 'testOfTests',
 				type: 'string',
@@ -106,19 +117,22 @@ ruleTester().run(getRuleName(module), rule, {
 		},
 
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				name: 'Test of tests',
 				value: 'testOfTests',
 			};`,
 			errors: [{ messageId: "useTitleCase" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				name: 'Test of Tests',
 				value: 'testOfTests',
 			};`,
 		},
 
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'fixedCollection',
@@ -139,7 +153,8 @@ ruleTester().run(getRuleName(module), rule, {
 				],
 			};`,
 			errors: [{ messageId: "useTitleCase" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'fixedCollection',

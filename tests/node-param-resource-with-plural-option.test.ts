@@ -1,10 +1,12 @@
 import rule from "../lib/rules/node-param-resource-with-plural-option";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Resource',
 				name: 'resource',
 				type: 'options',
@@ -21,7 +23,8 @@ ruleTester().run(getRuleName(module), rule, {
 	],
 	invalid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Resource',
 				name: 'resource',
 				type: 'options',
@@ -35,7 +38,8 @@ ruleTester().run(getRuleName(module), rule, {
 				default: 'contact',
 			};`,
 			errors: [{ messageId: "useSingular" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				displayName: 'Resource',
 				name: 'resource',
 				type: 'options',

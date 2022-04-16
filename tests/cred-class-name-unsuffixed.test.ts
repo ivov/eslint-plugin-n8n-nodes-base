@@ -1,10 +1,12 @@
 import rule from "../lib/rules/cred-class-name-unsuffixed";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [
 		{
-			code: `class MyTestApi implements ICredentialType {
+			code: outdent`
+			class MyTestApi implements ICredentialType {
 				name = 'myTestApi';
 				displayName = 'My Test API';
 				documentationUrl = 'myTest';
@@ -13,13 +15,15 @@ ruleTester().run(getRuleName(module), rule, {
 	],
 	invalid: [
 		{
-			code: `class MyTest implements ICredentialType {
+			code: outdent`
+			class MyTest implements ICredentialType {
 				name = 'myTestApi';
 				displayName = 'My Test API';
 				documentationUrl = 'myTest';
 			}`,
 			errors: [{ messageId: "fixSuffix" }],
-			output: `class MyTestApi implements ICredentialType {
+			output: outdent`
+			class MyTestApi implements ICredentialType {
 				name = 'myTestApi';
 				displayName = 'My Test API';
 				documentationUrl = 'myTest';

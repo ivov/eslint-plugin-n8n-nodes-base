@@ -1,10 +1,12 @@
 import rule from "../lib/rules/node-param-default-wrong-for-options";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
   valid: [
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'options',
@@ -22,7 +24,8 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
     },
     {
-      code: `const allCurrencies = [];
+      code: outdent`
+			const allCurrencies = [];
 			const test = {
 				displayName: "Currency",
 				name: "currency",
@@ -36,7 +39,8 @@ ruleTester().run(getRuleName(module), rule, {
   ],
   invalid: [
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'options',
@@ -62,7 +66,8 @@ ruleTester().run(getRuleName(module), rule, {
           data: { eligibleOptions: "-1 or 0 or 1" },
         },
       ],
-      output: `const test = {
+      output: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'options',
@@ -84,7 +89,8 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
     },
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'options',
@@ -106,7 +112,8 @@ ruleTester().run(getRuleName(module), rule, {
           data: { eligibleOptions: "first or second" },
         },
       ],
-      output: `const test = {
+      output: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'options',
@@ -126,7 +133,8 @@ ruleTester().run(getRuleName(module), rule, {
 
     // in anticipation of typeOptions.loadOptionsMethod
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'options',
@@ -137,7 +145,8 @@ ruleTester().run(getRuleName(module), rule, {
           messageId: "setEmptyString",
         },
       ],
-      output: `const test = {
+      output: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'options',

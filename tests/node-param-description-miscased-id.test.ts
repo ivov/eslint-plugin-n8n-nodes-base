@@ -1,10 +1,12 @@
 import rule from "../lib/rules/node-param-description-miscased-id";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Operation',
 				name: 'operation',
 				type: 'string',
@@ -13,14 +15,16 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				name: 'User ID',
 				value: 'userId',
 				description: 'The ID of the user',
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				name: 'User ID',
 				value: 'userId',
 				description: 'Unique identifier',
@@ -29,7 +33,8 @@ ruleTester().run(getRuleName(module), rule, {
 	],
 	invalid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Operation',
 				name: 'operation',
 				type: 'string',
@@ -37,7 +42,8 @@ ruleTester().run(getRuleName(module), rule, {
 				description: 'The Id of the user',
 			};`,
 			errors: [{ messageId: "uppercaseId" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				displayName: 'Operation',
 				name: 'operation',
 				type: 'string',
@@ -46,7 +52,8 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Operation',
 				name: 'operation',
 				type: 'string',
@@ -54,7 +61,8 @@ ruleTester().run(getRuleName(module), rule, {
 				description: 'The id of the user',
 			};`,
 			errors: [{ messageId: "uppercaseId" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				displayName: 'Operation',
 				name: 'operation',
 				type: 'string',
@@ -63,26 +71,30 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				name: 'User ID',
 				value: 'userId',
 				description: 'The id of the user',
 			};`,
 			errors: [{ messageId: "uppercaseId" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				name: 'User ID',
 				value: 'userId',
 				description: 'The ID of the user',
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				name: 'User ID',
 				value: 'userId',
 				description: 'The Id of the user',
 			};`,
 			errors: [{ messageId: "uppercaseId" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				name: 'User ID',
 				value: 'userId',
 				description: 'The ID of the user',

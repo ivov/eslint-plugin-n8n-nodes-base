@@ -1,10 +1,12 @@
 import rule from "../lib/rules/node-param-description-weak";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
   valid: [
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'string',
@@ -12,7 +14,8 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
     },
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
 				name: 'User ID',
 				value: 'userId',
 			};`,
@@ -20,7 +23,8 @@ ruleTester().run(getRuleName(module), rule, {
   ],
   invalid: [
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'string',
@@ -28,7 +32,8 @@ ruleTester().run(getRuleName(module), rule, {
 				description: 'Operation to perform',
 			};`,
       errors: [{ messageId: "removeWeakDescription" }],
-      output: `const test = {
+      output: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'string',
@@ -36,7 +41,8 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
     },
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'string',
@@ -44,7 +50,8 @@ ruleTester().run(getRuleName(module), rule, {
 				description: 'The operation to perform',
 			};`,
       errors: [{ messageId: "removeWeakDescription" }],
-      output: `const test = {
+      output: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'string',
@@ -52,13 +59,15 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
     },
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
 				name: 'User ID',
 				value: 'userId',
 				description: 'Operation to perform',
 			};`,
       errors: [{ messageId: "removeWeakDescription" }],
-      output: `const test = {
+      output: outdent`
+			const test = {
 				name: 'User ID',
 				value: 'userId',
 			};`,

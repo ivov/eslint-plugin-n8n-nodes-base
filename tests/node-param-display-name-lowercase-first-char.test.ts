@@ -1,10 +1,12 @@
 import rule from "../lib/rules/node-param-display-name-lowercase-first-char";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'string',
@@ -12,13 +14,15 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				name: 'User ID',
 				value: 'userId',
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: "API Domain",
 				name: "apiDomain",
 				type: "options",
@@ -38,7 +42,8 @@ ruleTester().run(getRuleName(module), rule, {
 			},`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: "SASL Mechanism",
 				name: "saslMechanism",
 				type: "options",
@@ -62,14 +67,16 @@ ruleTester().run(getRuleName(module), rule, {
 	],
 	invalid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'test',
 				name: 'test',
 				type: 'string',
 				default: '',
 			};`,
 			errors: [{ messageId: "uppercaseFirstChar" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'string',
@@ -77,19 +84,22 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				name: 'user ID',
 				value: 'userId',
 			};`,
 			errors: [{ messageId: "uppercaseFirstChar" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				name: 'User ID',
 				value: 'userId',
 			};`,
 		},
 
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'test',
 				name: 'test',
 				type: 'fixedCollection',
@@ -110,7 +120,8 @@ ruleTester().run(getRuleName(module), rule, {
 				],
 			};`,
 			errors: [{ messageId: "uppercaseFirstChar" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'fixedCollection',

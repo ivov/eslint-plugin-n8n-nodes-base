@@ -1,10 +1,12 @@
 import rule from "../lib/rules/cred-class-field-display-name-missing-oauth2";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [
 		{
-			code: `class MyTestOAuth2Api implements ICredentialType {
+			code: outdent`
+			class MyTestOAuth2Api implements ICredentialType {
 				name = 'myTestOAuth2Api';
 				displayName = 'My Test OAuth2 API';
 				documentationUrl = 'myTest';
@@ -16,7 +18,8 @@ ruleTester().run(getRuleName(module), rule, {
 	],
 	invalid: [
 		{
-			code: `class MyTestOAuth2Api implements ICredentialType {
+			code: outdent`
+			class MyTestOAuth2Api implements ICredentialType {
 				name = 'myTestOAuth2Api';
 				displayName = 'My Test API';
 				documentationUrl = 'myTest';

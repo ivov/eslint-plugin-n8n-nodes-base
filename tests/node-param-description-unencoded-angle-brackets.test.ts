@@ -1,10 +1,12 @@
 import rule from "../lib/rules/node-param-description-unencoded-angle-brackets";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'string',
@@ -13,7 +15,8 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: "Private Key",
 				name: "privateKey",
 				type: "string",
@@ -29,7 +32,8 @@ ruleTester().run(getRuleName(module), rule, {
 
 		// option
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				name: 'Test',
 				value: 'test',
 				description: 'This is a <b>sentence</b>',
@@ -38,7 +42,8 @@ ruleTester().run(getRuleName(module), rule, {
 	],
 	invalid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'string',
@@ -46,7 +51,8 @@ ruleTester().run(getRuleName(module), rule, {
 				description: 'This is a <value>',
 			};`,
 			errors: [{ messageId: "encodeAngleBrackets" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'string',
@@ -57,13 +63,15 @@ ruleTester().run(getRuleName(module), rule, {
 
 		// option
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				name: 'Test',
 				value: 'test',
 				description: 'This is a <value>',
 			};`,
 			errors: [{ messageId: "encodeAngleBrackets" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				name: 'Test',
 				value: 'test',
 				description: 'This is a &lt;value&gt;',

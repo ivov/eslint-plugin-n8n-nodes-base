@@ -36,10 +36,10 @@ const test = {
     },
   },
   description: `ID or name of the row. Names are discouraged because
-                they're easily prone to being changed by users. If you're
-                using a name, be sure to URI-encode it. If there are
-                multiple rows with the same value in the identifying column,
-                an arbitrary one will be selected`,
+    they're easily prone to being changed by users. If you're
+    using a name, be sure to URI-encode it. If there are
+    multiple rows with the same value in the identifying column,
+    an arbitrary one will be selected`,
 };
 
 const test = {
@@ -48,7 +48,7 @@ const test = {
   type: "string",
   default: "",
   description: `Sending subsequent requests referencing the same service and with the same incident_key
-                            will result in those requests being rejected if an open incident matches that incident_key.`,
+                will result in those requests being rejected if an open incident matches that incident_key.`,
 };
 
 const test = {
@@ -81,14 +81,14 @@ const test = {
   type: "string",
   default: "",
   description: `The access token must have the following scopes:
-                <ul>
-                    <li>Create/modify webhooks</li>
-                    <li>View webhooks</li>
-                    <li>View surveys</li>
-                    <li>View collectors</li>
-                    <li>View responses</li>
-                    <li>View response details</li>
-                </ul>`,
+    <ul>
+        <li>Create/modify webhooks</li>
+        <li>View webhooks</li>
+        <li>View surveys</li>
+        <li>View collectors</li>
+        <li>View responses</li>
+        <li>View response details</li>
+    </ul>`,
 };
 ```
 

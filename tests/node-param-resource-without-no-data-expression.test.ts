@@ -1,10 +1,12 @@
 import rule from "../lib/rules/node-param-resource-without-no-data-expression";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Resource',
 				name: 'resource',
 				type: 'options',
@@ -21,7 +23,8 @@ ruleTester().run(getRuleName(module), rule, {
 	],
 	invalid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Resource',
 				name: 'resource',
 				type: 'options',
@@ -35,7 +38,8 @@ ruleTester().run(getRuleName(module), rule, {
 				default: 'user',
 			};`,
 			errors: [{ messageId: "enableNoDataExpression" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				displayName: 'Resource',
 				name: 'resource',
 				type: 'options',
@@ -50,7 +54,8 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
 		},
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Resource',
 				name: 'resource',
 				type: 'options',
@@ -63,7 +68,8 @@ ruleTester().run(getRuleName(module), rule, {
 				default: 'user',
 			};`,
 			errors: [{ messageId: "addNoDataExpression" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				displayName: 'Resource',
 				name: 'resource',
 				type: 'options',

@@ -1,11 +1,13 @@
 import { NODE_CLASS_DESCRIPTION_SUBTITLE } from "../lib/constants";
 import rule from "../lib/rules/node-execute-block-missing-continue-on-fail";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [
 		{
-			code: `class TestNode {
+			code: outdent`
+			class TestNode {
 				description = {
 					displayName: 'Test',
 					name: 'test',
@@ -36,7 +38,8 @@ ruleTester().run(getRuleName(module), rule, {
 	],
 	invalid: [
 		{
-			code: `class TestNode {
+			code: outdent`
+			class TestNode {
 				description = {
 					displayName: 'Test',
 					name: 'test',
@@ -64,7 +67,8 @@ ruleTester().run(getRuleName(module), rule, {
 			errors: [{ messageId: "addContinueOnFail" }],
 		},
 		{
-			code: `class TestNode {
+			code: outdent`
+			class TestNode {
 				description = {
 					displayName: 'Test',
 					name: 'test',

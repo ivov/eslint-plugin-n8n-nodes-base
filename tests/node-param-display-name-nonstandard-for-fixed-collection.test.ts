@@ -1,10 +1,12 @@
 import rule from "../lib/rules/node-param-display-name-nonstandard-for-fixed-collection";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
   valid: [
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
         displayName: 'Additional Fields',
         name: 'additionalFields',
         type: 'fixedCollection',
@@ -22,7 +24,8 @@ ruleTester().run(getRuleName(module), rule, {
       };`,
     },
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
         displayName: 'Update Fields',
         name: 'updateFields',
         type: 'fixedCollection',
@@ -40,7 +43,8 @@ ruleTester().run(getRuleName(module), rule, {
       };`,
     },
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
         displayName: 'Options',
         name: 'options',
         type: 'fixedCollection',
@@ -60,7 +64,8 @@ ruleTester().run(getRuleName(module), rule, {
   ],
   invalid: [
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
         displayName: 'Wrong',
         name: 'additionalFields',
         type: 'fixedCollection',
@@ -77,7 +82,8 @@ ruleTester().run(getRuleName(module), rule, {
         },
       };`,
       errors: [{ messageId: "renameFixedCollection" }],
-      output: `const test = {
+      output: outdent`
+			const test = {
         displayName: 'Additional Fields',
         name: 'additionalFields',
         type: 'fixedCollection',
@@ -96,7 +102,8 @@ ruleTester().run(getRuleName(module), rule, {
     },
 
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
         displayName: 'Wrong',
         name: 'updateFields',
         type: 'fixedCollection',
@@ -113,7 +120,8 @@ ruleTester().run(getRuleName(module), rule, {
         },
       };`,
       errors: [{ messageId: "renameFixedCollection" }],
-      output: `const test = {
+      output: outdent`
+			const test = {
         displayName: 'Update Fields',
         name: 'updateFields',
         type: 'fixedCollection',
@@ -132,7 +140,8 @@ ruleTester().run(getRuleName(module), rule, {
     },
 
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
         displayName: 'Wrong',
         name: 'options',
         type: 'fixedCollection',
@@ -149,7 +158,8 @@ ruleTester().run(getRuleName(module), rule, {
         },
       };`,
       errors: [{ messageId: "renameFixedCollection" }],
-      output: `const test = {
+      output: outdent`
+			const test = {
         displayName: 'Options',
         name: 'options',
         type: 'fixedCollection',

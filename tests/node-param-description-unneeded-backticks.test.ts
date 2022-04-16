@@ -1,10 +1,12 @@
 import rule from "../lib/rules/node-param-description-unneeded-backticks";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
   valid: [
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'string',
@@ -13,14 +15,16 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
     },
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
 				name: 'User ID',
 				value: 'userId',
 				description: 'The ID of the user',
 			};`,
     },
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
 				displayName: 'Access Token',
 				name: 'accessToken',
 				type: 'string',
@@ -39,7 +43,8 @@ ruleTester().run(getRuleName(module), rule, {
   ],
   invalid: [
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'string',
@@ -47,7 +52,8 @@ ruleTester().run(getRuleName(module), rule, {
 				description: \`This a sentence\`,
 			};`,
       errors: [{ messageId: "useSingleQuotes" }],
-      output: `const test = {
+      output: outdent`
+			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'string',
@@ -56,39 +62,45 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
     },
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
 				name: 'User ID',
 				value: 'userId',
 				description: \`The ID of the user\`,
 			};`,
       errors: [{ messageId: "useSingleQuotes" }],
-      output: `const test = {
+      output: outdent`
+			const test = {
 				name: 'User ID',
 				value: 'userId',
 				description: 'The ID of the user',
 			};`,
     },
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
 				name: 'Timezone',
 				value: 'timezone',
 				description: \`Seatable server\'s timezone\`,
 			};`,
       errors: [{ messageId: "useSingleQuotes" }],
-      output: `const test = {
+      output: outdent`
+			const test = {
 				name: 'Timezone',
 				value: 'timezone',
 				description: 'Seatable server\\'s timezone',
 			};`,
     },
     {
-      code: `const test = {
+      code: outdent`
+			const test = {
 				name: 'Timezone',
 				value: 'timezone',
 				description: \`AAA 'bbb' CCC\`,
 			};`,
       errors: [{ messageId: "useSingleQuotes" }],
-      output: `const test = {
+      output: outdent`
+			const test = {
 				name: 'Timezone',
 				value: 'timezone',
 				description: 'AAA \\'bbb\\' CCC',

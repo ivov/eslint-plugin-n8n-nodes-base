@@ -1,11 +1,13 @@
 import { LIMIT_NODE_PARAMETER } from "../lib/constants";
 import rule from "../lib/rules/node-param-description-wrong-for-limit";
 import { ruleTester, getRuleName } from "../lib/utils";
+import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Limit',
 				name: 'limit',
 				type: 'number',
@@ -16,7 +18,8 @@ ruleTester().run(getRuleName(module), rule, {
 	],
 	invalid: [
 		{
-			code: `const test = {
+			code: outdent`
+			const test = {
 				displayName: 'Limit',
 				name: 'limit',
 				type: 'number',
@@ -24,7 +27,8 @@ ruleTester().run(getRuleName(module), rule, {
 				description: 'Wrong',
 			};`,
 			errors: [{ messageId: "useLimit" }],
-			output: `const test = {
+			output: outdent`
+			const test = {
 				displayName: 'Limit',
 				name: 'limit',
 				type: 'number',

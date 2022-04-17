@@ -7,7 +7,7 @@ export default utils.createRule({
     type: "layout",
     docs: {
       description:
-        "in the `execute()` method there is no need to double assert the type of `items.length`.",
+        "In the `execute()` method there is no need to double assert the type of `items.length`.",
       recommended: "error",
     },
     fixable: "code",
@@ -30,7 +30,8 @@ export default utils.createRule({
           getAsUnknownAsNumberForItemsLength(executeMethod);
 
         if (asUnknownAsNumber) {
-          const rangeToRemove = getRangeForDoubleAssertion(asUnknownAsNumber);
+          const rangeToRemove =
+            utils.getRangeOfDoubleAssertion(asUnknownAsNumber);
 
           context.report({
             messageId: "removeDoubleAssertion",
@@ -90,15 +91,4 @@ function getAsUnknownAsNumberForItemsLength(
   }
 
   return null;
-}
-
-function getRangeForDoubleAssertion(asUnknownAsNumber: {
-  unknownAnnotation: TSESTree.TSUnknownKeyword;
-  numberAnnotation: TSESTree.TSNumberKeyword;
-}) {
-  // - 4 to grab the initial `as` keyword surrounded by two whitespaces
-  return [
-    asUnknownAsNumber.unknownAnnotation.range[0] - 4,
-    asUnknownAsNumber.numberAnnotation.range[1],
-  ] as const;
 }

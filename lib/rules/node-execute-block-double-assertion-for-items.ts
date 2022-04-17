@@ -96,8 +96,9 @@ function getRangeForDoubleAssertion(asUnknownAsNumber: {
   unknownAnnotation: TSESTree.TSUnknownKeyword;
   numberAnnotation: TSESTree.TSNumberKeyword;
 }) {
+  // - 4 to grab the initial `as` keyword surrounded by two whitespaces
   return [
-    asUnknownAsNumber.unknownAnnotation.range[0] - 4, // - 4 to grab the initial `as` keyword surrounded by two whitespaces)
+    asUnknownAsNumber.unknownAnnotation.range[0] - 4,
     asUnknownAsNumber.numberAnnotation.range[1],
   ] as const;
 }

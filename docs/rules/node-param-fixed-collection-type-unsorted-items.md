@@ -54,6 +54,7 @@ const test = {
           name: "e",
           type: "string",
           default: "",
+          description: 'This is a <a href="https://test.com">link</a>',
         },
       ],
     },

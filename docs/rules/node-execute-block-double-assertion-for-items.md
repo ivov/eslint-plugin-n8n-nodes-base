@@ -2,7 +2,7 @@
 
 # node-execute-block-double-assertion-for-items
 
-in the `execute()` method there is no need to double assert the type of `items.length`.
+In the `execute()` method there is no need to double assert the type of `items.length`.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
 

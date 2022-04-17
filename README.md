@@ -65,6 +65,7 @@ Optionally, omit `extends` and enable rules individually:
 | [cred-class-field-name-unsuffixed](docs/rules/cred-class-field-name-unsuffixed.md) | `name` field in credential class must be suffixed with `-Api`. | Yes, unsafe |
 | [cred-class-field-name-uppercase-first-char](docs/rules/cred-class-field-name-uppercase-first-char.md) | First char in `name` in credential class must be lowercase. | Yes, unsafe |
 | [cred-class-field-placeholder-url-missing-eg](docs/rules/cred-class-field-placeholder-url-missing-eg.md) | `placeholder` for a URL in credential class must be prepended with `e.g.`. | Yes, safe |
+| [cred-class-field-properties-assertion](docs/rules/cred-class-field-properties-assertion.md) | In a credential class, the field `properties` must be typed 'INodeProperties' and individual properties must have no assertions. | Yes, safe |
 | [cred-class-name-missing-oauth2-suffix](docs/rules/cred-class-name-missing-oauth2-suffix.md) | Credential class name must mention `OAuth2` if applicable. | No |
 | [cred-class-name-unsuffixed](docs/rules/cred-class-name-unsuffixed.md) | Credential class name must be suffixed with `-Api`. | Yes, unsafe |
 | [filesystem-wrong-cred-filename](docs/rules/filesystem-wrong-cred-filename.md) | Credentials filename must match credentials class name, excluding the filename suffix. Example: `TestApi.credentials.ts` matches `TestApi` in `class TestApi implements ICredentialType`. | No |
@@ -80,7 +81,7 @@ Optionally, omit `extends` and enable rules individually:
 | [node-class-description-missing-subtitle](docs/rules/node-class-description-missing-subtitle.md) | `subtitle` in node class description must be present. | Yes, safe |
 | [node-class-description-name-unsuffixed-trigger-node](docs/rules/node-class-description-name-unsuffixed-trigger-node.md) | `name` in node class description for trigger node must be suffixed with `-Trigger`. | Yes, unsafe |
 | [node-class-description-outputs-wrong](docs/rules/node-class-description-outputs-wrong.md) | The number of `outputs` in node class description for any node must be one, or two for If node, or four for Switch node. | Yes, safe |
-| [node-execute-block-double-assertion-for-items](docs/rules/node-execute-block-double-assertion-for-items.md) | In the `execute()` method there is no need to double assert the type of `items`. | Yes, safe |
+| [node-execute-block-double-assertion-for-items](docs/rules/node-execute-block-double-assertion-for-items.md) | In the `execute()` method there is no need to double assert the type of `items.length`. | Yes, safe |
 | [node-execute-block-missing-continue-on-fail](docs/rules/node-execute-block-missing-continue-on-fail.md) | The `execute()` method in a node must implement `continueOnFail` in a try-catch block. | No |
 | [node-execute-block-wrong-error-thrown](docs/rules/node-execute-block-wrong-error-thrown.md) | The `execute()` method in a node may only throw `NodeApiError` for failed network requests and `NodeOperationError` for internal errors, not the built-in `Error`. | No |
 | [node-param-array-type-assertion](docs/rules/node-param-array-type-assertion.md) | Array of node parameters must be typed, not type-asserted. | Yes, unsafe |

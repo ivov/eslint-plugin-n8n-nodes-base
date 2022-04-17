@@ -73,7 +73,14 @@ export function isFixedCollectionType(nodeParam: TSESTree.ObjectExpression) {
 // named node parameter identifiers
 
 export function hasName(
-  name: "simple" | "returnAll" | "limit" | "update" | "resource" | "operation",
+  name:
+    | "simple"
+    | "returnAll"
+    | "limit"
+    | "update"
+    | "resource"
+    | "operation"
+    | "allowUnauthorizedCerts",
   nodeParam: TSESTree.ObjectExpression
 ) {
   let check = (value: string) => value === name;
@@ -107,6 +114,12 @@ export function isLimit(nodeParam: TSESTree.ObjectExpression) {
 
 export function isReturnAll(nodeParam: TSESTree.ObjectExpression) {
   return isBooleanType(nodeParam) && hasName("returnAll", nodeParam);
+}
+
+export function isIgnoreSslIssues(nodeParam: TSESTree.ObjectExpression) {
+  return (
+    isBooleanType(nodeParam) && hasName("allowUnauthorizedCerts", nodeParam)
+  );
 }
 
 export function isUpdateFields(nodeParam: TSESTree.ObjectExpression) {

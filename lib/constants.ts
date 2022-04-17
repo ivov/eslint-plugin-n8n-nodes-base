@@ -60,6 +60,12 @@ export const RETURN_ALL_NODE_PARAMETER = {
   DESCRIPTION: "Whether to return all results or only up to a given limit",
 };
 
+export const IGNORE_SSL_ISSUES_NODE_PARAMETER = {
+  DISPLAY_NAME: "Ignore SSL Issues",
+  DESCRIPTION:
+    "Whether to connect even if SSL certificate validation is not possible",
+};
+
 export const TOP_LEVEL_FIXED_COLLECTION: {
   [key: Uppercase<string>]: { [key: Uppercase<string>]: string };
 } = {

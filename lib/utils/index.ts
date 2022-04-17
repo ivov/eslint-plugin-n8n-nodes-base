@@ -59,6 +59,7 @@ export function unquoteKeys(obj: object) {
     .replace(/\tdefault:\t/g, "default: ")
     .replace(/(\.)\t\b/g, ". ")
     .replace(/\t\(/g, " (")
+    .replace(/\t</g, " <")
     .replace(/\)\t/g, ") ")
     .replace(/,\t\b/g, ", ")
     .replace(/\t\\/g, " \\")

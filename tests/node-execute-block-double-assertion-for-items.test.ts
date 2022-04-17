@@ -1,4 +1,3 @@
-import { NODE_CLASS_DESCRIPTION_SUBTITLE } from "../lib/constants";
 import rule from "../lib/rules/node-execute-block-double-assertion-for-items";
 import { ruleTester, getRuleName } from "../lib/utils";
 import outdent from "outdent";

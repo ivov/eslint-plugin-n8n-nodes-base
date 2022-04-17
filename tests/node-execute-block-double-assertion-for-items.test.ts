@@ -32,5 +32,22 @@ ruleTester().run(getRuleName(module), rule, {
 				}
 			}`,
 		},
+		{
+			code: outdent`
+			class TestNode {
+				async execute() {
+					const items = this.getInputData();
+					const length = (items.length as unknown) as number;
+				}
+			}`,
+			errors: [{ messageId: "removeDoubleAssertion" }],
+			output: outdent`
+			class TestNode {
+				async execute() {
+					const items = this.getInputData();
+					const length = items.length;
+				}
+			}`,
+		},
 	],
 });

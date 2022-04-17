@@ -168,26 +168,6 @@ export function getRangeOfAssertion(typeIdentifier: TSESTree.Identifier) {
   return [typeIdentifier.range[0] - 4, typeIdentifier.range[1]] as const;
 }
 
-/**
- * Get full range of type assertion for its removal.
- *
- * `- 4` to grab the initial `as` keyword and its two whitespaces
- *
- * ```ts
- * items.length as unknown as number
- *          // ^-------------------^
- * ```
- */
-export function getRangeOfDoubleAssertion(node: {
-  unknownAnnotation: TSESTree.TSUnknownKeyword;
-  numberAnnotation: TSESTree.TSNumberKeyword;
-}) {
-  return [
-    node.unknownAnnotation.range[0] - 4,
-    node.numberAnnotation.range[1],
-  ] as const;
-}
-
 export function getRangeToRemove(referenceNode: { ast: TSESTree.BaseNode }) {
   const { range } = referenceNode.ast;
   const indentation = getIndentationString(referenceNode);

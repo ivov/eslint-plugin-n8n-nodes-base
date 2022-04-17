@@ -26,17 +26,13 @@ export default utils.createRule({
 
         if (!executeMethod) return;
 
-        const asUnknownAsNumber =
-          getAsUnknownAsNumberForItemsLength(executeMethod);
+        const declarationInit = getDoublyAssertedDeclarationInit(executeMethod);
 
-        if (asUnknownAsNumber) {
-          const rangeToRemove =
-            utils.getRangeOfDoubleAssertion(asUnknownAsNumber);
-
+        if (declarationInit) {
           context.report({
             messageId: "removeDoubleAssertion",
-            node: asUnknownAsNumber.declaration,
-            fix: (fixer) => fixer.removeRange(rangeToRemove),
+            node: declarationInit,
+            fix: (fixer) => fixer.replaceText(declarationInit, "items.length"),
           });
         }
       },
@@ -57,9 +53,7 @@ function getExecuteMethod(node: TSESTree.MethodDefinition) {
   return null;
 }
 
-function getAsUnknownAsNumberForItemsLength(
-  executeMethod: TSESTree.BlockStatement
-) {
+function getDoublyAssertedDeclarationInit(executeMethod: TSESTree.BlockStatement) {
   for (const node of executeMethod.body) {
     if (node.type === AST_NODE_TYPES.VariableDeclaration) {
       for (const declaration of node.declarations) {
@@ -80,11 +74,7 @@ function getAsUnknownAsNumberForItemsLength(
             AST_NODE_TYPES.Identifier &&
           declaration.init.expression.expression.property.name === "length"
         ) {
-          return {
-            declaration: declaration.init,
-            unknownAnnotation: declaration.init.expression.typeAnnotation,
-            numberAnnotation: declaration.init.typeAnnotation,
-          };
+          return declaration.init;
         }
       }
     }

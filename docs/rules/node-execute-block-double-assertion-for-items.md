@@ -21,6 +21,13 @@ class TestNode {
         const length = items.length as unknown as number;
     }
 }
+
+class TestNode {
+    async execute() {
+        const items = this.getInputData();
+        const length = (items.length as unknown) as number;
+    }
+}
 ```
 
 ✅ Example of **correct** code:

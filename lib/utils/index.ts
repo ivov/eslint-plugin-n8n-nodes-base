@@ -105,6 +105,12 @@ function getRangeWithTrailingComma(referenceNode: { ast: TSESTree.BaseNode }) {
   return [range[0], range[1] + 1] as const; // `+ 1` to include trailing comma
 }
 
+export function isCredentialFile(fullPath: string) {
+  if (isTestRun) return true;
+
+  return getNodeFilename(fullPath).endsWith(".credentials.ts");
+}
+
 export function isNodeFile(fullPath: string) {
   if (isTestRun) return true;
 
@@ -147,6 +153,40 @@ export const getIndentationStringForOption = (referenceNode: {
   return "\t".repeat(referenceNode.ast.loc.start.column - 1);
 };
 
+/**
+ * Get full range of type assertion for its removal.
+ *
+ * `- 4` to grab the initial `as` keyword and its two whitespaces
+ *
+ * ```ts
+ * type: "string" as NodePropertyTypes,
+ *            // ^-------------------^
+ * ```
+ */
+export function getRangeOfAssertion(typeIdentifier: TSESTree.Identifier) {
+  return [typeIdentifier.range[0] - 4, typeIdentifier.range[1]] as const;
+}
+
+/**
+ * Get full range of type assertion for its removal.
+ *
+ * `- 4` to grab the initial `as` keyword and its two whitespaces
+ *
+ * ```ts
+ * items.length as unknown as number
+ *          // ^-------------------^
+ * ```
+ */
+export function getRangeOfDoubleAssertion(node: {
+  unknownAnnotation: TSESTree.TSUnknownKeyword;
+  numberAnnotation: TSESTree.TSNumberKeyword;
+}) {
+  return [
+    node.unknownAnnotation.range[0] - 4,
+    node.numberAnnotation.range[1],
+  ] as const;
+}
+
 export function getRangeToRemove(referenceNode: { ast: TSESTree.BaseNode }) {
   const { range } = referenceNode.ast;
   const indentation = getIndentationString(referenceNode);
@@ -177,7 +217,7 @@ export const getInsertionArgs = (referenceNode: { ast: TSESTree.BaseNode }) => {
 
 export function isUrl(str: string) {
   try {
-    if (["com", "org", "net", "io", "edu"].includes(str.slice(-3))) return true;
+    if (["com", "org", "net", "io", "edu"].includes(str.slice(-3))) return true; // tolerate no protocol
     new URL(str);
     return true;
   } catch (_) {

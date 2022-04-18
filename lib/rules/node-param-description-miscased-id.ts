@@ -23,11 +23,6 @@ export default utils.createRule({
       ObjectExpression(node) {
         if (!id.isNodeParameter(node) && !id.isOption(node)) return;
 
-        const loadOptionsMethod = getters.nodeParam.getLoadOptionsMethod(node);
-
-        // to prevent overlap with node-param-description-wrong-for-dynamic-options
-        if (loadOptionsMethod) return;
-
         const description = getters.nodeParam.getDescription(node);
 
         if (!description) return;

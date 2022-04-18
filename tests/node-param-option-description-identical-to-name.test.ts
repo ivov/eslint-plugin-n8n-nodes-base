@@ -19,9 +19,14 @@ ruleTester().run(getRuleName(module), rule, {
 			const test = {
 				name: 'Full Name',
 				value: 'fullName',
-				description: 'Full Name',
+				description: 'The full name',
 			};`,
-			errors: [{ messageId: "fillOutDescription" }],
+			errors: [{ messageId: "removeDescription" }],
+			output: outdent`
+			const test = {
+				name: 'Full Name',
+				value: 'fullName',
+			};`,
 		},
 	],
 });

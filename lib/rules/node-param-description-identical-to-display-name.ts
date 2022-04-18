@@ -12,8 +12,9 @@ export default utils.createRule({
       recommended: "error",
     },
     schema: [],
+    fixable: 'code',
     messages: {
-      fillOutDescription: "Fill out description [non-autofixable]", // TODO: Or remove
+      removeDescription: "Remove omittable description [non-autofixable]", // TODO: Or remove
     },
   },
   defaultOptions: [],
@@ -30,10 +31,23 @@ export default utils.createRule({
 
         if (!displayName) return;
 
-        if (description.value === displayName.value) {
+        const triviaLess = description.value
+          .replace(/^The\s/g, "")
+          .replace(/\.$/, "");
+
+        // console.log(triviaLess.toLocaleLowerCase);
+        // console.log(displayName.value.toLowerCase());
+        // console.log(
+        //   triviaLess.toLowerCase() === displayName.value.toLowerCase()
+        // );
+
+        if (triviaLess.toLowerCase() === displayName.value.toLowerCase()) {
+          const rangeToRemove = utils.getRangeToRemove(description);
+
           context.report({
-            messageId: "fillOutDescription",
+            messageId: "removeDescription",
             node: description.ast,
+            fix: (fixer) => fixer.removeRange(rangeToRemove),
           });
         }
       },

@@ -23,9 +23,16 @@ ruleTester().run(getRuleName(module), rule, {
 				name: 'test',
 				type: 'string',
 				default: '',
-				description: 'Test',
+				description: 'The test',
 			};`,
-			errors: [{ messageId: "fillOutDescription" }],
+			errors: [{ messageId: "removeDescription" }],
+			output: outdent`
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'string',
+				default: '',
+			};`,
 		},
 	],
 });

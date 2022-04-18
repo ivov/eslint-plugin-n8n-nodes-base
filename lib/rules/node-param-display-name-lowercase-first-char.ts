@@ -32,7 +32,7 @@ export default utils.createRule({
 
           if (!displayName) return;
 
-          if (isAllowedException(displayName.value)) return;
+          if (utils.isAllowedLowercase(displayName.value)) return;
 
           const firstChar = displayName.value.charAt(0);
 
@@ -52,7 +52,7 @@ export default utils.createRule({
 
           if (!name) return;
 
-          if (isAllowedException(name.value)) return;
+          if (utils.isAllowedLowercase(name.value)) return;
 
           const firstChar = name.value.charAt(0);
 
@@ -73,11 +73,3 @@ export default utils.createRule({
     };
   },
 });
-
-function isAllowedException(value: string) {
-  if (utils.isUrl(value)) return true;
-
-  if (utils.isKebabCase(value)) return true;
-
-  return ["bmp", "tiff", "gif", "jpg", "jpeg", "png"].includes(value);
-}

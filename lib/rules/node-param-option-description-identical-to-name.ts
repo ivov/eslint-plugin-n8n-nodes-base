@@ -30,7 +30,7 @@ export default utils.createRule({
 
         if (!name) return;
 
-        if (description.value === name.value) {
+        if (description.value.toLowerCase() === name.value.toLowerCase()) {
           context.report({
             messageId: "fillOutDescription",
             node: description.ast,

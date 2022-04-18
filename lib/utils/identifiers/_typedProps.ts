@@ -1,9 +1,6 @@
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 
-/**
- * Module to identify an object literal property with
- * a particular key type and key name.
- */
+// Module to identify an object literal property with a particular key type and key name.
 
 export function isStringPropertyWithKey(
   keyName:

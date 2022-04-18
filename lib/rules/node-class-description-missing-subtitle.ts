@@ -28,7 +28,8 @@ export default utils.createRule({
 
         if (!allDisplayNames) return;
 
-        const hasNoSubtitleComponents = !allDisplayNames.some((dn) =>
+        // "Resource" and "Operation" required for subtitle
+        const hasNoSubtitleComponents = !allDisplayNames.every((dn) =>
           ["Resource", "Operation"].includes(dn)
         );
 

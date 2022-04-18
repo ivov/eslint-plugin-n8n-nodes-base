@@ -35,23 +35,16 @@ export default utils.createRule({
 
         if (options.value.length < MIN_ITEMS_TO_ALPHABETIZE) return;
 
-        // collection contains node parameters inside `options` so rename
-        const sortedOptions = [...options.value].sort((a, b) =>
-          a.name.localeCompare(b.name)
-        );
+        const sortedOptions = [...options.value].sort(utils.optionComparator);
 
         if (!utils.areIdenticallySortedOptions(options.value, sortedOptions)) {
-          const indentation = utils.getIndentationStringForOption(options);
+          const indentation = utils.getIndentationForOption(options);
 
           const sorted = utils
             .unquoteKeys(sortedOptions)
             .replace(/\n/g, `\n${indentation}`);
 
-          const displayOrder = sortedOptions
-            .reduce<string[]>((acc, cur) => {
-              return acc.push(cur.name), acc;
-            }, [])
-            .join(" | ");
+          const displayOrder = utils.toDisplayOrder(sortedOptions);
 
           context.report({
             messageId: "sortItems",

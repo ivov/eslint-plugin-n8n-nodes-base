@@ -86,6 +86,8 @@ export const VALID_HTML_TAG_REGEX = /<\/?(h\d|p|b|em|i|a|ol|ul|li|code|br)>/;
 
 export const LINE_BREAK_HTML_TAG_REGEX = /<\/? ?br ?\/?>/;
 
+export const VERSION_REGEX = /^v\d+\.\d+$/;
+
 // ----------------------------------
 //             docs
 // ----------------------------------

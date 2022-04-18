@@ -4,7 +4,7 @@ import { ESLintUtils, AST_NODE_TYPES } from "@typescript-eslint/utils";
 import { TSESTree } from "@typescript-eslint/utils";
 // @ts-ignore
 import DocRuleTester from "eslint-docgen/src/rule-tester";
-import { WEAK_DESCRIPTIONS } from "../constants";
+import { VERSION_REGEX, WEAK_DESCRIPTIONS } from "../constants";
 
 export const createRule = ESLintUtils.RuleCreator((ruleName) => {
   return `https://github.com/ivov/eslint-plugin-n8n-nodes-base/blob/master/docs/rules/${ruleName}.md`;
@@ -25,9 +25,10 @@ export function toExpectedNodeFilename(name: string) {
   return name.charAt(0).toUpperCase() + name.slice(1) + ".node.ts";
 }
 
-export function areIdenticallySortedOptions<
-  T extends { name: string; value: string }
->(first: T[], second: T[]) {
+export function areIdenticallySortedOptions(
+  first: { name: string }[],
+  second: { name: string }[]
+) {
   for (let i = 0; i < first.length; i++) {
     if (first[i].name !== second[i].name) return false;
   }
@@ -35,9 +36,28 @@ export function areIdenticallySortedOptions<
   return true;
 }
 
-export function areIdenticallySortedParams<
-  T extends { displayName: string }
->(first: T[], second: T[]) {
+export function toDisplayOrder(options: Array<{ name: string }>) {
+  return options
+    .reduce<string[]>((acc, cur) => {
+      return acc.push(cur.name), acc;
+    }, [])
+    .join(" | ");
+}
+
+export function optionComparator(a: { name: string }, b: { name: string }) {
+  // if version, sort in descending order
+  if (VERSION_REGEX.test(a.name)) {
+    if (a.name === b.name) return 0;
+    return parseFloat(a.name.slice(1)) > parseFloat(b.name.slice(1)) ? -1 : 1;
+  }
+
+  return a.name.localeCompare(b.name);
+}
+
+export function areIdenticallySortedParams(
+  first: { displayName: string }[],
+  second: { displayName: string }[]
+) {
   for (let i = 0; i < first.length; i++) {
     if (first[i].displayName !== second[i].displayName) return false;
   }
@@ -158,7 +178,7 @@ export const getIndentationString = (referenceNode: {
   return "\t".repeat(referenceNode.ast.loc.start.column);
 };
 
-export const getIndentationStringForOption = (referenceNode: {
+export const getIndentationForOption = (referenceNode: {
   ast: TSESTree.BaseNode;
 }) => {
   return "\t".repeat(referenceNode.ast.loc.start.column - 1);
@@ -271,7 +291,7 @@ export function isAllowedLowercase(value: string) {
 
   if (isKebabCase(value)) return true;
 
-  if (/v\d+\.\d+/.test(value)) return true;
+  if (VERSION_REGEX.test(value)) return true;
 
   return ["bmp", "tiff", "gif", "jpg", "jpeg", "png"].includes(value);
 }

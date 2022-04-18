@@ -6,7 +6,9 @@
 
 📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
 
-📋 This rule is part of the `plugin:n8n-nodes-base/non-autofixable` config.
+📋 This rule is part of the `plugin:n8n-nodes-base/autofixable-safe` config.
+
+🔧 Run ESLint with `--fix` option to autofix the issue flagged by this rule.
 
 ## Examples
 
@@ -15,6 +17,66 @@
 ```js
 const test = {
   displayName: "Field ID",
+  name: "field",
+  type: "multiOptions",
+  typeOptions: {
+    loadOptionsMethod: "getFields",
+  },
+  default: "",
+};
+
+const test = {
+  displayName: "Field Name",
+  name: "field",
+  type: "multiOptions",
+  typeOptions: {
+    loadOptionsMethod: "getFields",
+  },
+  default: "",
+};
+
+const test = {
+  displayName: "Field Name or",
+  name: "field",
+  type: "multiOptions",
+  typeOptions: {
+    loadOptionsMethod: "getFields",
+  },
+  default: "",
+};
+
+const test = {
+  displayName: "Field Name/ID",
+  name: "field",
+  type: "multiOptions",
+  typeOptions: {
+    loadOptionsMethod: "getFields",
+  },
+  default: "",
+};
+
+const test = {
+  displayName: "Field ID/Name",
+  name: "field",
+  type: "multiOptions",
+  typeOptions: {
+    loadOptionsMethod: "getFields",
+  },
+  default: "",
+};
+
+const test = {
+  displayName: "Field Names/IDs",
+  name: "field",
+  type: "multiOptions",
+  typeOptions: {
+    loadOptionsMethod: "getFields",
+  },
+  default: "",
+};
+
+const test = {
+  displayName: "Field",
   name: "field",
   type: "multiOptions",
   typeOptions: {

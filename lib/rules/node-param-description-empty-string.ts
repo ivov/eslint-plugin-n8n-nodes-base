@@ -37,9 +37,7 @@ export default utils.createRule({
           context.report({
             messageId: "fillOutOrRemoveDescription",
             node: description.ast,
-            fix: (fixer) => {
-              return fixer.removeRange(rangeToRemove);
-            },
+            fix: (fixer) => fixer.removeRange(rangeToRemove),
           });
         }
       },

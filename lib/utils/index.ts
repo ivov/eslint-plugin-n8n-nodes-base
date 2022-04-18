@@ -71,20 +71,22 @@ export function areIdenticallySortedParams(
  *
  * Modified from: https://stackoverflow.com/a/65443215
  */
-export function unquoteKeys(obj: object) {
+export function unquoteKeys(obj: object, indentation: string) {
   // TODO: Clean this up
 
   const clean = JSON.stringify(obj, null, 2)
     .replace(/\'/g, "\\'")
     .replace(/^[\t ]*"[^:\n\r]+(?<!\\)":/gm, (m) => m.replace(/"/g, "")) // unquote
     .replace(/"/g, "'")
-    .replace(/\}\s/, "},\n") // add trailing comma for last object
+    .replace(/\}\s/g, "},\n") // add trailing comma for last object
     .replace("]", "\t]")
     .replace(/ /g, "\t")
     .replace(/\tname:\t/g, "name: ")
     .replace(/\tvalue:\t/g, "value: ")
     .replace(/\tdisplayName:\t/g, "displayName: ")
     .replace(/\tdescription:\t/g, "description: ")
+    .replace(/\tplaceholder:\t/g, "placeholder: ")
+    .replace(/\toptions:\t/g, "options: ")
     .replace(/\ttype:\t/g, "type: ")
     .replace(/\tdefault:\t/g, "default: ")
     .replace(/(\.)\t\b/g, ". ")
@@ -96,8 +98,14 @@ export function unquoteKeys(obj: object) {
     .replace(/'\t/g, "' ")
     .replace(/\b\t\b/g, " ")
     .replace(/'\s\t/g, "',\n\t") // add trailing comma for last key-value pair
+    .replace(/false\n/g, "false,\n") // add trailing comma for last key-value pair
+    .replace(/true\n/g, "true,\n") // add trailing comma for last key-value pair
     .replace(/href=\\'/g, 'href="')
-    .replace(/\\'>/g, '">');
+    .replace(/\\'>/g, '">')
+    .replace(/\n/g, `\n${indentation}`)
+    .replace(/\t{8}/gm, `${"\t".repeat(6)}`)
+    .replace(/^\t{2}\]/gm, `${"\t".repeat(3)}\]`)
+    .replace(/^\t{7}\]/gm, `${"\t".repeat(5)}\]`);;
 
   return clean;
 }

@@ -1,8 +1,8 @@
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 
 /**
- * Restore the source value of an array of primitives, e.g. the string arrays
- * under `inputs` and `outputs` in a node class description.
+ * Restore the source value of an array of primitives,
+ * e.g. `inputs` and `outputs` in a node class description.
  */
 export function restoreArray(elements: TSESTree.Expression[]) {
   return elements.reduce<string[]>((acc, e) => {
@@ -15,41 +15,29 @@ export function restoreArray(elements: TSESTree.Expression[]) {
 }
 
 /**
- * Restore the source value of an object, e.g. the object under `typeOptions`
- * in a node param.
+ * Restore the source value of an array of objects,
+ * e.g. `options` in a node param.
+ */
+export function restoreObjectArray(elements: TSESTree.ObjectExpression[]) {
+  return elements.reduce<Array<Record<string, unknown>>>((acc, e) => {
+    if (e.type === AST_NODE_TYPES.ObjectExpression) {
+      acc.push(restoreObject(e));
+    }
+
+    return acc;
+  }, []);
+}
+
+/**
+ * Restore the source value of an object,
+ * e.g. `typeOptions` in a node param.
  */
 export function restoreObject(objectExpression: TSESTree.ObjectExpression) {
-  const isLiteral = (
-    property: TSESTree.ObjectLiteralElement
-  ): property is TSESTree.PropertyNonComputedName & {
-    key: { name: string };
-    value: { value: string };
-  } => {
-    return (
-      property.type === AST_NODE_TYPES.Property &&
-      property.computed === false &&
-      property.key.type === AST_NODE_TYPES.Identifier &&
-      property.value.type === AST_NODE_TYPES.Literal
-    );
-  };
-
-  const isUnaryExpression = (
-    property: TSESTree.ObjectLiteralElement
-  ): property is TSESTree.PropertyNonComputedName & {
-    key: { name: string };
-    value: { operator: string; argument: { raw: string } };
-  } => {
-    return (
-      property.type === AST_NODE_TYPES.Property &&
-      property.computed === false &&
-      property.key.type === AST_NODE_TYPES.Identifier &&
-      property.value.type === AST_NODE_TYPES.UnaryExpression
-    );
-  };
-
   return objectExpression.properties.reduce<Record<string, unknown>>(
     (acc, property) => {
-      if (isLiteral(property)) {
+      if (isArrayExpression(property)) {
+        acc[property.key.name] = restoreObjectArray(property.value.elements); // e.g. options: [...]
+      } else if (isLiteral(property)) {
         acc[property.key.name] = property.value.value;
       } else if (isUnaryExpression(property)) {
         acc[property.key.name] = parseInt(
@@ -133,3 +121,46 @@ export function restoreClassDescriptionOptions(
 
   return restoredCredOptions;
 }
+
+const isLiteral = (
+  property: TSESTree.ObjectLiteralElement
+): property is TSESTree.PropertyNonComputedName & {
+  key: { name: string };
+  value: { value: string };
+} => {
+  return (
+    property.type === AST_NODE_TYPES.Property &&
+    property.computed === false &&
+    property.key.type === AST_NODE_TYPES.Identifier &&
+    property.value.type === AST_NODE_TYPES.Literal
+  );
+};
+
+const isUnaryExpression = (
+  property: TSESTree.ObjectLiteralElement
+): property is TSESTree.PropertyNonComputedName & {
+  key: { name: string };
+  value: { operator: string; argument: { raw: string } };
+} => {
+  return (
+    property.type === AST_NODE_TYPES.Property &&
+    property.computed === false &&
+    property.key.type === AST_NODE_TYPES.Identifier &&
+    property.value.type === AST_NODE_TYPES.UnaryExpression
+  );
+};
+
+const isArrayExpression = (
+  property: TSESTree.ObjectLiteralElement
+): property is TSESTree.PropertyNonComputedName & {
+  key: { name: string };
+  value: { elements: any[] };
+} => {
+  return (
+    property.type === AST_NODE_TYPES.Property &&
+    property.computed === false &&
+    property.key.type === AST_NODE_TYPES.Identifier &&
+    typeof property.key.name === "string" &&
+    property.value.type === AST_NODE_TYPES.ArrayExpression
+  );
+};

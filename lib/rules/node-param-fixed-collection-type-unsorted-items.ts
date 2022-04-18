@@ -41,9 +41,7 @@ export default utils.createRule({
         if (!utils.areIdenticallySortedParams(values.value, sortedParams)) {
           const indentation = utils.getIndentationForOption(values);
 
-          const fixed = utils
-            .unquoteKeys(sortedParams)
-            .replace(/\n/g, `\n${indentation}`);
+          const fixed = utils.unquoteKeys(sortedParams, indentation);
 
           const displayOrder = sortedParams
             .reduce<string[]>((acc, cur) => {

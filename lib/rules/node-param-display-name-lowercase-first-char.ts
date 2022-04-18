@@ -2,6 +2,7 @@ import { DOCUMENTATION } from "../constants";
 import * as utils from "../utils";
 import { identifiers as id } from "../utils/identifiers";
 import { getters } from "../utils/getters";
+import { titleCase } from "title-case";
 
 export default utils.createRule({
   name: utils.getRuleName(module),
@@ -15,6 +16,7 @@ export default utils.createRule({
     schema: [],
     messages: {
       uppercaseFirstChar: "Change first char to uppercase [autofixable]",
+      useTitleCase: "Remove period and use title case [autofixable]",
     },
   },
   defaultOptions: [],
@@ -33,6 +35,20 @@ export default utils.createRule({
           if (!displayName) return;
 
           if (utils.isAllowedLowercase(displayName.value)) return;
+
+          // e.g. 'email.blocked'
+          if (/\w+\.\w+/.test(displayName.value)) {
+            const correctlyCased = titleCase(
+              displayName.value.replace(".", " ")
+            );
+            const fixed = utils.keyValue("displayName", correctlyCased);
+
+            return context.report({
+              messageId: "useTitleCase",
+              node: displayName.ast,
+              fix: (fixer) => fixer.replaceText(displayName.ast, fixed),
+            });
+          }
 
           const firstChar = displayName.value.charAt(0);
 
@@ -53,6 +69,21 @@ export default utils.createRule({
           if (!name) return;
 
           if (utils.isAllowedLowercase(name.value)) return;
+
+          // e.g. 'email.blocked'
+          if (/\w+\.\w+/.test(name.value)) {
+
+            const correctlyCased = titleCase(
+              name.value.replace(".", " ")
+            );
+            const fixed = utils.keyValue("name", correctlyCased);
+
+            return context.report({
+              messageId: "useTitleCase",
+              node: name.ast,
+              fix: (fixer) => fixer.replaceText(name.ast, fixed),
+            });
+          }
 
           const firstChar = name.value.charAt(0);
 

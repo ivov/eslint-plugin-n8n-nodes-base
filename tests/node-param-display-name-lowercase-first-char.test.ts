@@ -142,5 +142,37 @@ ruleTester().run(getRuleName(module), rule, {
 				],
 			};`,
 		},
+
+		{
+			code: outdent`
+			const test = {
+				displayName: 'Event',
+				name: 'event',
+				type: 'options',
+				required: true,
+				default: 'coupon.created',
+				options: [
+					{
+						name: 'coupon.created',
+						value: 'coupon.created',
+					},
+				],
+			};`,
+			errors: [{ messageId: "useTitleCase" }],
+			output: outdent`
+			const test = {
+				displayName: 'Event',
+				name: 'event',
+				type: 'options',
+				required: true,
+				default: 'coupon.created',
+				options: [
+					{
+						name: 'Coupon Created',
+						value: 'coupon.created',
+					},
+				],
+			};`,
+		},
 	],
 });

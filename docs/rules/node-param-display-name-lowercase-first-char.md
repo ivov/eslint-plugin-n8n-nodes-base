@@ -61,6 +61,20 @@ const test = {
     },
   ],
 };
+
+const test = {
+  displayName: "Event",
+  name: "event",
+  type: "options",
+  required: true,
+  default: "coupon.created",
+  options: [
+    {
+      name: "couponCreated",
+      value: "coupon.created",
+    },
+  ],
+};
 ```
 
 ✅ Example of **correct** code:
@@ -79,20 +93,20 @@ const test = {
 };
 
 const test = {
-    displayName: "API Domain",
-    name: "apiDomain",
-    type: "options",
+    displayName: 'API Domain',
+    name: 'apiDomain',
+    type: 'options',
     options: [
         {
-            name: "api.jotform.com",
-            value: "api.jotform.com",
+            name: 'api.jotform.com',
+            value: 'api.jotform.com',
         },
         {
-            name: "eu-api.jotform.com",
-            value: "eu-api.jotform.com",
+            name: 'eu-api.jotform.com',
+            value: 'eu-api.jotform.com',
         },
     ],
-    default: "api.jotform.com",
+    default: 'api.jotform.com',
     description:
         'The API domain to use. Use "eu-api.jotform.com" if your account is in based in Europe.',
 },

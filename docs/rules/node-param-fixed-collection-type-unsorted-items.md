@@ -2,7 +2,7 @@
 
 # node-param-fixed-collection-type-unsorted-items
 
-Items in a fixed-collection-type node parameter must be alphabetized by `displayName` if more than five.
+Items in a fixed-collection-type node parameter section must be alphabetized by `displayName` if more than five, unless the items are address fields.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
 
@@ -178,6 +178,110 @@ const test = {
         {
           displayName: "E",
           name: "e",
+          type: "string",
+          default: "",
+        },
+      ],
+    },
+  ],
+};
+
+const test = {
+  displayName: "Address",
+  name: "address",
+  placeholder: "Add Address Fields",
+  type: "fixedCollection",
+  default: {},
+  options: [
+    {
+      displayName: "Address Details",
+      name: "addressFields",
+      values: [
+        {
+          displayName: "Line 1",
+          name: "line1",
+          type: "string",
+          default: "",
+        },
+        {
+          displayName: "Line 2",
+          name: "line2",
+          type: "string",
+          default: "",
+        },
+        {
+          displayName: "City",
+          name: "city",
+          type: "string",
+          default: "",
+        },
+        {
+          displayName: "Country",
+          name: "country",
+          type: "string",
+          default: "",
+        },
+        {
+          displayName: "State",
+          name: "state",
+          type: "string",
+          default: "",
+        },
+        {
+          displayName: "Zip Code",
+          name: "zipcode",
+          type: "string",
+          default: "",
+        },
+      ],
+    },
+  ],
+};
+
+const test = {
+  displayName: "Address",
+  name: "address",
+  placeholder: "Add Address Fields",
+  type: "fixedCollection",
+  default: {},
+  options: [
+    {
+      displayName: "Details",
+      name: "addressFields",
+      values: [
+        {
+          displayName: "Line 1",
+          name: "line1",
+          type: "string",
+          default: "",
+        },
+        {
+          displayName: "Line 2",
+          name: "line2",
+          type: "string",
+          default: "",
+        },
+        {
+          displayName: "City",
+          name: "city",
+          type: "string",
+          default: "",
+        },
+        {
+          displayName: "Country",
+          name: "country",
+          type: "string",
+          default: "",
+        },
+        {
+          displayName: "State",
+          name: "state",
+          type: "string",
+          default: "",
+        },
+        {
+          displayName: "Zip Code",
+          name: "zipcode",
           type: "string",
           default: "",
         },

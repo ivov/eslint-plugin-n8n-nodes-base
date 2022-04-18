@@ -34,7 +34,7 @@ export default utils.createRule({
 
         const pluralOption = findPluralOption(options);
 
-        if (pluralOption) {
+        if (pluralOption && !isAllowedPlural(pluralOption.value)) {
           const singularized = singular(pluralOption.value);
           const fixed = utils.keyValue("name", singularized);
 
@@ -60,7 +60,7 @@ function findPluralOption(options: { ast: OptionsProperty }) {
         property.value.type === AST_NODE_TYPES.Literal &&
         typeof property.value.value === "string" &&
         isPlural(property.value.value) &&
-        singular(property.value.value) !== plural(property.value.value) // ignore if identical singular and plural forms, e.g. software, information
+        singular(property.value.value) !== plural(property.value.value) // ignore if noun with identical singular and plural forms, e.g. software, information
       )
         return {
           ast: property,
@@ -70,4 +70,8 @@ function findPluralOption(options: { ast: OptionsProperty }) {
   }
 
   return null;
+}
+
+function isAllowedPlural(value: string) {
+  return value.toLowerCase().endsWith("data"); // single ad hoc exception for now
 }

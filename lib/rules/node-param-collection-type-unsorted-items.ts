@@ -40,18 +40,18 @@ export default utils.createRule({
           a.name.localeCompare(b.name)
         );
 
-        const displayOrder = sortedParams
-          .reduce<string[]>((acc, cur) => {
-            return acc.push(cur.name), acc;
-          }, [])
-          .join(" | ");
-
         if (!utils.areIdenticallySorted(options.value, sortedParams)) {
           const indentation = utils.getIndentationStringForOption(options);
 
           const sorted = utils
             .unquoteKeys(sortedParams)
             .replace(/\n/g, `\n${indentation}`);
+
+          const displayOrder = sortedParams
+            .reduce<string[]>((acc, cur) => {
+              return acc.push(cur.name), acc;
+            }, [])
+            .join(" | ");
 
           context.report({
             messageId: "sortItems",

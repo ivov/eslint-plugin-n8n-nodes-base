@@ -8,13 +8,13 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description:
-        `\`displayName\` for dynamic-multi-options-type node parameter must end with \`${DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER.DISPLAY_NAME_SUFFIX}\``,
+      description: `\`displayName\` for dynamic-multi-options-type node parameter must end with \`${DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER.DISPLAY_NAME_SUFFIX}\``,
       recommended: "error",
     },
     schema: [],
+    fixable: 'code',
     messages: {
-      endWithNameOrId: `Replace with '<Entity> ${DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER.DISPLAY_NAME_SUFFIX}' [non-autofixable]`, // TODO: Attempt autofix
+      endWithNameOrId: `End with '{Entity} ${DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER.DISPLAY_NAME_SUFFIX}' [autofixable]`,
     },
   },
   defaultOptions: [],
@@ -38,9 +38,13 @@ export default utils.createRule({
             DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER.DISPLAY_NAME_SUFFIX
           )
         ) {
+          const withEndSegment = utils.addEndSegment(displayName.value);
+          const fixed = utils.keyValue("displayName", withEndSegment);
+
           context.report({
             messageId: "endWithNameOrId",
             node: displayName.ast,
+            fix: (fixer) => fixer.replaceText(displayName.ast, fixed),
           });
         }
       },

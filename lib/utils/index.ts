@@ -105,7 +105,7 @@ export function unquoteKeys(obj: object, indentation: string) {
     .replace(/\n/g, `\n${indentation}`)
     .replace(/\t{8}/gm, `${"\t".repeat(6)}`)
     .replace(/^\t{2}\]/gm, `${"\t".repeat(3)}\]`)
-    .replace(/^\t{7}\]/gm, `${"\t".repeat(5)}\]`);;
+    .replace(/^\t{7}\]/gm, `${"\t".repeat(5)}\]`);
 
   return clean;
 }
@@ -306,4 +306,26 @@ export function isAllowedLowercase(value: string) {
   if (VERSION_REGEX.test(value)) return true;
 
   return ["bmp", "tiff", "gif", "jpg", "jpeg", "png"].includes(value);
+}
+
+/**
+ * Add end segment to display name of dynamic options-type or multi-options-type node parameter.
+ */
+export function addEndSegment(value: string) {
+  if (/\w+\sName(s?)\s*\/\s*ID(s?)/.test(value))
+    return value.replace(/Name(s?)\s*\/\s*ID(s?)/, "Name or ID");
+
+  if (/\w+\sID(s?)\s*\/\s*Name(s?)/.test(value))
+    return value.replace(/ID(s?)\s*\/\s*Name(s?)/, "Name or ID");
+
+  if (/\w+\sName(s?)$/.test(value))
+    return value.replace(/Name(s?)$/, "Name or ID");
+
+  if (/\w+\sID(s?)$/.test(value)) return value.replace(/ID(s?)$/, "Name or ID");
+
+  if (value === "ID" || value === "Name") return "Name or ID";
+
+  if (/Name or/.test(value)) return value.replace("Name or", "Name or ID");
+
+  return value.concat(" Name or ID");
 }

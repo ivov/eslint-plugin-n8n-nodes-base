@@ -261,9 +261,6 @@ export function isAllowedLowercase(value: string) {
 
   if (isKebabCase(value)) return true;
 
-  console.log(value);
-  console.log(/v\d+\.\d+/.test(value));
-
   if (/v\d+\.\d+/.test(value)) return true;
 
   return ["bmp", "tiff", "gif", "jpg", "jpeg", "png"].includes(value);

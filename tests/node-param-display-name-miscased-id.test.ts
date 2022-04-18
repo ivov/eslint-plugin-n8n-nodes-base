@@ -49,6 +49,23 @@ ruleTester().run(getRuleName(module), rule, {
 		{
 			code: outdent`
 			const test = {
+				displayName: 'User Ids',
+				name: 'userId',
+				type: 'string',
+				default: '',
+			};`,
+			errors: [{ messageId: "uppercaseId" }],
+			output: outdent`
+			const test = {
+				displayName: 'User IDs',
+				name: 'userId',
+				type: 'string',
+				default: '',
+			};`,
+		},
+		{
+			code: outdent`
+			const test = {
 				displayName: 'User id',
 				name: 'userId',
 				type: 'string',

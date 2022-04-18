@@ -58,6 +58,25 @@ ruleTester().run(getRuleName(module), rule, {
 				name: 'operation',
 				type: 'string',
 				default: '',
+				description: 'The Ids of the user',
+			};`,
+			errors: [{ messageId: "uppercaseId" }],
+			output: outdent`
+			const test = {
+				displayName: 'Operation',
+				name: 'operation',
+				type: 'string',
+				default: '',
+				description: 'The IDs of the user',
+			};`,
+		},
+		{
+			code: outdent`
+			const test = {
+				displayName: 'Operation',
+				name: 'operation',
+				type: 'string',
+				default: '',
 				description: 'The id of the user',
 			};`,
 			errors: [{ messageId: "uppercaseId" }],

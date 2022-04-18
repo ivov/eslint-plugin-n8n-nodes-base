@@ -36,6 +36,10 @@ export default utils.createRule({
 
           if (!displayName) return;
 
+          const type = getters.nodeParam.getType(node);
+
+          if (type?.value === "notice") return; // notice display name is sentence case
+
           if (utils.isAllowedLowercase(displayName.value)) return;
 
           if (isTwoWordsInCamelCase(displayName.value)) {

@@ -23,7 +23,18 @@ const test = {
     loadOptionsMethod: "getFields",
   },
   default: "",
-  description: "Wrong",
+  description: "This is a sentence",
+};
+
+const test = {
+  displayName: "Field Name or ID",
+  name: "field",
+  type: "options",
+  typeOptions: {
+    loadOptionsMethod: "getFields",
+  },
+  default: "",
+  description: "This is a sentence. This is another.",
 };
 ```
 
@@ -40,6 +51,18 @@ const test = {
   default: "",
   description:
     'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/nodes/expressions.html#expressions">expression</a>',
+};
+
+const test = {
+  displayName: "Field Name or ID",
+  name: "field",
+  type: "options",
+  typeOptions: {
+    loadOptionsMethod: "getFields",
+  },
+  default: "",
+  description:
+    'This is a sentence. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/nodes/expressions.html#expressions">expression</a>.',
 };
 ```
 

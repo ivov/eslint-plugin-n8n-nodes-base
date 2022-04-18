@@ -46,6 +46,35 @@ const test = {
   value: "username",
   description: "The name of the user",
 };
+
+const test = {
+  displayName: "Format",
+  name: "format",
+  type: "options",
+  options: [
+    {
+      name: "bmp",
+      value: "bmp",
+    },
+    {
+      name: "gif",
+      value: "gif",
+    },
+    {
+      name: "jpeg",
+      value: "jpeg",
+    },
+    {
+      name: "png",
+      value: "png",
+    },
+    {
+      name: "tiff",
+      value: "tiff",
+    },
+  ],
+  default: "jpeg",
+};
 ```
 
 ## Links

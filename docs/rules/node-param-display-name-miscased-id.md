@@ -23,6 +23,13 @@ const test = {
 };
 
 const test = {
+  displayName: "User Ids",
+  name: "userId",
+  type: "string",
+  default: "",
+};
+
+const test = {
   displayName: "User id",
   name: "userId",
   type: "string",

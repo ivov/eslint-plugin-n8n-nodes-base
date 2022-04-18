@@ -47,6 +47,20 @@ const test = {
     },
   ],
 };
+
+const test = {
+  displayName: "Event",
+  name: "event",
+  type: "options",
+  required: true,
+  default: "coupon.created",
+  options: [
+    {
+      name: "coupon.created",
+      value: "coupon.created",
+    },
+  ],
+};
 ```
 
 ✅ Example of **correct** code:

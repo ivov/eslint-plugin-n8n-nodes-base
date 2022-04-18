@@ -28,6 +28,14 @@ const test = {
   name: "operation",
   type: "string",
   default: "",
+  description: "The Ids of the user",
+};
+
+const test = {
+  displayName: "Operation",
+  name: "operation",
+  type: "string",
+  default: "",
   description: "The id of the user",
 };
 

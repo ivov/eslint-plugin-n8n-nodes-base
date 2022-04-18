@@ -60,6 +60,82 @@ const test = {
     },
   ],
 };
+
+const test = {
+  displayName: "Extraction Values",
+  name: "extractionValues",
+  placeholder: "Add Value",
+  type: "fixedCollection",
+  default: {},
+  options: [
+    {
+      name: "values",
+      displayName: "Values",
+      values: [
+        {
+          displayName: "Return Value",
+          name: "returnValue",
+          type: "options",
+          options: [
+            {
+              name: "Attribute",
+              value: "attribute",
+              description:
+                'Get an attribute value like "class" from an element',
+            },
+            {
+              name: "HTML",
+              value: "html",
+              description: "Get the HTML the element contains",
+            },
+            {
+              name: "Text",
+              value: "text",
+              description: "Get only the text content of the element",
+            },
+            {
+              name: "Value",
+              value: "value",
+              description: "Get value of an input, select or textarea",
+            },
+          ],
+          default: "text",
+          description: "What kind of data should be returned",
+        },
+        {
+          displayName: "Hello",
+          name: "hello",
+          type: "string",
+          default: "",
+          placeholder: "class",
+          description: "The name of the attribute to return the value off",
+        },
+        {
+          displayName: "Zoo",
+          name: "zoo",
+          type: "boolean",
+          default: false,
+        },
+        {
+          displayName: "Key",
+          name: "key",
+          type: "string",
+          default: "",
+          description:
+            "The key under which the extracted value should be saved",
+        },
+        {
+          displayName: "CSS Selector",
+          name: "cssSelector",
+          type: "string",
+          default: "",
+          placeholder: ".price",
+          description: "The CSS selector to use",
+        },
+      ],
+    },
+  ],
+};
 ```
 
 ✅ Example of **correct** code:

@@ -3,9 +3,9 @@ import { ruleTester, getRuleName } from "../lib/utils";
 import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
-	valid: [
-		{
-			code: outdent`
+  valid: [
+    {
+      code: outdent`
 			const test = {
 				displayName: 'Field Name or ID',
 				name: 'field',
@@ -15,11 +15,11 @@ ruleTester().run(getRuleName(module), rule, {
 				},
 				default: '',
 			};`,
-		},
-	],
-	invalid: [
-		{
-			code: outdent`
+    },
+  ],
+  invalid: [
+    {
+      code: outdent`
 			const test = {
 				displayName: 'Field ID',
 				name: 'field',
@@ -29,7 +29,161 @@ ruleTester().run(getRuleName(module), rule, {
 				},
 				default: '',
 			};`,
-			errors: [{ messageId: "endWithNameOrId" }],
-		},
-	],
+      errors: [{ messageId: "endWithNameOrId" }],
+      output: outdent`
+			const test = {
+				displayName: 'Field Name or ID',
+				name: 'field',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getFields',
+				},
+				default: '',
+			};`,
+    },
+
+    {
+      code: outdent`
+			const test = {
+				displayName: 'Field Name',
+				name: 'field',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getFields',
+				},
+				default: '',
+			};`,
+      errors: [{ messageId: "endWithNameOrId" }],
+      output: outdent`
+			const test = {
+				displayName: 'Field Name or ID',
+				name: 'field',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getFields',
+				},
+				default: '',
+			};`,
+    },
+
+    {
+      code: outdent`
+			const test = {
+				displayName: 'Field Name or',
+				name: 'field',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getFields',
+				},
+				default: '',
+			};`,
+      errors: [{ messageId: "endWithNameOrId" }],
+      output: outdent`
+			const test = {
+				displayName: 'Field Name or ID',
+				name: 'field',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getFields',
+				},
+				default: '',
+			};`,
+    },
+
+    {
+      code: outdent`
+			const test = {
+				displayName: 'Field Name/ID',
+				name: 'field',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getFields',
+				},
+				default: '',
+			};`,
+      errors: [{ messageId: "endWithNameOrId" }],
+      output: outdent`
+			const test = {
+				displayName: 'Field Name or ID',
+				name: 'field',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getFields',
+				},
+				default: '',
+			};`,
+    },
+
+    {
+      code: outdent`
+			const test = {
+				displayName: 'Field ID/Name',
+				name: 'field',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getFields',
+				},
+				default: '',
+			};`,
+      errors: [{ messageId: "endWithNameOrId" }],
+      output: outdent`
+			const test = {
+				displayName: 'Field Name or ID',
+				name: 'field',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getFields',
+				},
+				default: '',
+			};`,
+    },
+
+    {
+      code: outdent`
+			const test = {
+				displayName: 'Field Names/IDs',
+				name: 'field',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getFields',
+				},
+				default: '',
+			};`,
+      errors: [{ messageId: "endWithNameOrId" }],
+      output: outdent`
+			const test = {
+				displayName: 'Field Name or ID',
+				name: 'field',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getFields',
+				},
+				default: '',
+			};`,
+    },
+
+    {
+      code: outdent`
+			const test = {
+				displayName: 'Field',
+				name: 'field',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getFields',
+				},
+				default: '',
+			};`,
+      errors: [{ messageId: "endWithNameOrId" }],
+      output: outdent`
+			const test = {
+				displayName: 'Field Name or ID',
+				name: 'field',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getFields',
+				},
+				default: '',
+			};`,
+    },
+  ],
 });

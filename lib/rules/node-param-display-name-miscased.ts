@@ -33,6 +33,9 @@ export default utils.createRule({
 
           if (!displayName) return;
 
+          // prevent overlap with node-param-display-name-wrong-for-dynamic-options
+          if (displayName.value.toLowerCase().endsWith('or')) return;
+
           const type = getters.nodeParam.getType(node);
 
           if (type?.value === 'notice') return; // notice display name is sentence case
@@ -54,6 +57,9 @@ export default utils.createRule({
           const name = getters.nodeParam.getName(node);
 
           if (!name) return;
+
+          // prevent overlap with node-param-display-name-wrong-for-dynamic-options
+          if (name.value.toLowerCase().endsWith("or")) return;
 
           if (utils.isAllowedLowercase(name.value)) return;
 

@@ -153,7 +153,11 @@ export function isRegularNodeFile(filePath: string) {
 
   const filename = getNodeFilename(filePath);
 
-  return filename.endsWith(".node.ts") && !filename.endsWith("Trigger.node.ts");
+  return (
+    filename.endsWith(".node.ts") &&
+    !filename.endsWith("Trigger.node.ts") &&
+    !filename.endsWith("EmailReadImap.node.ts") // trigger node without trigger in the name
+  );
 }
 
 export function isTriggerNodeFile(filePath: string) {

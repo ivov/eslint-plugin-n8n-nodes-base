@@ -14,7 +14,7 @@ export default utils.createRule({
     schema: [],
     fixable: "code",
     messages: {
-      useStandardDescription: `Replace with '${DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER.DESCRIPTION}' [autofixable]`,
+      useStandardDescription: `Append '${DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER.DESCRIPTION}' [autofixable]`,
     },
   },
   defaultOptions: [],

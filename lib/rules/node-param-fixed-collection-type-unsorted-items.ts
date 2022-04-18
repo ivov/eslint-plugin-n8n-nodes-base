@@ -5,13 +5,14 @@ import {
 import * as utils from "../utils";
 import { identifiers as id } from "../utils/identifiers";
 import { getters } from "../utils/getters";
+import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 
 export default utils.createRule({
   name: utils.getRuleName(module),
   meta: {
     type: "layout",
     docs: {
-      description: `Items in a fixed-collection-type node parameter must be alphabetized by \`displayName\` if more than ${MIN_ITEMS_TO_ALPHABETIZE_IN_FULL}.`,
+      description: `Items in a fixed-collection-type node parameter section must be alphabetized by \`displayName\` if more than ${MIN_ITEMS_TO_ALPHABETIZE_IN_FULL}, unless the items are address fields.`,
       recommended: "error",
     },
     fixable: "code",
@@ -26,6 +27,8 @@ export default utils.createRule({
     return {
       ObjectExpression(node) {
         if (!id.isFixedCollectionSection(node)) return;
+
+        if (isAddressFixedCollectionSection(node)) return;
 
         const values = getters.nodeParam.getFixedCollectionValues(node);
 
@@ -62,3 +65,40 @@ export default utils.createRule({
     };
   },
 });
+
+/**
+ * Whether the node is a fixed collection section that contains address fields,
+ * as signalled by the display name of the fixed collection section, or by the
+ * display name of its containing fixed collection.
+ */
+function isAddressFixedCollectionSection(node: TSESTree.ObjectExpression) {
+  for (const property of node.properties) {
+    if (
+      property.type === AST_NODE_TYPES.Property &&
+      property.key.type === AST_NODE_TYPES.Identifier &&
+      property.key.name === "displayName" &&
+      property.value.type === AST_NODE_TYPES.Literal &&
+      typeof property.value.value === "string" &&
+      property.value.value.toLowerCase().includes("address")
+    ) {
+      return true;
+    }
+
+    // fixed collection _section_ does not mention "address",
+    // but the containing fixed collection may mention it
+
+    const fixedCollectionParam = property?.parent?.parent?.parent?.parent as
+      | TSESTree.ObjectExpression
+      | undefined;
+
+    if (!fixedCollectionParam) continue;
+
+    const displayName = getters.nodeParam.getDisplayName(fixedCollectionParam);
+
+    if (!displayName) continue;
+
+    if (displayName.value.toLowerCase().includes("address")) return true;
+  }
+
+  return false;
+}

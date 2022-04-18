@@ -51,6 +51,114 @@ ruleTester().run(getRuleName(module), rule, {
 				],
 			};`,
 		},
+		{
+			code: outdent`
+			const test = {
+				displayName: 'Address',
+				name: 'address',
+				placeholder: 'Add Address Fields',
+				type: 'fixedCollection',
+				default: {},
+				options: [
+					{
+						displayName: 'Address Details',
+						name: 'addressFields',
+						values: [
+							{
+								displayName: 'Line 1',
+								name: 'line1',
+								type: 'string',
+								default: '',
+							},
+							{
+								displayName: 'Line 2',
+								name: 'line2',
+								type: 'string',
+								default: '',
+							},
+							{
+								displayName: 'City',
+								name: 'city',
+								type: 'string',
+								default: '',
+							},
+							{
+								displayName: 'Country',
+								name: 'country',
+								type: 'string',
+								default: '',
+							},
+							{
+								displayName: 'State',
+								name: 'state',
+								type: 'string',
+								default: '',
+							},
+							{
+								displayName: 'Zip Code',
+								name: 'zipcode',
+								type: 'string',
+								default: '',
+							},
+						],
+					},
+				],
+			};`,
+		},
+		{
+			code: outdent`
+			const test = {
+				displayName: 'Address',
+				name: 'address',
+				placeholder: 'Add Address Fields',
+				type: 'fixedCollection',
+				default: {},
+				options: [
+					{
+						displayName: 'Details',
+						name: 'addressFields',
+						values: [
+							{
+								displayName: 'Line 1',
+								name: 'line1',
+								type: 'string',
+								default: '',
+							},
+							{
+								displayName: 'Line 2',
+								name: 'line2',
+								type: 'string',
+								default: '',
+							},
+							{
+								displayName: 'City',
+								name: 'city',
+								type: 'string',
+								default: '',
+							},
+							{
+								displayName: 'Country',
+								name: 'country',
+								type: 'string',
+								default: '',
+							},
+							{
+								displayName: 'State',
+								name: 'state',
+								type: 'string',
+								default: '',
+							},
+							{
+								displayName: 'Zip Code',
+								name: 'zipcode',
+								type: 'string',
+								default: '',
+							},
+						],
+					},
+				],
+			};`,
+		},
 	],
 	invalid: [
 		{

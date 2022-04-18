@@ -39,7 +39,7 @@ export default utils.createRule({
           // e.g. 'email.blocked'
           if (/\w+\.\w+/.test(displayName.value)) {
             const correctlyCased = titleCase(
-              displayName.value.replace(".", " ")
+              displayName.value.replace(".", " ").replace(/_/g, " ")
             );
             const fixed = utils.keyValue("displayName", correctlyCased);
 
@@ -72,9 +72,8 @@ export default utils.createRule({
 
           // e.g. 'email.blocked'
           if (/\w+\.\w+/.test(name.value)) {
-
             const correctlyCased = titleCase(
-              name.value.replace(".", " ")
+              name.value.replace(".", " ").replace(/_/g, " ")
             );
             const fixed = utils.keyValue("name", correctlyCased);
 

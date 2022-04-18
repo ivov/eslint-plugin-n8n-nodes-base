@@ -18,6 +18,19 @@ ruleTester().run(getRuleName(module), rule, {
 				description: '${DYNAMIC_OPTIONS_NODE_PARAMETER.DESCRIPTION}',
 			};`,
 		},
+		{
+			code: outdent`
+			const test = {
+				displayName: 'Field Name or ID',
+				name: 'field',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getFields',
+				},
+				default: '',
+				description: 'This is a sentence. ${DYNAMIC_OPTIONS_NODE_PARAMETER.DESCRIPTION}.',
+			};`,
+		},
 	],
 	invalid: [
 		{
@@ -30,7 +43,7 @@ ruleTester().run(getRuleName(module), rule, {
 					loadOptionsMethod: 'getFields',
 				},
 				default: '',
-				description: 'Wrong',
+				description: 'This is a sentence',
 			};`,
 			errors: [{ messageId: "useStandardDescription" }],
 			output: outdent`
@@ -42,7 +55,32 @@ ruleTester().run(getRuleName(module), rule, {
 					loadOptionsMethod: 'getFields',
 				},
 				default: '',
-				description: '${DYNAMIC_OPTIONS_NODE_PARAMETER.DESCRIPTION}',
+				description: 'This is a sentence. ${DYNAMIC_OPTIONS_NODE_PARAMETER.DESCRIPTION}.',
+			};`,
+		},
+		{
+			code: outdent`
+			const test = {
+				displayName: 'Field Name or ID',
+				name: 'field',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getFields',
+				},
+				default: '',
+				description: 'This is a sentence. This is another.',
+			};`,
+			errors: [{ messageId: "useStandardDescription" }],
+			output: outdent`
+			const test = {
+				displayName: 'Field Name or ID',
+				name: 'field',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getFields',
+				},
+				default: '',
+				description: 'This is a sentence. This is another. ${DYNAMIC_OPTIONS_NODE_PARAMETER.DESCRIPTION}.',
 			};`,
 		},
 	],

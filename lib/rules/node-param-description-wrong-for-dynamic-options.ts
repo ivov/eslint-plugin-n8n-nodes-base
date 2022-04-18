@@ -14,7 +14,7 @@ export default utils.createRule({
     schema: [],
     fixable: "code",
     messages: {
-      useStandardDescription: `Replace with '${DYNAMIC_OPTIONS_NODE_PARAMETER.DESCRIPTION}' [autofixable]`,
+      useStandardDescription: `Append '${DYNAMIC_OPTIONS_NODE_PARAMETER.DESCRIPTION}' [autofixable]`,
     },
   },
   defaultOptions: [],
@@ -35,8 +35,20 @@ export default utils.createRule({
 
         const expected = DYNAMIC_OPTIONS_NODE_PARAMETER.DESCRIPTION;
 
-        if (description.value !== expected) {
-          const fixed = utils.keyValue("description", expected);
+        if (
+          !description.value.endsWith(expected) &&
+          !description.value.endsWith(expected + ".")
+        ) {
+          const sentences = description.value
+            .split(". ")
+            .map((s) => (s.endsWith(".") ? s.slice(0, -1) : s));
+
+          const fixed = utils.keyValue(
+            "description",
+            sentences.length === 1 && sentences[0] === ""
+              ? expected
+              : [...sentences, expected].join(". ") + "."
+          );
 
           context.report({
             messageId: "useStandardDescription",

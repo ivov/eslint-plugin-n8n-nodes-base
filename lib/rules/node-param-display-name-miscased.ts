@@ -33,7 +33,11 @@ export default utils.createRule({
 
           if (!displayName) return;
 
-          if (isAllowedException(displayName.value)) return;
+          const type = getters.nodeParam.getType(node);
+
+          if (type?.value === 'notice') return; // notice display name is sentence case
+
+          if (utils.isAllowedLowercase(displayName.value)) return;
 
           const titledCased = titleCase(displayName.value);
 
@@ -51,7 +55,7 @@ export default utils.createRule({
 
           if (!name) return;
 
-          if (isAllowedException(name.value)) return;
+          if (utils.isAllowedLowercase(name.value)) return;
 
           const titleCased = titleCase(name.value);
 
@@ -69,11 +73,3 @@ export default utils.createRule({
     };
   },
 });
-
-function isAllowedException(value: string) {
-  if (utils.isUrl(value)) return true;
-
-  if (utils.isKebabCase(value)) return true;
-
-  return ["bmp", "tiff", "gif", "jpg", "jpeg", "png"].includes(value);
-}

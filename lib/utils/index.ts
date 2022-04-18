@@ -7,7 +7,7 @@ import DocRuleTester from "eslint-docgen/src/rule-tester";
 import { WEAK_DESCRIPTIONS } from "../constants";
 
 export const createRule = ESLintUtils.RuleCreator((ruleName) => {
-  return `https://github.com/ivov/eslint-plugin-PENDING/docs/rules/${ruleName}`;
+  return `https://github.com/ivov/eslint-plugin-n8n-nodes-base/docs/rules/${ruleName}`;
 });
 
 export const getRuleName = ({ filename }: { filename: string }) =>
@@ -260,6 +260,11 @@ export function isAllowedLowercase(value: string) {
   if (isUrl(value)) return true;
 
   if (isKebabCase(value)) return true;
+
+  console.log(value);
+  console.log(/v\d+\.\d+/.test(value));
+
+  if (/v\d+\.\d+/.test(value)) return true;
 
   return ["bmp", "tiff", "gif", "jpg", "jpeg", "png"].includes(value);
 }

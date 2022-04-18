@@ -1,4 +1,4 @@
-import { TSESTree } from "@typescript-eslint/utils";
+import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 
 export type NodeParamType =
   | "string"
@@ -20,15 +20,24 @@ export type IdentifierKey =
   | "icon"; // nodeClassDescription
 
 export type BooleanProperty = TSESTree.PropertyNonComputedName & {
-  value: { value: boolean };
+  value: {
+    type: AST_NODE_TYPES.ObjectExpression;
+    value: boolean;
+  };
 };
 
 export type NumberProperty = TSESTree.PropertyNonComputedName & {
-  value: { value: number };
+  value: {
+    type: AST_NODE_TYPES.ObjectExpression;
+    value: number;
+  };
 };
 
 export type StringProperty = TSESTree.PropertyNonComputedName & {
-  value: { value: string };
+  value: {
+    type: AST_NODE_TYPES.ObjectExpression;
+    value: string;
+  };
 };
 
 export type ObjectProperty = TSESTree.PropertyNonComputedName & {

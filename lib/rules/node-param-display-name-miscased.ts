@@ -33,9 +33,7 @@ export default utils.createRule({
 
           if (!displayName) return;
 
-          if (utils.isUrl(displayName.value)) return;
-
-          if (utils.isKebabCase(displayName.value)) return;
+          if (isAllowedException(displayName.value)) return;
 
           const titledCased = titleCase(displayName.value);
 
@@ -53,9 +51,7 @@ export default utils.createRule({
 
           if (!name) return;
 
-          if (utils.isUrl(name.value)) return;
-
-          if (utils.isKebabCase(name.value)) return;
+          if (isAllowedException(name.value)) return;
 
           const titleCased = titleCase(name.value);
 
@@ -73,3 +69,11 @@ export default utils.createRule({
     };
   },
 });
+
+function isAllowedException(value: string) {
+  if (utils.isUrl(value)) return true;
+
+  if (utils.isKebabCase(value)) return true;
+
+  return ["bmp", "tiff", "gif", "jpg", "jpeg", "png"].includes(value);
+}

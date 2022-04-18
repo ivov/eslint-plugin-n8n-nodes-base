@@ -3,9 +3,9 @@ import { ruleTester, getRuleName } from "../lib/utils";
 import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
-	valid: [
-		{
-			code: outdent`
+  valid: [
+    {
+      code: outdent`
 			const test = {
 				displayName: 'Test',
 				name: 'test',
@@ -13,19 +13,50 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				description: 'This is a test',
 			};`,
-		},
-		{
-			code: outdent`
+    },
+    {
+      code: outdent`
 			const test = {
 				name: 'Username',
 				value: 'username',
 				description: 'The name of the user',
 			};`,
-		},
-	],
-	invalid: [
-		{
-			code: outdent`
+    },
+    {
+      code: outdent`
+			const test = {
+				displayName: 'Format',
+				name: 'format',
+				type: 'options',
+				options: [
+					{
+						name: 'bmp',
+						value: 'bmp',
+					},
+					{
+						name: 'gif',
+						value: 'gif',
+					},
+					{
+						name: 'jpeg',
+						value: 'jpeg',
+					},
+					{
+						name: 'png',
+						value: 'png',
+					},
+					{
+						name: 'tiff',
+						value: 'tiff',
+					},
+				],
+				default: 'jpeg',
+			}`,
+    },
+  ],
+  invalid: [
+    {
+      code: outdent`
 			const test = {
 				displayName: 'Test',
 				name: 'test',
@@ -33,8 +64,8 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				description: 'this is a test',
 			};`,
-			errors: [{ messageId: "uppercaseFirstChar" }],
-			output: outdent`
+      errors: [{ messageId: "uppercaseFirstChar" }],
+      output: outdent`
 			const test = {
 				displayName: 'Test',
 				name: 'test',
@@ -42,21 +73,21 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				description: 'This is a test',
 			};`,
-		},
-		{
-			code: outdent`
+    },
+    {
+      code: outdent`
 			const test = {
 				name: 'Username',
 				value: 'username',
 				description: 'the name of the user',
 			};`,
-			errors: [{ messageId: "uppercaseFirstChar" }],
-			output: outdent`
+      errors: [{ messageId: "uppercaseFirstChar" }],
+      output: outdent`
 			const test = {
 				name: 'Username',
 				value: 'username',
 				description: 'The name of the user',
 			};`,
-		},
-	],
+    },
+  ],
 });

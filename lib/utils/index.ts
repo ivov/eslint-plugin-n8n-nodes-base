@@ -198,7 +198,9 @@ export const getInsertionArgs = (referenceNode: { ast: TSESTree.BaseNode }) => {
 
 export function isUrl(str: string) {
   try {
-    if (["com", "org", "net", "io", "edu"].includes(str.slice(-3))) return true; // tolerate no protocol
+    // tolerate absent protocol, respect intent
+    if (["com", "org", "net", "io", "edu"].includes(str.slice(-3))) return true;
+
     new URL(str);
     return true;
   } catch (_) {
@@ -248,4 +250,16 @@ export function keyValue(
   }
 
   return `${key}: '${escapedValue}'`;
+}
+
+/**
+ * Whether a string is allowed to be lowercase and is therefore exempt from rules such as
+ * `node-param-display-name-lowercase-first-char`, `node-param-display-name-miscased`, etc.
+ */
+export function isAllowedLowercase(value: string) {
+  if (isUrl(value)) return true;
+
+  if (isKebabCase(value)) return true;
+
+  return ["bmp", "tiff", "gif", "jpg", "jpeg", "png"].includes(value);
 }

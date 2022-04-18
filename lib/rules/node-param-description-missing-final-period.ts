@@ -39,7 +39,7 @@ export default utils.createRule({
         if (
           egLess.split(". ").length === 2 &&
           !egLess.endsWith(".") &&
-          !isAllowedException(egLess)
+          !isAllowedNoFinalPeriod(egLess)
         ) {
           const fixed = utils.keyValue("description", description.value + ".");
 
@@ -55,9 +55,7 @@ export default utils.createRule({
 });
 
 /**
- * Check whether a description is an exception to this rule.
- * - PEM key example
- * - `</code>` HTML tag
+ * Whether a string is allowed to end without a final period.
  */
-const isAllowedException = (descriptionValue: string) =>
-  descriptionValue.endsWith("---") || descriptionValue.endsWith("</code>");
+const isAllowedNoFinalPeriod = (value: string) =>
+  value.endsWith("---") || value.endsWith("</code>");

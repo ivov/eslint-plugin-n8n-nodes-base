@@ -7,7 +7,7 @@ import DocRuleTester from "eslint-docgen/src/rule-tester";
 import { WEAK_DESCRIPTIONS } from "../constants";
 
 export const createRule = ESLintUtils.RuleCreator((ruleName) => {
-  return `https://github.com/ivov/eslint-plugin-n8n-nodes-base/docs/rules/${ruleName}`;
+  return `https://github.com/ivov/eslint-plugin-n8n-nodes-base/blob/master/docs/rules/${ruleName}.md`;
 });
 
 export const getRuleName = ({ filename }: { filename: string }) =>

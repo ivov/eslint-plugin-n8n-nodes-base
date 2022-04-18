@@ -16,7 +16,9 @@ export default utils.createRule({
     schema: [],
     messages: {
       uppercaseFirstChar: "Change first char to uppercase [autofixable]",
-      useTitleCase: "Remove period and use title case [autofixable]",
+      removePeriodUseTitleCase:
+        "Remove period and use title case [autofixable]",
+      useTitleCase: "Use title case [autofixable]",
     },
   },
   defaultOptions: [],
@@ -36,12 +38,12 @@ export default utils.createRule({
 
           if (utils.isAllowedLowercase(displayName.value)) return;
 
-          // e.g. 'email.blocked'
-          if (/\w+\.\w+/.test(displayName.value)) {
-            const correctlyCased = titleCase(
-              displayName.value.replace(".", " ").replace(/_/g, " ")
+          if (isTwoWordsInCamelCase(displayName.value)) {
+            const properCased = titleCase(
+              displayName.value.replace(/([a-z])([A-Z])/g, "$1 $2")
             );
-            const fixed = utils.keyValue("displayName", correctlyCased);
+
+            const fixed = utils.keyValue("displayName", properCased);
 
             return context.report({
               messageId: "useTitleCase",
@@ -50,12 +52,25 @@ export default utils.createRule({
             });
           }
 
+          if (isTwoWordsJoinedByPeriod(displayName.value)) {
+            const properCased = titleCase(
+              displayName.value.replace(".", " ").replace(/_/g, " ")
+            );
+            const fixed = utils.keyValue("displayName", properCased);
+
+            return context.report({
+              messageId: "removePeriodUseTitleCase",
+              node: displayName.ast,
+              fix: (fixer) => fixer.replaceText(displayName.ast, fixed),
+            });
+          }
+
           const firstChar = displayName.value.charAt(0);
 
           if (/[a-z]/.test(firstChar)) {
-            const correctlyCased =
+            const properCased =
               firstChar.toUpperCase() + displayName.value.slice(1);
-            const fixed = utils.keyValue("displayName", correctlyCased);
+            const fixed = utils.keyValue("displayName", properCased);
 
             context.report({
               messageId: "uppercaseFirstChar",
@@ -70,12 +85,12 @@ export default utils.createRule({
 
           if (utils.isAllowedLowercase(name.value)) return;
 
-          // e.g. 'email.blocked'
-          if (/\w+\.\w+/.test(name.value)) {
-            const correctlyCased = titleCase(
-              name.value.replace(".", " ").replace(/_/g, " ")
+          if (isTwoWordsInCamelCase(name.value)) {
+            const properCased = titleCase(
+              name.value.replace(/([a-z])([A-Z])/g, "$1 $2")
             );
-            const fixed = utils.keyValue("name", correctlyCased);
+
+            const fixed = utils.keyValue("name", properCased);
 
             return context.report({
               messageId: "useTitleCase",
@@ -84,13 +99,25 @@ export default utils.createRule({
             });
           }
 
+          if (isTwoWordsJoinedByPeriod(name.value)) {
+            const properCased = titleCase(
+              name.value.replace(".", " ").replace(/_/g, " ")
+            );
+            const fixed = utils.keyValue("name", properCased);
+
+            return context.report({
+              messageId: "removePeriodUseTitleCase",
+              node: name.ast,
+              fix: (fixer) => fixer.replaceText(name.ast, fixed),
+            });
+          }
+
           const firstChar = name.value.charAt(0);
 
           if (/[a-z]/.test(firstChar)) {
-            const correctlyCased =
-              firstChar.toUpperCase() + name.value.slice(1);
+            const properCased = firstChar.toUpperCase() + name.value.slice(1);
 
-            const fixed = utils.keyValue("name", correctlyCased);
+            const fixed = utils.keyValue("name", properCased);
 
             context.report({
               messageId: "uppercaseFirstChar",
@@ -103,3 +130,7 @@ export default utils.createRule({
     };
   },
 });
+
+const isTwoWordsInCamelCase = (value: string) => /([a-z])([A-Z])/.test(value);
+
+const isTwoWordsJoinedByPeriod = (value: string) => /\w+\.\w+/.test(value);

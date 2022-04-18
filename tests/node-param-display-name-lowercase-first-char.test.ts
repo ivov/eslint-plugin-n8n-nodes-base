@@ -23,20 +23,20 @@ ruleTester().run(getRuleName(module), rule, {
 		{
 			code: outdent`
 			const test = {
-				displayName: "API Domain",
-				name: "apiDomain",
-				type: "options",
+				displayName: 'API Domain',
+				name: 'apiDomain',
+				type: 'options',
 				options: [
 					{
-						name: "api.jotform.com",
-						value: "api.jotform.com",
+						name: 'api.jotform.com',
+						value: 'api.jotform.com',
 					},
 					{
-						name: "eu-api.jotform.com",
-						value: "eu-api.jotform.com",
+						name: 'eu-api.jotform.com',
+						value: 'eu-api.jotform.com',
 					},
 				],
-				default: "api.jotform.com",
+				default: 'api.jotform.com',
 				description:
 					'The API domain to use. Use "eu-api.jotform.com" if your account is in based in Europe.',
 			},`,
@@ -154,6 +154,38 @@ ruleTester().run(getRuleName(module), rule, {
 				options: [
 					{
 						name: 'coupon.created',
+						value: 'coupon.created',
+					},
+				],
+			};`,
+			errors: [{ messageId: "removePeriodUseTitleCase" }],
+			output: outdent`
+			const test = {
+				displayName: 'Event',
+				name: 'event',
+				type: 'options',
+				required: true,
+				default: 'coupon.created',
+				options: [
+					{
+						name: 'Coupon Created',
+						value: 'coupon.created',
+					},
+				],
+			};`,
+		},
+
+		{
+			code: outdent`
+			const test = {
+				displayName: 'Event',
+				name: 'event',
+				type: 'options',
+				required: true,
+				default: 'coupon.created',
+				options: [
+					{
+						name: 'couponCreated',
 						value: 'coupon.created',
 					},
 				],

@@ -38,7 +38,7 @@ export default utils.createRule({
           a.displayName.localeCompare(b.displayName)
         );
 
-        if (!utils.areIdenticallySorted(values.value, sortedParams)) {
+        if (!utils.areIdenticallySortedParams(values.value, sortedParams)) {
           const indentation = utils.getIndentationStringForOption(values);
 
           const fixed = utils

@@ -25,11 +25,21 @@ export function toExpectedNodeFilename(name: string) {
   return name.charAt(0).toUpperCase() + name.slice(1) + ".node.ts";
 }
 
-export function areIdenticallySorted<
-  T extends { name: string; value: string } | { displayName: string }
+export function areIdenticallySortedOptions<
+  T extends { name: string; value: string }
 >(first: T[], second: T[]) {
   for (let i = 0; i < first.length; i++) {
-    if (first[i] !== second[i]) return false;
+    if (first[i].name !== second[i].name) return false;
+  }
+
+  return true;
+}
+
+export function areIdenticallySortedParams<
+  T extends { displayName: string }
+>(first: T[], second: T[]) {
+  for (let i = 0; i < first.length; i++) {
+    if (first[i].displayName !== second[i].displayName) return false;
   }
 
   return true;

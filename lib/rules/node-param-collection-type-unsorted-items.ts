@@ -36,18 +36,18 @@ export default utils.createRule({
         if (options.value.length < MIN_ITEMS_TO_ALPHABETIZE) return;
 
         // collection contains node parameters inside `options` so rename
-        const sortedParams = [...options.value].sort((a, b) =>
+        const sortedOptions = [...options.value].sort((a, b) =>
           a.name.localeCompare(b.name)
         );
 
-        if (!utils.areIdenticallySorted(options.value, sortedParams)) {
+        if (!utils.areIdenticallySortedOptions(options.value, sortedOptions)) {
           const indentation = utils.getIndentationStringForOption(options);
 
           const sorted = utils
-            .unquoteKeys(sortedParams)
+            .unquoteKeys(sortedOptions)
             .replace(/\n/g, `\n${indentation}`);
 
-          const displayOrder = sortedParams
+          const displayOrder = sortedOptions
             .reduce<string[]>((acc, cur) => {
               return acc.push(cur.name), acc;
             }, [])

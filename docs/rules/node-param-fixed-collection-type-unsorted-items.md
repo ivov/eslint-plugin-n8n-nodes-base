@@ -2,7 +2,7 @@
 
 # node-param-fixed-collection-type-unsorted-items
 
-Items in a fixed-collection-type node parameter section must be alphabetized by `displayName` if more than five, unless the items are address fields.
+Items in a fixed-collection-type node parameter section must be alphabetized by `displayName` if five or more than five, unless the items are address fields.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
 

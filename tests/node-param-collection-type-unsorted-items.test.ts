@@ -13,6 +13,33 @@ ruleTester().run(getRuleName(module), rule, {
 				default: {},
 				options: [
 					{
+						name: 'C',
+						value: 'c',
+					},
+					{
+						name: 'A',
+						value: 'a',
+					},
+					{
+						name: 'B',
+						value: 'b',
+					},
+					{
+						name: 'D',
+						value: 'd',
+					},
+				],
+			};`,
+		},
+		{
+			code: outdent`
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'collection',
+				default: {},
+				options: [
+					{
 						name: 'A',
 						value: 'a',
 					},

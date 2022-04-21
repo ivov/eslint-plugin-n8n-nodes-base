@@ -2,7 +2,7 @@
 
 # node-param-multi-options-type-unsorted-items
 
-Items in a multi-options-type node parameter must be alphabetized by `name` if more than five.
+Items in a multi-options-type node parameter must be alphabetized by `name` if five or more than five.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
 

@@ -2,7 +2,7 @@
 
 # node-param-collection-type-unsorted-items
 
-Items in collection-type node parameter must be alphabetized by `name` if more than five.
+Items in collection-type node parameter must be alphabetized by `name` if five or more than five.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
 
@@ -48,6 +48,31 @@ const test = {
 ✅ Example of **correct** code:
 
 ```js
+const test = {
+  displayName: "Test",
+  name: "test",
+  type: "collection",
+  default: {},
+  options: [
+    {
+      name: "C",
+      value: "c",
+    },
+    {
+      name: "A",
+      value: "a",
+    },
+    {
+      name: "B",
+      value: "b",
+    },
+    {
+      name: "D",
+      value: "d",
+    },
+  ],
+};
+
 const test = {
   displayName: "Test",
   name: "test",

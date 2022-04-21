@@ -11,7 +11,7 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: `Items in options-type node parameter must be alphabetized by \`name\` if more than ${MIN_ITEMS_TO_ALPHABETIZE_IN_FULL}.`,
+      description: `Items in options-type node parameter must be alphabetized by \`name\` if ${MIN_ITEMS_TO_ALPHABETIZE_IN_FULL} or more than ${MIN_ITEMS_TO_ALPHABETIZE_IN_FULL}.`,
       recommended: "error",
     },
     fixable: "code",

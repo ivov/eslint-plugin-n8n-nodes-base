@@ -12,7 +12,7 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: `Items in a fixed-collection-type node parameter section must be alphabetized by \`displayName\` if more than ${MIN_ITEMS_TO_ALPHABETIZE_IN_FULL}, unless the items are address fields.`,
+      description: `Items in a fixed-collection-type node parameter section must be alphabetized by \`displayName\` if ${MIN_ITEMS_TO_ALPHABETIZE_IN_FULL} or more than ${MIN_ITEMS_TO_ALPHABETIZE_IN_FULL}, unless the items are address fields.`,
       recommended: "error",
     },
     fixable: "code",

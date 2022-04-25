@@ -39,7 +39,7 @@ ruleTester().run(getRuleName(module), rule, {
 				name: 'operation',
 				type: 'string',
 				default: '',
-				description: 'The Id of the user',
+				description: 'The Id of the user provided',
 			};`,
 			errors: [{ messageId: "uppercaseId" }],
 			output: outdent`
@@ -48,7 +48,7 @@ ruleTester().run(getRuleName(module), rule, {
 				name: 'operation',
 				type: 'string',
 				default: '',
-				description: 'The ID of the user',
+				description: 'The ID of the user provided',
 			};`,
 		},
 		{

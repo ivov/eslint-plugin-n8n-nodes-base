@@ -82,7 +82,7 @@ export const TOP_LEVEL_FIXED_COLLECTION: {
 //             regexes
 // ----------------------------------
 
-export const MISCASED_ID_REGEX = /(^|\s)(i|I)(d(\s|s)|d$)/;
+export const MISCASED_ID_REGEX = /\b(i|I)d(s?)\b/;
 
 export const VALID_HTML_TAG_REGEX = /<\/?(h\d|p|b|em|i|a|ol|ul|li|code|br)>/;
 

@@ -28,7 +28,10 @@ export default utils.createRule({
         if (!description) return;
 
         if (MISCASED_ID_REGEX.test(description.value)) {
-          const correctlyCased = description.value.replace(/(id|Id)/g, "ID");
+          const correctlyCased = description.value
+            .replace(/\bid\b/i, "ID")
+            .replace(/\bids\b/i, "IDs");
+
           const fixed = utils.keyValue("description", correctlyCased);
 
           context.report({

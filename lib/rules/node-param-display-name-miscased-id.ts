@@ -32,7 +32,10 @@ export default utils.createRule({
           if (!displayName) return;
 
           if (MISCASED_ID_REGEX.test(displayName.value)) {
-            const correctlyCased = displayName.value.replace(/(id|Id)/, "ID");
+            const correctlyCased = displayName.value
+              .replace(/\bid\b/i, "ID")
+              .replace(/\bids\b/i, "IDs");
+
             const fixed = utils.keyValue("displayName", correctlyCased);
 
             context.report({
@@ -47,7 +50,10 @@ export default utils.createRule({
           if (!name) return;
 
           if (MISCASED_ID_REGEX.test(name.value)) {
-            const correctlyCased = name.value.replace(/(id|Id)/, "ID");
+            const correctlyCased = name.value
+              .replace(/\bid\b/i, "ID")
+              .replace(/\bids\b/i, "IDs");
+
             const fixed = utils.keyValue("name", correctlyCased);
 
             context.report({

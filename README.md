@@ -85,7 +85,7 @@ Optionally, omit `extends` and enable rules individually:
 | [node-execute-block-missing-continue-on-fail](docs/rules/node-execute-block-missing-continue-on-fail.md) | The `execute()` method in a node must implement `continueOnFail` in a try-catch block. | No |
 | [node-execute-block-wrong-error-thrown](docs/rules/node-execute-block-wrong-error-thrown.md) | The `execute()` method in a node may only throw `NodeApiError` for failed network requests and `NodeOperationError` for internal errors, not the built-in `Error`. | No |
 | [node-param-array-type-assertion](docs/rules/node-param-array-type-assertion.md) | Array of node parameters must be typed, not type-asserted. | Yes, unsafe |
-| [node-param-collection-type-unsorted-items](docs/rules/node-param-collection-type-unsorted-items.md) | Items in collection-type node parameter must be alphabetized by `name` if more than five. | Yes, safe |
+| [node-param-collection-type-unsorted-items](docs/rules/node-param-collection-type-unsorted-items.md) | Items in collection-type node parameter must be alphabetized by `name` if five or more than five. | Yes, safe |
 | [node-param-color-type-unused](docs/rules/node-param-color-type-unused.md) | `color`-type must be used for color-related node parameter. | Yes, unsafe |
 | [node-param-default-missing](docs/rules/node-param-default-missing.md) | `default` must be present in a node parameter. | Yes, safe |
 | [node-param-default-wrong-for-boolean](docs/rules/node-param-default-wrong-for-boolean.md) | `default` for boolean-type node parameter must be a boolean. | Yes, safe |
@@ -134,9 +134,9 @@ Optionally, omit `extends` and enable rules individually:
 | [node-param-display-name-wrong-for-dynamic-options](docs/rules/node-param-display-name-wrong-for-dynamic-options.md) | `displayName` for dynamic-options-type node parameter must end with `Name or ID` | Yes, safe |
 | [node-param-display-name-wrong-for-simplify](docs/rules/node-param-display-name-wrong-for-simplify.md) | `displayName` for Simplify node parameter must be Simplify | Yes, safe |
 | [node-param-display-name-wrong-for-update-fields](docs/rules/node-param-display-name-wrong-for-update-fields.md) | `displayName` for Update operation node parameter must be `Update Fields` | Yes, safe |
-| [node-param-fixed-collection-type-unsorted-items](docs/rules/node-param-fixed-collection-type-unsorted-items.md) | Items in a fixed-collection-type node parameter section must be alphabetized by `displayName` if more than five, unless the items are address fields. | Yes, safe |
+| [node-param-fixed-collection-type-unsorted-items](docs/rules/node-param-fixed-collection-type-unsorted-items.md) | Items in a fixed-collection-type node parameter section must be alphabetized by `displayName` if five or more than five, unless the items are address fields. | Yes, safe |
 | [node-param-min-value-wrong-for-limit](docs/rules/node-param-min-value-wrong-for-limit.md) | `minValue` for Limit node parameter must be a positive integer. | Yes, safe |
-| [node-param-multi-options-type-unsorted-items](docs/rules/node-param-multi-options-type-unsorted-items.md) | Items in a multi-options-type node parameter must be alphabetized by `name` if more than five. | Yes, safe |
+| [node-param-multi-options-type-unsorted-items](docs/rules/node-param-multi-options-type-unsorted-items.md) | Items in a multi-options-type node parameter must be alphabetized by `name` if five or more than five. | Yes, safe |
 | [node-param-operation-without-no-data-expression](docs/rules/node-param-operation-without-no-data-expression.md) | `noDataExpression` in an Operation node parameter must be present and enabled. | Yes, safe |
 | [node-param-option-description-identical-to-name](docs/rules/node-param-option-description-identical-to-name.md) | `description` in option in options-type node parameter must not be identical to `name`. | Yes, safe |
 | [node-param-option-name-containing-star](docs/rules/node-param-option-name-containing-star.md) | Option `name` in options-type node parameter must not contain `*`. Use `[All]` instead. | Yes, safe |
@@ -144,7 +144,7 @@ Optionally, omit `extends` and enable rules individually:
 | [node-param-option-name-wrong-for-get-all](docs/rules/node-param-option-name-wrong-for-get-all.md) | Option `name` for Get All node parameter must be `Get All` | Yes, safe |
 | [node-param-option-name-wrong-for-upsert](docs/rules/node-param-option-name-wrong-for-upsert.md) | Option `name` for Upsert node parameter must be `Upsert`. | Yes, safe |
 | [node-param-option-value-duplicate](docs/rules/node-param-option-value-duplicate.md) | Option `value` in options-type node parameter must not be a duplicate. | Yes, safe |
-| [node-param-options-type-unsorted-items](docs/rules/node-param-options-type-unsorted-items.md) | Items in options-type node parameter must be alphabetized by `name` if more than five. | Yes, safe |
+| [node-param-options-type-unsorted-items](docs/rules/node-param-options-type-unsorted-items.md) | Items in options-type node parameter must be alphabetized by `name` if five or more than five. | Yes, safe |
 | [node-param-required-false](docs/rules/node-param-required-false.md) | `required: false` in node parameter must be removed because it is implied. | Yes, safe |
 | [node-param-resource-with-plural-option](docs/rules/node-param-resource-with-plural-option.md) | Option `name` for a Resource node parameter must be singular. | Yes, safe |
 | [node-param-resource-without-no-data-expression](docs/rules/node-param-resource-without-no-data-expression.md) | `noDataExpression` in a Resource node parameter must be present and enabled. | Yes, safe |

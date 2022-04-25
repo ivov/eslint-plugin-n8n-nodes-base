@@ -14,7 +14,7 @@ export default utils.createRule({
     schema: [],
     fixable: 'code',
     messages: {
-      removeDescription: "Remove omittable description [non-autofixable]", // TODO: Or remove
+      removeDescription: "Remove omittable description [autofixable]",
     },
   },
   defaultOptions: [],

@@ -20,7 +20,7 @@ const test = {
   name: "operation",
   type: "string",
   default: "",
-  description: "The Id of the user",
+  description: "The Id of the user provided",
 };
 
 const test = {

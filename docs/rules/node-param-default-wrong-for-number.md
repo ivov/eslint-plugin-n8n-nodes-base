@@ -2,7 +2,7 @@
 
 # node-param-default-wrong-for-number
 
-`default` for a number-type node parameter must be a number.
+`default` for a number-type node parameter must be a number, except for a number-type ID parameter.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
 
@@ -31,6 +31,14 @@ const test = {
   name: "test",
   type: "number",
   default: 0,
+};
+
+const test = {
+  displayName: "Account Contact ID",
+  name: "accountContactId",
+  type: "number",
+  default: "",
+  required: true,
 };
 ```
 

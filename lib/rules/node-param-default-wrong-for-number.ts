@@ -8,7 +8,7 @@ export default utils.createRule({
     type: "layout",
     docs: {
       description:
-        "`default` for a number-type node parameter must be a number.",
+        "`default` for a number-type node parameter must be a number, except for a number-type ID parameter.",
       recommended: "error",
     },
     fixable: "code",
@@ -29,7 +29,15 @@ export default utils.createRule({
 
         if (!_default) return;
 
-        if (typeof _default.value !== "number") {
+        const name = getters.nodeParam.getName(node);
+
+        const hasNonNumberDefault = typeof _default.value !== "number";
+
+        if (hasNonNumberDefault && name?.value.toLowerCase().endsWith("id")) {
+          return; // disregard numeric param for ID
+        }
+
+        if (hasNonNumberDefault) {
           context.report({
             messageId: "setNumberDefault",
             node: _default.ast,

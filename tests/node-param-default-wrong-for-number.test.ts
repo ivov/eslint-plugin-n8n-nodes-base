@@ -13,6 +13,16 @@ ruleTester().run(getRuleName(module), rule, {
 				default: 0,
 			};`,
 		},
+		{
+			code: outdent`
+			const test = {
+				displayName: 'Account Contact ID',
+				name: 'accountContactId',
+				type: 'number',
+				default: '',
+				required: true,
+			};`,
+		},
 	],
 	invalid: [
 		{

@@ -13,6 +13,19 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 			};`,
 		},
+		{
+			code: outdent`
+			const test = {
+				displayName: 'Tags',
+				name: 'tags',
+				type: 'string',
+				typeOptions: {
+					multipleValues: true,
+					multipleValueButtonText: 'Add Tag',
+				},
+				default: [],
+			};`,
+		},
 	],
 	invalid: [
 		{

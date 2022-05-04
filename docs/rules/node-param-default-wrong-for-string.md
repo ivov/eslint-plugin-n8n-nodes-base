@@ -2,7 +2,7 @@
 
 # node-param-default-wrong-for-string
 
-`default` for a string-type node parameter must be a string.
+`default` for a string-type node parameter must be a string, unless `typeOptions.multipleValues` is set to `true`.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
 
@@ -31,6 +31,17 @@ const test = {
   name: "test",
   type: "string",
   default: "",
+};
+
+const test = {
+  displayName: "Tags",
+  name: "tags",
+  type: "string",
+  typeOptions: {
+    multipleValues: true,
+    multipleValueButtonText: "Add Tag",
+  },
+  default: [],
 };
 ```
 

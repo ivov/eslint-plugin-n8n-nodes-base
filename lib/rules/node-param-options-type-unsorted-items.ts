@@ -38,9 +38,9 @@ export default utils.createRule({
         const sortedOptions = [...options.value].sort(utils.optionComparator);
 
         if (!utils.areIdenticallySortedOptions(options.value, sortedOptions)) {
-          const indentation = utils.getIndentationForOption(options);
+          const baseIndentation = utils.getBaseIndentationForOption(options);
 
-          const fixed = utils.unquoteKeys(sortedOptions, indentation);
+          const fixed = utils.format(sortedOptions, baseIndentation);
 
           const displayOrder = utils.toDisplayOrder(sortedOptions);
 

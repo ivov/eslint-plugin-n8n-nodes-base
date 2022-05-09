@@ -6,6 +6,8 @@ import { TSESTree } from "@typescript-eslint/utils";
 import DocRuleTester from "eslint-docgen/src/rule-tester";
 import { VERSION_REGEX, WEAK_DESCRIPTIONS } from "../constants";
 
+export { format } from "./format";
+
 export const createRule = ESLintUtils.RuleCreator((ruleName) => {
   return `https://github.com/ivov/eslint-plugin-n8n-nodes-base/blob/master/docs/rules/${ruleName}.md`;
 });
@@ -70,9 +72,11 @@ export function areIdenticallySortedParams(
  * without quotes on object keys.
  *
  * Modified from: https://stackoverflow.com/a/65443215
+ *
+ * Equivalent of `format` but for fixed collection.
  */
-export function unquoteKeys(obj: object, indentation: string) {
-  // TODO: Clean this up
+export function clean_OLD(obj: object, indentation: string) {
+  // TODO: Refactor
 
   const clean = JSON.stringify(obj, null, 2)
     .replace(/\'/g, "\\'")
@@ -190,7 +194,7 @@ export const getIndentationString = (referenceNode: {
   return "\t".repeat(referenceNode.ast.loc.start.column);
 };
 
-export const getIndentationForOption = (referenceNode: {
+export const getBaseIndentationForOption = (referenceNode: {
   ast: TSESTree.BaseNode;
 }) => {
   return "\t".repeat(referenceNode.ast.loc.start.column - 1);

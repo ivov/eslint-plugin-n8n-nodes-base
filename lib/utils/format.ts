@@ -53,14 +53,10 @@ function indent(str: string, baseIndentation: string) {
       }
 
       if (rest.startsWith("{") || rest.startsWith("}")) {
-        const indent = "\t".repeat(leadingWhitespace.length);
-
-        return baseIndentation + indent + rest;
+        return baseIndentation + "\t".repeat(leadingWhitespace.length) + rest;
       }
 
-      const indent = "\t".repeat(leadingWhitespace.length - 1);
-
-      return baseIndentation + indent + rest;
+      return baseIndentation + "\t".repeat(leadingWhitespace.length - 1) + rest;
     })
     .join("\n")
     .trim();

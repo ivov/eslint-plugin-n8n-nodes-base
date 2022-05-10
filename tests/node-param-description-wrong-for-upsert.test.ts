@@ -13,6 +13,14 @@ ruleTester().run(getRuleName(module), rule, {
 				description: '${UPSERT_NODE_PARAMETER.DESCRIPTION}',
 			};`,
 		},
+		{
+			code: outdent`
+			const test = {
+				name: 'Upsert',
+				value: 'upsert',
+				description: 'Create a new contact, or update the current one if it already exists (upsert)',
+			};`,
+		},
 	],
 	invalid: [
 		{

@@ -8,13 +8,13 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: `\`description\` for Upsert node parameter must be \`${UPSERT_NODE_PARAMETER.DESCRIPTION}\``,
+      description: `\`description\` for Upsert node parameter must be \`${UPSERT_NODE_PARAMETER.DESCRIPTION}\`. The resource name e.g. \`'contact'\` is also allowed instead of \`'record'\`.`,
       recommended: "error",
     },
     fixable: "code",
     schema: [],
     messages: {
-      useUpsertDescription: `Replace with '${UPSERT_NODE_PARAMETER.DESCRIPTION}' [autofixable]`,
+      useUpsertDescription: `Replace with '${UPSERT_NODE_PARAMETER.DESCRIPTION}'.  [autofixable]`,
     },
   },
   defaultOptions: [],
@@ -29,9 +29,14 @@ export default utils.createRule({
 
         if (!description) return;
 
+        const { value } = description;
         const expected = UPSERT_NODE_PARAMETER.DESCRIPTION;
+        const [expectedStart, expectedEnd] = expected.split("record");
 
-        if (description.value !== expected) {
+        if (
+          value !== expected &&
+          (!value.startsWith(expectedStart) || !value.endsWith(expectedEnd)) // exception
+        ) {
           const fixed = utils.keyValue("description", expected);
 
           context.report({

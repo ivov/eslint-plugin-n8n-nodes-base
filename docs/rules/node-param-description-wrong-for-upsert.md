@@ -2,7 +2,7 @@
 
 # node-param-description-wrong-for-upsert
 
-`description` for Upsert node parameter must be `Create a new record, or update the current one if it already exists (upsert)`
+`description` for Upsert node parameter must be `Create a new record, or update the current one if it already exists (upsert)`. The resource name e.g. `'contact'` is also allowed instead of `'record'`.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
 
@@ -30,6 +30,13 @@ const test = {
   value: "upsert",
   description:
     "Create a new record, or update the current one if it already exists (upsert)",
+};
+
+const test = {
+  name: "Upsert",
+  value: "upsert",
+  description:
+    "Create a new contact, or update the current one if it already exists (upsert)",
 };
 ```
 

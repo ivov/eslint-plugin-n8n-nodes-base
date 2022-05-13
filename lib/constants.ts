@@ -84,6 +84,8 @@ export const TOP_LEVEL_FIXED_COLLECTION: {
 
 export const MISCASED_ID_REGEX = /\b(i|I)d(s?)\b/;
 
+export const MISCASED_URL_REGEX = /\b(u|U)rl(s?)\b/;
+
 export const VALID_HTML_TAG_REGEX = /<\/?(h\d|p|b|em|i|a|ol|ul|li|code|br)>/;
 
 export const LINE_BREAK_HTML_TAG_REGEX = /<\/? ?br ?\/?>/;

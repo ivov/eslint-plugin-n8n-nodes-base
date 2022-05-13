@@ -154,7 +154,7 @@ const isArrayExpression = (
   property: TSESTree.ObjectLiteralElement
 ): property is TSESTree.PropertyNonComputedName & {
   key: { name: string };
-  value: { elements: any[] };
+  value: { elements: TSESTree.ObjectExpression[] }; // @TODO: Double-check type
 } => {
   return (
     property.type === AST_NODE_TYPES.Property &&

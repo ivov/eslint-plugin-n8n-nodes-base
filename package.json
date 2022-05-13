@@ -21,7 +21,7 @@
   ],
   "scripts": {
     "build": "node scripts/build.mjs",
-    "doc": "node scripts/make-docs.mjs",
+    "doc": "npm run build; node scripts/make-docs.mjs",
     "lint": "eslint lib tests --ext .ts",
     "test": "jest",
     "prepare": "npm run lint; npm run test; npm run build"

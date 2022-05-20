@@ -58,6 +58,25 @@ ruleTester().run(getRuleName(module), rule, {
 				name: 'operation',
 				type: 'string',
 				default: '',
+				description: 'An avatar image url. note: the image url needs to be https.',
+			};`,
+      errors: [{ messageId: "uppercaseUrl" }],
+      output: outdent`
+			const test = {
+				displayName: 'Operation',
+				name: 'operation',
+				type: 'string',
+				default: '',
+				description: 'An avatar image URL. note: the image URL needs to be https.',
+			};`,
+    },
+    {
+      code: outdent`
+			const test = {
+				displayName: 'Operation',
+				name: 'operation',
+				type: 'string',
+				default: '',
 				description: 'The Url of the curly user',
 			};`,
       errors: [{ messageId: "uppercaseUrl" }],

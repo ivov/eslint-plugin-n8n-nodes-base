@@ -82,6 +82,21 @@ ruleTester().run(getRuleName(module), rule, {
 			const test = {
 				name: 'JSON',
 				value: 'json',
+				description: 'The json to send. The json to send.',
+			};`,
+      errors: [{ messageId: "uppercaseJson" }],
+      output: outdent`
+			const test = {
+				name: 'JSON',
+				value: 'json',
+				description: 'The JSON to send. The JSON to send.',
+			};`,
+    },
+    {
+      code: outdent`
+			const test = {
+				name: 'JSON',
+				value: 'json',
 				description: 'The Json to send',
 			};`,
       errors: [{ messageId: "uppercaseJson" }],

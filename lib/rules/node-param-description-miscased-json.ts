@@ -28,7 +28,7 @@ export default utils.createRule({
         if (!description) return;
 
         if (MISCASED_JSON_REGEX.test(description.value)) {
-          const correctlyCased = description.value.replace(/\bjson\b/i, "JSON");
+          const correctlyCased = description.value.replace(/\bjson\b/ig, "JSON");
 
           const fixed = utils.keyValue("description", correctlyCased);
 

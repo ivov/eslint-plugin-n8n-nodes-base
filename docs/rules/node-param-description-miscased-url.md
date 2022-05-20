@@ -28,6 +28,14 @@ const test = {
   name: "operation",
   type: "string",
   default: "",
+  description: "An avatar image url. note: the image url needs to be https.",
+};
+
+const test = {
+  displayName: "Operation",
+  name: "operation",
+  type: "string",
+  default: "",
   description: "The Url of the curly user",
 };
 

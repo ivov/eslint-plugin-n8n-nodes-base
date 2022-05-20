@@ -29,8 +29,8 @@ export default utils.createRule({
 
         if (MISCASED_URL_REGEX.test(description.value)) {
           const correctlyCased = description.value
-            .replace(/\burl\b/i, "URL")
-            .replace(/\burls\b/i, "URLs");
+            .replace(/\burl\b/ig, "URL")
+            .replace(/\burls\b/ig, "URLs");
 
           const fixed = utils.keyValue("description", correctlyCased);
 

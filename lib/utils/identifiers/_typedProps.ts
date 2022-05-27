@@ -8,6 +8,7 @@ export function isStringPropertyWithKey(
     | "name"
     | "type"
     | "description"
+    | "placeholder"
     | "loadOptionsMethod"
     | "subtitle"
     | "icon"

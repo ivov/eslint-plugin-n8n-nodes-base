@@ -152,6 +152,12 @@ export function isDisplayName(
   return isStringPropertyWithKey("displayName", property);
 }
 
+export function isPlaceholder(
+  property: TSESTree.ObjectLiteralElement
+): property is StringProperty {
+  return isStringPropertyWithKey("placeholder", property);
+}
+
 export function isType(
   property: TSESTree.ObjectLiteralElement
 ): property is StringProperty {

@@ -284,7 +284,7 @@ export function isWeakDescription({ value }: { value: string }) {
  * ```
  */
 export function keyValue(
-  key: "displayName" | "name" | "description" | "type",
+  key: "displayName" | "name" | "description" | "type" | "placeholder",
   value: string,
   { backtickedValue } = { backtickedValue: false }
 ) {

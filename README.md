@@ -147,6 +147,7 @@ Optionally, omit `extends` and enable rules individually:
 | [node-param-option-name-wrong-for-upsert](docs/rules/node-param-option-name-wrong-for-upsert.md) | Option `name` for Upsert node parameter must be `Upsert`. | Yes, safe |
 | [node-param-option-value-duplicate](docs/rules/node-param-option-value-duplicate.md) | Option `value` in options-type node parameter must not be a duplicate. | Yes, safe |
 | [node-param-options-type-unsorted-items](docs/rules/node-param-options-type-unsorted-items.md) | Items in options-type node parameter must be alphabetized by `name` if five or more than five. | Yes, safe |
+| [node-param-placeholder-miscased-id](docs/rules/node-param-placeholder-miscased-id.md) | `ID` in `placeholder` in node parameter must be fully uppercased. | Yes, safe |
 | [node-param-required-false](docs/rules/node-param-required-false.md) | `required: false` in node parameter must be removed because it is implied. | Yes, safe |
 | [node-param-resource-with-plural-option](docs/rules/node-param-resource-with-plural-option.md) | Option `name` for a Resource node parameter must be singular. | Yes, safe |
 | [node-param-resource-without-no-data-expression](docs/rules/node-param-resource-without-no-data-expression.md) | `noDataExpression` in a Resource node parameter must be present and enabled. | Yes, safe |

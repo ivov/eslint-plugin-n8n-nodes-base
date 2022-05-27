@@ -34,6 +34,10 @@ export function getDisplayName(nodeParam: TSESTree.ObjectExpression) {
   return getStringProperty(id.nodeParam.isDisplayName, nodeParam);
 }
 
+export function getPlaceholder(nodeParam: TSESTree.ObjectExpression) {
+  return getStringProperty(id.nodeParam.isPlaceholder, nodeParam);
+}
+
 export function getName(nodeParam: TSESTree.ObjectExpression) {
   return getStringProperty(id.nodeParam.isName, nodeParam);
 }

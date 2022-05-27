@@ -71,6 +71,13 @@ const test = {
   type: "hidden",
   default: `user_scope=${userScopes.join(" ")}`,
 };
+
+const test = {
+  displayName: "Value",
+  name: "value",
+  type: "number",
+  default: -1,
+};
 ```
 
 ## Links

@@ -1,4 +1,5 @@
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
+import { isUnaryExpression } from "../identifiers/nodeParam";
 
 /**
  * Restore the source value of an array of primitives,
@@ -133,20 +134,6 @@ const isLiteral = (
     property.computed === false &&
     property.key.type === AST_NODE_TYPES.Identifier &&
     property.value.type === AST_NODE_TYPES.Literal
-  );
-};
-
-const isUnaryExpression = (
-  property: TSESTree.ObjectLiteralElement
-): property is TSESTree.PropertyNonComputedName & {
-  key: { name: string };
-  value: { operator: string; argument: { raw: string } };
-} => {
-  return (
-    property.type === AST_NODE_TYPES.Property &&
-    property.computed === false &&
-    property.key.type === AST_NODE_TYPES.Identifier &&
-    property.value.type === AST_NODE_TYPES.UnaryExpression
   );
 };
 

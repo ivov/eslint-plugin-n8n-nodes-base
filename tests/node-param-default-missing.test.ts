@@ -39,7 +39,16 @@ ruleTester().run(getRuleName(module), rule, {
 				name: 'authQueryParameters',
 				type: 'hidden',
 				default: \`user_scope=\${userScopes.join(' ')}\`,
-			}`
+			}`,
+		},
+		{
+			code: outdent`
+			const test = {
+				displayName: 'Value',
+				name: 'value',
+				type: 'number',
+				default: -1,
+			};`,
 		},
 	],
 	invalid: [

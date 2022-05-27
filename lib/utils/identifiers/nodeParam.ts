@@ -176,6 +176,20 @@ export function isDisplayOptions(
   return isObjectPropertyWithKey("displayOptions", property);
 }
 
+export const isUnaryExpression = (
+  property: TSESTree.ObjectLiteralElement
+): property is TSESTree.PropertyNonComputedName & {
+  key: { name: string };
+  value: { operator: string; argument: { raw: string } };
+} => {
+  return (
+    property.type === AST_NODE_TYPES.Property &&
+    property.computed === false &&
+    property.key.type === AST_NODE_TYPES.Identifier &&
+    property.value.type === AST_NODE_TYPES.UnaryExpression
+  );
+};
+
 export function isPrimitiveDefault(
   property: TSESTree.ObjectLiteralElement
 ): property is TSESTree.PropertyNonComputedName & {

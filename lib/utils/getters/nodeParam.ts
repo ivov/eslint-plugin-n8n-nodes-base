@@ -234,6 +234,15 @@ export function getDefault(nodeParam: TSESTree.ObjectExpression) {
       };
     }
 
+    if (id.nodeParam.isUnaryExpression(property)) {
+      return {
+        ast: property,
+        value: parseInt(
+          property.value.operator + property.value.argument.raw // e.g. -1
+        ),
+      };
+    }
+
     if (id.nodeParam.isPrimitiveDefault(property)) {
       return {
         ast: property,

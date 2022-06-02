@@ -25,7 +25,7 @@ const test = {
 
 ```js
 const test = {
-  name: "Upsert",
+  name: "Create or Update",
   value: "upsert",
 };
 ```

@@ -143,7 +143,7 @@ Optionally, omit `extends` and enable rules individually:
 | [node-param-option-name-containing-star](docs/rules/node-param-option-name-containing-star.md) | Option `name` in options-type node parameter must not contain `*`. Use `[All]` instead. | Yes, safe |
 | [node-param-option-name-duplicate](docs/rules/node-param-option-name-duplicate.md) | Option `name` in options-type node parameter must not be a duplicate. | Yes, safe |
 | [node-param-option-name-wrong-for-get-all](docs/rules/node-param-option-name-wrong-for-get-all.md) | Option `name` for Get All node parameter must be `Get All` | Yes, safe |
-| [node-param-option-name-wrong-for-upsert](docs/rules/node-param-option-name-wrong-for-upsert.md) | Option `name` for Upsert node parameter must be `Upsert`. | Yes, safe |
+| [node-param-option-name-wrong-for-upsert](docs/rules/node-param-option-name-wrong-for-upsert.md) | Option `name` for Upsert node parameter must be `Create or Update`. | Yes, safe |
 | [node-param-option-value-duplicate](docs/rules/node-param-option-value-duplicate.md) | Option `value` in options-type node parameter must not be a duplicate. | Yes, safe |
 | [node-param-options-type-unsorted-items](docs/rules/node-param-options-type-unsorted-items.md) | Items in options-type node parameter must be alphabetized by `name` if five or more than five. | Yes, safe |
 | [node-param-placeholder-miscased-id](docs/rules/node-param-placeholder-miscased-id.md) | `ID` in `placeholder` in node parameter must be fully uppercased. | Yes, safe |

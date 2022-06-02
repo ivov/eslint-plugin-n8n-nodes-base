@@ -2,7 +2,7 @@
 
 # node-param-option-name-wrong-for-upsert
 
-Option `name` for Upsert node parameter must be `Upsert`.
+Option `name` for Upsert node parameter must be `Create or Update`.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
 

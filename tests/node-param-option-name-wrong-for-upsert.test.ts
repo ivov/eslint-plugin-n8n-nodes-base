@@ -19,10 +19,10 @@ ruleTester().run(getRuleName(module), rule, {
 				name: 'Insert or Create',
 				value: 'upsert',
 			};`,
-			errors: [{ messageId: "useUpsert" }],
+			errors: [{ messageId: "useCreateOrUpdate" }],
 			output: outdent`
 			const test = {
-				name: 'Upsert',
+				name: 'Create or Update',
 				value: 'upsert',
 			};`,
 		},

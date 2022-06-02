@@ -3,6 +3,7 @@ import { DOCUMENTATION } from "../constants";
 import * as utils from "../utils";
 import { identifiers as id } from "../utils/identifiers";
 import { getters } from "../utils/getters";
+import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 
 export default utils.createRule({
   name: utils.getRuleName(module),
@@ -22,6 +23,14 @@ export default utils.createRule({
   create(context) {
     return {
       ObjectExpression(node) {
+        const filename = utils.getNodeFilename(context.getFilename());
+
+        // skip params in GenericFunctions.ts, e.g. Supabase
+        if (filename === "GenericFunctions.ts") return;
+
+        // skip ObjectExpression if not being used as param object
+        if (isAnArgument(node)) return;
+
         const isNodeParameter = id.isNodeParameter(node);
         const isFixedCollectionSection = id.isFixedCollectionSection(node);
         const isOption = id.isOption(node);
@@ -34,11 +43,11 @@ export default utils.createRule({
           if (!displayName) return;
 
           // prevent overlap with node-param-display-name-wrong-for-dynamic-options
-          if (displayName.value.toLowerCase().endsWith('or')) return;
+          if (displayName.value.toLowerCase().endsWith("or")) return;
 
           const type = getters.nodeParam.getType(node);
 
-          if (type?.value === 'notice') return; // notice display name is sentence case
+          if (type?.value === "notice") return; // notice display name is sentence case
 
           if (utils.isAllowedLowercase(displayName.value)) return;
 
@@ -79,3 +88,10 @@ export default utils.createRule({
     };
   },
 });
+
+function isAnArgument(node: TSESTree.Node) {
+  return (
+    node.parent?.type === AST_NODE_TYPES.TSAsExpression ||
+    node.parent?.type === AST_NODE_TYPES.CallExpression
+  );
+}

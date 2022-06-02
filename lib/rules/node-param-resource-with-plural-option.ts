@@ -60,7 +60,8 @@ function findPluralOption(options: { ast: OptionsProperty }) {
         property.value.type === AST_NODE_TYPES.Literal &&
         typeof property.value.value === "string" &&
         isPlural(property.value.value) &&
-        singular(property.value.value) !== plural(property.value.value) // ignore if noun with identical singular and plural forms, e.g. software, information
+        singular(property.value.value) !== plural(property.value.value) && // ignore if noun with identical singular and plural forms, e.g. software, information
+        property.value.value !== 'SMS'
       )
         return {
           ast: property,

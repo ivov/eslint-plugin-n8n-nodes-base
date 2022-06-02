@@ -29,11 +29,12 @@ export default utils.createRule({
 
         if (!name) return;
 
-        if (name.value !== "Upsert") {
+        if (name.value !== "Create or Update") {
           context.report({
             messageId: "useCreateOrUpdate",
             node: name.ast,
-            fix: (fixer) => fixer.replaceText(name.ast, "name: 'Create or Update'"),
+            fix: (fixer) =>
+              fixer.replaceText(name.ast, "name: 'Create or Update'"),
           });
         }
       },

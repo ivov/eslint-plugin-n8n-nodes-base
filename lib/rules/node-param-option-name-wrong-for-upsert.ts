@@ -7,13 +7,14 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: "Option `name` for Upsert node parameter must be `Upsert`.",
+      description:
+        "Option `name` for Upsert node parameter must be `Create or Update`.",
       recommended: "error",
     },
     fixable: "code",
     schema: [],
     messages: {
-      useUpsert: "Replace with 'Upsert' [autofixable]",
+      useCreateOrUpdate: "Replace with 'Create or Update' [autofixable]",
     },
   },
   defaultOptions: [],
@@ -30,9 +31,9 @@ export default utils.createRule({
 
         if (name.value !== "Upsert") {
           context.report({
-            messageId: "useUpsert",
+            messageId: "useCreateOrUpdate",
             node: name.ast,
-            fix: (fixer) => fixer.replaceText(name.ast, "name: 'Upsert'"),
+            fix: (fixer) => fixer.replaceText(name.ast, "name: 'Create or Update'"),
           });
         }
       },

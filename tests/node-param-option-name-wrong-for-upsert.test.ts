@@ -7,7 +7,7 @@ ruleTester().run(getRuleName(module), rule, {
 		{
 			code: outdent`
 			const test = {
-				name: 'Upsert',
+				name: 'Create or Update',
 				value: 'upsert',
 			};`,
 		},

@@ -333,3 +333,14 @@ export function addEndSegment(value: string) {
 
   return value.concat(" Name or ID");
 }
+
+export function isReturnValue(node: TSESTree.Node) {
+  return node.parent?.type === AST_NODE_TYPES.ReturnStatement;
+}
+
+export function isArgument(node: TSESTree.Node) {
+  return (
+    node.parent?.type === AST_NODE_TYPES.TSAsExpression ||
+    node.parent?.type === AST_NODE_TYPES.CallExpression
+  );
+}

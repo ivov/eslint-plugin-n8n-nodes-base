@@ -29,17 +29,9 @@ export default utils.createRule({
 
         if (!_default) return;
 
-        const name = getters.nodeParam.getName(node);
-        const displayName = getters.nodeParam.getDisplayName(node);
+        if (!Boolean(_default.value)) return; // tolerate falsy values for number default
 
-        const hasNonNumberDefault = typeof _default.value !== "number";
-        const isIdParam =
-          name?.value.toLowerCase().endsWith("id") ||
-          displayName?.value.toLowerCase().endsWith("id");
-
-        if (hasNonNumberDefault && isIdParam) return; // tolerate if ID
-
-        if (hasNonNumberDefault) {
+        if (typeof _default.value !== "number") {
           context.report({
             messageId: "setNumberDefault",
             node: _default.ast,

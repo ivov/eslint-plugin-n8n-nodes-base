@@ -23,6 +23,8 @@ export default utils.createRule({
       ObjectExpression(node) {
         if (!id.isNodeParameter(node) && !id.isOption(node)) return;
 
+        if (utils.isReturnValue(node)) return;
+
         const description = getters.nodeParam.getDescription(node);
 
         if (!description) return;

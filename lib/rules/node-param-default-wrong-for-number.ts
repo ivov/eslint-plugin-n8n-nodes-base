@@ -30,12 +30,14 @@ export default utils.createRule({
         if (!_default) return;
 
         const name = getters.nodeParam.getName(node);
+        const displayName = getters.nodeParam.getDisplayName(node);
 
         const hasNonNumberDefault = typeof _default.value !== "number";
+        const isIdParam =
+          name?.value.toLowerCase().endsWith("id") ||
+          displayName?.value.toLowerCase().endsWith("id");
 
-        if (hasNonNumberDefault && name?.value.toLowerCase().endsWith("id")) {
-          return; // disregard numeric param for ID
-        }
+        if (hasNonNumberDefault && isIdParam) return; // tolerate if ID
 
         if (hasNonNumberDefault) {
           context.report({

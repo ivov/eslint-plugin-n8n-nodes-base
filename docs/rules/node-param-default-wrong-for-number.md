@@ -34,6 +34,13 @@ const test = {
 };
 
 const test = {
+  displayName: "Test",
+  name: "test",
+  type: "number",
+  default: "",
+};
+
+const test = {
   displayName: "Account Contact ID",
   name: "accountContactId",
   type: "number",

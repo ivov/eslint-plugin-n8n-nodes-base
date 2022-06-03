@@ -16,6 +16,15 @@ ruleTester().run(getRuleName(module), rule, {
 		{
 			code: outdent`
 			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'number',
+				default: '',
+			};`,
+		},
+		{
+			code: outdent`
+			const test = {
 				displayName: 'Account Contact ID',
 				name: 'accountContactId',
 				type: 'number',

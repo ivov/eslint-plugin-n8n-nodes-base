@@ -8,7 +8,8 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: '`ID` in `placeholder` in node parameter must be fully uppercased.',
+      description:
+        "`ID` in `placeholder` in node parameter must be fully uppercased.",
       recommended: "error",
     },
     fixable: "code",
@@ -25,7 +26,7 @@ export default utils.createRule({
 
         const placeholder = getters.nodeParam.getPlaceholder(node);
 
-        if (!placeholder) return;
+        if (!placeholder || isToleratedException(placeholder.value)) return;
 
         if (MISCASED_ID_REGEX.test(placeholder.value)) {
           const correctlyCased = placeholder.value
@@ -44,3 +45,10 @@ export default utils.createRule({
     };
   },
 });
+
+function isToleratedException(placeholderValue: string) {
+  return (
+    placeholderValue.includes("SELECT") ||
+    placeholderValue.includes("id, name".replace(/\s/, ""))
+  );
+}

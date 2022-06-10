@@ -17,7 +17,7 @@
 ```js
 const test = {
   displayName: "Simplify",
-  name: "simpl",
+  name: "simple",
   type: "boolean",
   default: false,
 };

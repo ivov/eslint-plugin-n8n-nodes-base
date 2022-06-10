@@ -86,7 +86,6 @@ export function hasName(
   let check = (value: string) => value === name;
 
   if (name === "update") check = (value: string) => /update/.test(value);
-  if (name === "simple") check = (value: string) => /simpl/.test(value);
 
   for (const property of nodeParam.properties) {
     if (

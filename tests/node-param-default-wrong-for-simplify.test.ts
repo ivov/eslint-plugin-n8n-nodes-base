@@ -19,7 +19,7 @@ ruleTester().run(getRuleName(module), rule, {
 			code: outdent`
 			const test = {
 				displayName: 'Simplify',
-				name: 'simpl',
+				name: 'simple',
 				type: 'boolean',
 				default: false,
 			};`,
@@ -27,7 +27,7 @@ ruleTester().run(getRuleName(module), rule, {
 			output: outdent`
 			const test = {
 				displayName: 'Simplify',
-				name: 'simpl',
+				name: 'simple',
 				type: 'boolean',
 				default: true,
 			};`,

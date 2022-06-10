@@ -50,6 +50,23 @@ const test = {
   default: "",
   placeholder: "The ID of the value",
 };
+
+const test = {
+  displayName: "Value ID",
+  name: "valueId",
+  type: "string",
+  default: "",
+  placeholder: "id,name,description",
+};
+
+const test = {
+  displayName: "Value ID",
+  name: "valueId",
+  type: "string",
+  default: "",
+  placeholder:
+    "SELECT id, name FROM product WHERE quantity > $1 AND price <= $2",
+};
 ```
 
 ## Links

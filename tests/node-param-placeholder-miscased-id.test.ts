@@ -14,6 +14,26 @@ ruleTester().run(getRuleName(module), rule, {
 				placeholder: 'The ID of the value',
 			};`,
     },
+    {
+      code: outdent`
+			const test = {
+				displayName: 'Value ID',
+				name: 'valueId',
+				type: 'string',
+				default: '',
+				placeholder: 'id,name,description',
+			};`,
+    },
+    {
+      code: outdent`
+			const test = {
+				displayName: 'Value ID',
+				name: 'valueId',
+				type: 'string',
+				default: '',
+				placeholder: 'SELECT id, name FROM product WHERE quantity > $1 AND price <= $2',
+			};`,
+    },
   ],
   invalid: [
     {

@@ -2,7 +2,7 @@
 
 # node-param-placeholder-missing-email
 
-`ID` in `placeholder` in node parameter must be fully uppercased.
+`placeholder` for Email node parameter must exist.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
 

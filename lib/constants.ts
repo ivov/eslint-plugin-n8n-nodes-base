@@ -78,6 +78,8 @@ export const TOP_LEVEL_FIXED_COLLECTION: {
   },
 };
 
+export const EMAIL_PLACEHOLDER = "name@email.com";
+
 // ----------------------------------
 //             regexes
 // ----------------------------------

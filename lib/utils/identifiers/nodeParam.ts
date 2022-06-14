@@ -80,7 +80,8 @@ export function hasName(
     | "update"
     | "resource"
     | "operation"
-    | "allowUnauthorizedCerts",
+    | "allowUnauthorizedCerts"
+    | "email",
   nodeParam: TSESTree.ObjectExpression
 ) {
   let check = (value: string) => value === name;
@@ -101,6 +102,10 @@ export function hasName(
   }
 
   return false;
+}
+
+export function isEmail(nodeParam: TSESTree.ObjectExpression) {
+  return isStringType(nodeParam) && hasName("email", nodeParam);
 }
 
 export function isSimplify(nodeParam: TSESTree.ObjectExpression) {

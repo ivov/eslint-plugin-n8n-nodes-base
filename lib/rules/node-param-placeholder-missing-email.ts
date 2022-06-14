@@ -8,8 +8,7 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description:
-        "`ID` in `placeholder` in node parameter must be fully uppercased.",
+      description: "`placeholder` for Email node parameter must exist.",
       recommended: "error",
     },
     fixable: "code",

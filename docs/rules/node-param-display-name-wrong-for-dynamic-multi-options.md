@@ -2,7 +2,7 @@
 
 # node-param-display-name-wrong-for-dynamic-multi-options
 
-`displayName` for dynamic-multi-options-type node parameter must end with `Name or ID`
+`displayName` for dynamic-multi-options-type node parameter must end with `Names or IDs`
 
 📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
 

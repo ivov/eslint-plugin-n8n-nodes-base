@@ -2,7 +2,7 @@
 
 # node-param-description-wrong-for-dynamic-multi-options
 
-`description` in dynamic-multi-options-type node parameter must be `Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/nodes/expressions.html#expressions">expression</a>`
+`description` in dynamic-multi-options-type node parameter must be `Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/nodes/expressions.html#expressions">expression</a>`
 
 📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
 
@@ -50,7 +50,7 @@ const test = {
   },
   default: [],
   description:
-    'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/nodes/expressions.html#expressions">expression</a>',
+    'Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/nodes/expressions.html#expressions">expression</a>',
 };
 
 const test = {
@@ -62,7 +62,7 @@ const test = {
   },
   default: [],
   description:
-    'This is a sentence. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/nodes/expressions.html#expressions">expression</a>.',
+    'This is a sentence. Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/nodes/expressions.html#expressions">expression</a>.',
 };
 ```
 

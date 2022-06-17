@@ -18,9 +18,9 @@ export default utils.createRule({
   create(context) {
     return {
       ClassDeclaration() {
-        const [filename, dirname] = context.getFilename().split("/").reverse();
+        if (isInsideNestedDir(context)) return;
 
-        if (DIRS_WITH_NESTING.includes(dirname.toLowerCase())) return;
+        const [filename, dirname] = context.getFilename().split("/").reverse();
 
         const parts = filename.split(".node.ts");
 
@@ -54,3 +54,16 @@ const DIRS_WITH_NESTING = [
   "notion",
   "SyncroMsp",
 ];
+
+type Context = Readonly<
+  import("@typescript-eslint/utils/dist/ts-eslint/Rule").RuleContext<
+    "renameFile",
+    never[]
+  >
+>;
+
+function isInsideNestedDir(context: Context) {
+  return DIRS_WITH_NESTING.some((d) =>
+    context.getFilename().toLowerCase().includes(d)
+  );
+}

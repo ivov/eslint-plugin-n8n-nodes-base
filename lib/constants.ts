@@ -28,13 +28,15 @@ export const RESOURCE_DESCRIPTION_SUFFIX = "Description.ts";
 const EXPRESSIONS_DOCS_URL =
   "https://docs.n8n.io/nodes/expressions.html#expressions";
 
+export const DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER = {
+  DISPLAY_NAME_SUFFIX: "Names or IDs",
+  DESCRIPTION: `Choose from the list, or specify IDs using an <a href="${EXPRESSIONS_DOCS_URL}">expression</a>`,
+};
+
 export const DYNAMIC_OPTIONS_NODE_PARAMETER = {
   DISPLAY_NAME_SUFFIX: "Name or ID",
   DESCRIPTION: `Choose from the list, or specify an ID using an <a href="${EXPRESSIONS_DOCS_URL}">expression</a>`,
 };
-
-export const DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER =
-  DYNAMIC_OPTIONS_NODE_PARAMETER;
 
 export const NODE_CLASS_DESCRIPTION_SUBTITLE =
   '={{ $parameter["operation"] + ": " + $parameter["resource"] }}';

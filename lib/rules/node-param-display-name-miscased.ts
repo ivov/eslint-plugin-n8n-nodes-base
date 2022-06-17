@@ -3,7 +3,6 @@ import { DOCUMENTATION } from "../constants";
 import * as utils from "../utils";
 import { identifiers as id } from "../utils/identifiers";
 import { getters } from "../utils/getters";
-import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 
 export default utils.createRule({
   name: utils.getRuleName(module),

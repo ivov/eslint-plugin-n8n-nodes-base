@@ -2,7 +2,7 @@
 
 # node-param-display-name-wrong-for-dynamic-multi-options
 
-`displayName` for dynamic-multi-options-type node parameter must end with `Name or ID`
+`displayName` for dynamic-multi-options-type node parameter must end with `Names or IDs`
 
 📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
 
@@ -16,67 +16,7 @@
 
 ```js
 const test = {
-  displayName: "Field ID",
-  name: "field",
-  type: "multiOptions",
-  typeOptions: {
-    loadOptionsMethod: "getFields",
-  },
-  default: "",
-};
-
-const test = {
-  displayName: "Field Name",
-  name: "field",
-  type: "multiOptions",
-  typeOptions: {
-    loadOptionsMethod: "getFields",
-  },
-  default: "",
-};
-
-const test = {
-  displayName: "Field Name or",
-  name: "field",
-  type: "multiOptions",
-  typeOptions: {
-    loadOptionsMethod: "getFields",
-  },
-  default: "",
-};
-
-const test = {
-  displayName: "Field Name/ID",
-  name: "field",
-  type: "multiOptions",
-  typeOptions: {
-    loadOptionsMethod: "getFields",
-  },
-  default: "",
-};
-
-const test = {
-  displayName: "Field ID/Name",
-  name: "field",
-  type: "multiOptions",
-  typeOptions: {
-    loadOptionsMethod: "getFields",
-  },
-  default: "",
-};
-
-const test = {
-  displayName: "Field Names/IDs",
-  name: "field",
-  type: "multiOptions",
-  typeOptions: {
-    loadOptionsMethod: "getFields",
-  },
-  default: "",
-};
-
-const test = {
-  displayName: "Field",
+  displayName: "Fields",
   name: "field",
   type: "multiOptions",
   typeOptions: {
@@ -90,7 +30,7 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Field Name or ID",
+  displayName: "Field Names or IDs",
   name: "field",
   type: "multiOptions",
   typeOptions: {

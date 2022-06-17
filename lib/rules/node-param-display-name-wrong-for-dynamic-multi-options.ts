@@ -2,6 +2,7 @@ import { DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER } from "../constants";
 import * as utils from "../utils";
 import { identifiers as id } from "../utils/identifiers";
 import { getters } from "../utils/getters";
+import { plural, singular } from "pluralize";
 
 export default utils.createRule({
   name: utils.getRuleName(module),
@@ -14,7 +15,7 @@ export default utils.createRule({
     schema: [],
     fixable: 'code',
     messages: {
-      endWithNameOrId: `End with '{Entity} ${DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER.DISPLAY_NAME_SUFFIX}' [autofixable]`,
+      endWithNamesOrIds: `End with '{Entity} ${DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER.DISPLAY_NAME_SUFFIX}' [autofixable]`,
     },
   },
   defaultOptions: [],
@@ -38,14 +39,36 @@ export default utils.createRule({
             DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER.DISPLAY_NAME_SUFFIX
           )
         ) {
-          const withEndSegment = utils.addEndSegment(displayName.value);
-          const fixed = utils.keyValue("displayName", withEndSegment);
+          const { value: displayNameValue } = displayName;
 
-          context.report({
-            messageId: "endWithNameOrId",
-            node: displayName.ast,
-            fix: (fixer) => fixer.replaceText(displayName.ast, fixed),
-          });
+          if (
+            displayNameValue.split(" ").length === 1 &&
+            plural(displayNameValue) === displayNameValue
+          ) {
+            console.log(`${singular(displayNameValue)} Names or IDs`);
+
+            const fixed = utils.keyValue(
+              "displayName",
+              `${singular(displayNameValue)} Names or IDs`
+            );
+
+            return context.report({
+              messageId: "endWithNamesOrIds",
+              node: displayName.ast,
+              fix: (fixer) => fixer.replaceText(displayName.ast, fixed),
+            });
+          }
+
+          // TODO: non-single-plural-word case
+
+          // const withEndSegment = utils.addEndSegment(displayName.value);
+          // const fixed = utils.keyValue("displayName", withEndSegment);
+
+          // context.report({
+          //   messageId: "endWithNamesOrIds",
+          //   node: displayName.ast,
+          //   fix: (fixer) => fixer.replaceText(displayName.ast, fixed),
+          // });
         }
       },
     };

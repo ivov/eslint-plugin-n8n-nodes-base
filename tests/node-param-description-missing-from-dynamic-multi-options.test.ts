@@ -1,4 +1,4 @@
-import { DYNAMIC_OPTIONS_NODE_PARAMETER } from "../lib/constants";
+import { DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER } from "../lib/constants";
 import rule from "../lib/rules/node-param-description-missing-from-dynamic-multi-options";
 import { ruleTester, getRuleName } from "../lib/utils";
 import outdent from "outdent";
@@ -11,7 +11,7 @@ ruleTester().run(getRuleName(module), rule, {
 				displayName: 'Field Name or ID',
 				name: 'field',
 				type: 'multiOptions',
-				description: '${DYNAMIC_OPTIONS_NODE_PARAMETER.DESCRIPTION}',
+				description: '${DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER.DESCRIPTION}',
 				typeOptions: {
 					loadOptionsMethod: 'getFields',
 				},
@@ -37,7 +37,7 @@ ruleTester().run(getRuleName(module), rule, {
 				displayName: 'Field Name or ID',
 				name: 'field',
 				type: 'multiOptions',
-				description: '${DYNAMIC_OPTIONS_NODE_PARAMETER.DESCRIPTION}',
+				description: '${DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER.DESCRIPTION}',
 				typeOptions: {
 					loadOptionsMethod: 'getFields',
 				},

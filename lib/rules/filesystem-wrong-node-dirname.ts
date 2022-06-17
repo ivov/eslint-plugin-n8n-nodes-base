@@ -30,7 +30,7 @@ export default utils.createRule({
 
         if (!expected) return;
 
-        if (dirname.replace("Trigger", "") !== expected) {
+        if (dirname !== expected.replace("Trigger", "")) {
           const topOfFile = { line: 1, column: 1 };
 
           context.report({

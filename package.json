@@ -9,6 +9,7 @@
   "license": "MIT",
   "files": [
     "dist/index.js",
+    "dist/non-autofixable.js",
     "dist/lib/**/*"
   ],
   "repository": {

@@ -53,20 +53,17 @@ function addSeverity(ruleNames, severity = "warn") {
   }, {});
 }
 
-const BASE_CONFIG = {
-  env: { es2021: true },
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-  },
-  plugins: ["n8n-nodes-base"],
-};
+// const BASE_CONFIG = {
+//   env: { es2021: true },
+//   parserOptions: {
+//     ecmaVersion: "latest",
+//     sourceType: "module",
+//   },
+//   plugins: ["n8n-nodes-base"],
+// };
 
 module.exports = {
-  "non-autofixable": {
-    ...BASE_CONFIG,
-    rules: addSeverity(categorized["non-autofixable"]),
-  },
+  rules: addSeverity(categorized["non-autofixable"]),
 };
 
 console.log(module.exports);

@@ -47,8 +47,6 @@ export default utils.createRule({
             parts.length === 1 &&
             plural(displayNameValue) === displayNameValue
           ) {
-            console.log(`${singular(displayNameValue)} Names or IDs`);
-
             const fixed = utils.keyValue(
               "displayName",
               `${singular(displayNameValue)} Names or IDs`

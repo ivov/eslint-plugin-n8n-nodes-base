@@ -22,6 +22,7 @@ const filesToTranspile = tsFiles.filter((f) => !f.endsWith(".d.ts"));
 shell.rm("-rf", distDir);
 shell.mkdir("dist");
 shell.cp("index.js", path.resolve("dist", "index.js"));
+shell.cp("non-autofixable.js", path.resolve("dist", "non-autofixable.js"));
 
 esbuild
   .build({

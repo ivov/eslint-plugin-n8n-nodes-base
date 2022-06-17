@@ -20,6 +20,8 @@ export default utils.createRule({
       ClassDeclaration() {
         const [filename, dirname] = context.getFilename().split("/").reverse();
 
+        if (DIRS_WITH_NESTING.includes(dirname.toLowerCase())) return;
+
         const parts = filename.split(".node.ts");
 
         if (parts.length !== 2) return;
@@ -28,7 +30,7 @@ export default utils.createRule({
 
         if (!expected) return;
 
-        if (dirname !== expected) {
+        if (dirname.replace("Trigger", "") !== expected) {
           const topOfFile = { line: 1, column: 1 };
 
           context.report({
@@ -41,3 +43,14 @@ export default utils.createRule({
     };
   },
 });
+
+const DIRS_WITH_NESTING = [
+  "aws",
+  "facebook",
+  "google",
+  "magento",
+  "mattermost",
+  "microsoft",
+  "notion",
+  "SyncroMsp",
+];

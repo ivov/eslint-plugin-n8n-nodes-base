@@ -13,7 +13,7 @@ export default utils.createRule({
       recommended: "error",
     },
     schema: [],
-    fixable: 'code',
+    fixable: "code",
     messages: {
       endWithNamesOrIds: `End with '{Entity} ${DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER.DISPLAY_NAME_SUFFIX}' [autofixable]`,
     },
@@ -41,12 +41,12 @@ export default utils.createRule({
         ) {
           const { value: displayNameValue } = displayName;
 
+          const parts = displayNameValue.split(" ");
+
           if (
-            displayNameValue.split(" ").length === 1 &&
+            parts.length === 1 &&
             plural(displayNameValue) === displayNameValue
           ) {
-            console.log(`${singular(displayNameValue)} Names or IDs`);
-
             const fixed = utils.keyValue(
               "displayName",
               `${singular(displayNameValue)} Names or IDs`
@@ -59,16 +59,36 @@ export default utils.createRule({
             });
           }
 
-          // TODO: non-single-plural-word case
+          if (
+            parts.length === 1 &&
+            singular(displayNameValue) === displayNameValue
+          ) {
+            const fixed = utils.keyValue(
+              "displayName",
+              `${displayNameValue} Names or IDs`
+            );
 
-          // const withEndSegment = utils.addEndSegment(displayName.value);
-          // const fixed = utils.keyValue("displayName", withEndSegment);
+            return context.report({
+              messageId: "endWithNamesOrIds",
+              node: displayName.ast,
+              fix: (fixer) => fixer.replaceText(displayName.ast, fixed),
+            });
+          }
 
-          // context.report({
-          //   messageId: "endWithNamesOrIds",
-          //   node: displayName.ast,
-          //   fix: (fixer) => fixer.replaceText(displayName.ast, fixed),
-          // });
+          const [entity, ...rest] = parts;
+
+          if (parts.length > 1 && plural(entity) === entity) {
+            const fixed = utils.keyValue(
+              "displayName",
+              `${singular(entity)} Names or IDs`
+            );
+
+            return context.report({
+              messageId: "endWithNamesOrIds",
+              node: displayName.ast,
+              fix: (fixer) => fixer.replaceText(displayName.ast, fixed),
+            });
+          }
         }
       },
     };

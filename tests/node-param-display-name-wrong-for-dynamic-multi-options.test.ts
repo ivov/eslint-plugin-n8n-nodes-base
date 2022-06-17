@@ -41,5 +41,51 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 			};`,
 		},
+		{
+			code: outdent`
+			const test = {
+				displayName: 'Field',
+				name: 'field',
+				type: 'multiOptions',
+				typeOptions: {
+					loadOptionsMethod: 'getFields',
+				},
+				default: '',
+			};`,
+			errors: [{ messageId: "endWithNamesOrIds" }],
+			output: outdent`
+			const test = {
+				displayName: 'Field Names or IDs',
+				name: 'field',
+				type: 'multiOptions',
+				typeOptions: {
+					loadOptionsMethod: 'getFields',
+				},
+				default: '',
+			};`,
+		},
+		{
+			code: outdent`
+			const test = {
+				displayName: 'Fields Name or ID',
+				name: 'field',
+				type: 'multiOptions',
+				typeOptions: {
+					loadOptionsMethod: 'getFields',
+				},
+				default: '',
+			};`,
+			errors: [{ messageId: "endWithNamesOrIds" }],
+			output: outdent`
+			const test = {
+				displayName: 'Field Names or IDs',
+				name: 'field',
+				type: 'multiOptions',
+				typeOptions: {
+					loadOptionsMethod: 'getFields',
+				},
+				default: '',
+			};`,
+		},
 	],
 });

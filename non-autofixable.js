@@ -65,5 +65,3 @@ function addSeverity(ruleNames, severity = "warn") {
 module.exports = {
   rules: addSeverity(categorized["non-autofixable"]),
 };
-
-console.log(module.exports);

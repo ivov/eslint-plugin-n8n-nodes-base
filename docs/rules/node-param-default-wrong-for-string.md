@@ -4,8 +4,6 @@
 
 `default` for a string-type node parameter must be a string, unless `typeOptions.multipleValues` is set to `true`.
 
-📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
-
 📋 This rule is part of the `plugin:n8n-nodes-base/autofixable-safe` config.
 
 🔧 Run ESLint with `--fix` option to autofix the issue flagged by this rule.

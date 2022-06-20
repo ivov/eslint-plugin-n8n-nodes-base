@@ -4,8 +4,6 @@
 
 The number of `outputs` in node class description for any node must be one, or two for If node, or four for Switch node.
 
-📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
-
 📋 This rule is part of the `plugin:n8n-nodes-base/autofixable-safe` config.
 
 🔧 Run ESLint with `--fix` option to autofix the issue flagged by this rule.

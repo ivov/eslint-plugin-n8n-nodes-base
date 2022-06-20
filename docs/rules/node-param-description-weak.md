@@ -4,8 +4,6 @@
 
 `description` in node parameter must be either useful or omitted. Applicable by extension to `description` in option in options-type and multi-options-type node parameter.
 
-📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
-
 📋 This rule is part of the `plugin:n8n-nodes-base/autofixable-safe` config.
 
 🔧 Run ESLint with `--fix` option to autofix the issue flagged by this rule.

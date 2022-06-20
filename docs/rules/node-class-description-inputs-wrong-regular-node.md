@@ -4,8 +4,6 @@
 
 The number of `inputs` in node class description for regular node should be one, or two for Merge node.
 
-📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
-
 📋 This rule is part of the `plugin:n8n-nodes-base/autofixable-safe` config.
 
 🔧 Run ESLint with `--fix` option to autofix the issue flagged by this rule.

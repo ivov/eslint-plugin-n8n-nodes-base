@@ -3,41 +3,18 @@
 const fs = require("fs");
 const path = require("path");
 
-const rulesPath = path.join(__dirname, "lib", "rules"); // from dist
+const RULES_DIST_DIR = path.resolve(__dirname, "lib", "rules"); // /dist/lib/rules
 
-const allFullRuleNames = fs
-  .readdirSync(rulesPath)
-  .filter((fileName) => fileName.endsWith(".js"))
-  .map((fileName) => fileName.replace(/\.js$/, ""))
-  .map((ruleName) => `n8n-nodes-base/${ruleName}`);
+const CONFIG_BASE_PROPERTIES = {
+  env: { es2021: true },
+  parserOptions: {
+    ecmaVersion: "latest",
+    sourceType: "module",
+  },
+  plugins: ["n8n-nodes-base"],
+};
 
-/**
- * Rules exported by this plugin:
- *
- * ```js
- * 'node-param-display-name-lowercase-first-char': {
- *   meta: { ... },
- *   create: { ... }
- * },
- * 'node-param-display-name-miscased-id': {
- *   meta: { ... },
- *   create: { ... }
- * },
- * // etc
- * ```
- */
-module.exports.rules = allFullRuleNames.reduce((acc, fullRuleName) => {
-  const [_, ruleName] = fullRuleName.split("n8n-nodes-base/");
-  return {
-    ...acc,
-    [ruleName]: require(path.join(rulesPath, ruleName)).default,
-  };
-}, {});
-
-/**
- * Rules whose autofixes are breaking changes.
- */
-const AUTOFIXABLE_UNSAFE_RULES = [
+const AUTOFIXABLE_UNSAFE_RULESET = [
   "cred-class-name-unsuffixed",
   "cred-class-field-name-unsuffixed",
   "cred-class-field-name-uppercase-first-char",
@@ -48,74 +25,87 @@ const AUTOFIXABLE_UNSAFE_RULES = [
   "node-class-description-name-unsuffixed-trigger-node",
 ];
 
-const categorized = allFullRuleNames.reduce(
-  (acc, fullRuleName) => {
-    const [_, ruleName] = fullRuleName.split("n8n-nodes-base/");
-    const ruleModule = require(path.join(rulesPath, ruleName)).default;
+const DEFAULT_SEVERITY = "error";
 
-    if (ruleModule.meta.fixable) {
-      AUTOFIXABLE_UNSAFE_RULES.includes(ruleName)
-        ? acc["autofixable-unsafe"].push(fullRuleName)
-        : acc["autofixable-safe"].push(fullRuleName);
-    } else {
-      acc["non-autofixable"].push(fullRuleName);
-    }
+const getRuleModule = (rulename) =>
+  require(path.resolve(RULES_DIST_DIR, rulename)).default;
 
-    return acc;
-  },
-  { "autofixable-safe": [], "autofixable-unsafe": [], "non-autofixable": [] }
-);
-
-function addSeverity(ruleNames, severity = "warn") {
-  return ruleNames.reduce((acc, ruleName) => {
-    return { ...acc, [ruleName]: severity };
-  }, {});
-}
-
-const BASE_CONFIG = {
-  env: { es2021: true },
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-  },
-  plugins: ["n8n-nodes-base"],
-};
+const ALL_RULE_NAMES = fs
+  .readdirSync(RULES_DIST_DIR)
+  .filter((fileName) => fileName.endsWith(".js"))
+  .map((filename) => filename.replace(/\.js$/, ""));
 
 /**
- * Configs exported by this plugin:
+ * All rules exported by this plugin.
+ *
+ * ```js
+ * 'node-class-description-credentials-name-unsuffixed': {
+ *   meta: { ... },
+ *   create: { ... }
+ * },
+ * 'node-class-description-display-name-unsuffixed-trigger-node': {
+ *   meta: { ... },
+ *   create: { ... }
+ * },
+ * // etc
+ * ```
+ */
+const allRules = ALL_RULE_NAMES.reduce((acc, rulename) => {
+  return {
+    ...acc,
+    [rulename]: getRuleModule(rulename),
+  };
+}, {});
+
+/**
+ * Configs exported by this plugin.
  *
  * ```js
  * {
- *   recommended: {
+ *   "all": {
  *     env: { es2021: true },
  *     parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
  *     plugins: [ 'n8n-nodes-base' ],
  *     rules: {
- *       'n8n-nodes-base/cred-class-field-display-name-miscased': 'warn',
- *       // etc
+ *       'n8n-nodes-base/cred-class-field-display-name-miscased': 'error',
+ *       // etc: other rules
  *     }
  *  },
- * // etc
+ *   "autofixable-safe": { ... },
+ *   "autofixable-unsafe": { ... },
+ *   "non-autofixable": { ... }
  * }
  * ```
  */
-module.exports.configs = {
-  recommended: {
-    ...BASE_CONFIG,
-    rules: addSeverity(allFullRuleNames),
-  },
-  "autofixable-safe": {
-    ...BASE_CONFIG,
-    rules: addSeverity(categorized["autofixable-safe"]),
-  },
-  "autofixable-unsafe": {
-    ...BASE_CONFIG,
-    rules: addSeverity(categorized["autofixable-unsafe"]),
-  },
-  "non-autofixable": {
-    ...BASE_CONFIG,
-    rules: addSeverity(categorized["non-autofixable"]),
-  },
-};
+const configs = ALL_RULE_NAMES.reduce(
+  (acc, rulename) => {
+    const fullRulename = `n8n-nodes-base/${rulename}`;
+    const ruleModule = getRuleModule(rulename);
 
-module.exports.AUTOFIXABLE_UNSAFE_RULES = AUTOFIXABLE_UNSAFE_RULES;
+    acc["all"].rules[fullRulename] = DEFAULT_SEVERITY;
+
+    const isAutofixable = ruleModule.meta.fixable !== undefined;
+
+    if (isAutofixable && AUTOFIXABLE_UNSAFE_RULESET.includes(rulename)) {
+      acc["autofixable-unsafe"].rules[fullRulename] = DEFAULT_SEVERITY;
+    } else if (isAutofixable) {
+      acc["autofixable-safe"].rules[fullRulename] = DEFAULT_SEVERITY;
+    } else {
+      acc["non-autofixable"].rules[fullRulename] = DEFAULT_SEVERITY;
+    }
+
+    return acc;
+  },
+  {
+    all: { ...CONFIG_BASE_PROPERTIES, rules: {} },
+    "autofixable-safe": { ...CONFIG_BASE_PROPERTIES, rules: {} },
+    "autofixable-unsafe": { ...CONFIG_BASE_PROPERTIES, rules: {} },
+    "non-autofixable": { ...CONFIG_BASE_PROPERTIES, rules: {} },
+  }
+);
+
+module.exports = {
+  rules: allRules,
+  configs,
+  AUTOFIXABLE_UNSAFE_RULESET, // for make-docs-readme-table.js
+};

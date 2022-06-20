@@ -4,8 +4,6 @@
 
 `displayName` for Update operation node parameter must be `Update Fields`
 
-📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
-
 📋 This rule is part of the `plugin:n8n-nodes-base/autofixable-safe` config.
 
 🔧 Run ESLint with `--fix` option to autofix the issue flagged by this rule.

@@ -4,8 +4,6 @@
 
 First char in `name` in credential class must be lowercase.
 
-📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
-
 📋 This rule is part of the `plugin:n8n-nodes-base/autofixable-unsafe` config.
 
 🔧 Run ESLint with `--fix` option to autofix the issue flagged by this rule.

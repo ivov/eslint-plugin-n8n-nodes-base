@@ -4,8 +4,6 @@
 
 `displayName` for dynamic-options-type node parameter must end with `Name or ID`
 
-📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
-
 📋 This rule is part of the `plugin:n8n-nodes-base/autofixable-safe` config.
 
 🔧 Run ESLint with `--fix` option to autofix the issue flagged by this rule.

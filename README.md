@@ -7,49 +7,49 @@ ESLint plugin for linting n8n nodes.
 
 ## Usage
 
-1. Install this plugin:
+Install this plugin:
 
 ```sh
 npm i -D eslint-plugin-n8n-nodes-base
 ```
 
-2. Choose a plugin config:
+Create an ESLint configuration file and decide how to enable rules:
 
-- `recommended` (all rules)
-- `autofixable-safe` (not causing breaking changes)
-- `autofixable-unsafe` (causing breaking changes)
-- `non-autofixable` (to manually fix)
+### Enable rules individually
 
-3. Create the ESLint configuration file.
-
-The following example...
-
-- provides the `n8n-nodes-base` plugin,
-- enables the rules tagged `recommended`, and
-- disables a specific rule from the enabled set.
-
-```js
-{
-  plugins: [ "eslint-plugin-n8n-nodes-base" ],
-  extends: [ "plugin:n8n-nodes-base/recommended" ],
-  rules: {
-    "n8n-nodes-base/node-param-type-options-missing-from-limit": "off"
-  }
-}
-```
-
-Optionally, omit `extends` and enable rules individually:
+All rules are off by default and must be individually enabled:
 
 ```js
 {
   plugins: [ "eslint-plugin-n8n-nodes-base" ],
   rules: {
-    "n8n-nodes-base/node-param-type-options-missing-from-limit": "error"
-    "n8n-nodes-base/node-param-resource-without-no-data-expression": "error"
-    "n8n-nodes-base/node-param-resource-with-plural-option": "error"
+    "n8n-nodes-base/node-param-array-type-assertion": "error",
+    "n8n-nodes-base/node-param-default-wrong-for-collection": "error"
   }
 }
 ```
+
+### Enable a set of rules
+
+Config rules are enabled by default and must be individually disabled:
+
+```js
+{
+  plugins: [ "eslint-plugin-n8n-nodes-base" ],
+  extends: [ "plugin:n8n-nodes-base/autofixable-safe" ],
+  rules: {
+    "n8n-nodes-base/node-param-array-type-assertion": "off",
+    "n8n-nodes-base/node-param-default-wrong-for-collection": "off"
+  }
+}
+```
+
+Available configs:
+
+- `all` → all rules
+- `autofixable-safe` → rules whose autofix cannot cause breaking changes
+- `autofixable-unsafe` → rules whose autofix can cause breaking changes
+- `non-autofixable` → rules to be manually fixed
 
 ## Ruleset
 

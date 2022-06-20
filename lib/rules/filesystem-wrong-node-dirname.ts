@@ -52,8 +52,12 @@ const DIRS_WITH_NESTING = [
   "mattermost",
   "microsoft",
   "notion",
-  "SyncroMsp",
+  "syncromsp",
+  "cisco",
 ];
+
+// @TODO
+const EXCEPTION_DIRS = ["localfiletrigger"];
 
 type Context = Readonly<
   import("@typescript-eslint/utils/dist/ts-eslint/Rule").RuleContext<

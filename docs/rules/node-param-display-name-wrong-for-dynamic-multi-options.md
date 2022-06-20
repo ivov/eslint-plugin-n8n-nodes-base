@@ -4,8 +4,6 @@
 
 `displayName` for dynamic-multi-options-type node parameter must end with `Names or IDs`
 
-📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
-
 📋 This rule is part of the `plugin:n8n-nodes-base/autofixable-safe` config.
 
 🔧 Run ESLint with `--fix` option to autofix the issue flagged by this rule.
@@ -17,6 +15,26 @@
 ```js
 const test = {
   displayName: "Fields",
+  name: "field",
+  type: "multiOptions",
+  typeOptions: {
+    loadOptionsMethod: "getFields",
+  },
+  default: "",
+};
+
+const test = {
+  displayName: "Field",
+  name: "field",
+  type: "multiOptions",
+  typeOptions: {
+    loadOptionsMethod: "getFields",
+  },
+  default: "",
+};
+
+const test = {
+  displayName: "Fields Name or ID",
   name: "field",
   type: "multiOptions",
   typeOptions: {

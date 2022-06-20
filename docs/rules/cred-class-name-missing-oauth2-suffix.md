@@ -4,8 +4,6 @@
 
 Credential class name must mention `OAuth2` if applicable.
 
-📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
-
 📋 This rule is part of the `plugin:n8n-nodes-base/non-autofixable` config.
 
 ## Examples

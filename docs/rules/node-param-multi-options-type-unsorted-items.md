@@ -4,8 +4,6 @@
 
 Items in a multi-options-type node parameter must be alphabetized by `name` if five or more than five.
 
-📋 This rule is part of the `plugin:n8n-nodes-base/recommended` config.
-
 📋 This rule is part of the `plugin:n8n-nodes-base/autofixable-safe` config.
 
 🔧 Run ESLint with `--fix` option to autofix the issue flagged by this rule.

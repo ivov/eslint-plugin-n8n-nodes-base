@@ -88,7 +88,7 @@ export function isArrayPropertyWithKey(
   );
 }
 
-export function isPropertyPointingToVar(
+export function isPropertyPointingToIdentifier(
   keyName: "options",
   property: TSESTree.ObjectLiteralElement
 ) {

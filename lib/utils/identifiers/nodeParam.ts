@@ -16,7 +16,7 @@ import {
   isArrayPropertyWithKey,
   isBooleanPropertyWithKey,
   isObjectPropertyWithKey,
-  isPropertyPointingToVar,
+  isPropertyPointingToIdentifier,
   isStringPropertyWithKey,
 } from "./_typedProps";
 
@@ -244,7 +244,7 @@ export function isOptions(
 ): property is OptionsProperty {
   return (
     isArrayPropertyWithKey("options", property) ||
-    isPropertyPointingToVar("options", property)
+    isPropertyPointingToIdentifier("options", property)
   );
 }
 

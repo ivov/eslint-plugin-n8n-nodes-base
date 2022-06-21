@@ -151,3 +151,17 @@ const isArrayExpression = (
     property.value.type === AST_NODE_TYPES.ArrayExpression
   );
 };
+
+export const isMemberExpression = (
+  property: TSESTree.ObjectLiteralElement
+): property is TSESTree.PropertyNonComputedName & {
+  key: { name: string };
+  value: { object: { name: string }; property: { name: string } };
+} => {
+  return (
+    property.type === AST_NODE_TYPES.Property &&
+    property.key.type === AST_NODE_TYPES.Identifier &&
+    typeof property.key.name === "string" &&
+    property.value.type === AST_NODE_TYPES.MemberExpression
+  );
+};

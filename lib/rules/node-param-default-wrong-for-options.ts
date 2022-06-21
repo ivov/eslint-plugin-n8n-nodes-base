@@ -46,7 +46,12 @@ export default utils.createRule({
 
         if (!options) return;
 
-        if (options.isPropertyPointingToVar) return;
+        if (
+          options.hasPropertyPointingToIdentifier || // e.g. `value: myVar`
+          options.hasPropertyPointingToMemberExpression // e.g. `value: MY_OBJECT.myValue`
+        ) {
+          return;
+        }
 
         const eligibleOptions = options.value.reduce<unknown[]>(
           (acc, option) => {
@@ -58,22 +63,19 @@ export default utils.createRule({
         if (!eligibleOptions.includes(_default.value)) {
           const zerothOption = eligibleOptions[0];
 
+          const fixed = `default: ${
+            typeof zerothOption === "string"
+              ? `'${zerothOption}'`
+              : zerothOption
+          }`;
+
           context.report({
             messageId: "chooseOption",
             data: {
               eligibleOptions: eligibleOptions.join(" or "),
             },
             node: _default.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(
-                _default.ast,
-                `default: ${
-                  typeof zerothOption === "string"
-                    ? `'${zerothOption}'`
-                    : zerothOption
-                }`
-              );
-            },
+            fix: (fixer) => fixer.replaceText(_default.ast, fixed),
           });
         }
       },

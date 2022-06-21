@@ -6,6 +6,7 @@ import {
   restoreObject,
   restoreNodeParamOptions,
   restoreFixedCollectionValues,
+  isMemberExpression,
 } from "./_restore";
 
 import type {
@@ -105,8 +106,8 @@ export function getOptions(nodeParam: TSESTree.ObjectExpression) {
   if (!found.value.elements) {
     return {
       ast: found,
-      value: [{ name: "", value: "" }],
-      isPropertyPointingToVar: true,
+      value: [{ name: "", value: "" }], // unused placeholder
+      hasPropertyPointingToIdentifier: true,
     };
   }
 
@@ -116,11 +117,22 @@ export function getOptions(nodeParam: TSESTree.ObjectExpression) {
 
   if (!elements.length) return null;
 
+  if (hasMemberExpression(elements)) {
+    return {
+      ast: found,
+      value: restoreNodeParamOptions(elements),
+      hasPropertyPointingToMemberExpression: true,
+    };
+  }
+
   return {
     ast: found,
     value: restoreNodeParamOptions(elements),
-    isPropertyPointingToVar: false,
   };
+}
+
+function hasMemberExpression(elements: TSESTree.ObjectExpression[]) {
+  return elements.find((e) => e.properties.find(isMemberExpression));
 }
 
 export function getFixedCollectionValues(nodeParam: TSESTree.ObjectExpression) {

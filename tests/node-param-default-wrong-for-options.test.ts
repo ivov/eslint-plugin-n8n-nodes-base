@@ -31,9 +31,27 @@ ruleTester().run(getRuleName(module), rule, {
 				name: "currency",
 				type: "options",
 				default: "eur",
-				required: true,
 				options: allCurrencies,
-				description: "The currency of the deal in 3-character ISO format",
+			};`,
+    },
+    {
+      code: outdent`
+			const MY_CONSTANT = { a: 1, b: 2 };
+			const test = {
+				displayName: "User",
+				name: "currency",
+				type: "options",
+				default: "eur",
+				options: [
+					{
+						name: 'a',
+						value: MY_CONSTANT.a,
+					},
+					{
+						name: 'a',
+						value: MY_CONSTANT.b,
+					},
+				],
 			};`,
     },
   ],

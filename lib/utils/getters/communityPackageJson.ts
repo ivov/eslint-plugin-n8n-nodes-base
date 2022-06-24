@@ -1,7 +1,7 @@
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 
 const getPackageJsonProperty =
-  (keyName: "name") => (node: TSESTree.ObjectExpression) => {
+  (keyName: "name" | "keywords") => (node: TSESTree.ObjectExpression) => {
     return node.properties.find((property) => {
       return (
         property.type === AST_NODE_TYPES.Property &&
@@ -13,3 +13,5 @@ const getPackageJsonProperty =
   };
 
 export const getName = getPackageJsonProperty("name");
+
+export const getKeywords = getPackageJsonProperty("keywords");

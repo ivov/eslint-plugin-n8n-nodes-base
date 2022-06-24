@@ -8,13 +8,13 @@ export default utils.createRule({
     type: "layout",
     docs: {
       description:
-        "`name` key must be present in `package.json` of community package",
+        "`keywords` key must be present in `package.json` of community package",
       recommended: "error",
     },
     fixable: "code",
     schema: [],
     messages: {
-      addName: "Add a `name` key to package.json",
+      addKeywords: "Add a `keywords` key to package.json",
     },
   },
   defaultOptions: [],
@@ -29,9 +29,9 @@ export default utils.createRule({
         if (isProdRun && !id.prod.isTopLevelObjectExpression(node)) return;
         if (isTestRun && !id.test.isTopLevelObjectExpression(node)) return;
 
-        if (!getters.packageJson.getName(node)) {
+        if (!getters.packageJson.getKeywords(node)) {
           context.report({
-            messageId: "addName",
+            messageId: "addKeywords",
             node,
           });
         }

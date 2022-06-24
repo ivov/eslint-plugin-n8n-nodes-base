@@ -1,6 +1,7 @@
 import * as nodeParam from "./nodeParam";
 import * as nodeClassDescription from "./nodeClassDesc";
 import * as credClassBody from "./credClassBody";
+import * as communityPackageJson from "./communityPackageJson";
 
 import * as lintableSections from "./_lintableSections";
 import * as typedProps from "./_typedProps";
@@ -11,6 +12,7 @@ export const identifiers = {
   nodeParam,
   credClassBody,
   nodeClassDescription,
+  ...communityPackageJson,
   ...lintableSections,
   ...typedProps,
   ...credClass,

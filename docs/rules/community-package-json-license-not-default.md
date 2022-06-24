@@ -2,7 +2,7 @@
 
 # community-package-json-license-not-default
 
-The `license` key in the `package.json` of a community package must be different from the default value `MIT`.
+The `license` key in the `package.json` of a community package must be the default value `MIT`.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/community-nodes` config.
 

@@ -73,7 +73,8 @@ const allRules = ALL_RULE_NAMES.reduce((acc, rulename) => {
  *  },
  *   "autofixable-safe": { ... },
  *   "autofixable-unsafe": { ... },
- *   "non-autofixable": { ... }
+ *   "non-autofixable": { ... },
+ *   "community": { ... },
  * }
  * ```
  */
@@ -86,7 +87,9 @@ const configs = ALL_RULE_NAMES.reduce(
 
     const isAutofixable = ruleModule.meta.fixable !== undefined;
 
-    if (isAutofixable && AUTOFIXABLE_UNSAFE_RULESET.includes(rulename)) {
+    if (rulename.startsWith("community-package-json")) {
+      acc["community-nodes"].rules[fullRulename] = DEFAULT_SEVERITY;
+    } else if (isAutofixable && AUTOFIXABLE_UNSAFE_RULESET.includes(rulename)) {
       acc["autofixable-unsafe"].rules[fullRulename] = DEFAULT_SEVERITY;
     } else if (isAutofixable) {
       acc["autofixable-safe"].rules[fullRulename] = DEFAULT_SEVERITY;
@@ -101,6 +104,7 @@ const configs = ALL_RULE_NAMES.reduce(
     "autofixable-safe": { ...CONFIG_BASE_PROPERTIES, rules: {} },
     "autofixable-unsafe": { ...CONFIG_BASE_PROPERTIES, rules: {} },
     "non-autofixable": { ...CONFIG_BASE_PROPERTIES, rules: {} },
+    "community-nodes": { ...CONFIG_BASE_PROPERTIES, rules: {} },
   }
 );
 

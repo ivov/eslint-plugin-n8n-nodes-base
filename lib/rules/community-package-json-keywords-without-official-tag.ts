@@ -9,7 +9,7 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: `The \`keywords\` value in the \`package.json\` of a community package must be an array containing the string \`'${COMMUNITY_PACKAGE_JSON.OFFICIAL_TAG}'\`."`,
+      description: `The \`keywords\` value in the \`package.json\` of a community package must be an array containing the value \`'${COMMUNITY_PACKAGE_JSON.OFFICIAL_TAG}'\`.`,
       recommended: "error",
     },
     schema: [],

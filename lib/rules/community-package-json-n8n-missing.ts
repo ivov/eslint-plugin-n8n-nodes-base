@@ -8,7 +8,7 @@ export default utils.createRule({
     type: "layout",
     docs: {
       description:
-        "The `description` key must be present in the `package.json` of a community package.",
+        "The `n8n` key must be present in the `package.json` of a community package.",
       recommended: "error",
     },
     schema: [],

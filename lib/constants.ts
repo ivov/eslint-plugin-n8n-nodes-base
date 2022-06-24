@@ -105,7 +105,7 @@ export const VERSION_REGEX = /^v\d+\.\d+$/;
 export const COMMUNITY_PACKAGE_JSON = {
   NAME: "n8n-nodes-starter",
   DESCRIPTION: "Example starter module for custom n8n nodes.",
-  KEYWORD: "n8n-community-node-package",
+  OFFICIAL_TAG: "n8n-community-node-package",
   LICENSE: "MIT",
   AUTHOR_NAME: "Jan Oberhauser",
   AUTHOR_EMAIL: "jan@n8n.io",

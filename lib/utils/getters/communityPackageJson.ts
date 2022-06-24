@@ -3,7 +3,7 @@ import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 const getPackageJsonProperty =
   (keyName: "name" | "keywords" | "description" | "version" | "n8n") =>
   (node: TSESTree.ObjectExpression) => {
-    return node.properties.find((property) => {
+    const found = node.properties.find((property) => {
       return (
         property.type === AST_NODE_TYPES.Property &&
         property.computed === false &&
@@ -11,6 +11,15 @@ const getPackageJsonProperty =
         property.key.value === keyName
       );
     });
+
+    if (!found) return null;
+
+    return {
+      ast: found,
+      // @ts-ignore
+      value: found.value.value ?? "TODO restored object",
+      // TODO: 'Literal' (found.value.value) or 'ObjectExpression' (nested object)
+    };
   };
 
 export const getName = getPackageJsonProperty("name");

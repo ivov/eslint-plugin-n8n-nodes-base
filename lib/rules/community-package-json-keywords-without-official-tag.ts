@@ -35,7 +35,6 @@ export default utils.createRule({
         if (!keywords) return;
 
         if (!hasOfficialTag(keywords)) {
-          console.log("here");
           context.report({
             messageId: "addOfficialTag",
             node,

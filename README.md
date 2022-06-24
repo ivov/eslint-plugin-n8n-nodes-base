@@ -72,7 +72,7 @@ Available configs:
 | [community-package-json-n8n-nodes-missing](docs/rules/community-package-json-n8n-nodes-missing.md) | The `n8n.nodes` key must be present in the `package.json` of a community package. | No |
 | [community-package-json-name-missing](docs/rules/community-package-json-name-missing.md) | The `name` key must be present in the `package.json` of a community package. | No |
 | [community-package-json-name-still-default](docs/rules/community-package-json-name-still-default.md) | The `name` key in the `package.json` of a community package must be different from the default value `n8n-nodes-starter`. | No |
-| [community-package-json-repository-url-still-default](docs/rules/community-package-json-repository-url-still-default.md) | The `repository.url` key in the `package.json` of a community package must be different from the default value `git+https://github.com/n8n-io/n8n-nodes-starter.git`. | No |
+| [community-package-json-repository-url-still-default](docs/rules/community-package-json-repository-url-still-default.md) | The `repository.url` value in the `package.json` of a community package must be different from the default value `git+https://github.com/n8n-io/n8n-nodes-starter.git`. | No |
 | [community-package-json-version-missing](docs/rules/community-package-json-version-missing.md) | The `version` key must be present in the `package.json` of a community package. | No |
 | [cred-class-field-display-name-miscased](docs/rules/cred-class-field-display-name-miscased.md) | `displayName` field in credential class must be title cased. | Yes, safe |
 | [cred-class-field-display-name-missing-api](docs/rules/cred-class-field-display-name-missing-api.md) | `displayName` field in credential class must be end with `API`. | Yes, safe |

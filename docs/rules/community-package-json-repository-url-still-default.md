@@ -2,7 +2,7 @@
 
 # community-package-json-repository-url-still-default
 
-The `repository.url` key in the `package.json` of a community package must be different from the default value `git+https://github.com/n8n-io/n8n-nodes-starter.git`.
+The `repository.url` value in the `package.json` of a community package must be different from the default value `git+https://github.com/n8n-io/n8n-nodes-starter.git`.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/community-nodes` config.
 

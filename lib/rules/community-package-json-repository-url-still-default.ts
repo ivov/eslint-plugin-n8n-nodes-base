@@ -9,7 +9,7 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: `The \`repository.url\` key in the \`package.json\` of a community package must be different from the default value \`${COMMUNITY_PACKAGE_JSON.REPOSITORY_URL}\`.`,
+      description: `The \`repository.url\` value in the \`package.json\` of a community package must be different from the default value \`${COMMUNITY_PACKAGE_JSON.REPOSITORY_URL}\`.`,
       recommended: "error",
     },
     schema: [],

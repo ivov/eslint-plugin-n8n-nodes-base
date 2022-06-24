@@ -9,13 +9,14 @@ export default utils.createRule({
     type: "layout",
     docs: {
       description:
-        "`n8n.nodes` key must contain at least one filepath in `package.json` of community package",
+        "The `n8n.nodes` value in the `package.json` of a community package must contain at least one filepath.",
       recommended: "error",
     },
     fixable: "code",
     schema: [],
     messages: {
-      addOneFilepath: "Enter at least one filepath in `n8n.nodes` in package.json",
+      addOneFilepath:
+        "Enter at least one filepath in `n8n.nodes` in package.json",
     },
   },
   defaultOptions: [],

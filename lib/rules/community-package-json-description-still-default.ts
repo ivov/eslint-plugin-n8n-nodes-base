@@ -8,7 +8,7 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: `\`description\` key in \`package.json\` of community package must be different from the default \`${COMMUNITY_PACKAGE_JSON.DESCRIPTION}\``,
+      description: `The \`description\` value in the \`package.json\` of a community package must be different from the default value \`${COMMUNITY_PACKAGE_JSON.DESCRIPTION}\`.`,
       recommended: "error",
     },
     fixable: "code",

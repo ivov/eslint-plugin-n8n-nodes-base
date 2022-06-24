@@ -8,13 +8,13 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: `\`license\` key in \`package.json\` of community package must be different from the default \`${COMMUNITY_PACKAGE_JSON.LICENSE}\``,
+      description: `The \`license\` key in the \`package.json\` of a community package must be different from the default value \`${COMMUNITY_PACKAGE_JSON.LICENSE}\`.`,
       recommended: "error",
     },
     fixable: "code",
     schema: [],
     messages: {
-      updateLicense: `Update the \`license\` key in package.json to ${COMMUNITY_PACKAGE_JSON.LICENSE}`,
+      updateLicense: `Update the \`license\` key to ${COMMUNITY_PACKAGE_JSON.LICENSE} in package.json`,
     },
   },
   defaultOptions: [],

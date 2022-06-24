@@ -9,7 +9,7 @@ export default utils.createRule({
     type: "layout",
     docs: {
       description:
-        "`n8n.nodes` key must be present in `package.json` of community package",
+        "The `n8n.nodes` key must be present in the `package.json` of a community package.",
       recommended: "error",
     },
     fixable: "code",

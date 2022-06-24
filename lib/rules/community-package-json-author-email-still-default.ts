@@ -9,7 +9,7 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: `\`author.email\` key in \`package.json\` of community package must be different from the default \`${COMMUNITY_PACKAGE_JSON.AUTHOR_EMAIL}\``,
+      description: `The \`author.email\` value in the \`package.json\` of a community package must be different from the default value \`${COMMUNITY_PACKAGE_JSON.AUTHOR_EMAIL}\`.`,
       recommended: "error",
     },
     fixable: "code",

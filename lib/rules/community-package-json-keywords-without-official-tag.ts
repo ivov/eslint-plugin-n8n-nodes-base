@@ -12,7 +12,6 @@ export default utils.createRule({
       description: `The \`keywords\` value in the \`package.json\` of a community package must be an array containing the string \`'${COMMUNITY_PACKAGE_JSON.OFFICIAL_TAG}'\`."`,
       recommended: "error",
     },
-    fixable: "code",
     schema: [],
     messages: {
       addOfficialTag: `Add \`${COMMUNITY_PACKAGE_JSON.OFFICIAL_TAG}\` to \`keywords\` in package.json`,

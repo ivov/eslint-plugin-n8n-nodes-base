@@ -11,7 +11,6 @@ export default utils.createRule({
         "The `keywords` key must be present in the `package.json` of a community package.",
       recommended: "error",
     },
-    fixable: "code",
     schema: [],
     messages: {
       addKeywords: "Add a `keywords` key to package.json",

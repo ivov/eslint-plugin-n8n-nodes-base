@@ -11,7 +11,6 @@ export default utils.createRule({
         "The `description` key must be present in the `package.json` of a community package.",
       recommended: "error",
     },
-    fixable: "code",
     schema: [],
     messages: {
       addLicense: "Add a `license` key to package.json",

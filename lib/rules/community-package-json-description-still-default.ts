@@ -11,7 +11,6 @@ export default utils.createRule({
       description: `The \`description\` value in the \`package.json\` of a community package must be different from the default value \`${COMMUNITY_PACKAGE_JSON.DESCRIPTION}\`.`,
       recommended: "error",
     },
-    fixable: "code",
     schema: [],
     messages: {
       updateDescription: "Update the `description` key in package.json",

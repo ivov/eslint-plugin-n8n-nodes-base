@@ -12,7 +12,6 @@ export default utils.createRule({
         "The `n8n.nodes` value in the `package.json` of a community package must contain at least one filepath.",
       recommended: "error",
     },
-    fixable: "code",
     schema: [],
     messages: {
       addOneFilepath:

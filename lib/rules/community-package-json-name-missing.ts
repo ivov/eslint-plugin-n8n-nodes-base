@@ -11,7 +11,6 @@ export default utils.createRule({
         "The `name` key must be present in the `package.json` of a community package.",
       recommended: "error",
     },
-    fixable: "code",
     schema: [],
     messages: {
       addName: "Add a `name` key to package.json",

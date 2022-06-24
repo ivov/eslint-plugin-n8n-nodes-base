@@ -11,7 +11,6 @@ export default utils.createRule({
         "The `author` key must be present in the `package.json` of a community package.",
       recommended: "error",
     },
-    fixable: "code",
     schema: [],
     messages: {
       addAuthor: "Add an `author` key to package.json",

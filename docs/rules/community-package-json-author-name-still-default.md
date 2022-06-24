@@ -6,8 +6,6 @@ The `author.name` value in the `package.json` of a community package must be dif
 
 📋 This rule is part of the `plugin:n8n-nodes-base/community-nodes` config.
 
-🔧 Run ESLint with `--fix` option to autofix the issue flagged by this rule.
-
 ## Examples
 
 ❌ Example of **incorrect** code:

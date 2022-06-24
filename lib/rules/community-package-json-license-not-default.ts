@@ -11,7 +11,6 @@ export default utils.createRule({
       description: `The \`license\` key in the \`package.json\` of a community package must be different from the default value \`${COMMUNITY_PACKAGE_JSON.LICENSE}\`.`,
       recommended: "error",
     },
-    fixable: "code",
     schema: [],
     messages: {
       updateLicense: `Update the \`license\` key to ${COMMUNITY_PACKAGE_JSON.LICENSE} in package.json`,

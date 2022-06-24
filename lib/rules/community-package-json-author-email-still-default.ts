@@ -12,7 +12,6 @@ export default utils.createRule({
       description: `The \`author.email\` value in the \`package.json\` of a community package must be different from the default value \`${COMMUNITY_PACKAGE_JSON.AUTHOR_EMAIL}\`.`,
       recommended: "error",
     },
-    fixable: "code",
     schema: [],
     messages: {
       updateAuthorEmail: "Update the `author.email` key in package.json",

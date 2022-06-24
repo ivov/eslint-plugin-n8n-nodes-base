@@ -12,7 +12,6 @@ export default utils.createRule({
         "The `n8n.nodes` key must be present in the `package.json` of a community package.",
       recommended: "error",
     },
-    fixable: "code",
     schema: [],
     messages: {
       addN8nNodes: "Add an `n8n.nodes` key to package.json",

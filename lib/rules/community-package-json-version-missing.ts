@@ -11,7 +11,6 @@ export default utils.createRule({
         "The `version` key must be present in the `package.json` of a community package.",
       recommended: "error",
     },
-    fixable: "code",
     schema: [],
     messages: {
       addVersion: "Add a `version` key to package.json",

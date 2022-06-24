@@ -13,7 +13,7 @@ export const test = {
 };
 
 const hasLiteral =
-  (keyName: "name" | "nodes" | "email") =>
+  (keyName: "name" | "nodes" | "email" | "url") =>
   (property: TSESTree.ObjectLiteralElement) => {
     return (
       property.type === AST_NODE_TYPES.Property &&
@@ -25,3 +25,4 @@ const hasLiteral =
 export const hasNameLiteral = hasLiteral("name");
 export const hasEmailLiteral = hasLiteral("email");
 export const hasNodesLiteral = hasLiteral("nodes");
+export const hasUrlLiteral = hasLiteral("url");

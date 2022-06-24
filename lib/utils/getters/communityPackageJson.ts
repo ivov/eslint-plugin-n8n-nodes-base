@@ -8,7 +8,8 @@ type TopLevelPackageJsonKey =
   | "version"
   | "n8n"
   | "author"
-  | "license";
+  | "license"
+  | "repository";
 
 const getPackageJsonProperty =
   (keyName: TopLevelPackageJsonKey) => (node: TSESTree.ObjectExpression) => {
@@ -44,3 +45,5 @@ export const getN8n = getPackageJsonProperty("n8n");
 export const getAuthor = getPackageJsonProperty("author");
 
 export const getLicense = getPackageJsonProperty("license");
+
+export const getRepository = getPackageJsonProperty("repository");

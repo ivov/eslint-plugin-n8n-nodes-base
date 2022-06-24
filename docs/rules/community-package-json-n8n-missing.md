@@ -2,7 +2,7 @@
 
 # community-package-json-n8n-missing
 
-The `description` key must be present in the `package.json` of a community package.
+The `n8n` key must be present in the `package.json` of a community package.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/community-nodes` config.
 

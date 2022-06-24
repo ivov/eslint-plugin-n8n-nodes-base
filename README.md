@@ -67,7 +67,7 @@ Available configs:
 | [community-package-json-keywords-without-official-tag](docs/rules/community-package-json-keywords-without-official-tag.md) | The `keywords` value in the `package.json` of a community package must be an array containing the value `'n8n-community-node-package'`. | No |
 | [community-package-json-license-missing](docs/rules/community-package-json-license-missing.md) | The `description` key must be present in the `package.json` of a community package. | No |
 | [community-package-json-license-not-default](docs/rules/community-package-json-license-not-default.md) | The `license` key in the `package.json` of a community package must be different from the default value `MIT`. | No |
-| [community-package-json-n8n-missing](docs/rules/community-package-json-n8n-missing.md) | The `description` key must be present in the `package.json` of a community package. | No |
+| [community-package-json-n8n-missing](docs/rules/community-package-json-n8n-missing.md) | The `n8n` key must be present in the `package.json` of a community package. | No |
 | [community-package-json-n8n-nodes-empty](docs/rules/community-package-json-n8n-nodes-empty.md) | The `n8n.nodes` value in the `package.json` of a community package must contain at least one filepath. | No |
 | [community-package-json-n8n-nodes-missing](docs/rules/community-package-json-n8n-nodes-missing.md) | The `n8n.nodes` key must be present in the `package.json` of a community package. | No |
 | [community-package-json-name-missing](docs/rules/community-package-json-name-missing.md) | The `name` key must be present in the `package.json` of a community package. | No |

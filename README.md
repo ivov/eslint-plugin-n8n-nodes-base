@@ -50,6 +50,7 @@ Available configs:
 - `autofixable-safe` → rules whose autofix cannot cause breaking changes
 - `autofixable-unsafe` → rules whose autofix can cause breaking changes
 - `non-autofixable` → rules to be manually fixed
+- `community-nodes` → rules for `package.json` of community package
 
 ## Ruleset
 

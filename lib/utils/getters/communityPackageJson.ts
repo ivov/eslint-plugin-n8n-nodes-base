@@ -6,7 +6,8 @@ type TopLevelPackageJsonKey =
   | "description"
   | "version"
   | "n8n"
-  | "author";
+  | "author"
+  | "license";
 
 const getPackageJsonProperty =
   (keyName: TopLevelPackageJsonKey) => (node: TSESTree.ObjectExpression) => {
@@ -23,7 +24,8 @@ const getPackageJsonProperty =
     return {
       ast: found,
       // @ts-ignore
-      value: found.value.value as string ?? "TODO restored object", // TODO
+      value: (found.value.value as string) ?? "TODO restored object",
+      // TODO: Restoring nested object unneeded for now
       // 'Literal' (found.value.value) or 'ObjectExpression' (nested object)
     };
   };
@@ -39,3 +41,5 @@ export const getVersion = getPackageJsonProperty("version");
 export const getN8n = getPackageJsonProperty("n8n");
 
 export const getAuthor = getPackageJsonProperty("author");
+
+export const getLicense = getPackageJsonProperty("license");

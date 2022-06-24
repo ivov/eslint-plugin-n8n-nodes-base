@@ -11,3 +11,14 @@ export const test = {
     return node.parent?.parent?.type === AST_NODE_TYPES.VariableDeclaration;
   },
 };
+
+const hasLiteral =
+  (keyName: string) => (property: TSESTree.ObjectLiteralElement) => {
+    return (
+      property.type === AST_NODE_TYPES.Property &&
+      property.key.type === AST_NODE_TYPES.Literal &&
+      property.key.value === keyName
+    );
+  };
+
+export const hasNameLiteral = hasLiteral("name");

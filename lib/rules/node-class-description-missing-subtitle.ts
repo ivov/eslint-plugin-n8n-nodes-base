@@ -2,6 +2,7 @@ import { NODE_CLASS_DESCRIPTION_SUBTITLE } from "../constants";
 import * as utils from "../ast";
 import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
+import { TSESTree } from "@typescript-eslint/utils";
 
 export default utils.createRule({
   name: utils.getRuleName(module),
@@ -23,8 +24,7 @@ export default utils.createRule({
       ObjectExpression(node) {
         if (!id.isNodeClassDescription(node)) return;
 
-        const allDisplayNames =
-          getters.nodeClassDescription.getAllDisplayNames(node);
+        const allDisplayNames = getAllDisplayNames(node);
 
         if (!allDisplayNames) return;
 
@@ -59,3 +59,26 @@ export default utils.createRule({
     };
   },
 });
+
+function getAllDisplayNames(nodeParam: TSESTree.ObjectExpression) {
+  const properties = nodeParam.properties.find(
+    id.nodeClassDescription.isProperties
+  );
+
+  if (!properties) return null;
+
+  const displayNames = properties.value.elements.reduce<string[]>(
+    (acc, element) => {
+      const found = element.properties?.find(id.nodeParam.isDisplayName);
+
+      if (found) acc.push(found.value.value);
+
+      return acc;
+    },
+    []
+  );
+
+  if (!displayNames.length) return null;
+
+  return displayNames;
+}

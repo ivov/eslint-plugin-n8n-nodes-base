@@ -55,29 +55,6 @@ export function getSubtitle(nodeParam: TSESTree.ObjectExpression) {
   };
 }
 
-export function getAllDisplayNames(nodeParam: TSESTree.ObjectExpression) {
-  const properties = nodeParam.properties.find(
-    id.nodeClassDescription.isProperties
-  );
-
-  if (!properties) return null;
-
-  const displayNames = properties.value.elements.reduce<string[]>(
-    (acc, element) => {
-      const found = element.properties?.find(id.nodeParam.isDisplayName);
-
-      if (found) acc.push(found.value.value);
-
-      return acc;
-    },
-    []
-  );
-
-  if (!displayNames.length) return null;
-
-  return displayNames;
-}
-
 export const getName = nodeParamGetName; // synonym for consistency
 
 export const getDisplayName = nodeParamGetDisplayName; // synonym for consistency

@@ -13,25 +13,25 @@ Install this plugin:
 npm i -D eslint-plugin-n8n-nodes-base
 ```
 
-Create an ESLint configuration file and decide how to enable rules:
+Create an [ESLint configuration file]((https://eslint.org/docs/latest/user-guide/configuring/configuration-files)) and decide how to set up the plugin.
 
-### Enable rules individually
+### Specify plugin only
 
-All rules are off by default and must be individually enabled:
+All rules in the plugin are disabled by default and must be individually enabled:
 
 ```js
 {
   plugins: [ "eslint-plugin-n8n-nodes-base" ],
   rules: {
-    "n8n-nodes-base/node-param-array-type-assertion": "error",
+    "n8n-nodes-base/node-param-array-type-assertion": "warning",
     "n8n-nodes-base/node-param-default-wrong-for-collection": "error"
   }
 }
 ```
 
-### Enable a set of rules
+### Specify plugin and config
 
-Config rules are enabled by default and must be individually disabled:
+All rules in a config (subset) are enabled by default and must be individually disabled:
 
 ```js
 {
@@ -46,11 +46,12 @@ Config rules are enabled by default and must be individually disabled:
 
 Available configs:
 
-- `all` → all rules
-- `autofixable-safe` → rules whose autofix cannot cause breaking changes
-- `autofixable-unsafe` → rules whose autofix can cause breaking changes
-- `non-autofixable` → rules to be manually fixed
-- `community-nodes` → rules for `package.json` of community package
+| Config               | Content                                                 |
+|----------------------|---------------------------------------------------------|
+| `autofixable-safe`   | Rules whose autofix cannot cause breaking changes       |
+| `autofixable-unsafe` | Rules whose autofix can cause breaking changes          |
+| `non-autofixable`    | Rules to be manually fixed                              |
+| `community-nodes`    | Rules applicable to `package.json` in community package |
 
 ## Ruleset
 

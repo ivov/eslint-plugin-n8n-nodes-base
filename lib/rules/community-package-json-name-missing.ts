@@ -20,13 +20,7 @@ export default utils.createRule({
   create(context) {
     return {
       ObjectExpression(node) {
-        const isTestRun = process.env.NODE_ENV === "test";
-        const isProdRun = !isTestRun;
-        const filename = context.getFilename();
-
-        if (isProdRun && !filename.includes("package.json")) return;
-        if (isProdRun && !id.prod.isTopLevelObjectExpression(node)) return;
-        if (isTestRun && !id.test.isTopLevelObjectExpression(node)) return;
+        if (!id.isCommunityPackageJson(context.getFilename(), node)) return;
 
         if (!getters.communityPackageJson.getName(node)) {
           context.report({

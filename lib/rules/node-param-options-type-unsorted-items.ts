@@ -40,7 +40,7 @@ export default utils.createRule({
         if (!utils.areIdenticallySortedOptions(options.value, sortedOptions)) {
           const baseIndentation = utils.getBaseIndentationForOption(options);
 
-          const fixed = utils.format(sortedOptions, baseIndentation);
+          const fixed = utils.formatItems(sortedOptions, baseIndentation);
 
           const displayOrder = utils.toDisplayOrder(sortedOptions);
 

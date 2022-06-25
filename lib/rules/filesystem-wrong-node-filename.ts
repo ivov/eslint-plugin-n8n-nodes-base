@@ -8,7 +8,7 @@ export default utils.createRule({
     type: "layout",
     docs: {
       description:
-        "Node filename must match `name` in node class description, excluding the filename suffix. Example: `Test.node.ts` matches `Test` in `Test.description.name`.",
+        "Node filename must match `name` in node class description, excluding the filename suffix. Example: `Test.node.ts` matches `Test` in property `Test.description.name`.",
       recommended: "error",
     },
     schema: [],

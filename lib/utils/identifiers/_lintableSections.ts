@@ -18,7 +18,7 @@ export const IDENTIFIER_KEYS: Record<string, IdentifierKey[]> = {
   nodeClassDescription: ["displayName", "name", "icon"],
 };
 
-export function isLintableSection(
+function isLintableSection(
   section:
     | "nodeParam"
     | "option"

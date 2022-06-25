@@ -1,7 +1,7 @@
-import * as nodeParam from "./nodeParam";
-import * as nodeClassDescription from "./nodeClassDesc";
-import * as credClassBody from "./credClassBody";
-import * as communityPackageJson from "./communityPackageJson";
+import * as nodeParam from "./nodeParameter.identifiers";
+import * as nodeClassDescription from "./nodeClassDescription.identifiers";
+import * as credClassBody from "./credentialClassBody.identifiers";
+import * as communityPackageJson from "./communityPackageJson.identifiers";
 
 import * as lintableSections from "./_lintableSections";
 import * as typedProps from "./_typedProps";

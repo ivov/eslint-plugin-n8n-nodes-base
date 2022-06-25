@@ -1,6 +1,6 @@
 import { OptionsProperty } from "../types";
 import * as utils from "../utils";
-import { isValue } from "../utils/identifiers/nodeParam";
+import { isValue } from "../utils/identifiers/nodeParameter.identifiers";
 import { identifiers as id } from "../utils/identifiers";
 import { getters } from "../utils/getters";
 

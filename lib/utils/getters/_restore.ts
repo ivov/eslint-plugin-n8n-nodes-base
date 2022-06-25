@@ -1,5 +1,5 @@
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
-import { isUnaryExpression } from "../identifiers/nodeParam";
+import { isUnaryExpression } from "../identifiers/nodeParameter.identifiers";
 
 /**
  * Restore the source value of an array of primitives,

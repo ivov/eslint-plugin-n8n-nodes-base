@@ -1,11 +1,10 @@
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
+import { isArrayExpression, isLiteral } from "../identifiers/common.identifiers";
 import { isUnaryExpression } from "../identifiers/nodeParameter.identifiers";
 
 /**
- * Module to restore an AST to source text.
- *
- * Used by getters' return types:
- * `{ ast: <ast>, value: <restoredValue> }`
+ * Module to restore an AST to source text, used by getters' return types:
+ * `{ ast: <ast>, value: <restoredSourceText> }`
  */
 
 /**
@@ -127,47 +126,3 @@ export function restoreClassDescriptionOptions(
 
   return restoredCredOptions;
 }
-
-const isLiteral = (
-  property: TSESTree.ObjectLiteralElement
-): property is TSESTree.PropertyNonComputedName & {
-  key: { name: string };
-  value: { value: string };
-} => {
-  return (
-    property.type === AST_NODE_TYPES.Property &&
-    property.computed === false &&
-    property.key.type === AST_NODE_TYPES.Identifier &&
-    property.value.type === AST_NODE_TYPES.Literal
-  );
-};
-
-const isArrayExpression = (
-  property: TSESTree.ObjectLiteralElement
-): property is TSESTree.PropertyNonComputedName & {
-  key: { name: string };
-  value: { elements: TSESTree.ObjectExpression[] }; // @TODO: Double-check type
-} => {
-  return (
-    property.type === AST_NODE_TYPES.Property &&
-    property.computed === false &&
-    property.key.type === AST_NODE_TYPES.Identifier &&
-    typeof property.key.name === "string" &&
-    property.value.type === AST_NODE_TYPES.ArrayExpression
-  );
-};
-
-export const isMemberExpression = (
-  property: TSESTree.ObjectLiteralElement
-): property is TSESTree.PropertyNonComputedName & {
-  key: { name: string };
-  value: { object: { name: string }; property: { name: string } };
-} => {
-  return (
-    property.type === AST_NODE_TYPES.Property &&
-    property.computed === false &&
-    property.key.type === AST_NODE_TYPES.Identifier &&
-    typeof property.key.name === "string" &&
-    property.value.type === AST_NODE_TYPES.MemberExpression
-  );
-};

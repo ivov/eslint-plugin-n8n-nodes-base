@@ -176,3 +176,51 @@ export function isWeakDescription({ value }: { value: string }) {
     value.toLowerCase().includes(wd.toLowerCase())
   );
 }
+
+// ----------------------------------------
+//            for restorers
+// ----------------------------------------
+
+export const isLiteral = (
+  property: TSESTree.ObjectLiteralElement
+): property is TSESTree.PropertyNonComputedName & {
+  key: { name: string };
+  value: { value: string };
+} => {
+  return (
+    property.type === AST_NODE_TYPES.Property &&
+    property.computed === false &&
+    property.key.type === AST_NODE_TYPES.Identifier &&
+    property.value.type === AST_NODE_TYPES.Literal
+  );
+};
+
+export const isArrayExpression = (
+  property: TSESTree.ObjectLiteralElement
+): property is TSESTree.PropertyNonComputedName & {
+  key: { name: string };
+  value: { elements: TSESTree.ObjectExpression[] }; // @TODO: Double-check type
+} => {
+  return (
+    property.type === AST_NODE_TYPES.Property &&
+    property.computed === false &&
+    property.key.type === AST_NODE_TYPES.Identifier &&
+    typeof property.key.name === "string" &&
+    property.value.type === AST_NODE_TYPES.ArrayExpression
+  );
+};
+
+export const isMemberExpression = (
+  property: TSESTree.ObjectLiteralElement
+): property is TSESTree.PropertyNonComputedName & {
+  key: { name: string };
+  value: { object: { name: string }; property: { name: string } };
+} => {
+  return (
+    property.type === AST_NODE_TYPES.Property &&
+    property.computed === false &&
+    property.key.type === AST_NODE_TYPES.Identifier &&
+    typeof property.key.name === "string" &&
+    property.value.type === AST_NODE_TYPES.MemberExpression
+  );
+};

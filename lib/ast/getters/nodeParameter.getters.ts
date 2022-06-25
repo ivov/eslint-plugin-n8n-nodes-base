@@ -6,7 +6,6 @@ import {
   restoreObject,
   restoreNodeParamOptions,
   restoreFixedCollectionValues,
-  isMemberExpression,
 } from "../restorers";
 
 import type {
@@ -14,6 +13,7 @@ import type {
   NumberProperty,
   StringProperty,
 } from "../../types";
+import { isMemberExpression } from "../identifiers/common.identifiers";
 
 export function getStringProperty(
   identifier: (
@@ -132,7 +132,7 @@ export function getOptions(nodeParam: TSESTree.ObjectExpression) {
 }
 
 function hasMemberExpression(elements: TSESTree.ObjectExpression[]) {
-  return elements.find((e) => e.properties.find(isMemberExpression));
+  return elements.find((element) => element.properties.find(isMemberExpression));
 }
 
 export function getFixedCollectionValues(nodeParam: TSESTree.ObjectExpression) {

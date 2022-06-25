@@ -1,14 +1,14 @@
-import * as nodeParam from "./nodeParam";
-import * as nodeClassDescription from "./nodeClassDesc";
-import * as credClassBody from "./credClassBody";
-import * as communityPackageJson from "./communityPackageJson";
+import * as nodeParam from "./nodeParameter.getters";
+import * as nodeClassDescription from "./nodeClassDescription.getters";
+import * as credClassBody from "./credentialClassBody.getters";
+import * as communityPackageJson from "./communityPackageJson.getters";
 
-import * as className from "./_className";
+import * as common from "./common.getters";
 
 export const getters = {
   nodeParam,
   nodeClassDescription,
   credClassBody,
   communityPackageJson,
-  ...className,
+  ...common,
 };

@@ -7,7 +7,7 @@ import {
   getDescription as nodeParamGetDescription,
   getNumberProperty,
   getStringProperty,
-} from "./nodeParam";
+} from "./nodeParameter.getters";
 
 export function getCredOptions(nodeParam: TSESTree.ObjectExpression) {
   const found = nodeParam.properties.find(

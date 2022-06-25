@@ -99,6 +99,28 @@ export const LINE_BREAK_HTML_TAG_REGEX = /<\/? ?br ?\/?>/;
 export const VERSION_REGEX = /^v\d+\.\d+$/;
 
 // ----------------------------------
+//       community package.json
+// ----------------------------------
+
+export const COMMUNITY_PACKAGE_JSON = {
+  NAME: "n8n-nodes-starter",
+  DESCRIPTION: "Example starter module for custom n8n nodes.",
+  OFFICIAL_TAG: "n8n-community-node-package",
+  LICENSE: "MIT",
+  AUTHOR_NAME: "Jan Oberhauser",
+  AUTHOR_EMAIL: "jan@n8n.io",
+  REPOSITORY_URL: "git+https://github.com/n8n-io/n8n-nodes-starter.git",
+  CREDENTIALS: [
+    "dist/credentials/ExampleCredentials.credentials.js",
+    "dist/credentials/HttpBinApi.credentials.js",
+  ],
+  NODES: [
+    "dist/nodes/ExampleNode/ExampleNode.node.js",
+    "dist/nodes/HttpBin/HttpBin.node.js",
+  ],
+};
+
+// ----------------------------------
 //             docs
 // ----------------------------------
 

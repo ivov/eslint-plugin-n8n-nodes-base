@@ -1,60 +1,43 @@
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 
-export type NodeParamType =
-  | "string"
-  | "number"
-  | "boolean"
-  | "options"
-  | "multiOptions"
-  | "collection"
-  | "fixedCollection"
-  | "color";
+type BaseProperty = TSESTree.PropertyNonComputedName;
 
-export type IdentifierKey =
-  | "displayName" // nodeParameter, fixedCollectionSection, nodeClassDescription
-  | "name" // nodeParameter, fixedCollectionSection, nodeClassDescription, option
-  | "type" // nodeParameter
-  | "default" // nodeParameter
-  | "value" // option
-  | "values" // fixedCollectionSection
-  | "icon"; // nodeClassDescription
-
-export type BooleanProperty = TSESTree.PropertyNonComputedName & {
+export type BooleanProperty = BaseProperty & {
   value: {
     type: AST_NODE_TYPES.ObjectExpression;
     value: boolean;
   };
 };
 
-export type NumberProperty = TSESTree.PropertyNonComputedName & {
+export type NumberProperty = BaseProperty & {
   value: {
     type: AST_NODE_TYPES.ObjectExpression;
     value: number;
   };
 };
 
-export type StringProperty = TSESTree.PropertyNonComputedName & {
+export type StringProperty = BaseProperty & {
   value: {
     type: AST_NODE_TYPES.ObjectExpression;
     value: string;
   };
 };
 
-export type ObjectProperty = TSESTree.PropertyNonComputedName & {
+export type ObjectProperty = BaseProperty & {
   value: TSESTree.ObjectExpression;
 };
 
-export type ArrayProperty = TSESTree.PropertyNonComputedName & {
+export type ArrayProperty = BaseProperty & {
   value: TSESTree.ArrayExpression;
 };
 
-export type OptionsProperty = TSESTree.PropertyNonComputedName & {
+export type OptionsProperty = BaseProperty & {
   value: { elements: TSESTree.ObjectExpression[] };
 };
 
 export type ValuesProperty = OptionsProperty;
 
-export type TemplateStringProperty = TSESTree.PropertyNonComputedName & {
+export type TemplateStringProperty = BaseProperty & {
   value: { quasis: TSESTree.TemplateElement[] };
 };
 

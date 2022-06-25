@@ -1,5 +1,4 @@
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
-import type { IdentifierKey } from "../../types";
 
 /**
  * Module to identify four of the five lintable sections:
@@ -10,6 +9,16 @@ import type { IdentifierKey } from "../../types";
  *
  * Cred class body, the fifth section, is identified via filename.
  */
+
+export type IdentifierKey =
+  | "displayName" // nodeParameter, fixedCollectionSection, nodeClassDescription
+  | "name" // nodeParameter, fixedCollectionSection, nodeClassDescription, option
+  | "type" // nodeParameter
+  | "default" // nodeParameter
+  | "value" // option
+  | "values" // fixedCollectionSection
+  | "icon"; // nodeClassDescription
+
 
 export const IDENTIFIER_KEYS: Record<string, IdentifierKey[]> = {
   nodeParam: ["displayName", "name", "type", "default"],

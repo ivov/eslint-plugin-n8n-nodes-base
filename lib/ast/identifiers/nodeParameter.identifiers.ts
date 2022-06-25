@@ -9,7 +9,6 @@ import type {
   StringProperty,
   TemplateStringProperty,
   ValuesProperty,
-  NodeParamType,
 } from "../../types";
 
 import {
@@ -23,6 +22,16 @@ import {
 /**
  * Module to identify node param type, node param properties, etc.
  */
+
+type NodeParamType =
+  | "string"
+  | "number"
+  | "boolean"
+  | "options"
+  | "multiOptions"
+  | "collection"
+  | "fixedCollection"
+  | "color";
 
 function isParamOfType(
   type: NodeParamType,

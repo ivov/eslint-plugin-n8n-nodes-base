@@ -1,6 +1,6 @@
 import { TSESTree, AST_NODE_TYPES } from "@typescript-eslint/utils";
 
-import { identifiers as id } from "../identifiers";
+import { id } from "../identifiers";
 
 import {
   restoreObject,

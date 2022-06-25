@@ -1,6 +1,6 @@
 import { SVG_ICON_SOURCES } from "../constants";
 import * as utils from "../ast";
-import { identifiers as id } from "../ast/identifiers";
+import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
 
 const iconSources = SVG_ICON_SOURCES.join(" | ");

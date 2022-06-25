@@ -1,6 +1,6 @@
 import { DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER } from "../constants";
 import * as utils from "../ast";
-import { identifiers as id } from "../ast/identifiers";
+import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
 import { plural, singular } from "pluralize";
 

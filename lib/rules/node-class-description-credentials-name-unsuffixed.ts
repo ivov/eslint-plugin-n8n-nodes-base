@@ -1,6 +1,6 @@
 import { OptionsProperty } from "../types";
 import * as utils from "../ast";
-import { identifiers as id } from "../ast/identifiers";
+import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
 
 export default utils.createRule({

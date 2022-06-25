@@ -1,4 +1,4 @@
-import { identifiers as id } from "../ast/identifiers";
+import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
 import * as utils from "../ast";
 

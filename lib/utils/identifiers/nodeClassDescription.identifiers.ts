@@ -1,10 +1,10 @@
 import { TSESTree } from "@typescript-eslint/utils";
 
 import {
-  isArrayPropertyWithKey,
-  isNumericPropertyWithKey,
-  isStringPropertyWithKey,
-} from "./_typedProps";
+  isArrayPropertyNamed,
+  isNumericPropertyNamed,
+  isStringPropertyNamed,
+} from "./common.identifiers";
 
 import type {
   ArrayProperty,
@@ -20,49 +20,49 @@ import type {
 export function isVersion(
   property: TSESTree.ObjectLiteralElement
 ): property is NumberProperty {
-  return isNumericPropertyWithKey("version", property);
+  return isNumericPropertyNamed("version", property);
 }
 
 export function isDefaultVersion(
   property: TSESTree.ObjectLiteralElement
 ): property is NumberProperty {
-  return isNumericPropertyWithKey("defaultVersion", property);
+  return isNumericPropertyNamed("defaultVersion", property);
 }
 
 export function isIcon(
   property: TSESTree.ObjectLiteralElement
 ): property is StringProperty {
-  return isStringPropertyWithKey("icon", property);
+  return isStringPropertyNamed("icon", property);
 }
 
 export function isSubtitle(
   property: TSESTree.ObjectLiteralElement
 ): property is StringProperty {
-  return isStringPropertyWithKey("subtitle", property);
+  return isStringPropertyNamed("subtitle", property);
 }
 
 export function isInputs(
   property: TSESTree.ObjectLiteralElement
 ): property is ArrayProperty {
-  return isArrayPropertyWithKey("inputs", property);
+  return isArrayPropertyNamed("inputs", property);
 }
 
 export function isOutputs(
   property: TSESTree.ObjectLiteralElement
 ): property is ArrayProperty {
-  return isArrayPropertyWithKey("outputs", property);
+  return isArrayPropertyNamed("outputs", property);
 }
 
 export function isCredentials(
   property: TSESTree.ObjectLiteralElement
 ): property is OptionsProperty {
-  return isArrayPropertyWithKey("credentials", property);
+  return isArrayPropertyNamed("credentials", property);
 }
 
 export function isName(
   property: TSESTree.ObjectLiteralElement
 ): property is StringProperty {
-  return isStringPropertyWithKey("name", property);
+  return isStringPropertyNamed("name", property);
 }
 
 export function isProperties(
@@ -70,5 +70,5 @@ export function isProperties(
 ): property is TSESTree.PropertyNonComputedName & {
   value: { elements: TSESTree.ObjectExpression[] };
 } {
-  return isArrayPropertyWithKey("properties", property);
+  return isArrayPropertyNamed("properties", property);
 }

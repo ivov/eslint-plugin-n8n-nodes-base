@@ -13,12 +13,12 @@ import type {
 } from "../../types";
 
 import {
-  isArrayPropertyWithKey,
-  isBooleanPropertyWithKey,
-  isObjectPropertyWithKey,
-  isPropertyPointingToIdentifier,
-  isStringPropertyWithKey,
-} from "./_typedProps";
+  isArrayPropertyNamed,
+  isBooleanPropertyNamed,
+  isObjectPropertyNamed,
+  isIdentifierPropertyNamed,
+  isStringPropertyNamed,
+} from "./common.identifiers";
 
 /**
  * Module to identify node param type, node param properties, etc.
@@ -141,49 +141,49 @@ export function isOperation(nodeParam: TSESTree.ObjectExpression) {
 export function isRequired(
   property: TSESTree.ObjectLiteralElement
 ): property is BooleanProperty {
-  return isBooleanPropertyWithKey("required", property);
+  return isBooleanPropertyNamed("required", property);
 }
 
 export function isNoDataExpression(
   property: TSESTree.ObjectLiteralElement
 ): property is BooleanProperty {
-  return isBooleanPropertyWithKey("noDataExpression", property);
+  return isBooleanPropertyNamed("noDataExpression", property);
 }
 
 export function isDisplayName(
   property: TSESTree.ObjectLiteralElement
 ): property is StringProperty {
-  return isStringPropertyWithKey("displayName", property);
+  return isStringPropertyNamed("displayName", property);
 }
 
 export function isPlaceholder(
   property: TSESTree.ObjectLiteralElement
 ): property is StringProperty {
-  return isStringPropertyWithKey("placeholder", property);
+  return isStringPropertyNamed("placeholder", property);
 }
 
 export function isType(
   property: TSESTree.ObjectLiteralElement
 ): property is StringProperty {
-  return isStringPropertyWithKey("type", property);
+  return isStringPropertyNamed("type", property);
 }
 
 export function isName(
   property: TSESTree.ObjectLiteralElement
 ): property is StringProperty {
-  return isStringPropertyWithKey("name", property);
+  return isStringPropertyNamed("name", property);
 }
 
 export function isValue(
   property: TSESTree.ObjectLiteralElement
 ): property is StringProperty {
-  return isStringPropertyWithKey("value", property);
+  return isStringPropertyNamed("value", property);
 }
 
 export function isDisplayOptions(
   property: TSESTree.ObjectLiteralElement
 ): property is ObjectProperty {
-  return isObjectPropertyWithKey("displayOptions", property);
+  return isObjectPropertyNamed("displayOptions", property);
 }
 
 export const isUnaryExpression = (
@@ -230,21 +230,21 @@ export function isTemplateLiteralDefault(
 export function isObjectDefault(
   property: TSESTree.ObjectLiteralElement
 ): property is ObjectProperty {
-  return isObjectPropertyWithKey("default", property);
+  return isObjectPropertyNamed("default", property);
 }
 
 export function isArrayDefault(
   property: TSESTree.ObjectLiteralElement
 ): property is ArrayProperty {
-  return isArrayPropertyWithKey("default", property);
+  return isArrayPropertyNamed("default", property);
 }
 
 export function isOptions(
   property: TSESTree.ObjectLiteralElement
 ): property is OptionsProperty {
   return (
-    isArrayPropertyWithKey("options", property) ||
-    isPropertyPointingToIdentifier("options", property)
+    isArrayPropertyNamed("options", property) ||
+    isIdentifierPropertyNamed("options", property)
   );
 }
 
@@ -255,7 +255,7 @@ export function isTypeOptions(
     properties: TSESTree.ObjectLiteralElement[];
   } & TSESTree.ObjectExpression;
 } {
-  return isObjectPropertyWithKey("typeOptions", property);
+  return isObjectPropertyNamed("typeOptions", property);
 }
 
 export function isMinValue(
@@ -274,13 +274,13 @@ export function isMinValue(
 export function isLoadOptionsMethod(
   property: TSESTree.ObjectLiteralElement
 ): property is NumberProperty {
-  return isStringPropertyWithKey("loadOptionsMethod", property);
+  return isStringPropertyNamed("loadOptionsMethod", property);
 }
 
 export function isDescription(
   property: TSESTree.ObjectLiteralElement
 ): property is StringProperty {
-  return isStringPropertyWithKey("description", property);
+  return isStringPropertyNamed("description", property);
 }
 
 export function isTemplateDescription(
@@ -298,18 +298,18 @@ export function isTemplateDescription(
 export function isFixedCollectionValues(
   property: TSESTree.ObjectLiteralElement
 ): property is ValuesProperty {
-  return isArrayPropertyWithKey("values", property);
+  return isArrayPropertyNamed("values", property);
 }
 
 export function isDisplayOptionsShow(
   property: TSESTree.ObjectLiteralElement
 ): property is ObjectProperty {
-  return isObjectPropertyWithKey("show", property);
+  return isObjectPropertyNamed("show", property);
 }
 
 export function isShowSetting(
   showSettingKey: "resource" | "operation",
   property: TSESTree.ObjectLiteralElement
 ): property is ArrayProperty {
-  return isArrayPropertyWithKey(showSettingKey, property);
+  return isArrayPropertyNamed(showSettingKey, property);
 }

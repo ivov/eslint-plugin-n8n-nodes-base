@@ -27,7 +27,7 @@ export default utils.createRule({
 
         if (!description) return;
 
-        if (utils.isWeakDescription(description)) {
+        if (id.isWeakDescription(description)) {
           const rangeToRemove = utils.getRangeToRemove(description);
 
           context.report({

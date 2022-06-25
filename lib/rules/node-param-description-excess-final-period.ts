@@ -31,7 +31,7 @@ export default utils.createRule({
         if (/\s{2,}/.test(description.value)) return;
 
         // to prevent overlap with node-param-description-weak
-        if (utils.isWeakDescription(description)) return;
+        if (id.isWeakDescription(description)) return;
 
         const { value } = description;
 

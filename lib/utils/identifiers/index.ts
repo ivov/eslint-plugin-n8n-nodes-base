@@ -3,10 +3,8 @@ import * as nodeClassDescription from "./nodeClassDescription.identifiers";
 import * as credClassBody from "./credentialClassBody.identifiers";
 import * as communityPackageJson from "./communityPackageJson.identifiers";
 
-import * as lintableSections from "./_lintableSections";
-import * as typedProps from "./_typedProps";
-import * as credClass from "./_credClass";
-import * as namedValue from "./_namedValue";
+import * as lintableSections from "./lintable.identifiers";
+import * as common from "./common.identifiers";
 
 export const identifiers = {
   nodeParam,
@@ -14,7 +12,5 @@ export const identifiers = {
   nodeClassDescription,
   ...communityPackageJson,
   ...lintableSections,
-  ...typedProps,
-  ...credClass,
-  ...namedValue,
+  ...common,
 };

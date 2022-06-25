@@ -28,7 +28,7 @@ export default utils.createRule({
         if (filename === "GenericFunctions.ts") return;
 
         // skip ObjectExpression if not being used as param object
-        if (utils.isArgument(node)) return;
+        if (id.isArgument(node)) return;
 
         const isNodeParameter = id.isNodeParameter(node);
         const isFixedCollectionSection = id.isFixedCollectionSection(node);

@@ -266,12 +266,6 @@ export function isMultiline(node: { ast: TSESTree.BaseNode; value: string }) {
   return node.ast.loc.start.line !== node.ast.loc.end.line;
 }
 
-export function isWeakDescription({ value }: { value: string }) {
-  return WEAK_DESCRIPTIONS.some((wd) =>
-    value.toLowerCase().includes(wd.toLowerCase())
-  );
-}
-
 /**
  * Create a key-value pair to insert in an object.
  *
@@ -332,15 +326,4 @@ export function addEndSegment(value: string) {
   if (/Name or/.test(value)) return value.replace("Name or", "Name or ID");
 
   return value.concat(" Name or ID");
-}
-
-export function isReturnValue(node: TSESTree.Node) {
-  return node.parent?.type === AST_NODE_TYPES.ReturnStatement;
-}
-
-export function isArgument(node: TSESTree.Node) {
-  return (
-    node.parent?.type === AST_NODE_TYPES.TSAsExpression ||
-    node.parent?.type === AST_NODE_TYPES.CallExpression
-  );
 }

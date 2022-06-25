@@ -19,10 +19,10 @@ export function restoreArray(elements: TSESTree.Expression[]) {
  * Restore the source value of an array of objects,
  * e.g. `options` in a node param.
  */
-export function restoreObjectArray(elements: TSESTree.ObjectExpression[]) {
-  return elements.reduce<Array<Record<string, unknown>>>((acc, e) => {
-    if (e.type === AST_NODE_TYPES.ObjectExpression) {
-      acc.push(restoreObject(e));
+export function restoreArrayOfObjects(elements: TSESTree.ObjectExpression[]) {
+  return elements.reduce<Array<Record<string, unknown>>>((acc, element) => {
+    if (element.type === AST_NODE_TYPES.ObjectExpression) {
+      acc.push(restoreObject(element));
     }
 
     return acc;
@@ -37,7 +37,7 @@ export function restoreObject(objectExpression: TSESTree.ObjectExpression) {
   return objectExpression.properties.reduce<Record<string, unknown>>(
     (acc, property) => {
       if (isArrayExpression(property)) {
-        acc[property.key.name] = restoreObjectArray(property.value.elements); // e.g. options: [...]
+        acc[property.key.name] = restoreArrayOfObjects(property.value.elements); // e.g. options: [...]
       } else if (isLiteral(property)) {
         acc[property.key.name] = property.value.value;
       } else if (isUnaryExpression(property)) {

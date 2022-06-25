@@ -7,7 +7,7 @@ import {
   restoreNodeParamOptions,
   restoreFixedCollectionValues,
   isMemberExpression,
-} from "./_restore";
+} from "../restorers";
 
 import type {
   BooleanProperty,

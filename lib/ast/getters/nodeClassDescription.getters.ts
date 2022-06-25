@@ -1,6 +1,6 @@
 import { TSESTree } from "@typescript-eslint/utils";
 import { id } from "../identifiers";
-import { restoreClassDescriptionOptions, restoreArray } from "./_restore";
+import { restoreClassDescriptionOptions, restoreArray } from "../restorers";
 import {
   getName as nodeParamGetName,
   getDisplayName as nodeParamGetDisplayName,

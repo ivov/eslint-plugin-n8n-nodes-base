@@ -1,5 +1,5 @@
 import { NODE_CLASS_DESCRIPTION_SUBTITLE } from "../constants";
-import * as utils from "../ast";
+import { utils } from "../ast/utils";
 import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
 import { TSESTree } from "@typescript-eslint/utils";

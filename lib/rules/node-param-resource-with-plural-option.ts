@@ -1,7 +1,7 @@
 import { AST_NODE_TYPES } from "@typescript-eslint/utils";
 import { isPlural, plural, singular } from "pluralize";
 import { OptionsProperty } from "../types";
-import * as utils from "../ast";
+import { utils } from "../ast/utils";
 import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
 

@@ -1,5 +1,5 @@
 import { DOCUMENTATION, MISCASED_JSON_REGEX } from "../constants";
-import * as utils from "../ast";
+import { utils } from "../ast/utils";
 import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
 

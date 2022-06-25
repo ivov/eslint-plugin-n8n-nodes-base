@@ -1,5 +1,5 @@
 import { TSESTree } from "@typescript-eslint/utils";
-import * as utils from "../ast";
+import { utils } from "../ast/utils";
 import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
 

@@ -2,7 +2,7 @@ import {
   MIN_ITEMS_TO_ALPHABETIZE,
   MIN_ITEMS_TO_ALPHABETIZE_IN_FULL,
 } from "../constants";
-import * as utils from "../ast";
+import { utils } from "../ast/utils";
 import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";

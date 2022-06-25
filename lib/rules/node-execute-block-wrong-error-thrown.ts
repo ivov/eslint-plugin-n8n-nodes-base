@@ -1,4 +1,4 @@
-import * as utils from "../utils";
+import * as utils from "../ast";
 
 export default utils.createRule({
   name: utils.getRuleName(module),

@@ -1,5 +1,5 @@
 import rule from "../lib/rules/cred-class-field-documentation-url-miscased";
-import { ruleTester, getRuleName } from "../lib/utils";
+import { ruleTester, getRuleName } from "../lib/ast";
 import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {

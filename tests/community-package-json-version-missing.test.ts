@@ -1,5 +1,5 @@
 import rule from "../lib/rules/community-package-json-version-missing";
-import { ruleTester, getRuleName } from "../lib/utils";
+import { ruleTester, getRuleName } from "../lib/ast";
 import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {

@@ -1,6 +1,6 @@
-import * as utils from "../utils";
-import { identifiers as id } from "../utils/identifiers";
-import { getters } from "../utils/getters";
+import * as utils from "../ast";
+import { identifiers as id } from "../ast/identifiers";
+import { getters } from "../ast/getters";
 
 // expected filename based on class name
 

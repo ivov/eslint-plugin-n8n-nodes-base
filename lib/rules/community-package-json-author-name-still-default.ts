@@ -1,6 +1,6 @@
-import { identifiers as id } from "../utils/identifiers";
-import { getters } from "../utils/getters";
-import * as utils from "../utils";
+import { identifiers as id } from "../ast/identifiers";
+import { getters } from "../ast/getters";
+import * as utils from "../ast";
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 import { COMMUNITY_PACKAGE_JSON } from "../constants";
 

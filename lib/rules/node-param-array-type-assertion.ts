@@ -1,6 +1,6 @@
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
-import * as utils from "../utils";
-import { identifiers as id } from "../utils/identifiers";
+import * as utils from "../ast";
+import { identifiers as id } from "../ast/identifiers";
 
 export default utils.createRule({
   name: utils.getRuleName(module),

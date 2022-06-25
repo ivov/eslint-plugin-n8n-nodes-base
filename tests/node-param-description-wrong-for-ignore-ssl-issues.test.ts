@@ -1,6 +1,6 @@
 import { IGNORE_SSL_ISSUES_NODE_PARAMETER } from "../lib/constants";
 import rule from "../lib/rules/node-param-description-wrong-for-ignore-ssl-issues";
-import { ruleTester, getRuleName } from "../lib/utils";
+import { ruleTester, getRuleName } from "../lib/ast";
 import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {

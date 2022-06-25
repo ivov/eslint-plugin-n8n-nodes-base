@@ -7,7 +7,8 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: "`name` field in credential class must be suffixed with `-Api`.",
+      description:
+        "`name` field in credential class must be suffixed with `-Api`.",
       recommended: "error",
     },
     fixable: "code",
@@ -32,9 +33,7 @@ export default utils.createRule({
           context.report({
             messageId: "fixSuffix",
             node: name.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(name.ast, `name = '${fixed}';`);
-            },
+            fix: (fixer) => fixer.replaceText(name.ast, `name = '${fixed}';`),
           });
         }
       },

@@ -8,7 +8,8 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: "`documentationUrl` field in credential class must be camel cased.",
+      description:
+        "`documentationUrl` field in credential class must be camel cased.",
       recommended: "error",
     },
     fixable: "code",
@@ -23,7 +24,9 @@ export default utils.createRule({
       ClassDeclaration(node) {
         if (!id.isCredentialClass(node)) return;
 
-        const documentationUrl = getters.credClassBody.getDocumentationUrl(node.body);
+        const documentationUrl = getters.credClassBody.getDocumentationUrl(
+          node.body
+        );
 
         if (!documentationUrl) return;
 
@@ -33,12 +36,11 @@ export default utils.createRule({
           context.report({
             messageId: "useCamelCase",
             node: documentationUrl.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(
+            fix: (fixer) =>
+              fixer.replaceText(
                 documentationUrl.ast,
                 `documentationUrl = '${camelCasedDocumentationUrl}';`
-              );
-            },
+              ),
           });
         }
       },

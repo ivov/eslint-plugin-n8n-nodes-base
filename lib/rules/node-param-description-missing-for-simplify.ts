@@ -37,12 +37,11 @@ export default utils.createRule({
           context.report({
             messageId: "addSimplifyDescription",
             node,
-            fix: (fixer) => {
-              return fixer.insertTextAfterRange(
+            fix: (fixer) =>
+              fixer.insertTextAfterRange(
                 range,
                 `\n${indentation}description: '${SIMPLIFY_NODE_PARAMETER.DESCRIPTION}',`
-              );
-            },
+              ),
           });
         }
       },

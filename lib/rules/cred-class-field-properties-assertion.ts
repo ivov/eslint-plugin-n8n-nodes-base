@@ -43,6 +43,7 @@ export default utils.createRule({
             messageId: "removeAssertionAndType",
             node,
             fix: (fixer) => {
+              // double fix
               return [
                 fixer.removeRange(rangeToRemove),
                 fixer.insertTextAfterRange(

@@ -48,9 +48,8 @@ export default utils.createRule({
             messageId: "sortItems",
             node: options.ast,
             data: { displayOrder },
-            fix: (fixer) => {
-              return fixer.replaceText(options.ast, `options: ${sorted}`);
-            },
+            fix: (fixer) =>
+              fixer.replaceText(options.ast, `options: ${sorted}`),
           });
         }
       },

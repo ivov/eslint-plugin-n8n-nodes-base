@@ -35,12 +35,8 @@ export default utils.createRule({
           context.report({
             messageId: "fixSuffix",
             node: displayName.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(
-                displayName.ast,
-                `displayName = '${fixed}';`
-              );
-            },
+            fix: (fixer) =>
+              fixer.replaceText(displayName.ast, `displayName = '${fixed}';`),
           });
         }
       },

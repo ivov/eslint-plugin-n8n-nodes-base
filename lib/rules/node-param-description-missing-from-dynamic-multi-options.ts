@@ -42,12 +42,11 @@ export default utils.createRule({
           context.report({
             messageId: "addStandardDescription",
             node: type.ast,
-            fix: (fixer) => {
-              return fixer.insertTextAfterRange(
+            fix: (fixer) =>
+              fixer.insertTextAfterRange(
                 range,
                 `\n${indentation}description: '${DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER.DESCRIPTION}',`
-              );
-            },
+              ),
           });
         }
       },

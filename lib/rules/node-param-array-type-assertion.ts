@@ -42,6 +42,7 @@ export default utils.createRule({
             messageId: "typeArray",
             node,
             fix: (fixer) => {
+              // double fix
               return [
                 fixer.replaceTextRange(rangeToRemove, indentation),
                 fixer.insertTextAfterRange(range, ": INodeProperties[]"),

@@ -39,9 +39,7 @@ export default utils.createRule({
           context.report({
             messageId: "replaceWithAll",
             node: starOption.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(starOption.ast, "name: '[All]'");
-            },
+            fix: (fixer) => fixer.replaceText(starOption.ast, "name: '[All]'"),
           });
         }
       },

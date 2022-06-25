@@ -31,12 +31,11 @@ export default utils.createRule({
           context.report({
             messageId: "prependEg",
             node: placeholder.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(
+            fix: (fixer) =>
+              fixer.replaceText(
                 placeholder.ast,
                 `placeholder = 'e.g. ${placeholder.value}';`
-              );
-            },
+              ),
           });
         }
       },

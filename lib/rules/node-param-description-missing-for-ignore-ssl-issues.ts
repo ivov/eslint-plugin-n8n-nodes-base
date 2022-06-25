@@ -38,12 +38,11 @@ export default utils.createRule({
           context.report({
             messageId: "addIgnoreSslIssuesDescription",
             node,
-            fix: (fixer) => {
-              return fixer.insertTextAfterRange(
+            fix: (fixer) =>
+              fixer.insertTextAfterRange(
                 range,
                 `\n${indentation}description: '${IGNORE_SSL_ISSUES_NODE_PARAMETER.DESCRIPTION}',`
-              );
-            },
+              ),
           });
         }
       },

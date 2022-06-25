@@ -49,12 +49,11 @@ export default utils.createRule({
           context.report({
             messageId: "addDefault",
             node,
-            fix: (fixer) => {
-              return fixer.insertTextAfterRange(
+            fix: (fixer) =>
+              fixer.insertTextAfterRange(
                 range,
                 `\n${indentation}default: '${fixValues[type.value]}',`
-              );
-            },
+              ),
           });
         }
       },

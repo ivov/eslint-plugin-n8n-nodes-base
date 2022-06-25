@@ -41,9 +41,8 @@ export default utils.createRule({
           context.report({
             messageId: "fixInputsMerge",
             node: inputs.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(inputs.ast, "inputs: ['main', 'main']");
-            },
+            fix: (fixer) =>
+              fixer.replaceText(inputs.ast, "inputs: ['main', 'main']"),
           });
         }
 
@@ -54,9 +53,7 @@ export default utils.createRule({
           context.report({
             messageId: "fixInputs",
             node: inputs.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(inputs.ast, "inputs: ['main']");
-            },
+            fix: (fixer) => fixer.replaceText(inputs.ast, "inputs: ['main']"),
           });
         }
       },

@@ -8,7 +8,8 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: "`displayName` field in credential class must be title cased.",
+      description:
+        "`displayName` field in credential class must be title cased.",
       recommended: "error",
     },
     fixable: "code",
@@ -31,12 +32,11 @@ export default utils.createRule({
           context.report({
             messageId: "useTitleCase",
             node: displayName.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(
+            fix: (fixer) =>
+              fixer.replaceText(
                 displayName.ast,
                 `displayName = '${titleCase(displayName.value)}';`
-              );
-            },
+              ),
           });
         }
       },

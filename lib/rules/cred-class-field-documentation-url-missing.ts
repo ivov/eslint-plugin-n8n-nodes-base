@@ -7,7 +7,8 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: "`documentationUrl` field in credential class must be present.",
+      description:
+        "`documentationUrl` field in credential class must be present.",
       recommended: "error",
     },
     fixable: "code",
@@ -24,7 +25,8 @@ export default utils.createRule({
 
         const { body: classBody } = node;
 
-        const documentationUrl = getters.credClassBody.getDocumentationUrl(classBody);
+        const documentationUrl =
+          getters.credClassBody.getDocumentationUrl(classBody);
 
         if (!documentationUrl) {
           const displayName = getters.credClassBody.getDisplayName(classBody); // insertion point
@@ -37,17 +39,16 @@ export default utils.createRule({
 
           const { indentation, range } = utils.getInsertionArgs(displayName);
 
+          const fixed = className.value.replace(/(OAuth2)?Api/g, "");
+
           context.report({
             messageId: "addDocumentationUrl",
             node: classBody,
-            fix: (fixer) => {
-              const fixed = className.value.replace(/(OAuth2)?Api/g, "");
-
-              return fixer.insertTextAfterRange(
+            fix: (fixer) =>
+              fixer.insertTextAfterRange(
                 range,
                 `\n${indentation}documentationUrl = '${fixed}';`
-              );
-            },
+              ),
           });
         }
       },

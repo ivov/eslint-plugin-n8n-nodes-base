@@ -32,9 +32,7 @@ export default utils.createRule({
           context.report({
             messageId: "fixSuffix",
             node: className.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(className.ast, fixed);
-            },
+            fix: (fixer) => fixer.replaceText(className.ast, fixed),
           });
         }
       },

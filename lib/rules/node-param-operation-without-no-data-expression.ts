@@ -38,12 +38,11 @@ export default utils.createRule({
           context.report({
             messageId: "addNoDataExpression",
             node,
-            fix: (fixer) => {
-              return fixer.insertTextAfterRange(
+            fix: (fixer) =>
+              fixer.insertTextAfterRange(
                 range,
                 `\n${indentation}noDataExpression: true,`
-              );
-            },
+              ),
           });
         } else if (noDataExpression.value === false) {
           context.report({

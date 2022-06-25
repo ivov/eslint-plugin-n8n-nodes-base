@@ -8,7 +8,8 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: "`description` for Return All node parameter must be present.",
+      description:
+        "`description` for Return All node parameter must be present.",
       recommended: "error",
     },
     fixable: "code",
@@ -37,12 +38,11 @@ export default utils.createRule({
           context.report({
             messageId: "addReturnAllDescription",
             node,
-            fix: (fixer) => {
-              return fixer.insertTextAfterRange(
+            fix: (fixer) =>
+              fixer.insertTextAfterRange(
                 range,
                 `\n${indentation}description: '${RETURN_ALL_NODE_PARAMETER.DESCRIPTION}',`
-              );
-            },
+              ),
           });
         }
       },

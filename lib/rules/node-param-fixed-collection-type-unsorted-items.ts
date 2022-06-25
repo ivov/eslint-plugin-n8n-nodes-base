@@ -56,9 +56,7 @@ export default utils.createRule({
             messageId: "sortItems",
             node: values.ast,
             data: { displayOrder },
-            fix: (fixer) => {
-              return fixer.replaceText(values.ast, `values: ${fixed}`);
-            },
+            fix: (fixer) => fixer.replaceText(values.ast, `values: ${fixed}`),
           });
         }
       },

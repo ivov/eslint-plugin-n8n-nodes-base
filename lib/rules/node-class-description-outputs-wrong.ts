@@ -41,9 +41,8 @@ export default utils.createRule({
           context.report({
             messageId: "fixOutputsIf",
             node: outputs.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(outputs.ast, "inputs: ['main', 'main']");
-            },
+            fix: (fixer) =>
+              fixer.replaceText(outputs.ast, "inputs: ['main', 'main']"),
           });
         }
 
@@ -52,12 +51,11 @@ export default utils.createRule({
           context.report({
             messageId: "fixOutputsSwitch",
             node: outputs.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(
+            fix: (fixer) =>
+              fixer.replaceText(
                 outputs.ast,
                 "inputs: ['main', 'main', 'main', 'main']"
-              );
-            },
+              ),
           });
         }
 
@@ -68,9 +66,7 @@ export default utils.createRule({
           context.report({
             messageId: "fixOutputs",
             node: outputs.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(outputs.ast, "outputs: ['main']");
-            },
+            fix: (fixer) => fixer.replaceText(outputs.ast, "outputs: ['main']"),
           });
         }
       },

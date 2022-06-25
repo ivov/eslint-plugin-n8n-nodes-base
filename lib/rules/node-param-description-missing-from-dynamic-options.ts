@@ -8,7 +8,8 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: "`description` in dynamic-options-type node parameter must be present.",
+      description:
+        "`description` in dynamic-options-type node parameter must be present.",
       recommended: "error",
     },
     schema: [],
@@ -41,12 +42,11 @@ export default utils.createRule({
           context.report({
             messageId: "addStandardDescription",
             node: type.ast,
-            fix: (fixer) => {
-              return fixer.insertTextAfterRange(
+            fix: (fixer) =>
+              fixer.insertTextAfterRange(
                 range,
                 `\n${indentation}description: '${DYNAMIC_OPTIONS_NODE_PARAMETER.DESCRIPTION}',`
-              );
-            },
+              ),
           });
         }
       },

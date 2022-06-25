@@ -47,12 +47,11 @@ export default utils.createRule({
           context.report({
             messageId: "addSubtitle",
             node,
-            fix: (fixer) => {
-              return fixer.insertTextAfterRange(
+            fix: (fixer) =>
+              fixer.insertTextAfterRange(
                 range,
                 `\n${indentation}subtitle: '${NODE_CLASS_DESCRIPTION_SUBTITLE}',`
-              );
-            },
+              ),
           });
         }
       },

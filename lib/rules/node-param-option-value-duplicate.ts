@@ -43,9 +43,7 @@ export default utils.createRule({
           context.report({
             messageId: "removeDuplicate",
             node: duplicate.parentOptionAst,
-            fix: (fixer) => {
-              return fixer.removeRange(rangeToRemove);
-            },
+            fix: (fixer) => fixer.removeRange(rangeToRemove),
           });
         }
       },

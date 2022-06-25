@@ -33,12 +33,11 @@ export default utils.createRule({
           context.report({
             messageId: "setLimitDefault",
             node: _default.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(
+            fix: (fixer) =>
+              fixer.replaceText(
                 _default.ast,
                 `default: ${LIMIT_NODE_PARAMETER.DEFAULT_VALUE}`
-              );
-            },
+              ),
           });
         }
       },

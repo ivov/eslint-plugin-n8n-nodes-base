@@ -7,7 +7,8 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: "First char in `name` in credential class must be lowercase.",
+      description:
+        "First char in `name` in credential class must be lowercase.",
       recommended: "error",
     },
     fixable: "code",
@@ -26,16 +27,13 @@ export default utils.createRule({
 
         if (!name) return;
 
+        const fixed = name.value.charAt(0).toLowerCase() + name.value.slice(1);
+
         if (/[A-Z]/.test(name.value.charAt(0))) {
           context.report({
             messageId: "uppercaseFirstChar",
             node: name.ast,
-            fix: (fixer) => {
-              const fixed =
-                name.value.charAt(0).toLowerCase() + name.value.slice(1);
-
-              return fixer.replaceText(name.ast, `name = '${fixed}';`);
-            },
+            fix: (fixer) => fixer.replaceText(name.ast, `name = '${fixed}';`),
           });
         }
       },

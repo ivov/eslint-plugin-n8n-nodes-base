@@ -2,13 +2,20 @@ import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 import { isUnaryExpression } from "../identifiers/nodeParameter.identifiers";
 
 /**
+ * Module to restore an AST to source text.
+ *
+ * Used by getters' return types:
+ * `{ ast: <ast>, value: <restoredValue> }`
+ */
+
+/**
  * Restore the source value of an array of primitives,
  * e.g. `inputs` and `outputs` in a node class description.
  */
 export function restoreArray(elements: TSESTree.Expression[]) {
-  return elements.reduce<string[]>((acc, e) => {
-    if (e.type === AST_NODE_TYPES.Literal && e.value) {
-      acc.push(e.value.toString());
+  return elements.reduce<string[]>((acc, element) => {
+    if (element.type === AST_NODE_TYPES.Literal && element.value) {
+      acc.push(element.value.toString());
     }
 
     return acc;
@@ -16,8 +23,7 @@ export function restoreArray(elements: TSESTree.Expression[]) {
 }
 
 /**
- * Restore the source value of an array of objects,
- * e.g. `options` in a node param.
+ * Restore the source value of an array of objects, e.g. `options` in a node param.
  */
 export function restoreArrayOfObjects(elements: TSESTree.ObjectExpression[]) {
   return elements.reduce<Array<Record<string, unknown>>>((acc, element) => {
@@ -30,8 +36,7 @@ export function restoreArrayOfObjects(elements: TSESTree.ObjectExpression[]) {
 }
 
 /**
- * Restore the source value of an object,
- * e.g. `typeOptions` in a node param.
+ * Restore the source value of an object, e.g. `typeOptions` in a node param.
  */
 export function restoreObject(objectExpression: TSESTree.ObjectExpression) {
   return objectExpression.properties.reduce<Record<string, unknown>>(
@@ -101,7 +106,7 @@ export function restoreNodeParamOptions(options: TSESTree.ObjectExpression[]) {
 
 /**
  * Restore the source value of an array of `options` under `credentials`
- * in a node class description.
+ * in a node class `description`.
  */
 export function restoreClassDescriptionOptions(
   credOptions: TSESTree.ObjectExpression[]
@@ -160,6 +165,7 @@ export const isMemberExpression = (
 } => {
   return (
     property.type === AST_NODE_TYPES.Property &&
+    property.computed === false &&
     property.key.type === AST_NODE_TYPES.Identifier &&
     typeof property.key.name === "string" &&
     property.value.type === AST_NODE_TYPES.MemberExpression

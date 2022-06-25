@@ -242,7 +242,7 @@ export const getInsertionArgs = (referenceNode: { ast: TSESTree.BaseNode }) => {
   };
 };
 
-export function isUrl(str: string) {
+function isUrl(str: string) {
   try {
     // tolerate absent protocol, respect intent
     if (["com", "org", "net", "io", "edu"].includes(str.slice(-3))) return true;

@@ -7,7 +7,8 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: "Credential class name must mention `OAuth2` if applicable.",
+      description:
+        "Credential class name must mention `OAuth2` if the credential is OAuth2.",
       recommended: "error",
     },
     schema: [],

@@ -77,15 +77,15 @@ Available configs:
 | [community-package-json-version-missing](docs/rules/community-package-json-version-missing.md) | The `version` key must be present in the `package.json` of a community package. | No |
 | [cred-class-field-display-name-miscased](docs/rules/cred-class-field-display-name-miscased.md) | `displayName` field in credential class must be title cased. | Yes, safe |
 | [cred-class-field-display-name-missing-api](docs/rules/cred-class-field-display-name-missing-api.md) | `displayName` field in credential class must be end with `API`. | Yes, safe |
-| [cred-class-field-display-name-missing-oauth2](docs/rules/cred-class-field-display-name-missing-oauth2.md) | `displayName` field in credential class must mention `OAuth2` if applicable. | No |
+| [cred-class-field-display-name-missing-oauth2](docs/rules/cred-class-field-display-name-missing-oauth2.md) | `displayName` field in credential class must mention `OAuth2` if the credential is OAuth2. | No |
 | [cred-class-field-documentation-url-miscased](docs/rules/cred-class-field-documentation-url-miscased.md) | `documentationUrl` field in credential class must be camel cased. | Yes, safe |
 | [cred-class-field-documentation-url-missing](docs/rules/cred-class-field-documentation-url-missing.md) | `documentationUrl` field in credential class must be present. | Yes, safe |
-| [cred-class-field-name-missing-oauth2](docs/rules/cred-class-field-name-missing-oauth2.md) | `name` field in credential class must mention `OAuth2` if applicable. | No |
+| [cred-class-field-name-missing-oauth2](docs/rules/cred-class-field-name-missing-oauth2.md) | `name` field in credential class must mention `OAuth2` if the credential is OAuth2. | No |
 | [cred-class-field-name-unsuffixed](docs/rules/cred-class-field-name-unsuffixed.md) | `name` field in credential class must be suffixed with `-Api`. | Yes, unsafe |
 | [cred-class-field-name-uppercase-first-char](docs/rules/cred-class-field-name-uppercase-first-char.md) | First char in `name` in credential class must be lowercase. | Yes, unsafe |
 | [cred-class-field-placeholder-url-missing-eg](docs/rules/cred-class-field-placeholder-url-missing-eg.md) | `placeholder` for a URL in credential class must be prepended with `e.g.`. | Yes, safe |
 | [cred-class-field-properties-assertion](docs/rules/cred-class-field-properties-assertion.md) | In a credential class, the field `properties` must be typed 'INodeProperties' and individual properties must have no assertions. | Yes, safe |
-| [cred-class-name-missing-oauth2-suffix](docs/rules/cred-class-name-missing-oauth2-suffix.md) | Credential class name must mention `OAuth2` if applicable. | No |
+| [cred-class-name-missing-oauth2-suffix](docs/rules/cred-class-name-missing-oauth2-suffix.md) | Credential class name must mention `OAuth2` if the credential is OAuth2. | No |
 | [cred-class-name-unsuffixed](docs/rules/cred-class-name-unsuffixed.md) | Credential class name must be suffixed with `-Api`. | Yes, unsafe |
 | [filesystem-wrong-cred-filename](docs/rules/filesystem-wrong-cred-filename.md) | Credentials filename must match credentials class name, excluding the filename suffix. Example: `TestApi.credentials.ts` matches `TestApi` in `class TestApi implements ICredentialType`. | No |
 | [filesystem-wrong-node-dirname](docs/rules/filesystem-wrong-node-dirname.md) | Node dirname must match node filename, excluding the filename suffix. Example: `Test` node dirname matches `Test.node.ts` node filename. | No |

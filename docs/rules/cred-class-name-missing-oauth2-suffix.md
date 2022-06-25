@@ -2,7 +2,7 @@
 
 # cred-class-name-missing-oauth2-suffix
 
-Credential class name must mention `OAuth2` if applicable.
+Credential class name must mention `OAuth2` if the credential is OAuth2.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/non-autofixable` config.
 

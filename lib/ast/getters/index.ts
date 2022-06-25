@@ -9,6 +9,6 @@ export const getters = {
   nodeParam,
   nodeClassDescription,
   credClassBody,
-  packageJson: communityPackageJson,
+  communityPackageJson,
   ...className,
 };

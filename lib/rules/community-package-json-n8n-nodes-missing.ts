@@ -29,7 +29,7 @@ export default utils.createRule({
         if (isProdRun && !id.prod.isTopLevelObjectExpression(node)) return;
         if (isTestRun && !id.test.isTopLevelObjectExpression(node)) return;
 
-        const n8n = getters.packageJson.getN8n(node);
+        const n8n = getters.communityPackageJson.getN8n(node);
 
         if (!n8n) return;
 

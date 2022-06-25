@@ -29,7 +29,7 @@ export default utils.createRule({
         if (isProdRun && !id.prod.isTopLevelObjectExpression(node)) return;
         if (isTestRun && !id.test.isTopLevelObjectExpression(node)) return;
 
-        const author = getters.packageJson.getAuthor(node);
+        const author = getters.communityPackageJson.getAuthor(node);
 
         if (!author) return;
 

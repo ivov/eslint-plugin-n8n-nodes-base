@@ -29,7 +29,7 @@ export default utils.createRule({
         if (isProdRun && !id.prod.isTopLevelObjectExpression(node)) return;
         if (isTestRun && !id.test.isTopLevelObjectExpression(node)) return;
 
-        const keywords = getters.packageJson.getKeywords(node);
+        const keywords = getters.communityPackageJson.getKeywords(node);
 
         if (!keywords) return;
 

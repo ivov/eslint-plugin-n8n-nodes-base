@@ -29,7 +29,7 @@ export default utils.createRule({
         if (isProdRun && !id.prod.isTopLevelObjectExpression(node)) return;
         if (isTestRun && !id.test.isTopLevelObjectExpression(node)) return;
 
-        const repository = getters.packageJson.getRepository(node);
+        const repository = getters.communityPackageJson.getRepository(node);
 
         if (!repository) return;
 

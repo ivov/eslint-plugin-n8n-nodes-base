@@ -28,7 +28,7 @@ export default utils.createRule({
         if (isProdRun && !id.prod.isTopLevelObjectExpression(node)) return;
         if (isTestRun && !id.test.isTopLevelObjectExpression(node)) return;
 
-        if (!getters.packageJson.getAuthor(node)) {
+        if (!getters.communityPackageJson.getAuthor(node)) {
           context.report({
             messageId: "addAuthor",
             node,

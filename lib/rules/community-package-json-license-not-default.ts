@@ -28,7 +28,7 @@ export default utils.createRule({
         if (isProdRun && !id.prod.isTopLevelObjectExpression(node)) return;
         if (isTestRun && !id.test.isTopLevelObjectExpression(node)) return;
 
-        const license = getters.packageJson.getLicense(node);
+        const license = getters.communityPackageJson.getLicense(node);
 
         if (!license) return;
 

@@ -28,7 +28,7 @@ export default utils.createRule({
         if (isProdRun && !id.prod.isTopLevelObjectExpression(node)) return;
         if (isTestRun && !id.test.isTopLevelObjectExpression(node)) return;
 
-        if (!getters.packageJson.getDescription(node)) {
+        if (!getters.communityPackageJson.getDescription(node)) {
           context.report({
             messageId: "addDescription",
             node,

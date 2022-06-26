@@ -16,6 +16,19 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 			};`,
 		},
+		{
+			// display name too long to find entity, disregard
+			code: outdent`
+			const test = {
+				displayName: 'Properties with History',
+				name: 'field',
+				type: 'multiOptions',
+				typeOptions: {
+					loadOptionsMethod: 'getProperties',
+				},
+				default: '',
+			};`,
+		},
 	],
 	invalid: [
 		{
@@ -83,6 +96,29 @@ ruleTester().run(getRuleName(module), rule, {
 				type: 'multiOptions',
 				typeOptions: {
 					loadOptionsMethod: 'getFields',
+				},
+				default: '',
+			};`,
+		},
+		{
+			code: outdent`
+			const test = {
+				displayName: 'Custom Schemas',
+				name: 'customSchema',
+				type: 'multiOptions',
+				typeOptions: {
+					loadOptionsMethod: 'getSchemas',
+				},
+				default: '',
+			};`,
+			errors: [{ messageId: "endWithNamesOrIds" }],
+			output: outdent`
+			const test = {
+				displayName: 'Custom Schema Names or IDs',
+				name: 'customSchema',
+				type: 'multiOptions',
+				typeOptions: {
+					loadOptionsMethod: 'getSchemas',
 				},
 				default: '',
 			};`,

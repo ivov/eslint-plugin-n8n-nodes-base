@@ -5,7 +5,6 @@
 const outdent = require("outdent");
 const fs = require("fs");
 const path = require("path");
-const { AUTOFIXABLE_UNSAFE_RULESET } = require("../index");
 
 const rulesPath = path.join(__dirname, "..", "dist", "lib", "rules");
 
@@ -66,7 +65,6 @@ function makeRulesTable() {
       id: ruleName,
       meta: rule.meta,
       isAutofixable: rule.meta.fixable !== undefined,
-      isAutofixableUnsafe: AUTOFIXABLE_UNSAFE_RULESET.includes(ruleName),
     };
   });
 
@@ -77,15 +75,9 @@ function makeRulesTable() {
 
       const { description } = rule.meta.docs;
 
-      return `| ${[
-        link,
-        description,
-        rule.isAutofixableUnsafe
-          ? "Yes, unsafe"
-          : rule.isAutofixable
-          ? "Yes, safe"
-          : "No",
-      ].join(" | ")} |`;
+      const autofixableOrNot = rule.isAutofixable ? "Yes" : "No";
+
+      return `| ${[link, description, autofixableOrNot].join(" | ")} |`;
     })
     .join("\n");
 

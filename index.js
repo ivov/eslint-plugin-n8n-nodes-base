@@ -14,17 +14,6 @@ const CONFIG_BASE_PROPERTIES = {
   plugins: ["n8n-nodes-base"],
 };
 
-const AUTOFIXABLE_UNSAFE_RULESET = [
-  "cred-class-name-unsuffixed",
-  "cred-class-field-name-unsuffixed",
-  "cred-class-field-name-uppercase-first-char",
-  "node-param-array-type-assertion",
-  "node-param-color-type-unused",
-  "node-class-description-credentials-name-unsuffixed",
-  "node-class-description-display-name-unsuffixed-trigger-node",
-  "node-class-description-name-unsuffixed-trigger-node",
-];
-
 const DEFAULT_SEVERITY = "error";
 
 const getRuleModule = (rulename) =>
@@ -105,10 +94,7 @@ const configs = ALL_RULE_NAMES.reduce(
   }
 );
 
-console.log(configs);
-
 module.exports = {
   rules: allRuleModules,
   configs,
-  AUTOFIXABLE_UNSAFE_RULESET, // for make-docs-readme-table.js
 };

@@ -29,9 +29,8 @@ The `author.name` value in the `package.json` of a community package must be dif
   "scripts": {
     "dev": "npm run watch",
     "build": "tsc && gulp",
-    "lint": "tslint -p tsconfig.json -c tslint.json",
-    "lintfix": "tslint --fix -p tsconfig.json -c tslint.json",
-    "nodelinter": "nodelinter",
+    "lint": "tslint -p tsconfig.json -c tslint.json && node_modules/eslint/bin/eslint.js ./nodes",
+    "lintfix": "tslint --fix -p tsconfig.json -c tslint.json && node_modules/eslint/bin/eslint.js --fix ./nodes",
     "watch": "tsc --watch",
     "test": "jest"
   },
@@ -79,9 +78,8 @@ The `author.name` value in the `package.json` of a community package must be dif
   "scripts": {
     "dev": "npm run watch",
     "build": "tsc && gulp",
-    "lint": "tslint -p tsconfig.json -c tslint.json",
-    "lintfix": "tslint --fix -p tsconfig.json -c tslint.json",
-    "nodelinter": "nodelinter",
+    "lint": "tslint -p tsconfig.json -c tslint.json && node_modules/eslint/bin/eslint.js ./nodes",
+    "lintfix": "tslint --fix -p tsconfig.json -c tslint.json && node_modules/eslint/bin/eslint.js --fix ./nodes",
     "watch": "tsc --watch",
     "test": "jest"
   },

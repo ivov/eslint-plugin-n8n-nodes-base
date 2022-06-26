@@ -118,6 +118,14 @@ export const COMMUNITY_PACKAGE_JSON = {
     "dist/nodes/ExampleNode/ExampleNode.node.js",
     "dist/nodes/HttpBin/HttpBin.node.js",
   ],
+  SCRIPTS: `{
+    "dev": "npm run watch",
+    "build": "tsc && gulp",
+    "lint": "tslint -p tsconfig.json -c tslint.json && node_modules/eslint/bin/eslint.js ./nodes",
+    "lintfix": "tslint --fix -p tsconfig.json -c tslint.json && node_modules/eslint/bin/eslint.js --fix ./nodes",
+    "watch": "tsc --watch",
+    "test": "jest"
+  }`,
   DEV_DEPENDENCIES: `{
     "@types/express": "^4.17.6",
     "@types/request-promise-native": "~1.0.15",

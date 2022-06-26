@@ -24,15 +24,7 @@ ruleTester().run(getRuleName(module), rule, {
 						"n8n-community-node-package"
 				],
 				"main": "index.js",
-				"scripts": {
-						"dev": "npm run watch",
-						"build": "tsc && gulp",
-						"lint": "tslint -p tsconfig.json -c tslint.json",
-						"lintfix": "tslint --fix -p tsconfig.json -c tslint.json",
-						"nodelinter": "nodelinter",
-						"watch": "tsc --watch",
-						"test": "jest"
-				},
+				"scripts": ${COMMUNITY_PACKAGE_JSON.SCRIPTS},
 				"files": [
 						"dist"
 				],
@@ -71,15 +63,7 @@ ruleTester().run(getRuleName(module), rule, {
 						"n8n-community-node-package"
 				],
 				"main": "index.js",
-				"scripts": {
-						"dev": "npm run watch",
-						"build": "tsc && gulp",
-						"lint": "tslint -p tsconfig.json -c tslint.json",
-						"lintfix": "tslint --fix -p tsconfig.json -c tslint.json",
-						"nodelinter": "nodelinter",
-						"watch": "tsc --watch",
-						"test": "jest"
-				},
+				"scripts": ${COMMUNITY_PACKAGE_JSON.SCRIPTS},
 				"files": [
 						"dist"
 				],

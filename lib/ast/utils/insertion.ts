@@ -3,8 +3,18 @@ import { getIndentationString } from "./format";
 import { getRangeWithTrailingComma } from "./range";
 
 export const getInsertionArgs = (referenceNode: { ast: TSESTree.BaseNode }) => {
+  /**
+   * This plugin is on ESLint 8, but n8n-workflow is still at ESLint 7.32,
+   * which uses `ClassProperty` instead of `PropertyDefinition`. Hence these
+   * checks are generalized for now, until n8n-workflow upgrades its ESLint to 8.
+   */
+
   // field name has no trailing comma
-  if (referenceNode.ast.type === AST_NODE_TYPES.PropertyDefinition) {
+  if (
+    referenceNode.ast.type === AST_NODE_TYPES.PropertyDefinition ||
+    // @ts-ignore
+    referenceNode.ast.type === AST_NODE_TYPES.ClassProperty
+  ) {
     return {
       range: referenceNode.ast.range,
       indentation: getIndentationString(referenceNode),

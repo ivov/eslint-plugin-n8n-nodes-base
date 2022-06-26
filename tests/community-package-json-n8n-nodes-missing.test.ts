@@ -1,6 +1,7 @@
 import rule from "../lib/rules/community-package-json-n8n-nodes-missing";
 import { ruleTester, getRuleName } from "../lib/ast";
 import outdent from "outdent";
+import { COMMUNITY_PACKAGE_JSON } from "../lib/constants";
 
 ruleTester().run(getRuleName(module), rule, {
   valid: [
@@ -43,19 +44,7 @@ ruleTester().run(getRuleName(module), rule, {
 								"dist/nodes/Service/Service.node.js"
 						]
 				},
-				"devDependencies": {
-						"@types/express": "^4.17.6",
-						"@types/jest": "^26.0.13",
-						"@types/node": "^14.17.27",
-						"@types/request-promise-native": "~1.0.15",
-						"gulp": "^4.0.0",
-						"jest": "^26.4.2",
-						"n8n-workflow": "~0.83.0",
-						"nodelinter": "^0.1.9",
-						"ts-jest": "^26.3.0",
-						"tslint": "^6.1.2",
-						"typescript": "~4.3.5"
-				},
+				"devDependencies": ${COMMUNITY_PACKAGE_JSON.DEV_DEPENDENCIES},
 				"dependencies": {
 						"n8n-core": "~0.101.0"
 				}
@@ -102,19 +91,7 @@ ruleTester().run(getRuleName(module), rule, {
 								"dist/nodes/Service/Service.node.js"
 						]
 				},
-				"devDependencies": {
-						"@types/express": "^4.17.6",
-						"@types/jest": "^26.0.13",
-						"@types/node": "^14.17.27",
-						"@types/request-promise-native": "~1.0.15",
-						"gulp": "^4.0.0",
-						"jest": "^26.4.2",
-						"n8n-workflow": "~0.83.0",
-						"nodelinter": "^0.1.9",
-						"ts-jest": "^26.3.0",
-						"tslint": "^6.1.2",
-						"typescript": "~4.3.5"
-				},
+				"devDependencies": ${COMMUNITY_PACKAGE_JSON.DEV_DEPENDENCIES},
 				"dependencies": {
 						"n8n-core": "~0.101.0"
 				}

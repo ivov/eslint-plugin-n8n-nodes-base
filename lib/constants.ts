@@ -118,6 +118,18 @@ export const COMMUNITY_PACKAGE_JSON = {
     "dist/nodes/ExampleNode/ExampleNode.node.js",
     "dist/nodes/HttpBin/HttpBin.node.js",
   ],
+  DEV_DEPENDENCIES: `{
+    "@types/express": "^4.17.6",
+    "@types/request-promise-native": "~1.0.15",
+    "@typescript-eslint/parser": "^5.29.0",
+    "eslint-plugin-n8n-nodes-base": "^1.0.43",
+    "gulp": "^4.0.2",
+    "jest": "^26.4.2",
+    "n8n-workflow": "~0.104.0",
+    "ts-jest": "^26.3.0",
+    "tslint": "^6.1.2",
+    "typescript": "~4.3.5"
+  }`,
 };
 
 // ----------------------------------

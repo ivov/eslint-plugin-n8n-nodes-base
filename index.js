@@ -50,7 +50,7 @@ const ALL_RULE_NAMES = fs
  * // etc
  * ```
  */
-const allRules = ALL_RULE_NAMES.reduce((acc, rulename) => {
+const allRuleModules = ALL_RULE_NAMES.reduce((acc, rulename) => {
   return {
     ...acc,
     [rulename]: getRuleModule(rulename),
@@ -109,7 +109,7 @@ const configs = ALL_RULE_NAMES.reduce(
 );
 
 module.exports = {
-  rules: allRules,
+  rules: allRuleModules,
   configs,
   AUTOFIXABLE_UNSAFE_RULESET, // for make-docs-readme-table.js
 };

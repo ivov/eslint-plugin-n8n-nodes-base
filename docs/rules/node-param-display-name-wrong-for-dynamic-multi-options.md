@@ -42,6 +42,16 @@ const test = {
   },
   default: "",
 };
+
+const test = {
+  displayName: "Custom Schemas",
+  name: "customSchema",
+  type: "multiOptions",
+  typeOptions: {
+    loadOptionsMethod: "getSchemas",
+  },
+  default: "",
+};
 ```
 
 ✅ Example of **correct** code:
@@ -53,6 +63,16 @@ const test = {
   type: "multiOptions",
   typeOptions: {
     loadOptionsMethod: "getFields",
+  },
+  default: "",
+};
+
+const test = {
+  displayName: "Properties with History",
+  name: "field",
+  type: "multiOptions",
+  typeOptions: {
+    loadOptionsMethod: "getProperties",
   },
   default: "",
 };

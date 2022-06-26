@@ -4,7 +4,7 @@
 
 The `author` key must be present in the `package.json` of a community package.
 
-📋 This rule is part of the `plugin:n8n-nodes-base/community-nodes` config.
+📋 This rule is part of the `plugin:n8n-nodes-base/community` config.
 
 ## Examples
 

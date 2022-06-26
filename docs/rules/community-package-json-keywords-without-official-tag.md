@@ -4,7 +4,7 @@
 
 The `keywords` value in the `package.json` of a community package must be an array containing the value `'n8n-community-node-package'`.
 
-📋 This rule is part of the `plugin:n8n-nodes-base/community-nodes` config.
+📋 This rule is part of the `plugin:n8n-nodes-base/community` config.
 
 ## Examples
 

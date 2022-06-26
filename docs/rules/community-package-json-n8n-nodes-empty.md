@@ -4,7 +4,7 @@
 
 The `n8n.nodes` value in the `package.json` of a community package must contain at least one filepath.
 
-📋 This rule is part of the `plugin:n8n-nodes-base/community-nodes` config.
+📋 This rule is part of the `plugin:n8n-nodes-base/community` config.
 
 ## Examples
 

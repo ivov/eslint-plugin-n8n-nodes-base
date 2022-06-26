@@ -4,7 +4,7 @@
 
 The `description` value in the `package.json` of a community package must be different from the default value `Example starter module for custom n8n nodes.`.
 
-📋 This rule is part of the `plugin:n8n-nodes-base/community-nodes` config.
+📋 This rule is part of the `plugin:n8n-nodes-base/community` config.
 
 ## Examples
 

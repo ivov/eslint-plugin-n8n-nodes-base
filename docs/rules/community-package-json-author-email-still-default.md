@@ -4,7 +4,7 @@
 
 The `author.email` value in the `package.json` of a community package must be different from the default value `jan@n8n.io`.
 
-📋 This rule is part of the `plugin:n8n-nodes-base/community-nodes` config.
+📋 This rule is part of the `plugin:n8n-nodes-base/community` config.
 
 ## Examples
 

@@ -81,32 +81,31 @@ const allRuleModules = ALL_RULE_NAMES.reduce((acc, rulename) => {
 const configs = ALL_RULE_NAMES.reduce(
   (acc, rulename) => {
     const fullRulename = `n8n-nodes-base/${rulename}`;
-    const ruleModule = getRuleModule(rulename);
 
     acc["all"].rules[fullRulename] = DEFAULT_SEVERITY;
 
-    const isAutofixable = ruleModule.meta.fixable !== undefined;
-
-    if (rulename.startsWith("community-package-json")) {
-      acc["community-nodes"].rules[fullRulename] = DEFAULT_SEVERITY;
-    } else if (isAutofixable && AUTOFIXABLE_UNSAFE_RULESET.includes(rulename)) {
-      acc["autofixable-unsafe"].rules[fullRulename] = DEFAULT_SEVERITY;
-    } else if (isAutofixable) {
-      acc["autofixable-safe"].rules[fullRulename] = DEFAULT_SEVERITY;
+    if (rulename.startsWith("community-package-json-")) {
+      acc["community"].rules[fullRulename] = DEFAULT_SEVERITY;
+    } else if (rulename.startsWith("cred-")) {
+      acc["credentials"].rules[fullRulename] = DEFAULT_SEVERITY;
+    } else if (rulename.startsWith("node-")) {
+      acc["nodes"].rules[fullRulename] = DEFAULT_SEVERITY;
     } else {
-      acc["non-autofixable"].rules[fullRulename] = DEFAULT_SEVERITY;
+      acc["misc"].rules[fullRulename] = DEFAULT_SEVERITY;
     }
 
     return acc;
   },
   {
-    all: { ...CONFIG_BASE_PROPERTIES, rules: {} },
-    "autofixable-safe": { ...CONFIG_BASE_PROPERTIES, rules: {} },
-    "autofixable-unsafe": { ...CONFIG_BASE_PROPERTIES, rules: {} },
-    "non-autofixable": { ...CONFIG_BASE_PROPERTIES, rules: {} },
-    "community-nodes": { ...CONFIG_BASE_PROPERTIES, rules: {} },
+    all: { ...CONFIG_BASE_PROPERTIES, rules: {} }, // TODO: Remove
+    community: { ...CONFIG_BASE_PROPERTIES, rules: {} },
+    credentials: { ...CONFIG_BASE_PROPERTIES, rules: {} },
+    nodes: { ...CONFIG_BASE_PROPERTIES, rules: {} },
+    misc: { ...CONFIG_BASE_PROPERTIES, rules: {} }, // TODO: Remove
   }
 );
+
+console.log(configs);
 
 module.exports = {
   rules: allRuleModules,

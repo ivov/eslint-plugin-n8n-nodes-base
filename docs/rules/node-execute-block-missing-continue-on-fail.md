@@ -4,7 +4,7 @@
 
 The `execute()` method in a node must implement `continueOnFail` in a try-catch block.
 
-📋 This rule is part of the `plugin:n8n-nodes-base/non-autofixable` config.
+📋 This rule is part of the `plugin:n8n-nodes-base/nodes` config.
 
 ## Examples
 

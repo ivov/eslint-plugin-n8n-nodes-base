@@ -4,7 +4,7 @@
 
 `name` field in credential class must mention `OAuth2` if the credential is OAuth2.
 
-📋 This rule is part of the `plugin:n8n-nodes-base/non-autofixable` config.
+📋 This rule is part of the `plugin:n8n-nodes-base/credentials` config.
 
 ## Examples
 

@@ -13,7 +13,7 @@ Install this plugin:
 npm i -D eslint-plugin-n8n-nodes-base
 ```
 
-Create an [ESLint configuration file]((https://eslint.org/docs/latest/user-guide/configuring/configuration-files)) and decide how to set up the plugin.
+Create an [ESLint configuration file](<(https://eslint.org/docs/latest/user-guide/configuring/configuration-files)>) and decide how to set up the plugin.
 
 ### Specify plugin only
 
@@ -36,7 +36,7 @@ All rules in a config (subset) are enabled by default and must be individually d
 ```js
 {
   plugins: [ "eslint-plugin-n8n-nodes-base" ],
-  extends: [ "plugin:n8n-nodes-base/autofixable-safe" ],
+  extends: [ "plugin:n8n-nodes-base/nodes" ],
   rules: {
     "n8n-nodes-base/node-param-array-type-assertion": "off",
     "n8n-nodes-base/node-param-default-wrong-for-collection": "off"
@@ -46,12 +46,11 @@ All rules in a config (subset) are enabled by default and must be individually d
 
 Available configs:
 
-| Config               | Content                                                 |
-|----------------------|---------------------------------------------------------|
-| `autofixable-safe`   | Rules whose autofix cannot cause breaking changes       |
-| `autofixable-unsafe` | Rules whose autofix can cause breaking changes          |
-| `non-autofixable`    | Rules to be manually fixed                              |
-| `community-nodes`    | Rules applicable to `package.json` in community package |
+| Config        | Content                                             |
+| ------------- | --------------------------------------------------- |
+| `nodes`       | Ruleset for n8n nodes                               |
+| `credentials` | Ruleset for n8n credentials                         |
+| `community`   | Ruleset for `package.json` in n8n community package |
 
 ## Ruleset
 

@@ -8,6 +8,10 @@ export function isCommunityPackageJson(
   filename: string,
   node: TSESTree.ObjectExpression
 ) {
+  // skip `*-still-default` rules until parent dir renamed away from n8n-nodes-starter
+  // to avoid triggering `*-still-default` violations with our sample `package.json`
+  if (filename.includes('n8n-nodes-starter')) return false;
+
   if (isProdRun && !filename.includes("package.json")) return false;
   if (isProdRun && !id.prod.isTopLevelObjectExpression(node)) return false;
   if (isTestRun && !id.test.isTopLevelObjectExpression(node)) return false;

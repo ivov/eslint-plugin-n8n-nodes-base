@@ -21,7 +21,7 @@ import type {
     description: INodeTypeDescription = {
       displayName: 'My Service',
       name: 'myService', // ← isName()
-      icon: 'file:myService.svg', // ← isVersion()
+      icon: 'file:myService.svg', // ← isIcon()
       group: ['transform'],
       version: 1, // ← isVersion()
       subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}', // ← isSubtitle()

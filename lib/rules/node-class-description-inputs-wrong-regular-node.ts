@@ -1,6 +1,6 @@
-import * as utils from "../utils";
-import { identifiers as id } from "../utils/identifiers";
-import { getters } from "../utils/getters";
+import { utils } from "../ast/utils";
+import { id } from "../ast/identifiers";
+import { getters } from "../ast/getters";
 
 export default utils.createRule({
   name: utils.getRuleName(module),
@@ -41,9 +41,8 @@ export default utils.createRule({
           context.report({
             messageId: "fixInputsMerge",
             node: inputs.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(inputs.ast, "inputs: ['main', 'main']");
-            },
+            fix: (fixer) =>
+              fixer.replaceText(inputs.ast, "inputs: ['main', 'main']"),
           });
         }
 
@@ -54,9 +53,7 @@ export default utils.createRule({
           context.report({
             messageId: "fixInputs",
             node: inputs.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(inputs.ast, "inputs: ['main']");
-            },
+            fix: (fixer) => fixer.replaceText(inputs.ast, "inputs: ['main']"),
           });
         }
       },

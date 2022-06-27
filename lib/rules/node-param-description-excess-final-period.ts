@@ -1,7 +1,7 @@
 import { DOCUMENTATION } from "../constants";
-import * as utils from "../utils";
-import { identifiers as id } from "../utils/identifiers";
-import { getters } from "../utils/getters";
+import { utils } from "../ast/utils";
+import { id } from "../ast/identifiers";
+import { getters } from "../ast/getters";
 
 export default utils.createRule({
   name: utils.getRuleName(module),
@@ -31,7 +31,7 @@ export default utils.createRule({
         if (/\s{2,}/.test(description.value)) return;
 
         // to prevent overlap with node-param-description-weak
-        if (utils.isWeakDescription(description)) return;
+        if (id.isWeakDescription(description)) return;
 
         const { value } = description;
 

@@ -1,8 +1,8 @@
 import { OptionsProperty } from "../types";
-import * as utils from "../utils";
-import { isName } from "../utils/identifiers/nodeParam";
-import { identifiers as id } from "../utils/identifiers";
-import { getters } from "../utils/getters";
+import { utils } from "../ast/utils";
+import { isName } from "../ast/identifiers/nodeParameter.identifiers";
+import { id } from "../ast/identifiers";
+import { getters } from "../ast/getters";
 
 export default utils.createRule({
   name: utils.getRuleName(module),
@@ -39,9 +39,7 @@ export default utils.createRule({
           context.report({
             messageId: "replaceWithAll",
             node: starOption.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(starOption.ast, "name: '[All]'");
-            },
+            fix: (fixer) => fixer.replaceText(starOption.ast, "name: '[All]'"),
           });
         }
       },

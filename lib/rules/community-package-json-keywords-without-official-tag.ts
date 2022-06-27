@@ -1,6 +1,6 @@
-import { identifiers as id } from "../utils/identifiers";
-import { getters } from "../utils/getters";
-import * as utils from "../utils";
+import { id } from "../ast/identifiers";
+import { getters } from "../ast/getters";
+import { utils } from "../ast/utils";
 import { COMMUNITY_PACKAGE_JSON } from "../constants";
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 
@@ -21,15 +21,9 @@ export default utils.createRule({
   create(context) {
     return {
       ObjectExpression(node) {
-        const isTestRun = process.env.NODE_ENV === "test";
-        const isProdRun = !isTestRun;
-        const filename = context.getFilename();
+        if (!id.isCommunityPackageJson(context.getFilename(), node)) return;
 
-        if (isProdRun && !filename.includes("package.json")) return;
-        if (isProdRun && !id.prod.isTopLevelObjectExpression(node)) return;
-        if (isTestRun && !id.test.isTopLevelObjectExpression(node)) return;
-
-        const keywords = getters.packageJson.getKeywords(node);
+        const keywords = getters.communityPackageJson.getKeywords(node);
 
         if (!keywords) return;
 

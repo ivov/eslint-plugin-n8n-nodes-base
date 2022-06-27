@@ -4,7 +4,7 @@
 
 `icon` in node class description should be an SVG icon.
 
-📋 This rule is part of the `plugin:n8n-nodes-base/non-autofixable` config.
+📋 This rule is part of the `plugin:n8n-nodes-base/nodes` config.
 
 ## Examples
 

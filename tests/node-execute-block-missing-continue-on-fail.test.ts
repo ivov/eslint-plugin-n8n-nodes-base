@@ -1,6 +1,6 @@
 import { NODE_CLASS_DESCRIPTION_SUBTITLE } from "../lib/constants";
 import rule from "../lib/rules/node-execute-block-missing-continue-on-fail";
-import { ruleTester, getRuleName } from "../lib/utils";
+import { ruleTester, getRuleName } from "../lib/ast";
 import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {

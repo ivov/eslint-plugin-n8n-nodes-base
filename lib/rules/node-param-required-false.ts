@@ -1,13 +1,14 @@
-import * as utils from "../utils";
-import { identifiers as id } from "../utils/identifiers";
-import { getters } from "../utils/getters";
+import { utils } from "../ast/utils";
+import { id } from "../ast/identifiers";
+import { getters } from "../ast/getters";
 
 export default utils.createRule({
   name: utils.getRuleName(module),
   meta: {
     type: "layout",
     docs: {
-      description: "`required: false` in node parameter must be removed because it is implied.",
+      description:
+        "`required: false` in node parameter must be removed because it is implied.",
       recommended: "error",
     },
     fixable: "code",
@@ -32,9 +33,7 @@ export default utils.createRule({
           context.report({
             messageId: "remove",
             node: required.ast,
-            fix: (fixer) => {
-              return fixer.removeRange(rangeToRemove);
-            },
+            fix: (fixer) => fixer.removeRange(rangeToRemove),
           });
         }
       },

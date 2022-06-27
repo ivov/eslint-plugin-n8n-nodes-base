@@ -4,7 +4,7 @@
 
 `documentationUrl` field in credential class must be present.
 
-📋 This rule is part of the `plugin:n8n-nodes-base/autofixable-safe` config.
+📋 This rule is part of the `plugin:n8n-nodes-base/credentials` config.
 
 🔧 Run ESLint with `--fix` option to autofix the issue flagged by this rule.
 

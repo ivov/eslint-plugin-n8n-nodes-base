@@ -1,6 +1,7 @@
 import rule from "../lib/rules/community-package-json-author-email-still-default";
-import { ruleTester, getRuleName } from "../lib/utils";
+import { ruleTester, getRuleName } from "../lib/ast";
 import outdent from "outdent";
+import { COMMUNITY_PACKAGE_JSON } from "../lib/constants";
 
 ruleTester().run(getRuleName(module), rule, {
   valid: [
@@ -23,15 +24,7 @@ ruleTester().run(getRuleName(module), rule, {
 						"n8n-community-node-package"
 				],
 				"main": "index.js",
-				"scripts": {
-						"dev": "npm run watch",
-						"build": "tsc && gulp",
-						"lint": "tslint -p tsconfig.json -c tslint.json",
-						"lintfix": "tslint --fix -p tsconfig.json -c tslint.json",
-						"nodelinter": "nodelinter",
-						"watch": "tsc --watch",
-						"test": "jest"
-				},
+				"scripts": ${COMMUNITY_PACKAGE_JSON.SCRIPTS},
 				"files": [
 						"dist"
 				],
@@ -43,19 +36,7 @@ ruleTester().run(getRuleName(module), rule, {
 								"dist/nodes/Service/Service.node.js"
 						]
 				},
-				"devDependencies": {
-						"@types/express": "^4.17.6",
-						"@types/jest": "^26.0.13",
-						"@types/node": "^14.17.27",
-						"@types/request-promise-native": "~1.0.15",
-						"gulp": "^4.0.0",
-						"jest": "^26.4.2",
-						"n8n-workflow": "~0.83.0",
-						"nodelinter": "^0.1.9",
-						"ts-jest": "^26.3.0",
-						"tslint": "^6.1.2",
-						"typescript": "~4.3.5"
-				},
+				"devDependencies": ${COMMUNITY_PACKAGE_JSON.DEV_DEPENDENCIES},
 				"dependencies": {
 						"n8n-core": "~0.101.0"
 				}
@@ -82,15 +63,7 @@ ruleTester().run(getRuleName(module), rule, {
 						"n8n-community-node-package"
 				],
 				"main": "index.js",
-				"scripts": {
-						"dev": "npm run watch",
-						"build": "tsc && gulp",
-						"lint": "tslint -p tsconfig.json -c tslint.json",
-						"lintfix": "tslint --fix -p tsconfig.json -c tslint.json",
-						"nodelinter": "nodelinter",
-						"watch": "tsc --watch",
-						"test": "jest"
-				},
+				"scripts": ${COMMUNITY_PACKAGE_JSON.SCRIPTS},
 				"files": [
 						"dist"
 				],
@@ -102,19 +75,7 @@ ruleTester().run(getRuleName(module), rule, {
 								"dist/nodes/Service/Service.node.js"
 						]
 				},
-				"devDependencies": {
-						"@types/express": "^4.17.6",
-						"@types/jest": "^26.0.13",
-						"@types/node": "^14.17.27",
-						"@types/request-promise-native": "~1.0.15",
-						"gulp": "^4.0.0",
-						"jest": "^26.4.2",
-						"n8n-workflow": "~0.83.0",
-						"nodelinter": "^0.1.9",
-						"ts-jest": "^26.3.0",
-						"tslint": "^6.1.2",
-						"typescript": "~4.3.5"
-				},
+				"devDependencies": ${COMMUNITY_PACKAGE_JSON.DEV_DEPENDENCIES},
 				"dependencies": {
 						"n8n-core": "~0.101.0"
 				}

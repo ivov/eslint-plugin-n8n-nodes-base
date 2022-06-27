@@ -1,6 +1,6 @@
-import * as utils from "../utils";
-import { identifiers as id } from "../utils/identifiers";
-import { getters } from "../utils/getters";
+import { utils } from "../ast/utils";
+import { id } from "../ast/identifiers";
+import { getters } from "../ast/getters";
 
 export default utils.createRule({
   name: utils.getRuleName(module),
@@ -8,7 +8,7 @@ export default utils.createRule({
     type: "layout",
     docs: {
       description:
-        "Node filename must match `name` in node class description, excluding the filename suffix. Example: `Test.node.ts` matches `Test` in `Test.description.name`.",
+        "Node filename must match `name` in node class description, excluding the filename suffix. Example: `Test.node.ts` matches `Test` in property `Test.description.name`.",
       recommended: "error",
     },
     schema: [],

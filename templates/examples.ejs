@@ -1,6 +1,11 @@
 <% validInvalid.forEach( ( section ) => { %>
 <%- include( section.valid ? 'exampleValid' : 'exampleInvalid', { section: section } ) %>
-<%- section.examples %>
+<%- /packageJson/.test(section.examples)
+  ? section.examples
+    .replace('const packageJson = ', '')
+    .replace('```js', '```json')
+  : section.examples
+  %>
 <% } ) %>
 
 <% fixed.forEach( ( section ) => { %>

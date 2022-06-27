@@ -4,7 +4,7 @@
 
 `description` for Simplify node parameter must be `Whether to return a simplified version of the response instead of the raw data`
 
-📋 This rule is part of the `plugin:n8n-nodes-base/autofixable-safe` config.
+📋 This rule is part of the `plugin:n8n-nodes-base/nodes` config.
 
 🔧 Run ESLint with `--fix` option to autofix the issue flagged by this rule.
 

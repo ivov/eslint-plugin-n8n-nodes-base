@@ -2,9 +2,9 @@ import {
   MIN_ITEMS_TO_ALPHABETIZE,
   MIN_ITEMS_TO_ALPHABETIZE_IN_FULL,
 } from "../constants";
-import * as utils from "../utils";
-import { identifiers as id } from "../utils/identifiers";
-import { getters } from "../utils/getters";
+import { utils } from "../ast/utils";
+import { id } from "../ast/identifiers";
+import { getters } from "../ast/getters";
 
 export default utils.createRule({
   name: utils.getRuleName(module),
@@ -40,7 +40,7 @@ export default utils.createRule({
         if (!utils.areIdenticallySortedOptions(options.value, sortedOptions)) {
           const baseIndentation = utils.getBaseIndentationForOption(options);
 
-          const fixed = utils.format(sortedOptions, baseIndentation);
+          const fixed = utils.formatItems(sortedOptions, baseIndentation);
 
           const displayOrder = utils.toDisplayOrder(sortedOptions);
 
@@ -48,9 +48,7 @@ export default utils.createRule({
             messageId: "sortItems",
             node: options.ast,
             data: { displayOrder },
-            fix: (fixer) => {
-              return fixer.replaceText(options.ast, `options: ${fixed}`);
-            },
+            fix: (fixer) => fixer.replaceText(options.ast, `options: ${fixed}`),
           });
         }
       },

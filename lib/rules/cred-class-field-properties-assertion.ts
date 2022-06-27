@@ -1,5 +1,5 @@
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
-import * as utils from "../utils";
+import { utils } from "../ast/utils";
 
 export default utils.createRule({
   name: utils.getRuleName(module),
@@ -43,6 +43,7 @@ export default utils.createRule({
             messageId: "removeAssertionAndType",
             node,
             fix: (fixer) => {
+              // double fix
               return [
                 fixer.removeRange(rangeToRemove),
                 fixer.insertTextAfterRange(
@@ -71,16 +72,25 @@ function getAssertionNodes(node: TSESTree.TSAsExpression) {
 
     if (!insertionNode) return null;
 
+    /**
+     * This plugin is on ESLint 8, but n8n-workflow is still at ESLint 7.32,
+     * which uses `ClassProperty` instead of `PropertyDefinition`. Hence these
+     * checks are generalized for now, until n8n-workflow upgrades its ESLint to 8.
+     *
+     * `TempTyping` is a stopgap to be removed after upgrade.
+     */
     if (
-      insertionNode.type === AST_NODE_TYPES.PropertyDefinition &&
-      insertionNode.computed === false &&
+      "key" in insertionNode &&
+      "type" in insertionNode.key &&
+      // insertionNode.type === AST_NODE_TYPES.PropertyDefinition &&
+      // insertionNode.computed === false &&
       insertionNode.key.type === AST_NODE_TYPES.Identifier &&
       insertionNode.key.name === "properties"
     ) {
       return {
         removalNode: node.typeAnnotation.typeName,
         insertionNode: insertionNode.key,
-        typingExists: isAlreadyTyped(insertionNode),
+        typingExists: isAlreadyTyped(insertionNode as TempTyping),
       };
     }
   }
@@ -88,7 +98,9 @@ function getAssertionNodes(node: TSESTree.TSAsExpression) {
   return null;
 }
 
-function isAlreadyTyped(node: TSESTree.PropertyDefinitionNonComputedName) {
+type TempTyping = TSESTree.Node & { typeAnnotation: TSESTree.TSTypeAnnotation };
+
+function isAlreadyTyped(node: TempTyping) {
   if (!node.typeAnnotation) return false;
 
   return (

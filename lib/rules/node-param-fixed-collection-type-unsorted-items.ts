@@ -2,9 +2,9 @@ import {
   MIN_ITEMS_TO_ALPHABETIZE,
   MIN_ITEMS_TO_ALPHABETIZE_IN_FULL,
 } from "../constants";
-import * as utils from "../utils";
-import { identifiers as id } from "../utils/identifiers";
-import { getters } from "../utils/getters";
+import { utils } from "../ast/utils";
+import { id } from "../ast/identifiers";
+import { getters } from "../ast/getters";
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 
 export default utils.createRule({
@@ -56,9 +56,7 @@ export default utils.createRule({
             messageId: "sortItems",
             node: values.ast,
             data: { displayOrder },
-            fix: (fixer) => {
-              return fixer.replaceText(values.ast, `values: ${fixed}`);
-            },
+            fix: (fixer) => fixer.replaceText(values.ast, `values: ${fixed}`),
           });
         }
       },

@@ -9,9 +9,16 @@ function isStringField(
   fieldName: "name" | "displayName" | "documentationUrl" | "placeholder",
   property: TSESTree.ClassElement
 ) {
+  /**
+   * This plugin is on ESLint 8, but n8n-workflow is still at ESLint 7.32,
+   * which uses `ClassProperty` instead of `PropertyDefinition`. Hence these
+   * checks are generalized for now, until n8n-workflow upgrades its ESLint to 8.
+   */
   return (
-    property.type === AST_NODE_TYPES.PropertyDefinition &&
-    property.computed === false &&
+    'key' in property &&
+    'type' in property.key &&
+    // property.type === AST_NODE_TYPES.PropertyDefinition &&
+    // property.computed === false &&
     property.key.type === AST_NODE_TYPES.Identifier &&
     property.key.name === fieldName &&
     property.value !== null &&
@@ -45,9 +52,16 @@ export function isPlaceholder(
 }
 
 function isArrayField(fieldName: "extends", property: TSESTree.ClassElement) {
+  /**
+   * This plugin is on ESLint 8, but n8n-workflow is still at ESLint 7.32,
+   * which uses `ClassProperty` instead of `PropertyDefinition`. Hence these
+   * checks are generalized for now, until n8n-workflow upgrades its ESLint to 8.
+   */
   return (
-    property.type === AST_NODE_TYPES.PropertyDefinition &&
-    property.computed === false &&
+    "key" in property &&
+    "type" in property.key &&
+    // property.type === AST_NODE_TYPES.PropertyDefinition &&
+    // property.computed === false &&
     property.key.type === AST_NODE_TYPES.Identifier &&
     property.key.name === fieldName &&
     property.value !== null &&

@@ -1,7 +1,7 @@
 import { DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER } from "../constants";
-import * as utils from "../utils";
-import { identifiers as id } from "../utils/identifiers";
-import { getters } from "../utils/getters";
+import { utils } from "../ast/utils";
+import { id } from "../ast/identifiers";
+import { getters } from "../ast/getters";
 import { plural, singular } from "pluralize";
 
 export default utils.createRule({
@@ -41,15 +41,33 @@ export default utils.createRule({
         ) {
           const { value: displayNameValue } = displayName;
 
+          if (displayNameValue.endsWith("Name or ID")) {
+            const [noun] = displayNameValue.split(" Name or ID");
+            const entity = ensureSingular(noun);
+            const fixed = utils.keyValue(
+              "displayName",
+              `${entity} Names or IDs`
+            );
+
+            return context.report({
+              messageId: "endWithNamesOrIds",
+              node: displayName.ast,
+              fix: (fixer) => fixer.replaceText(displayName.ast, fixed),
+            });
+          }
+
           const parts = displayNameValue.split(" ");
 
-          if (
-            parts.length === 1 &&
-            plural(displayNameValue) === displayNameValue
-          ) {
+          // display name too long to find entity so disregard
+          // e.g. ["Properties", "with", "History"]
+          if (parts.length > 2) return;
+
+          // entity is only word, e.g. ["Contacts"] → "Contact Names or IDs"
+          if (parts.length === 1) {
+            const entity = ensureSingular(displayNameValue);
             const fixed = utils.keyValue(
               "displayName",
-              `${singular(displayNameValue)} Names or IDs`
+              `${entity} Names or IDs`
             );
 
             return context.report({
@@ -59,28 +77,15 @@ export default utils.createRule({
             });
           }
 
-          if (
-            parts.length === 1 &&
-            singular(displayNameValue) === displayNameValue
-          ) {
+          // entity is second word, e.g. ["Custom Schemas"] or ["Associated Vid Names or IDs"]
+          if (parts.length === 2) {
+            const [adjective, noun] = parts;
+            const entity = ensureSingular(noun);
+            const composite = [adjective, entity].join(" ");
+
             const fixed = utils.keyValue(
               "displayName",
-              `${displayNameValue} Names or IDs`
-            );
-
-            return context.report({
-              messageId: "endWithNamesOrIds",
-              node: displayName.ast,
-              fix: (fixer) => fixer.replaceText(displayName.ast, fixed),
-            });
-          }
-
-          const [entity, ...rest] = parts;
-
-          if (parts.length > 1 && plural(entity) === entity) {
-            const fixed = utils.keyValue(
-              "displayName",
-              `${singular(entity)} Names or IDs`
+              `${composite} Names or IDs`
             );
 
             return context.report({
@@ -94,3 +99,7 @@ export default utils.createRule({
     };
   },
 });
+
+function ensureSingular(noun: string) {
+  return plural(noun) === noun ? singular(noun) : noun;
+}

@@ -4,7 +4,7 @@
 
 Option `name` for Get All node parameter must be `Get All`
 
-📋 This rule is part of the `plugin:n8n-nodes-base/autofixable-safe` config.
+📋 This rule is part of the `plugin:n8n-nodes-base/nodes` config.
 
 🔧 Run ESLint with `--fix` option to autofix the issue flagged by this rule.
 

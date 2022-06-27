@@ -1,19 +1,19 @@
 import { TSESTree, AST_NODE_TYPES } from "@typescript-eslint/utils";
 
-import { identifiers as id } from "../identifiers";
+import { id } from "../identifiers";
 
 import {
   restoreObject,
   restoreNodeParamOptions,
   restoreFixedCollectionValues,
-  isMemberExpression,
-} from "./_restore";
+} from "../restorers";
 
 import type {
   BooleanProperty,
   NumberProperty,
   StringProperty,
 } from "../../types";
+import { isMemberExpression } from "../identifiers/common.identifiers";
 
 export function getStringProperty(
   identifier: (
@@ -132,7 +132,7 @@ export function getOptions(nodeParam: TSESTree.ObjectExpression) {
 }
 
 function hasMemberExpression(elements: TSESTree.ObjectExpression[]) {
-  return elements.find((e) => e.properties.find(isMemberExpression));
+  return elements.find((element) => element.properties.find(isMemberExpression));
 }
 
 export function getFixedCollectionValues(nodeParam: TSESTree.ObjectExpression) {

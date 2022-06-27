@@ -1,14 +1,15 @@
 import { titleCase } from "title-case";
-import * as utils from "../utils";
-import { identifiers as id } from "../utils/identifiers";
-import { getters } from "../utils/getters";
+import { utils } from "../ast/utils";
+import { id } from "../ast/identifiers";
+import { getters } from "../ast/getters";
 
 export default utils.createRule({
   name: utils.getRuleName(module),
   meta: {
     type: "layout",
     docs: {
-      description: "`displayName` field in credential class must be title cased.",
+      description:
+        "`displayName` field in credential class must be title cased.",
       recommended: "error",
     },
     fixable: "code",
@@ -31,12 +32,11 @@ export default utils.createRule({
           context.report({
             messageId: "useTitleCase",
             node: displayName.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(
+            fix: (fixer) =>
+              fixer.replaceText(
                 displayName.ast,
                 `displayName = '${titleCase(displayName.value)}';`
-              );
-            },
+              ),
           });
         }
       },

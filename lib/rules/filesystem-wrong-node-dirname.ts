@@ -1,4 +1,4 @@
-import * as utils from "../utils";
+import { utils } from "../ast/utils";
 
 export default utils.createRule({
   name: utils.getRuleName(module),
@@ -6,35 +6,39 @@ export default utils.createRule({
     type: "layout",
     docs: {
       description:
-        "Node dirname must match node filename, excluding the filename suffix. Example: `Test` node dirname matches `Test.node.ts` node filename.",
+        "Node dirname must match node filename, excluding the filename suffix. Example: `Test` node dirname matches `Test` section of `Test.node.ts` node filename.",
       recommended: "error",
     },
     schema: [],
     messages: {
-      renameFile: "Rename node dir to {{ expected }} [non-autofixable]",
+      renameDir: "Rename node dir to {{ expected }} [non-autofixable]",
     },
   },
   defaultOptions: [],
   create(context) {
     return {
       ClassDeclaration() {
-        if (isInsideNestedDir(context)) return;
+        const filepath = context.getFilename();
 
-        const [filename, dirname] = context.getFilename().split("/").reverse();
+        if (!filepath.endsWith(".node.ts")) return;
 
-        const parts = filename.split(".node.ts");
+        const [filename, parentDir] = filepath
+          .toLowerCase()
+          .split("/")
+          .reverse()
+          .map((i) => i.replace("trigger", ""));
 
-        if (parts.length !== 2) return;
+        const expected = filename.replace(".node.ts", "");
 
-        const expected = parts.shift();
-
-        if (!expected) return;
-
-        if (dirname !== expected.replace("Trigger", "")) {
+        /**
+         * `includes` because nested dirs are sections of full expected name
+         * e.g. /Cisco/Webex/CiscoWebex.node.ts → "ciscowebex".includes("cisco")
+         */
+        if (!expected.includes(parentDir)) {
           const topOfFile = { line: 1, column: 1 };
 
           context.report({
-            messageId: "renameFile",
+            messageId: "renameDir",
             loc: { start: topOfFile, end: topOfFile },
             data: { expected },
           });
@@ -43,31 +47,3 @@ export default utils.createRule({
     };
   },
 });
-
-const DIRS_WITH_NESTING = [
-  "aws",
-  "facebook",
-  "google",
-  "magento",
-  "mattermost",
-  "microsoft",
-  "notion",
-  "syncromsp",
-  "cisco",
-];
-
-// @TODO
-const EXCEPTION_DIRS = ["localfiletrigger"];
-
-type Context = Readonly<
-  import("@typescript-eslint/utils/dist/ts-eslint/Rule").RuleContext<
-    "renameFile",
-    never[]
-  >
->;
-
-function isInsideNestedDir(context: Context) {
-  return DIRS_WITH_NESTING.some((d) =>
-    context.getFilename().toLowerCase().includes(d)
-  );
-}

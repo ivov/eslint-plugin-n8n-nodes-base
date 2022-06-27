@@ -1,7 +1,7 @@
 import { TSESTree } from "@typescript-eslint/utils";
-import * as utils from "../utils";
-import { identifiers as id } from "../utils/identifiers";
-import { getters } from "../utils/getters";
+import { utils } from "../ast/utils";
+import { id } from "../ast/identifiers";
+import { getters } from "../ast/getters";
 
 export default utils.createRule({
   name: utils.getRuleName(module),
@@ -49,12 +49,11 @@ export default utils.createRule({
           context.report({
             messageId: "addDefault",
             node,
-            fix: (fixer) => {
-              return fixer.insertTextAfterRange(
+            fix: (fixer) =>
+              fixer.insertTextAfterRange(
                 range,
                 `\n${indentation}default: '${fixValues[type.value]}',`
-              );
-            },
+              ),
           });
         }
       },

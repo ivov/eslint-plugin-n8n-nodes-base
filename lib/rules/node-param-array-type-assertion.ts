@@ -1,6 +1,6 @@
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
-import * as utils from "../utils";
-import { identifiers as id } from "../utils/identifiers";
+import { utils } from "../ast/utils";
+import { id } from "../ast/identifiers";
 
 export default utils.createRule({
   name: utils.getRuleName(module),
@@ -42,6 +42,7 @@ export default utils.createRule({
             messageId: "typeArray",
             node,
             fix: (fixer) => {
+              // double fix
               return [
                 fixer.replaceTextRange(rangeToRemove, indentation),
                 fixer.insertTextAfterRange(range, ": INodeProperties[]"),

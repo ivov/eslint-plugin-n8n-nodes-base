@@ -1,13 +1,13 @@
 import { TSESTree } from "@typescript-eslint/utils";
-import { identifiers as id } from "../identifiers";
-import { restoreClassDescriptionOptions, restoreArray } from "./_restore";
+import { id } from "../identifiers";
+import { restoreClassDescriptionOptions, restoreArray } from "../restorers";
 import {
   getName as nodeParamGetName,
   getDisplayName as nodeParamGetDisplayName,
   getDescription as nodeParamGetDescription,
   getNumberProperty,
   getStringProperty,
-} from "./nodeParam";
+} from "./nodeParameter.getters";
 
 export function getCredOptions(nodeParam: TSESTree.ObjectExpression) {
   const found = nodeParam.properties.find(
@@ -53,29 +53,6 @@ export function getSubtitle(nodeParam: TSESTree.ObjectExpression) {
     ast: found,
     value: found.value.value,
   };
-}
-
-export function getAllDisplayNames(nodeParam: TSESTree.ObjectExpression) {
-  const properties = nodeParam.properties.find(
-    id.nodeClassDescription.isProperties
-  );
-
-  if (!properties) return null;
-
-  const displayNames = properties.value.elements.reduce<string[]>(
-    (acc, element) => {
-      const found = element.properties?.find(id.nodeParam.isDisplayName);
-
-      if (found) acc.push(found.value.value);
-
-      return acc;
-    },
-    []
-  );
-
-  if (!displayNames.length) return null;
-
-  return displayNames;
 }
 
 export const getName = nodeParamGetName; // synonym for consistency

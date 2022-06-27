@@ -2,7 +2,7 @@
 
 # filesystem-wrong-node-dirname
 
-Node dirname must match node filename, excluding the filename suffix. Example: `Test` node dirname matches `Test.node.ts` node filename.
+Node dirname must match node filename, excluding the filename suffix. Example: `Test` node dirname matches `Test` section of `Test.node.ts` node filename.
 
 📋 This rule is part of the `plugin:eslint-plugin-n8n-nodes-base/non-autofixable` config.
 

@@ -1,14 +1,15 @@
 import { camelCase } from "camel-case";
-import * as utils from "../utils";
-import { identifiers as id } from "../utils/identifiers";
-import { getters } from "../utils/getters";
+import { utils } from "../ast/utils";
+import { id } from "../ast/identifiers";
+import { getters } from "../ast/getters";
 
 export default utils.createRule({
   name: utils.getRuleName(module),
   meta: {
     type: "layout",
     docs: {
-      description: "`documentationUrl` field in credential class must be camel cased.",
+      description:
+        "`documentationUrl` field in credential class must be camel cased.",
       recommended: "error",
     },
     fixable: "code",
@@ -23,7 +24,9 @@ export default utils.createRule({
       ClassDeclaration(node) {
         if (!id.isCredentialClass(node)) return;
 
-        const documentationUrl = getters.credClassBody.getDocumentationUrl(node.body);
+        const documentationUrl = getters.credClassBody.getDocumentationUrl(
+          node.body
+        );
 
         if (!documentationUrl) return;
 
@@ -33,12 +36,11 @@ export default utils.createRule({
           context.report({
             messageId: "useCamelCase",
             node: documentationUrl.ast,
-            fix: (fixer) => {
-              return fixer.replaceText(
+            fix: (fixer) =>
+              fixer.replaceText(
                 documentationUrl.ast,
                 `documentationUrl = '${camelCasedDocumentationUrl}';`
-              );
-            },
+              ),
           });
         }
       },

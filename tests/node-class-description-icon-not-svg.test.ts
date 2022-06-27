@@ -1,6 +1,6 @@
 import { NODE_CLASS_DESCRIPTION_SUBTITLE } from "../lib/constants";
 import rule from "../lib/rules/node-class-description-icon-not-svg";
-import { getRuleName, ruleTester } from "../lib/utils";
+import { getRuleName, ruleTester } from "../lib/ast";
 import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {

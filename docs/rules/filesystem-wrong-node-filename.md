@@ -2,7 +2,7 @@
 
 # filesystem-wrong-node-filename
 
-Node filename must match `name` in node class description, excluding the filename suffix. Example: `Test.node.ts` matches `Test` in `Test.description.name`.
+Node filename must match `name` in node class description, excluding the filename suffix. Example: `Test.node.ts` matches `Test` in property `Test.description.name`.
 
 📋 This rule is part of the `plugin:eslint-plugin-n8n-nodes-base/non-autofixable` config.
 

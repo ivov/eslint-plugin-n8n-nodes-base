@@ -4,7 +4,7 @@
 
 `displayName` for dynamic-multi-options-type node parameter must end with `Names or IDs`
 
-📋 This rule is part of the `plugin:n8n-nodes-base/autofixable-safe` config.
+📋 This rule is part of the `plugin:n8n-nodes-base/nodes` config.
 
 🔧 Run ESLint with `--fix` option to autofix the issue flagged by this rule.
 
@@ -42,6 +42,16 @@ const test = {
   },
   default: "",
 };
+
+const test = {
+  displayName: "Custom Schemas",
+  name: "customSchema",
+  type: "multiOptions",
+  typeOptions: {
+    loadOptionsMethod: "getSchemas",
+  },
+  default: "",
+};
 ```
 
 ✅ Example of **correct** code:
@@ -53,6 +63,16 @@ const test = {
   type: "multiOptions",
   typeOptions: {
     loadOptionsMethod: "getFields",
+  },
+  default: "",
+};
+
+const test = {
+  displayName: "Properties with History",
+  name: "field",
+  type: "multiOptions",
+  typeOptions: {
+    loadOptionsMethod: "getProperties",
   },
   default: "",
 };

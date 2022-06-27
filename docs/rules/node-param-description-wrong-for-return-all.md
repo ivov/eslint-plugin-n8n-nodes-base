@@ -4,7 +4,7 @@
 
 `description` for Return All node parameter must be `Whether to return all results or only up to a given limit`
 
-📋 This rule is part of the `plugin:n8n-nodes-base/autofixable-safe` config.
+📋 This rule is part of the `plugin:n8n-nodes-base/nodes` config.
 
 🔧 Run ESLint with `--fix` option to autofix the issue flagged by this rule.
 

@@ -1,13 +1,14 @@
-import * as utils from "../utils";
-import { identifiers as id } from "../utils/identifiers";
-import { getters } from "../utils/getters";
+import { utils } from "../ast/utils";
+import { id } from "../ast/identifiers";
+import { getters } from "../ast/getters";
 
 export default utils.createRule({
   name: utils.getRuleName(module),
   meta: {
     type: "layout",
     docs: {
-      description: "First char in `name` in credential class must be lowercase.",
+      description:
+        "First char in `name` in credential class must be lowercase.",
       recommended: "error",
     },
     fixable: "code",
@@ -26,16 +27,13 @@ export default utils.createRule({
 
         if (!name) return;
 
+        const fixed = name.value.charAt(0).toLowerCase() + name.value.slice(1);
+
         if (/[A-Z]/.test(name.value.charAt(0))) {
           context.report({
             messageId: "uppercaseFirstChar",
             node: name.ast,
-            fix: (fixer) => {
-              const fixed =
-                name.value.charAt(0).toLowerCase() + name.value.slice(1);
-
-              return fixer.replaceText(name.ast, `name = '${fixed}';`);
-            },
+            fix: (fixer) => fixer.replaceText(name.ast, `name = '${fixed}';`),
           });
         }
       },

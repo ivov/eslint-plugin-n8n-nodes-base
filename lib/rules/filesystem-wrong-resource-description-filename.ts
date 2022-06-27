@@ -1,7 +1,7 @@
 import { isPlural, singular } from "pluralize";
 import { RESOURCE_DESCRIPTION_SUFFIX } from "../constants";
-import * as utils from "../utils";
-import { identifiers as id } from "../utils/identifiers";
+import { utils } from "../ast/utils";
+import { id } from "../ast/identifiers";
 
 export default utils.createRule({
   name: utils.getRuleName(module),

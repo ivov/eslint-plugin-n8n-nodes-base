@@ -1,14 +1,15 @@
 import { RETURN_ALL_NODE_PARAMETER } from "../constants";
-import * as utils from "../utils";
-import { identifiers as id } from "../utils/identifiers";
-import { getters } from "../utils/getters";
+import { utils } from "../ast/utils";
+import { id } from "../ast/identifiers";
+import { getters } from "../ast/getters";
 
 export default utils.createRule({
   name: utils.getRuleName(module),
   meta: {
     type: "layout",
     docs: {
-      description: "`description` for Return All node parameter must be present.",
+      description:
+        "`description` for Return All node parameter must be present.",
       recommended: "error",
     },
     fixable: "code",
@@ -37,12 +38,11 @@ export default utils.createRule({
           context.report({
             messageId: "addReturnAllDescription",
             node,
-            fix: (fixer) => {
-              return fixer.insertTextAfterRange(
+            fix: (fixer) =>
+              fixer.insertTextAfterRange(
                 range,
                 `\n${indentation}description: '${RETURN_ALL_NODE_PARAMETER.DESCRIPTION}',`
-              );
-            },
+              ),
           });
         }
       },

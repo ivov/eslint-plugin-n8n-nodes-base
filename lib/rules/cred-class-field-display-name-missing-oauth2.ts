@@ -1,6 +1,6 @@
-import * as utils from "../utils";
-import { identifiers as id } from "../utils/identifiers";
-import { getters } from "../utils/getters";
+import { utils } from "../ast/utils";
+import { id } from "../ast/identifiers";
+import { getters } from "../ast/getters";
 
 export default utils.createRule({
   name: utils.getRuleName(module),
@@ -8,7 +8,7 @@ export default utils.createRule({
     type: "layout",
     docs: {
       description:
-        "`displayName` field in credential class must mention `OAuth2` if applicable.",
+        "`displayName` field in credential class must mention `OAuth2` if the credential is OAuth2.",
       recommended: "error",
     },
     schema: [],

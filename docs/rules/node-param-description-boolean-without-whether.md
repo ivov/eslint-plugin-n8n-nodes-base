@@ -4,7 +4,7 @@
 
 `description` in a boolean node parameter must start with `Whether`.
 
-📋 This rule is part of the `plugin:n8n-nodes-base/non-autofixable` config.
+📋 This rule is part of the `plugin:n8n-nodes-base/nodes` config.
 
 ## Examples
 

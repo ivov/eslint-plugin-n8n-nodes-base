@@ -1,5 +1,4 @@
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
-import { restoreObject } from "./_restore";
 
 type TopLevelPackageJsonKey =
   | "name"

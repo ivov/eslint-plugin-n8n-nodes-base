@@ -1,6 +1,6 @@
 import { TSESTree } from "@typescript-eslint/utils";
-import { identifiers as id } from "../identifiers";
-import { restoreArray } from "./_restore";
+import { id } from "../identifiers";
+import { restoreArray } from "../restorers";
 import type { StringClassField } from "../../types";
 
 // ----------------------------------

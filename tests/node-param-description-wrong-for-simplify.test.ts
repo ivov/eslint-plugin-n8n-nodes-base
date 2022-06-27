@@ -1,6 +1,6 @@
 import { SIMPLIFY_NODE_PARAMETER } from "../lib/constants";
 import rule from "../lib/rules/node-param-description-wrong-for-simplify";
-import { ruleTester, getRuleName } from "../lib/utils";
+import { ruleTester, getRuleName } from "../lib/ast";
 import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {

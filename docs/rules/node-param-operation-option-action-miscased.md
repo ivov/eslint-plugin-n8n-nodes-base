@@ -2,7 +2,7 @@
 
 # node-param-operation-option-action-miscased
 
-The property `action` in an option in an Operation node parameter must be sentence cased.
+The property `action` in an option in an Operation node parameter must be sentence-cased.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/nodes` config.
 
@@ -147,7 +147,7 @@ const test = {
       name: "Update",
       value: "update",
       description: "Update an entity",
-      action: "Update an entity",
+      action: "Perform a PATCH request",
     },
   ],
 };

@@ -135,12 +135,6 @@ function getResourceFromDisplayOptions(node: TSESTree.ObjectExpression) {
    */
   const [resourceName] = resourceInShow.value.elements;
 
-  const parts = splitIfCamelCased(resourceName.value);
-
-  if (parts.length > 1) {
-    return parts.join(" ");
-  }
-
   return resourceName.value;
 }
 

@@ -46,15 +46,21 @@ export default utils.createRule({
           if (optionHasAction) continue;
 
           let actionText = "<summary>";
-          const resourceName = getResourceFromDisplayOptions(node);
+          let resourceName = getResourceFromDisplayOptions(node);
           const operationName = getOperationName(optionProperties);
 
           if (resourceName && operationName) {
-            const article = indefinite(resourceName, { articleOnly: true });
+            const resourceParts = splitIfCamelCased(resourceName);
 
             if (operationName === "Get All") {
-              actionText = `Get all ${plural(resourceName)}`;
+              resourceName =
+                resourceParts.length > 1
+                  ? [resourceParts[0], plural(resourceParts[1])].join(" ")
+                  : plural(resourceParts[0]);
+              actionText = `Get all ${resourceName}`;
             } else {
+              const article = indefinite(resourceName, { articleOnly: true });
+              resourceName = resourceParts.join(" ");
               actionText = `${operationName} ${article} ${resourceName}`;
             }
           } else {
@@ -129,7 +135,17 @@ function getResourceFromDisplayOptions(node: TSESTree.ObjectExpression) {
    */
   const [resourceName] = resourceInShow.value.elements;
 
+  const parts = splitIfCamelCased(resourceName.value);
+
+  if (parts.length > 1) {
+    return parts.join(" ");
+  }
+
   return resourceName.value;
+}
+
+function splitIfCamelCased(string: string) {
+  return string.split(/(?=[A-Z])/g).map(part => part.trim().toLowerCase());
 }
 
 function isShow(

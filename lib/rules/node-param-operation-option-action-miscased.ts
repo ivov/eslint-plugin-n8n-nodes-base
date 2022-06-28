@@ -72,13 +72,11 @@ function isActionProperty(
   );
 }
 
-/**
- * Check if a sentence is sentence-cased, tolerating all-uppercase words.
- */
 function isSentenceCase(sentence: string) {
   const withoutAllUppercaseWords = sentence
     .split(" ")
-    .filter((word) => !isAllUppercase(word))
+    .filter((word) => !isAllUppercase(word)) // tolerate all-uppercase word
+    .filter((word) => word.includes("\\'")) // escaped single quote
     .join(" ");
 
   return withoutAllUppercaseWords === sentenceCase(withoutAllUppercaseWords);

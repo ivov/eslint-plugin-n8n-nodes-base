@@ -69,15 +69,14 @@ export default utils.createRule({
             ast: optionProperties[optionProperties.length - 1],
           });
 
+          const fixed = utils.keyValue("action", actionText);
+
           context.report({
             data: { actionText },
             messageId: "addAction",
             node: option,
             fix: (fixer) =>
-              fixer.insertTextAfterRange(
-                range,
-                `\n${indentation}action: '${actionText}',`
-              ),
+              fixer.insertTextAfterRange(range, `\n${indentation}${fixed},`),
           });
         }
       },

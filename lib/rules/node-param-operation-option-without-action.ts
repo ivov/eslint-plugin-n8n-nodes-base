@@ -12,7 +12,7 @@ export default utils.createRule({
     type: "layout",
     docs: {
       description:
-        "An option in an Operation node parameter must have an `action` property to serve as the title for the operation. The `action` property may or may not be identical to the `description` property.",
+        "An option in an Operation node parameter must have an `action` property. The `action` property may or may not be identical to the `description` property.",
       recommended: "error",
     },
     fixable: "code",

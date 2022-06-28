@@ -87,10 +87,12 @@ export function restoreNodeParamOptions(options: TSESTree.ObjectExpression[]) {
   const isOption = (entity: {
     name?: string;
     value?: string;
-  }): entity is { name: string; value: string } =>
+    description?: string
+    action?: string
+  }): entity is { name: string; value: string; description?: string; action?: string } =>
     entity.name !== undefined && entity.value !== undefined;
 
-  const restoredOptions: { name: string; value: string }[] = [];
+  const restoredOptions: { name: string; value: string; description?: string; action?: string }[] = [];
 
   for (const option of options) {
     const restoredOption = restoreObject(option);

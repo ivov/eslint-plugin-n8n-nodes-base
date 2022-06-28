@@ -106,7 +106,7 @@ export function getOptions(nodeParam: TSESTree.ObjectExpression) {
   if (!found.value.elements) {
     return {
       ast: found,
-      value: [{ name: "", value: "" }], // unused placeholder
+      value: [{ name: "", value: "", description: "", action: "" }], // unused placeholder
       hasPropertyPointingToIdentifier: true,
     };
   }

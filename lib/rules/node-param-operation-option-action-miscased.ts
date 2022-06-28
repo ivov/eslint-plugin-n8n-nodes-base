@@ -76,7 +76,7 @@ function isSentenceCase(sentence: string) {
   const withoutAllUppercaseWords = sentence
     .split(" ")
     .filter((word) => !isAllUppercase(word)) // tolerate all-uppercase word
-    .filter((word) => word.includes("\\'")) // escaped single quote
+    .filter((word) => !word.includes("\\'")) // tolerate escaped single quote
     .join(" ");
 
   return withoutAllUppercaseWords === sentenceCase(withoutAllUppercaseWords);

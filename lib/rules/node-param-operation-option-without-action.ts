@@ -2,7 +2,6 @@ import { utils } from "../ast/utils";
 import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
-import { ObjectLiteralElement } from "@typescript-eslint/types/dist/generated/ast-spec";
 import { plural } from "pluralize";
 import indefinite from "indefinite";
 
@@ -47,8 +46,8 @@ export default utils.createRule({
           if (optionHasAction) continue;
 
           let actionText = "<summary>";
-          let resourceName = getResourceFromDisplayOptions(node);
-          let operationName = getOperationName(optionProperties);
+          const resourceName = getResourceFromDisplayOptions(node);
+          const operationName = getOperationName(optionProperties);
 
           if (resourceName && operationName) {
             const article = indefinite(resourceName, { articleOnly: true });
@@ -135,7 +134,7 @@ function getResourceFromDisplayOptions(node: TSESTree.ObjectExpression) {
 }
 
 function isShow(
-  property: ObjectLiteralElement
+  property: TSESTree.ObjectLiteralElement
 ): property is TSESTree.PropertyNonComputedName & {
   value: { type: AST_NODE_TYPES.ObjectExpression };
 } {
@@ -149,7 +148,7 @@ function isShow(
 }
 
 function isResourceInShow(
-  property: ObjectLiteralElement
+  property: TSESTree.ObjectLiteralElement
 ): property is TSESTree.PropertyNonComputedName & {
   value: {
     elements: Array<{

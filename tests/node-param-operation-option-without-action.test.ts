@@ -206,7 +206,7 @@ ruleTester().run(getRuleName(module), rule, {
 				displayOptions: {
 					show: {
 						resource: [
-							'entity',
+							'accountContact',
 						],
 					},
 				},
@@ -215,27 +215,27 @@ ruleTester().run(getRuleName(module), rule, {
 					{
 						name: 'Create',
 						value: 'create',
-						description: 'Create an entity',
+						description: 'Create an account contact',
 					},
 					{
 						name: 'Delete',
 						value: 'delete',
-						description: 'Delete an entity',
+						description: 'Delete an account contact',
 					},
 					{
 						name: 'Get',
 						value: 'get',
-						description: 'Retrieve an entity',
+						description: 'Retrieve an account contact',
 					},
 					{
 						name: 'Get All',
 						value: 'getAll',
-						description: 'Retrieve all entities',
+						description: 'Retrieve all account contacts',
 					},
 					{
 						name: 'Update',
 						value: 'update',
-						description: 'Update an entity',
+						description: 'Update an account contact',
 					},
 				],
 			};`,
@@ -249,7 +249,7 @@ ruleTester().run(getRuleName(module), rule, {
 				displayOptions: {
 					show: {
 						resource: [
-							'entity',
+							'accountContact',
 						],
 					},
 				},
@@ -258,32 +258,32 @@ ruleTester().run(getRuleName(module), rule, {
 					{
 						name: 'Create',
 						value: 'create',
-						description: 'Create an entity',
-						action: 'Create an entity',
+						description: 'Create an account contact',
+						action: 'Create an account contact',
 					},
 					{
 						name: 'Delete',
 						value: 'delete',
-						description: 'Delete an entity',
-						action: 'Delete an entity',
+						description: 'Delete an account contact',
+						action: 'Delete an account contact',
 					},
 					{
 						name: 'Get',
 						value: 'get',
-						description: 'Retrieve an entity',
-						action: 'Get an entity',
+						description: 'Retrieve an account contact',
+						action: 'Get an account contact',
 					},
 					{
 						name: 'Get All',
 						value: 'getAll',
-						description: 'Retrieve all entities',
-						action: 'Get all entities',
+						description: 'Retrieve all account contacts',
+						action: 'Get all account contacts',
 					},
 					{
 						name: 'Update',
 						value: 'update',
-						description: 'Update an entity',
-						action: 'Update an entity',
+						description: 'Update an account contact',
+						action: 'Update an account contact',
 					},
 				],
 			};`,

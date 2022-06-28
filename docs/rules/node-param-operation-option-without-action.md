@@ -60,7 +60,7 @@ const test = {
   noDataExpression: true,
   displayOptions: {
     show: {
-      resource: ["entity"],
+      resource: ["accountContact"],
     },
   },
   default: "getAll",
@@ -68,27 +68,27 @@ const test = {
     {
       name: "Create",
       value: "create",
-      description: "Create an entity",
+      description: "Create an account contact",
     },
     {
       name: "Delete",
       value: "delete",
-      description: "Delete an entity",
+      description: "Delete an account contact",
     },
     {
       name: "Get",
       value: "get",
-      description: "Retrieve an entity",
+      description: "Retrieve an account contact",
     },
     {
       name: "Get All",
       value: "getAll",
-      description: "Retrieve all entities",
+      description: "Retrieve all account contacts",
     },
     {
       name: "Update",
       value: "update",
-      description: "Update an entity",
+      description: "Update an account contact",
     },
   ],
 };

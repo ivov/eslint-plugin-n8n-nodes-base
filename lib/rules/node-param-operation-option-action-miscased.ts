@@ -10,7 +10,7 @@ export default utils.createRule({
     type: "layout",
     docs: {
       description:
-        "The property `action` in an option in an Operation node parameter must be sentence cased.",
+        "The property `action` in an option in an Operation node parameter must be sentence-cased.",
       recommended: "error",
     },
     fixable: "code",
@@ -41,14 +41,15 @@ export default utils.createRule({
 
           if (!action) continue;
 
-          const sentenceCased = sentenceCase(action.value.value);
+          const actionSentence = action.value.value;
 
-          if (action.value.value !== sentenceCased) {
+          if (!isSentenceCase(actionSentence)) {
+            const sentenceCased = sentenceCase(actionSentence);
             const fixed = utils.keyValue("action", sentenceCased);
 
             context.report({
               messageId: "useSentenceCase",
-              node: option,
+              node: action,
               fix: (fixer) => fixer.replaceText(action, fixed),
             });
           }
@@ -70,3 +71,17 @@ function isActionProperty(
     typeof property.value.value === "string"
   );
 }
+
+/**
+ * Check if a sentence is sentence-cased, tolerating all-uppercase words.
+ */
+function isSentenceCase(sentence: string) {
+  const withoutAllUppercaseWords = sentence
+    .split(" ")
+    .filter((word) => !isAllUppercase(word))
+    .join(" ");
+
+  return withoutAllUppercaseWords === sentenceCase(withoutAllUppercaseWords);
+}
+
+const isAllUppercase = (str: string) => str === str.toUpperCase();

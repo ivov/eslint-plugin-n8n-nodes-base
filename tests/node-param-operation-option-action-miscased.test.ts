@@ -48,7 +48,7 @@ ruleTester().run(getRuleName(module), rule, {
 						name: 'Update',
 						value: 'update',
 						description: 'Update an entity',
-						action: 'Update an entity',
+						action: 'Perform a PATCH request',
 					},
 				],
 			};`,

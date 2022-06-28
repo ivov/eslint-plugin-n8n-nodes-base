@@ -90,7 +90,8 @@ export function hasName(
     | "resource"
     | "operation"
     | "allowUnauthorizedCerts"
-    | "email",
+    | "email"
+    | "action",
   nodeParam: TSESTree.ObjectExpression
 ) {
   let check = (value: string) => value === name;
@@ -145,6 +146,10 @@ export function isResource(nodeParam: TSESTree.ObjectExpression) {
 
 export function isOperation(nodeParam: TSESTree.ObjectExpression) {
   return isOptionsType(nodeParam) && hasName("operation", nodeParam);
+}
+
+export function isAction(nodeParam: TSESTree.ObjectExpression) {
+  return isOptionsType(nodeParam) && hasName("action", nodeParam);
 }
 
 export function isRequired(

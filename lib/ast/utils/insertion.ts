@@ -39,7 +39,7 @@ export const getInsertionArgs = (referenceNode: { ast: TSESTree.BaseNode }) => {
  * ```
  */
 export function keyValue(
-  key: "displayName" | "name" | "description" | "type" | "placeholder",
+  key: "displayName" | "name" | "description" | "type" | "placeholder" | "action",
   value: string,
   { backtickedValue } = { backtickedValue: false }
 ) {

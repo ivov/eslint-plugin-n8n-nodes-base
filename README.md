@@ -84,10 +84,7 @@ If you specify both the plugin and a config, all the rules in the config (theme-
 | [cred-class-field-properties-assertion](docs/rules/cred-class-field-properties-assertion.md) | In a credential class, the field `properties` must be typed 'INodeProperties' and individual properties must have no assertions. | Yes |
 | [cred-class-name-missing-oauth2-suffix](docs/rules/cred-class-name-missing-oauth2-suffix.md) | Credential class name must mention `OAuth2` if the credential is OAuth2. | No |
 | [cred-class-name-unsuffixed](docs/rules/cred-class-name-unsuffixed.md) | Credential class name must be suffixed with `-Api`. | Yes |
-| [filesystem-wrong-cred-filename](docs/rules/filesystem-wrong-cred-filename.md) | Credentials filename must match credentials class name, excluding the filename suffix. Example: `TestApi.credentials.ts` matches `TestApi` in `class TestApi implements ICredentialType`. | No |
-| [filesystem-wrong-node-dirname](docs/rules/filesystem-wrong-node-dirname.md) | Node dirname must match node filename, excluding the filename suffix. Example: `Test` node dirname matches `Test` section of `Test.node.ts` node filename. | No |
-| [filesystem-wrong-node-filename](docs/rules/filesystem-wrong-node-filename.md) | Node filename must match `name` in node class description, excluding the filename suffix. Example: `Test.node.ts` matches `Test` in property `Test.description.name`. | No |
-| [filesystem-wrong-resource-description-filename](docs/rules/filesystem-wrong-resource-description-filename.md) | Resource description file must use singular form. Example: `UserDescription.ts`, not `UsersDescription.ts`. | No |
+| [cred-filename-against-convention](docs/rules/cred-filename-against-convention.md) | Credentials filename must match credentials class name, excluding the filename suffix. Example: `TestApi.credentials.ts` matches `TestApi` in `class TestApi implements ICredentialType`. | No |
 | [node-class-description-credentials-name-unsuffixed](docs/rules/node-class-description-credentials-name-unsuffixed.md) | `name` under `credentials` in node class description must be suffixed with `-Api`. | Yes |
 | [node-class-description-display-name-unsuffixed-trigger-node](docs/rules/node-class-description-display-name-unsuffixed-trigger-node.md) | `displayName` in node class description for trigger node must be suffixed with `-Trigger`. | Yes |
 | [node-class-description-empty-string](docs/rules/node-class-description-empty-string.md) | `description` in node class description must be filled out. | No |
@@ -97,9 +94,11 @@ If you specify both the plugin and a config, all the rules in the config (theme-
 | [node-class-description-missing-subtitle](docs/rules/node-class-description-missing-subtitle.md) | `subtitle` in node class description must be present. | Yes |
 | [node-class-description-name-unsuffixed-trigger-node](docs/rules/node-class-description-name-unsuffixed-trigger-node.md) | `name` in node class description for trigger node must be suffixed with `-Trigger`. | Yes |
 | [node-class-description-outputs-wrong](docs/rules/node-class-description-outputs-wrong.md) | The number of `outputs` in node class description for any node must be one, or two for If node, or four for Switch node. | Yes |
+| [node-dirname-against-convention](docs/rules/node-dirname-against-convention.md) | Node dirname must match node filename, excluding the filename suffix. Example: `Test` node dirname matches `Test` section of `Test.node.ts` node filename. | No |
 | [node-execute-block-double-assertion-for-items](docs/rules/node-execute-block-double-assertion-for-items.md) | In the `execute()` method there is no need to double assert the type of `items.length`. | Yes |
 | [node-execute-block-missing-continue-on-fail](docs/rules/node-execute-block-missing-continue-on-fail.md) | The `execute()` method in a node must implement `continueOnFail` in a try-catch block. | No |
 | [node-execute-block-wrong-error-thrown](docs/rules/node-execute-block-wrong-error-thrown.md) | The `execute()` method in a node may only throw `NodeApiError` for failed network requests and `NodeOperationError` for internal errors, not the built-in `Error`. | No |
+| [node-filename-against-convention](docs/rules/node-filename-against-convention.md) | Node filename must match `name` in node class description, excluding the filename suffix. Example: `Test.node.ts` matches `Test` in property `Test.description.name`. | No |
 | [node-param-array-type-assertion](docs/rules/node-param-array-type-assertion.md) | Array of node parameters must be typed, not type-asserted. | Yes |
 | [node-param-collection-type-unsorted-items](docs/rules/node-param-collection-type-unsorted-items.md) | Items in collection-type node parameter must be alphabetized by `name` if five or more than five. | Yes |
 | [node-param-color-type-unused](docs/rules/node-param-color-type-unused.md) | `color`-type must be used for color-related node parameter. | Yes |
@@ -170,6 +169,7 @@ If you specify both the plugin and a config, all the rules in the config (theme-
 | [node-param-resource-with-plural-option](docs/rules/node-param-resource-with-plural-option.md) | Option `name` for a Resource node parameter must be singular. | Yes |
 | [node-param-resource-without-no-data-expression](docs/rules/node-param-resource-without-no-data-expression.md) | `noDataExpression` in a Resource node parameter must be present and enabled. | Yes |
 | [node-param-type-options-missing-from-limit](docs/rules/node-param-type-options-missing-from-limit.md) | `typeOptions` in Limit node parameter must be present. | Yes |
+| [node-resource-description-filename-against-convention](docs/rules/node-resource-description-filename-against-convention.md) | Resource description file must use singular form. Example: `UserDescription.ts`, not `UsersDescription.ts`. | No |
 <!-- /RULES_TABLE -->
 
 ## Author

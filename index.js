@@ -57,12 +57,12 @@ const allRuleModules = ALL_RULE_NAMES.reduce((acc, rulename) => {
  *     plugins: [ 'n8n-nodes-base' ],
  *     rules: {
  *       'n8n-nodes-base/cred-class-field-display-name-miscased': 'error',
- *       // etc: other rules
+ *       // etc
  *     }
  *  },
- *   "autofixable-safe": { ... },
- *   "autofixable-unsafe": { ... },
- *   "non-autofixable": { ... },
+ *   "communityy": { ... },
+ *   "credentials": { ... },
+ *   "nodes": { ... },
  *   "community": { ... },
  * }
  * ```
@@ -79,8 +79,6 @@ const configs = ALL_RULE_NAMES.reduce(
       acc["credentials"].rules[fullRulename] = DEFAULT_SEVERITY;
     } else if (rulename.startsWith("node-")) {
       acc["nodes"].rules[fullRulename] = DEFAULT_SEVERITY;
-    } else {
-      acc["misc"].rules[fullRulename] = DEFAULT_SEVERITY;
     }
 
     return acc;
@@ -90,7 +88,6 @@ const configs = ALL_RULE_NAMES.reduce(
     community: { ...CONFIG_BASE_PROPERTIES, rules: {} },
     credentials: { ...CONFIG_BASE_PROPERTIES, rules: {} },
     nodes: { ...CONFIG_BASE_PROPERTIES, rules: {} },
-    misc: { ...CONFIG_BASE_PROPERTIES, rules: {} }, // TODO: Remove
   }
 );
 

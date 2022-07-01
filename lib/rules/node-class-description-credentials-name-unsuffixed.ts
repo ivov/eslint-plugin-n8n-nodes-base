@@ -24,6 +24,8 @@ export default utils.createRule({
       ObjectExpression(node) {
         if (!id.isNodeClassDescription(node)) return;
 
+        if (hasCredExemptedFromApiSuffix(context.getFilename())) return;
+
         const credOptions = getters.nodeClassDescription.getCredOptions(node);
 
         if (!credOptions) return;
@@ -64,4 +66,76 @@ export function getUnsuffixedCredOptionName(credOptions: {
   }
 
   return null;
+}
+
+/**
+ * Example:
+ *
+ * ```ts
+ * export class Wait implements INodeType {
+ *  description: INodeTypeDescription = {
+ *  displayName: 'Wait',
+ *  name: 'wait',
+ *  icon: 'fa:pause-circle',
+ *  group: ['organization'],
+ *  version: 1,
+ *  description: 'Wait before continue with execution',
+ *  defaults: {
+ *    name: 'Wait',
+ *    color: '#804050',
+ *  },
+ *  inputs: ['main'],
+ *  outputs: ['main'],
+ *  credentials: [
+ *    {
+ *      name: 'httpBasicAuth', // ← Exempted from `-Api` suffix
+ *      required: true,
+ *      displayOptions: {
+ *        show: {
+ *          incomingAuthentication: [
+ *            'basicAuth',
+ *          ],
+ *        },
+ *      },
+ *    },
+ * // ...
+ * }
+ * ```
+ */
+const NODES_EXEMPTED_FROM_HAVING_CREDS_WITH_API_SUFFIX = [
+  "Amqp",
+  "Aws",
+  "CrateDb",
+  "EmailReadImap",
+  "EmailSend",
+  "FileMaker",
+  "Ftp",
+  "Git",
+  "Google",
+  "GraphQL",
+  "HttpRequest",
+  "Hubspot",
+  "Kafka",
+  "MQTT",
+  "Microsoft",
+  "MongoDb",
+  "MySql",
+  "NocoDB",
+  "Pipedrive",
+  "Postgres",
+  "QuestDb",
+  "RabbitMQ",
+  "Redis",
+  "S3",
+  "Snowflake",
+  "Ssh",
+  "TimescaleDb",
+  "Wait",
+  "Webhook",
+];
+
+function hasCredExemptedFromApiSuffix(filename: string) {
+  return NODES_EXEMPTED_FROM_HAVING_CREDS_WITH_API_SUFFIX.some((cred) =>
+    filename.includes(cred)
+  );
 }

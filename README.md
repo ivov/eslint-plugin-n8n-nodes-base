@@ -101,7 +101,7 @@ If you specify both the plugin and a config, all the rules in the config (theme-
 | [node-filename-against-convention](docs/rules/node-filename-against-convention.md) | Node filename must match `name` in node class description, excluding the filename suffix. Example: `Test.node.ts` matches `Test` in property `Test.description.name`. | No |
 | [node-param-array-type-assertion](docs/rules/node-param-array-type-assertion.md) | Array of node parameters must be typed, not type-asserted. | Yes |
 | [node-param-collection-type-unsorted-items](docs/rules/node-param-collection-type-unsorted-items.md) | Items in collection-type node parameter must be alphabetized by `name` if five or more than five. | Yes |
-| [node-param-color-type-unused](docs/rules/node-param-color-type-unused.md) | `color`-type must be used for color-related node parameter. | Yes |
+| [node-param-color-type-unused](docs/rules/node-param-color-type-unused.md) | `string`-type color-related node parameter must be `color`-type. | Yes |
 | [node-param-default-missing](docs/rules/node-param-default-missing.md) | `default` must be present in a node parameter. | Yes |
 | [node-param-default-wrong-for-boolean](docs/rules/node-param-default-wrong-for-boolean.md) | `default` for boolean-type node parameter must be a boolean. | Yes |
 | [node-param-default-wrong-for-collection](docs/rules/node-param-default-wrong-for-collection.md) | `default` for collection-type node parameter must be an object. | Yes |

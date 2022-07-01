@@ -13,6 +13,25 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '#000000',
 			};`,
 		},
+		{
+			code: outdent`
+			const test = {
+				displayName: 'Color',
+				name: 'color',
+				type: 'options',
+				default: 'blue',
+				options: [
+					{
+						name: 'Blue',
+						value: 'blue',
+					},
+					{
+						name: 'Green',
+						value: 'green',
+					},
+				],
+			};`,
+		},
 	],
 	invalid: [
 		{

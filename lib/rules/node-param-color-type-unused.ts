@@ -8,7 +8,7 @@ export default utils.createRule({
     type: "layout",
     docs: {
       description:
-        "`color`-type must be used for color-related node parameter.",
+        "`string`-type color-related node parameter must be `color`-type.",
       recommended: "error",
     },
     fixable: "code",
@@ -31,7 +31,7 @@ export default utils.createRule({
 
         if (!type) return;
 
-        if (/colo(u?)r/i.test(name.value) && type.value !== "color") {
+        if (/colo(u?)r/i.test(name.value) && type.value === "string") {
           context.report({
             messageId: "useColorParam",
             node: type.ast,

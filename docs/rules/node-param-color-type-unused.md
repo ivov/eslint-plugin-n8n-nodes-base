@@ -2,7 +2,7 @@
 
 # node-param-color-type-unused
 
-`color`-type must be used for color-related node parameter.
+`string`-type color-related node parameter must be `color`-type.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/nodes` config.
 
@@ -29,6 +29,23 @@ const test = {
   name: "foregroundColor",
   type: "color",
   default: "#000000",
+};
+
+const test = {
+  displayName: "Color",
+  name: "color",
+  type: "options",
+  default: "blue",
+  options: [
+    {
+      name: "Blue",
+      value: "blue",
+    },
+    {
+      name: "Green",
+      value: "green",
+    },
+  ],
 };
 ```
 

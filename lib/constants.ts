@@ -151,3 +151,46 @@ export const DOCUMENTATION = {
   APPLICABLE_BY_EXTENSION_TO_DESCRIPTION_IN_OPTION:
     "Applicable by extension to `description` in option in options-type and multi-options-type node parameter.",
 };
+
+// ----------------------------------
+//              misc
+// ----------------------------------
+
+/**
+ * Credentials exempted from these rules:
+ * - `cred-class-name-unsuffixed`
+ * - `cred-class-field-name-unsuffixed`
+ */
+export const CREDS_EXEMPTED_FROM_API_SUFFIX = [
+  "Amqp",
+  "Aws",
+  "CrateDb",
+  "FileMaker",
+  "Ftp",
+  "GitPassword",
+  "GmailOAuth2Api",
+  "GoogleAnalyticsOAuth2Api",
+  "HttpBasicAuth",
+  "HttpDigestAuth",
+  "HttpHeaderAuth",
+  "HttpQueryAuth",
+  "HubspotAppToken",
+  "Imap",
+  "Kafka",
+  "MicrosoftSql",
+  "MongoDb",
+  "Mqtt",
+  "MySql",
+  "NocoDb",
+  "Postgres",
+  "QuestDb",
+  "RabbitMQ",
+  "Redis",
+  "S3",
+  "Sftp",
+  "Smtp",
+  "Snowflake",
+  "SshPassword",
+  "SshPrivateKey",
+  "TimescaleDb",
+];

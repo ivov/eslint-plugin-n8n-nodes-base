@@ -8,7 +8,7 @@ ruleTester().run(getRuleName(module), rule, {
 			code: outdent`
 			class TestNode {
 				execute() {
-					throw new NodeApiError('An error occurred')
+					throw new NodeApiError(this.getNode(), 'An error occurred')
 				}
 			}`,
 		},
@@ -16,7 +16,7 @@ ruleTester().run(getRuleName(module), rule, {
 			code: outdent`
 			class TestNode {
 				execute() {
-					throw new NodeOperationError('An error occurred')
+					throw new NodeOperationError(this.getNode(), 'An error occurred')
 				}
 			}`,
 		},

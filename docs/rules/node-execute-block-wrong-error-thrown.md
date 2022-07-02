@@ -2,7 +2,7 @@
 
 # node-execute-block-wrong-error-thrown
 
-The `execute()` method in a node may only throw `NodeApiError` for failed network requests and `NodeOperationError` for internal errors, not the built-in `Error`. Refer to `[NodeErrors.ts](https://github.com/n8n-io/n8n/blob/master/packages/workflow/src/NodeErrors.ts)`.
+The `execute()` method in a node may only throw `NodeApiError` for failed network requests and `NodeOperationError` for internal errors, not the built-in `Error`. Refer to [`NodeErrors.ts`](https://github.com/n8n-io/n8n/blob/master/packages/workflow/src/NodeErrors.ts).
 
 📋 This rule is part of the `plugin:n8n-nodes-base/nodes` config.
 

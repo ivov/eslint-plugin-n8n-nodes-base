@@ -9,7 +9,26 @@ ruleTester().run(getRuleName(module), rule, {
 			code: outdent`
 			class TestNode {
 				description = {
-					displayName: 'TestTrigger',
+					displayName: 'Test Trigger',
+					name: 'testTrigger',
+					icon: 'file:test.svg',
+					group: ['transform'],
+					version: 1,
+					subtitle: '${NODE_CLASS_DESCRIPTION_SUBTITLE}',
+					description: 'This is a sentence',
+					defaults: {
+						name: 'Test',
+					},
+					inputs: ['main'],
+					outputs: ['main'],
+				};
+			}`,
+		},
+		{
+			code: outdent`
+			class TestNode {
+				description = {
+					displayName: 'Test Trigger (Beta)',
 					name: 'testTrigger',
 					icon: 'file:test.svg',
 					group: ['transform'],
@@ -48,7 +67,7 @@ ruleTester().run(getRuleName(module), rule, {
 			output: outdent`
 			class TestNode {
 				description = {
-					displayName: 'TestTrigger',
+					displayName: 'Test Trigger',
 					name: 'testTrigger',
 					icon: 'file:test.svg',
 					group: ['transform'],

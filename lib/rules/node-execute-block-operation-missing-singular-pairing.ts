@@ -44,8 +44,9 @@ export default utils.createRule({
       MethodDefinition(node) {
         const filepath = context.getFilename();
 
-        // rule only applicable to community nodes
         if (!utils.isNodeFile(filepath) || isOfficialNode(filepath)) return;
+
+        // singular rule applies only to community nodes
 
         const result = getOperationConsequents(node, { type: "singular" });
 
@@ -57,17 +58,13 @@ export default utils.createRule({
           inputItemsIndexName,
         } = result;
 
-        for (const consequent of operationConsequents) {
-          const lastStatement = consequent.body[consequent.body.length - 1];
+        for (const opConsequent of operationConsequents) {
+          const lastStatement = opConsequent.body[opConsequent.body.length - 1];
 
           if (!isSingularPairingStatement(lastStatement, returnDataArrayName)) {
-            const markedNode = getMarkedNodeFromConsequent(consequent);
-
-            if (!markedNode) continue;
-
             context.report({
               messageId: "missingSingularPairing",
-              node: markedNode,
+              node: getMarkedNodeFromConsequent(opConsequent) ?? opConsequent,
             });
 
             continue;

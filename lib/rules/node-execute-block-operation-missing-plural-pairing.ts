@@ -48,6 +48,8 @@ export default utils.createRule({
       MethodDefinition(node) {
         if (!utils.isNodeFile(context.getFilename())) return;
 
+        // plural rule applies to both official nodes and community nodes
+
         const result = getOperationConsequents(node, { type: "plural" });
 
         if (!result) return;
@@ -58,17 +60,14 @@ export default utils.createRule({
           inputItemsIndexName,
         } = result;
 
-        for (const consequent of operationConsequents) {
-          const lastStatement = consequent.body[consequent.body.length - 1];
+        for (const opConsequent of operationConsequents) {
+          const lastStatement = opConsequent.body[opConsequent.body.length - 1];
 
           if (!isPluralPairingStatement(lastStatement, returnDataArrayName)) {
-            const markedNode = getMarkedNodeFromConsequent(consequent);
-
-            if (!markedNode) continue;
-
             context.report({
               messageId: "missingPluralPairing",
-              node: markedNode,
+              node: getMarkedNodeFromConsequent(opConsequent) ?? opConsequent,
+              // TODO: Autofix
             });
 
             continue;
@@ -80,7 +79,6 @@ export default utils.createRule({
             context.report({
               messageId: "invalidPluralPairingArgument",
               node: lastStatement.expression,
-              // TODO: Autofix
             });
 
             continue;

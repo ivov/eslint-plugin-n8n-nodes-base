@@ -38,12 +38,12 @@ export function getOperationConsequents(
     assertSingleConditionalChain(resourceConsequent);
 
     const [operationsRoot] = resourceConsequent.body;
-    const operationConsequents = collectConsequents(operationsRoot).filter(
+    const opConsequentsPerResource = collectConsequents(operationsRoot).filter(
       (consequent) =>
         type === "plural" ? isGetAll(consequent) : !isGetAll(consequent)
     );
 
-    return [...acc, ...operationConsequents];
+    return [...acc, ...opConsequentsPerResource];
   }, []);
 
   return {

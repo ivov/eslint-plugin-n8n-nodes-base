@@ -94,6 +94,7 @@ function getExecuteMethod(node: TSESTree.MethodDefinition) {
  *
  * ```ts
  * const _: IDataObject[] = [];
+ * const _: INodeExecutionData[] = [];
  * ```
  */
 function getReturnDataArrayName(executeMethod: TSESTree.BlockStatement) {
@@ -112,8 +113,10 @@ function getReturnDataArrayName(executeMethod: TSESTree.BlockStatement) {
         AST_NODE_TYPES.TSTypeReference &&
       node.declarations[0].id.typeAnnotation.typeAnnotation.elementType.typeName
         .type === AST_NODE_TYPES.Identifier &&
-      node.declarations[0].id.typeAnnotation.typeAnnotation.elementType.typeName
-        .name === "IDataObject"
+      ["IDataObject", "INodeExecutionData"].includes(
+        node.declarations[0].id.typeAnnotation.typeAnnotation.elementType
+          .typeName.name
+      )
     ) {
       return node.declarations[0].id.name;
     }

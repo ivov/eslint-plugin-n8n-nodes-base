@@ -10,7 +10,7 @@ export default utils.createRule({
     type: "layout",
     docs: {
       description:
-        "`documentationUrl` field in credential class must be an HTTP URL. Only applicable to community nodes.",
+        "`documentationUrl` field in credential class must be an HTTP URL. Only applicable to community credentials.",
       recommended: "error",
     },
     schema: [],

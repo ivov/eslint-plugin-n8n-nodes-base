@@ -2,7 +2,7 @@
 
 # cred-class-field-documentation-url-not-http-url
 
-`documentationUrl` field in credential class must be an HTTP URL. Only applicable to community nodes.
+`documentationUrl` field in credential class must be an HTTP URL. Only applicable to community credentials.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/credentials` config.
 

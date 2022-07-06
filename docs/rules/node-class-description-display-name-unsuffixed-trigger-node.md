@@ -36,7 +36,24 @@ class TestNode {
 ```js
 class TestNode {
   description = {
-    displayName: "TestTrigger",
+    displayName: "Test Trigger",
+    name: "testTrigger",
+    icon: "file:test.svg",
+    group: ["transform"],
+    version: 1,
+    subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
+    description: "This is a sentence",
+    defaults: {
+      name: "Test",
+    },
+    inputs: ["main"],
+    outputs: ["main"],
+  };
+}
+
+class TestNode {
+  description = {
+    displayName: "Test Trigger (Beta)",
     name: "testTrigger",
     icon: "file:test.svg",
     group: ["transform"],

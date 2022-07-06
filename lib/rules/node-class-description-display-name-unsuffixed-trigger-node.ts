@@ -29,8 +29,10 @@ export default utils.createRule({
 
         if (!displayName) return;
 
-        if (!displayName.value.endsWith("Trigger")) {
-          const suffixed = `${displayName.value}Trigger`;
+        const displayValue = displayName.value.replace(/\s*\(Beta\)$/, ''); // tolerate trailing `(Beta)`
+
+        if (!displayValue.endsWith("Trigger")) {
+          const suffixed = `${displayName.value} Trigger`;
           const fixed = utils.keyValue("displayName", suffixed);
 
           context.report({

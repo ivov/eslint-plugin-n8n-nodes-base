@@ -8,6 +8,10 @@ const path = require("path");
 
 const rulesPath = path.join(__dirname, "..", "dist", "lib", "rules");
 
+const DEPENDS_AUTOFIXABLE = [
+  "node-execute-block-operation-missing-plural-pairing",
+];
+
 const allRuleNames = fs
   .readdirSync(rulesPath)
   .filter((fileName) => fileName.endsWith(".js"))
@@ -75,7 +79,11 @@ function makeRulesTable() {
 
       const { description } = rule.meta.docs;
 
-      const autofixableOrNot = rule.isAutofixable ? "Yes" : "No";
+      const autofixableOrNot = DEPENDS_AUTOFIXABLE.includes(rule.id)
+        ? "Depends"
+        : rule.isAutofixable
+        ? "Yes"
+        : "No";
 
       return `| ${[link, description, autofixableOrNot].join(" | ")} |`;
     })

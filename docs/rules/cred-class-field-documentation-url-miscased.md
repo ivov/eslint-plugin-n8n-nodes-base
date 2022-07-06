@@ -2,7 +2,7 @@
 
 # cred-class-field-documentation-url-miscased
 
-`documentationUrl` field in credential class must be camel cased.
+`documentationUrl` field in credential class must be camel cased. Only applicable to nodes in the main repository.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/credentials` config.
 

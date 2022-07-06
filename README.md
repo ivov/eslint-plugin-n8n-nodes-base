@@ -75,7 +75,7 @@ If you specify both the plugin and a config, all the rules in the config (theme-
 | [cred-class-field-display-name-miscased](docs/rules/cred-class-field-display-name-miscased.md) | `displayName` field in credential class must be title cased. | Yes |
 | [cred-class-field-display-name-missing-api](docs/rules/cred-class-field-display-name-missing-api.md) | `displayName` field in credential class must be end with `API`. | Yes |
 | [cred-class-field-display-name-missing-oauth2](docs/rules/cred-class-field-display-name-missing-oauth2.md) | `displayName` field in credential class must mention `OAuth2` if the credential is OAuth2. | No |
-| [cred-class-field-documentation-url-miscased](docs/rules/cred-class-field-documentation-url-miscased.md) | `documentationUrl` field in credential class must be camel cased. | Yes |
+| [cred-class-field-documentation-url-miscased](docs/rules/cred-class-field-documentation-url-miscased.md) | `documentationUrl` field in credential class must be camel cased. Only applicable to nodes in the main repository. | Yes |
 | [cred-class-field-documentation-url-missing](docs/rules/cred-class-field-documentation-url-missing.md) | `documentationUrl` field in credential class must be present. | Yes |
 | [cred-class-field-documentation-url-not-http-url](docs/rules/cred-class-field-documentation-url-not-http-url.md) | `documentationUrl` field in credential class must be an HTTP URL. Only applicable to community nodes. | No |
 | [cred-class-field-name-missing-oauth2](docs/rules/cred-class-field-name-missing-oauth2.md) | `name` field in credential class must mention `OAuth2` if the credential is OAuth2. | No |

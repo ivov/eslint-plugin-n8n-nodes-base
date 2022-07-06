@@ -18,16 +18,7 @@ export default utils.createRule({
   meta: {
     type: "layout",
     docs: {
-      description: `Every non-\`getAll\` operation in the \`execute()\` method in a node must implement singular pairing:
-      \`\`\`ts
-        returnData.push({
-          json: responseData,
-          pairedItem: {
-            item: i,
-          },
-        });
-        \`\`\`        
-        `,
+      description: `Every non-\`getAll\` operation in the \`execute()\` method in a node must implement singular pairing.`,
       recommended: "error",
     },
     schema: [],

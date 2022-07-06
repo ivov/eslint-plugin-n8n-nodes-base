@@ -6,7 +6,7 @@ export default utils.createRule({
     type: "layout",
     docs: {
       description:
-        "The `execute()` method in a node may only throw `NodeApiError` for failed network requests and `NodeOperationError` for internal errors, not the built-in `Error`.",
+        "The `execute()` method in a node may only throw `NodeApiError` for failed network requests and `NodeOperationError` for internal errors, not the built-in `Error`. Refer to [`NodeErrors.ts`](https://github.com/n8n-io/n8n/blob/master/packages/workflow/src/NodeErrors.ts).",
       recommended: "error",
     },
     schema: [],

@@ -2,7 +2,7 @@
 
 # cred-class-field-properties-assertion
 
-In a credential class, the field `properties` must be typed 'INodeProperties' and individual properties must have no assertions.
+In a credential class, the field `properties` must be typed `INodeProperties` and individual properties must have no assertions.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/credentials` config.
 

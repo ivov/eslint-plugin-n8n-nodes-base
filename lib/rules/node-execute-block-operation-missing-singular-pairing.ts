@@ -39,7 +39,7 @@ export default utils.createRule({
 
         // singular rule applies only to community nodes
 
-        const result = getOperationConsequents(node, { type: "singular" });
+        const result = getOperationConsequents(node, { filter: "singular" });
 
         if (!result) return;
 

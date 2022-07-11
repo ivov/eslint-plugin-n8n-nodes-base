@@ -1,12 +1,11 @@
-import { assert } from "console";
 import { TSESTree, AST_NODE_TYPES } from "@typescript-eslint/utils";
 import { id } from "../identifiers";
 
 export function getOperationConsequents(
   node: TSESTree.MethodDefinition,
-  { type }: { type: "singular" | "plural" } // filter getAll or non-getAll
+  { filter }: { filter: "singular" | "plural" | "all" } // filter getAll or non-getAll or do not filter
 ) {
-  const executeMethod = getExecuteMethod(node);
+  const executeMethod = getExecuteContent(node);
 
   if (!executeMethod) return;
 
@@ -35,13 +34,17 @@ export function getOperationConsequents(
   const operationConsequents = collectConsequents(resourcesRoot).reduce<
     TSESTree.BlockStatement[]
   >((acc, resourceConsequent) => {
-    assertSingleConditionalChain(resourceConsequent);
+    // TODO: Handle resource consequent with more than one `IfStatement`
+    if (resourceConsequent.body.length !== 1) return acc;
 
     const [operationsRoot] = resourceConsequent.body;
-    const opConsequentsPerResource = collectConsequents(operationsRoot).filter(
-      (consequent) =>
-        type === "plural" ? isGetAll(consequent) : !isGetAll(consequent)
-    );
+
+    const opConsequentsPerResource =
+      filter === "all"
+        ? collectConsequents(operationsRoot)
+        : collectConsequents(operationsRoot).filter((consequent) =>
+            filter === "plural" ? isGetAll(consequent) : !isGetAll(consequent)
+          );
 
     return [...acc, ...opConsequentsPerResource];
   }, []);
@@ -54,38 +57,26 @@ export function getOperationConsequents(
 }
 
 /**
- * A conditional chain `if → else if → else` is reflected as
- * an AST node with a consequent and increasingly nested alternates.
- * Operation blocks are expected to contain a **single** conditional chain
- * of indefinitely nested alternates.
- */
-function assertSingleConditionalChain(
-  resourceConsequent: TSESTree.BlockStatement
-) {
-  assert(
-    resourceConsequent.body.length === 1,
-    [
-      "Assertion failed: Found a resource consequent with more than one if-statement",
-      JSON.stringify(resourceConsequent.loc),
-    ].join("\n")
-  );
-}
-
-/**
- * Get the content of then `execute()` method.
+ * Get the block (i.e., content) of the `execute()` method.
  *
  * ```ts
  * async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> { _ }
  * ```
+ *
+ * IMPORTANT! Do _not_ use the string `ock` in a typed function name, e.g. `getExecuteBlock`.
+ * `esbuild-jest` fails to transpile when searching for `ock` (`jest.mock`) in typed functions.
+ *
+ * https://github.com/aelbore/esbuild-jest/issues/57
+ * https://github.com/aelbore/esbuild-jest/blob/master/src/index.ts#L33-L40
  */
-function getExecuteMethod(node: TSESTree.MethodDefinition) {
+export function getExecuteContent({ key, value }: TSESTree.MethodDefinition) {
   if (
-    node.key.type === AST_NODE_TYPES.Identifier &&
-    node.key.name === "execute" &&
-    node.value.type === AST_NODE_TYPES.FunctionExpression &&
-    node.value.body.type === AST_NODE_TYPES.BlockStatement
+    key.type === AST_NODE_TYPES.Identifier &&
+    key.name === "execute" &&
+    value.type === AST_NODE_TYPES.FunctionExpression &&
+    value.body.type === AST_NODE_TYPES.BlockStatement
   ) {
-    return node.value.body;
+    return value.body;
   }
 }
 
@@ -126,13 +117,13 @@ function getReturnDataArrayName(executeMethod: TSESTree.BlockStatement) {
 }
 
 /**
- * Get the name of the `items` AST.
+ * Get the name of the index used to iterate through the input items.
  *
  * ```ts
  * for (let _ = 0; _ < items.length; _++) {
  * ```
  */
-function getInputItemsIndexName(
+export function getInputItemsIndexName(
   forLoop: TSESTree.ForStatement & {
     body: TSESTree.BlockStatement;
   }
@@ -151,9 +142,9 @@ function getInputItemsIndexName(
 }
 
 /**
- * Collect all the recursively nested consequents of if statements into an array.
+ * Recursively collect every alternate and consequent in an `IfStatement` and its children.
  */
-function collectConsequents(
+export function collectConsequents(
   node: TSESTree.Node,
   collection: TSESTree.BlockStatement[] = []
 ) {

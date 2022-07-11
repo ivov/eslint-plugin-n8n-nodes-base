@@ -2,7 +2,7 @@
 
 # node-execute-block-error-missing-item-index
 
-In the `execute()` method in a node, `NodeApiError` and `NodeOperationError` must specify the `itemIndex` as the third argument.
+In the operations in the `execute()` method in a node, `NodeApiError` and `NodeOperationError` must specify `itemIndex` as the third argument.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/nodes` config.
 
@@ -12,23 +12,151 @@ In the `execute()` method in a node, `NodeApiError` and `NodeOperationError` mus
 
 ```js
 class TestNode {
-  execute() {
-    throw new NodeApiError(this.getNode(), "An error occurred");
-  }
+    async execute() {
+        const items = this.getInputData();
+        const returnData: INodeExecutionData[] = [];
+
+        const resource = this.getNodeParameter('resource', 0) as string;
+        const operation = this.getNodeParameter('operation', 0) as string;
+
+        let responseData;
+
+        for (let i = 0; i < items.length; i++) {
+
+            try {
+
+                if (resource === 'ticket') {
+
+                    if (operation === 'create') {
+
+                        responseData = await serviceApiRequest.call(this, 'POST', '/tickets', body);
+
+                        throw new NodeOperationError(this.getNode(), "Error!");
+
+                    }
+
+                }
+
+            } catch (error) {
+                if (this.continueOnFail()) {
+                    // ...
+                }
+            }
+        }
+
+        return [returnData];
+    }
 }
 
 class TestNode {
-  execute() {
-    throw new NodeOperationError(this.getNode(), "An error occurred");
-  }
+    async execute() {
+        const items = this.getInputData();
+        const returnData: INodeExecutionData[] = [];
+
+        const resource = this.getNodeParameter('resource', 0) as string;
+        const operation = this.getNodeParameter('operation', 0) as string;
+
+        let responseData;
+
+        for (let itemIndex = 0; itemIndex < items.length; itemIndex++) {
+
+            try {
+
+                if (resource === 'ticket') {
+
+                    if (operation === 'create') {
+
+                        responseData = await serviceApiRequest.call(this, 'POST', '/tickets', body);
+
+                        throw new NodeOperationError(this.getNode(), "Error!");
+
+                    }
+
+                }
+
+            } catch (error) {
+                if (this.continueOnFail()) {
+                    // ...
+                }
+            }
+        }
+
+        return [returnData];
+    }
 }
 
 class TestNode {
-  execute() {
-    throw new NodeApiError(this.getNode(), "An error occurred", {
-      testIndex: 1,
-    });
-  }
+    async execute() {
+        const items = this.getInputData();
+        const returnData: INodeExecutionData[] = [];
+
+        const resource = this.getNodeParameter('resource', 0) as string;
+        const operation = this.getNodeParameter('operation', 0) as string;
+
+        let responseData;
+
+        for (let itemIndex = 0; itemIndex < items.length; itemIndex++) {
+
+            try {
+
+                if (resource === 'ticket') {
+
+                    if (operation === 'create') {
+
+                        responseData = await serviceApiRequest.call(this, 'POST', '/tickets', body);
+
+                        throw new NodeOperationError(this.getNode(), "Error!", { test: 123 });
+
+                    }
+
+                }
+
+            } catch (error) {
+                if (this.continueOnFail()) {
+                    // ...
+                }
+            }
+        }
+
+        return [returnData];
+    }
+}
+
+class TestNode {
+    async execute() {
+        const items = this.getInputData();
+        const returnData: INodeExecutionData[] = [];
+
+        const resource = this.getNodeParameter('resource', 0) as string;
+        const operation = this.getNodeParameter('operation', 0) as string;
+
+        let responseData;
+
+        for (let i = 0; i < items.length; i++) {
+
+            try {
+
+                if (resource === 'ticket') {
+
+                    if (operation === 'create') {
+
+                        responseData = await serviceApiRequest.call(this, 'POST', '/tickets', body);
+
+                        throw new NodeOperationError(this.getNode(), "Error!", { test: 123 });
+
+                    }
+
+                }
+
+            } catch (error) {
+                if (this.continueOnFail()) {
+                    // ...
+                }
+            }
+        }
+
+        return [returnData];
+    }
 }
 ```
 
@@ -36,19 +164,40 @@ class TestNode {
 
 ```js
 class TestNode {
-  execute() {
-    throw new NodeApiError(this.getNode(), "An error occurred", {
-      itemIndex: i,
-    });
-  }
-}
+    async execute() {
+        const items = this.getInputData();
+        const returnData: INodeExecutionData[] = [];
 
-class TestNode {
-  execute() {
-    throw new NodeOperationError(this.getNode(), "An error occurred", {
-      itemIndex: i,
-    });
-  }
+        const resource = this.getNodeParameter('resource', 0) as string;
+        const operation = this.getNodeParameter('operation', 0) as string;
+
+        let responseData;
+
+        for (let i = 0; i < items.length; i++) {
+
+            try {
+
+                if (resource === 'ticket') {
+
+                    if (operation === 'create') {
+
+                        responseData = await serviceApiRequest.call(this, 'POST', '/tickets', body);
+
+                        throw new NodeOperationError(this.getNode(), "Error!", { itemIndex: i });
+
+                    }
+
+                }
+
+            } catch (error) {
+                if (this.continueOnFail()) {
+                    // ...
+                }
+            }
+        }
+
+        return [returnData];
+    }
 }
 ```
 

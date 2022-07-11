@@ -156,6 +156,8 @@ export const DOCUMENTATION = {
 //              misc
 // ----------------------------------
 
+export const NODE_ERROR_TYPES = ["NodeOperationError", "NodeApiError"];
+
 /**
  * Credentials exempted from these rules:
  * - `cred-class-name-unsuffixed`

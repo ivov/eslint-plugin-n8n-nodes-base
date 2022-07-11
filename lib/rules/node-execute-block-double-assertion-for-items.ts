@@ -1,5 +1,6 @@
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 import { utils } from "../ast/utils";
+import { getters } from "../ast/getters";
 
 export default utils.createRule({
   name: utils.getRuleName(module),
@@ -22,17 +23,17 @@ export default utils.createRule({
       MethodDefinition(node) {
         if (!utils.isNodeFile(context.getFilename())) return;
 
-        const executeMethod = getExecuteMethod(node);
+        const executeContent = getters.nodeExecuteBlock.getExecuteContent(node);
 
-        if (!executeMethod) return;
+        if (!executeContent) return;
 
-        const declarationInit = getDoublyAssertedDeclarationInit(executeMethod);
+        const init = getDoublyAssertedDeclarationInit(executeContent);
 
-        if (declarationInit) {
+        if (init) {
           context.report({
             messageId: "removeDoubleAssertion",
-            node: declarationInit,
-            fix: (fixer) => fixer.replaceText(declarationInit, "items.length"),
+            node: init,
+            fix: (fixer) => fixer.replaceText(init, "items.length"),
           });
         }
       },
@@ -40,20 +41,10 @@ export default utils.createRule({
   },
 });
 
-function getExecuteMethod(node: TSESTree.MethodDefinition) {
-  if (
-    node.key.type === AST_NODE_TYPES.Identifier &&
-    node.key.name === "execute" &&
-    node.value.type === AST_NODE_TYPES.FunctionExpression &&
-    node.value.body.type === AST_NODE_TYPES.BlockStatement
-  ) {
-    return node.value.body;
-  }
-
-  return null;
-}
-
-function getDoublyAssertedDeclarationInit(executeMethod: TSESTree.BlockStatement) {
+// TODO: Refactor
+function getDoublyAssertedDeclarationInit(
+  executeMethod: TSESTree.BlockStatement
+) {
   for (const node of executeMethod.body) {
     if (node.type === AST_NODE_TYPES.VariableDeclaration) {
       for (const declaration of node.declarations) {

@@ -15,7 +15,7 @@ export default utils.createRule({
     schema: [],
     messages: {
       changeToNumber:
-        "Change the `n8n.n8nNodesapiVersion` value to number in package.json",
+        "Change the `n8n.n8nNodesApiVersion` value to number in package.json",
     },
   },
   defaultOptions: [],

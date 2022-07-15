@@ -31,7 +31,7 @@ If you specify only the plugin, all rules in the plugin are **disabled by defaul
 
 ### Specify plugin and config
 
-If you specify both the plugin and a config, all the rules in the config (theme-based ruleset) are **enabled by default** and must be individually disabled:
+If you specify both the plugin and a config, all config rules are **enabled by default** and must be individually disabled:
 
 ```js
 {

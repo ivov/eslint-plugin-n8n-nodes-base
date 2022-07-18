@@ -12,27 +12,27 @@
 
 ```js
 class TestApi implements ICredentialType {
-  name = "myTestApi";
-  displayName = "My Test API";
-  documentationUrl = "lowercase";
+	name = "myTestApi";
+	displayName = "My Test API";
+	documentationUrl = "lowercase";
 }
 
 class TestApi implements ICredentialType {
-  name = "myTestApi";
-  displayName = "My Test API";
-  documentationUrl = "camelCase";
+	name = "myTestApi";
+	displayName = "My Test API";
+	documentationUrl = "camelCase";
 }
 
 class TestApi implements ICredentialType {
-  name = "myTestApi";
-  displayName = "My Test API";
-  documentationUrl = "PascalCase";
+	name = "myTestApi";
+	displayName = "My Test API";
+	documentationUrl = "PascalCase";
 }
 
 class TestApi implements ICredentialType {
-  name = "myTestApi";
-  displayName = "My Test API";
-  documentationUrl = "Sentence case";
+	name = "myTestApi";
+	displayName = "My Test API";
+	documentationUrl = "Sentence case";
 }
 ```
 
@@ -40,15 +40,15 @@ class TestApi implements ICredentialType {
 
 ```js
 class MyTestApi implements ICredentialType {
-  name = "myTestApi";
-  displayName = "My Test API";
-  documentationUrl = "http://example.com/docs/auth";
+	name = "myTestApi";
+	displayName = "My Test API";
+	documentationUrl = "http://example.com/docs/auth";
 }
 
 class MyTestApi implements ICredentialType {
-  name = "myTestApi";
-  displayName = "My Test API";
-  documentationUrl = "https://example.com/docs/auth";
+	name = "myTestApi";
+	displayName = "My Test API";
+	documentationUrl = "https://example.com/docs/auth";
 }
 ```
 

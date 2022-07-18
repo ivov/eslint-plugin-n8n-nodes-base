@@ -14,29 +14,29 @@
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: `This a sentence`,
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: `This a sentence`,
 };
 
 const test = {
-  name: "User ID",
-  value: "userId",
-  description: `The ID of the user`,
+	name: "User ID",
+	value: "userId",
+	description: `The ID of the user`,
 };
 
 const test = {
-  name: "Timezone",
-  value: "timezone",
-  description: `Seatable server's timezone`,
+	name: "Timezone",
+	value: "timezone",
+	description: `Seatable server's timezone`,
 };
 
 const test = {
-  name: "Timezone",
-  value: "timezone",
-  description: `AAA 'bbb' CCC`,
+	name: "Timezone",
+	value: "timezone",
+	description: `AAA 'bbb' CCC`,
 };
 ```
 
@@ -44,25 +44,25 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: "This a sentence",
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "This a sentence",
 };
 
 const test = {
-  name: "User ID",
-  value: "userId",
-  description: "The ID of the user",
+	name: "User ID",
+	value: "userId",
+	description: "The ID of the user",
 };
 
 const test = {
-  displayName: "Access Token",
-  name: "accessToken",
-  type: "string",
-  default: "",
-  description: `The access token must have the following scopes:
+	displayName: "Access Token",
+	name: "accessToken",
+	type: "string",
+	default: "",
+	description: `The access token must have the following scopes:
     <ul>
         <li>Create/modify webhooks</li>
         <li>View webhooks</li>

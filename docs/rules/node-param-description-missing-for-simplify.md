@@ -14,10 +14,10 @@
 
 ```js
 const test = {
-  displayName: "Simplify",
-  name: "simple",
-  type: "boolean",
-  default: true,
+	displayName: "Simplify",
+	name: "simple",
+	type: "boolean",
+	default: true,
 };
 ```
 
@@ -25,12 +25,12 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Simplify",
-  name: "simple",
-  type: "boolean",
-  description:
-    "Whether to return a simplified version of the response instead of the raw data",
-  default: true,
+	displayName: "Simplify",
+	name: "simple",
+	type: "boolean",
+	description:
+		"Whether to return a simplified version of the response instead of the raw data",
+	default: true,
 };
 ```
 

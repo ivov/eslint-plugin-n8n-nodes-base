@@ -3,9 +3,9 @@ import { ruleTester, getRuleName } from "../lib/ast";
 import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
-  valid: [
-    {
-      code: outdent`
+	valid: [
+		{
+			code: outdent`
 			const test = {
 				displayName: 'JSON',
 				name: 'json',
@@ -13,19 +13,19 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				description: 'The JSON to send',
 			};`,
-    },
-    {
-      code: outdent`
+		},
+		{
+			code: outdent`
 			const test = {
 				name: 'JSON',
 				value: 'json',
 				description: 'The JSON',
 			};`,
-    },
-  ],
-  invalid: [
-    {
-      code: outdent`
+		},
+	],
+	invalid: [
+		{
+			code: outdent`
 			const test = {
 				displayName: 'JSON',
 				name: 'json',
@@ -33,8 +33,8 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				description: 'The json to send',
 			};`,
-      errors: [{ messageId: "uppercaseJson" }],
-      output: outdent`
+			errors: [{ messageId: "uppercaseJson" }],
+			output: outdent`
 			const test = {
 				displayName: 'JSON',
 				name: 'json',
@@ -42,9 +42,9 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				description: 'The JSON to send',
 			};`,
-    },
-    {
-      code: outdent`
+		},
+		{
+			code: outdent`
 			const test = {
 				displayName: 'JSON',
 				name: 'json',
@@ -52,8 +52,8 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				description: 'The Json to send',
 			};`,
-      errors: [{ messageId: "uppercaseJson" }],
-      output: outdent`
+			errors: [{ messageId: "uppercaseJson" }],
+			output: outdent`
 			const test = {
 				displayName: 'JSON',
 				name: 'json',
@@ -61,51 +61,51 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				description: 'The JSON to send',
 			};`,
-    },
-    {
-      code: outdent`
+		},
+		{
+			code: outdent`
 			const test = {
 				name: 'JSON',
 				value: 'json',
 				description: 'The json to send',
 			};`,
-      errors: [{ messageId: "uppercaseJson" }],
-      output: outdent`
+			errors: [{ messageId: "uppercaseJson" }],
+			output: outdent`
 			const test = {
 				name: 'JSON',
 				value: 'json',
 				description: 'The JSON to send',
 			};`,
-    },
-    {
-      code: outdent`
+		},
+		{
+			code: outdent`
 			const test = {
 				name: 'JSON',
 				value: 'json',
 				description: 'The json to send. The json to send.',
 			};`,
-      errors: [{ messageId: "uppercaseJson" }],
-      output: outdent`
+			errors: [{ messageId: "uppercaseJson" }],
+			output: outdent`
 			const test = {
 				name: 'JSON',
 				value: 'json',
 				description: 'The JSON to send. The JSON to send.',
 			};`,
-    },
-    {
-      code: outdent`
+		},
+		{
+			code: outdent`
 			const test = {
 				name: 'JSON',
 				value: 'json',
 				description: 'The Json to send',
 			};`,
-      errors: [{ messageId: "uppercaseJson" }],
-      output: outdent`
+			errors: [{ messageId: "uppercaseJson" }],
+			output: outdent`
 			const test = {
 				name: 'JSON',
 				value: 'json',
 				description: 'The JSON to send',
 			};`,
-    },
-  ],
+		},
+	],
 });

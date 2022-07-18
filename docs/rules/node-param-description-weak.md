@@ -14,25 +14,25 @@
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: "Operation to perform",
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "Operation to perform",
 };
 
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: "The operation to perform",
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "The operation to perform",
 };
 
 const test = {
-  name: "User ID",
-  value: "userId",
-  description: "Operation to perform",
+	name: "User ID",
+	value: "userId",
+	description: "Operation to perform",
 };
 ```
 
@@ -40,15 +40,15 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
 };
 
 const test = {
-  name: "User ID",
-  value: "userId",
+	name: "User ID",
+	value: "userId",
 };
 ```
 

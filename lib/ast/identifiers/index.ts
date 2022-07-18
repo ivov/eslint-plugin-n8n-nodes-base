@@ -8,11 +8,11 @@ import * as lintableSections from "./lintable.identifiers";
 import * as common from "./common.identifiers";
 
 export const id = {
-  nodeParam,
-  credClassBody,
-  nodeClassDescription,
-  nodeExecuteBlock,
-  ...communityPackageJson,
-  ...lintableSections,
-  ...common,
+	nodeParam,
+	credClassBody,
+	nodeClassDescription,
+	nodeExecuteBlock,
+	...communityPackageJson,
+	...lintableSections,
+	...common,
 };

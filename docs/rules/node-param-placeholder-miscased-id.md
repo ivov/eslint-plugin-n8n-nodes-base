@@ -14,27 +14,27 @@
 
 ```js
 const test = {
-  displayName: "Value ID",
-  name: "valueId",
-  type: "string",
-  default: "",
-  placeholder: "The Id of the value",
+	displayName: "Value ID",
+	name: "valueId",
+	type: "string",
+	default: "",
+	placeholder: "The Id of the value",
 };
 
 const test = {
-  displayName: "Value ID",
-  name: "valueId",
-  type: "string",
-  default: "",
-  placeholder: "The ids of the value",
+	displayName: "Value ID",
+	name: "valueId",
+	type: "string",
+	default: "",
+	placeholder: "The ids of the value",
 };
 
 const test = {
-  displayName: "Value ID",
-  name: "valueId",
-  type: "string",
-  default: "",
-  placeholder: "The id of the value",
+	displayName: "Value ID",
+	name: "valueId",
+	type: "string",
+	default: "",
+	placeholder: "The id of the value",
 };
 ```
 
@@ -42,28 +42,28 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Value ID",
-  name: "valueId",
-  type: "string",
-  default: "",
-  placeholder: "The ID of the value",
+	displayName: "Value ID",
+	name: "valueId",
+	type: "string",
+	default: "",
+	placeholder: "The ID of the value",
 };
 
 const test = {
-  displayName: "Value ID",
-  name: "valueId",
-  type: "string",
-  default: "",
-  placeholder: "id,name,description",
+	displayName: "Value ID",
+	name: "valueId",
+	type: "string",
+	default: "",
+	placeholder: "id,name,description",
 };
 
 const test = {
-  displayName: "Value ID",
-  name: "valueId",
-  type: "string",
-  default: "",
-  placeholder:
-    "SELECT id, name FROM product WHERE quantity > $1 AND price <= $2",
+	displayName: "Value ID",
+	name: "valueId",
+	type: "string",
+	default: "",
+	placeholder:
+		"SELECT id, name FROM product WHERE quantity > $1 AND price <= $2",
 };
 ```
 

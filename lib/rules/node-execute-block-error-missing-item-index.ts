@@ -4,117 +4,117 @@ import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 import { NODE_ERROR_TYPES } from "../constants";
 
 const {
-  nodeExecuteBlock: { getOperationConsequents, collectConsequents },
+	nodeExecuteBlock: { getOperationConsequents, collectConsequents },
 } = getters;
 
 // TODO: Autofix
 
 export default utils.createRule({
-  name: utils.getRuleName(module),
-  meta: {
-    type: "layout",
-    docs: {
-      description:
-        "In the operations in the `execute()` method in a node, `NodeApiError` and `NodeOperationError` must specify `itemIndex` as the third argument.",
-      recommended: "error",
-    },
-    schema: [],
-    messages: {
-      addItemIndexSameName:
-        "Add `{ itemIndex }` as third argument [non-autofixable]",
-      addItemIndexDifferentName:
-        "Add `{ itemIndex: {{ indexName }} }` as third argument [non-autofixable]",
-      changeThirdArgSameName:
-        "Change third argument to `{ itemIndex }` [non-autofixable]",
-      changeThirdArgDifferentName:
-        "Change third argument to `{ itemIndex: {{ indexName }} }` [non-autofixable]",
-    },
-  },
-  defaultOptions: [],
-  create(context) {
-    return {
-      MethodDefinition(node) {
-        if (!utils.isNodeFile(context.getFilename())) return;
+	name: utils.getRuleName(module),
+	meta: {
+		type: "layout",
+		docs: {
+			description:
+				"In the operations in the `execute()` method in a node, `NodeApiError` and `NodeOperationError` must specify `itemIndex` as the third argument.",
+			recommended: "error",
+		},
+		schema: [],
+		messages: {
+			addItemIndexSameName:
+				"Add `{ itemIndex }` as third argument [non-autofixable]",
+			addItemIndexDifferentName:
+				"Add `{ itemIndex: {{ indexName }} }` as third argument [non-autofixable]",
+			changeThirdArgSameName:
+				"Change third argument to `{ itemIndex }` [non-autofixable]",
+			changeThirdArgDifferentName:
+				"Change third argument to `{ itemIndex: {{ indexName }} }` [non-autofixable]",
+		},
+	},
+	defaultOptions: [],
+	create(context) {
+		return {
+			MethodDefinition(node) {
+				if (!utils.isNodeFile(context.getFilename())) return;
 
-        const result = getOperationConsequents(node, { filter: "all" });
+				const result = getOperationConsequents(node, { filter: "all" });
 
-        if (!result) return;
+				if (!result) return;
 
-        const {
-          operationConsequents: opConsequents,
-          inputItemsIndexName: indexName,
-        } = result;
+				const {
+					operationConsequents: opConsequents,
+					inputItemsIndexName: indexName,
+				} = result;
 
-        const throwStatements = findThrowStatements(opConsequents);
+				const throwStatements = findThrowStatements(opConsequents);
 
-        for (const statement of throwStatements) {
-          if (statement.argument === null) continue;
+				for (const statement of throwStatements) {
+					if (statement.argument === null) continue;
 
-          // actual type of `argument` is `NewExpression`, but `ThrowStatement.argument`
-          // is typed in lib as `Statement | TSAsExpression | null`
-          const arg = statement.argument as unknown as TSESTree.NewExpression;
+					// actual type of `argument` is `NewExpression`, but `ThrowStatement.argument`
+					// is typed in lib as `Statement | TSAsExpression | null`
+					const arg = statement.argument as unknown as TSESTree.NewExpression;
 
-          // covered by node-execute-block-wrong-error-thrown
-          if (!isNodeErrorType(arg)) continue;
+					// covered by node-execute-block-wrong-error-thrown
+					if (!isNodeErrorType(arg)) continue;
 
-          const { arguments: errorArgs } = arg; // NodeOperationError(_), NodeApiError(_)
+					const { arguments: errorArgs } = arg; // NodeOperationError(_), NodeApiError(_)
 
-          if (errorArgs.length !== 3 && indexName === "itemIndex") {
-            context.report({
-              messageId: "addItemIndexSameName",
-              node: statement,
-            });
-            
-            continue;
-          }
+					if (errorArgs.length !== 3 && indexName === "itemIndex") {
+						context.report({
+							messageId: "addItemIndexSameName",
+							node: statement,
+						});
 
-          if (errorArgs.length !== 3 && indexName !== "itemIndex") {
-            context.report({
-              messageId: "addItemIndexDifferentName",
-              node: statement,
-              data: { indexName },
-            });
+						continue;
+					}
 
-            continue;
-          }
+					if (errorArgs.length !== 3 && indexName !== "itemIndex") {
+						context.report({
+							messageId: "addItemIndexDifferentName",
+							node: statement,
+							data: { indexName },
+						});
 
-          const [thirdArg] = errorArgs.slice().reverse();
+						continue;
+					}
 
-          if (!isItemIndexArg(thirdArg) && indexName === "itemIndex") {
-            context.report({
-              messageId: "changeThirdArgSameName",
-              node: statement,
-            });
+					const [thirdArg] = errorArgs.slice().reverse();
 
-            continue;
-          }
+					if (!isItemIndexArg(thirdArg) && indexName === "itemIndex") {
+						context.report({
+							messageId: "changeThirdArgSameName",
+							node: statement,
+						});
 
-          if (!isItemIndexArg(thirdArg) && indexName !== "itemIndex") {
-            context.report({
-              messageId: "changeThirdArgDifferentName",
-              node: statement,
-              data: { indexName },
-            });
+						continue;
+					}
 
-            continue;
-          }
-        }
-      },
-    };
-  },
+					if (!isItemIndexArg(thirdArg) && indexName !== "itemIndex") {
+						context.report({
+							messageId: "changeThirdArgDifferentName",
+							node: statement,
+							data: { indexName },
+						});
+
+						continue;
+					}
+				}
+			},
+		};
+	},
 });
 
 function findIfStatements(consequent: TSESTree.BlockStatement) {
-  return consequent.body.filter(
-    (statement): statement is TSESTree.IfStatement =>
-      statement.type === AST_NODE_TYPES.IfStatement
-  );
+	return consequent.body.filter(
+		(statement): statement is TSESTree.IfStatement =>
+			statement.type === AST_NODE_TYPES.IfStatement
+	);
 }
 
 const isThrowStatement = (
-  node: TSESTree.BaseNode
+	node: TSESTree.BaseNode
 ): node is TSESTree.ThrowStatement =>
-  node.type === AST_NODE_TYPES.ThrowStatement;
+	node.type === AST_NODE_TYPES.ThrowStatement;
 
 /**
  * ```ts
@@ -129,41 +129,41 @@ const isThrowStatement = (
  * ```
  */
 function findThrowStatements(operationConsequents: TSESTree.BlockStatement[]) {
-  return operationConsequents.reduce<TSESTree.ThrowStatement[]>(
-    (acc, operationConsequent) => {
-      const topLevelThrows = operationConsequent.body.filter(isThrowStatement);
+	return operationConsequents.reduce<TSESTree.ThrowStatement[]>(
+		(acc, operationConsequent) => {
+			const topLevelThrows = operationConsequent.body.filter(isThrowStatement);
 
-      const throwStatements = [...topLevelThrows];
+			const throwStatements = [...topLevelThrows];
 
-      const nestedIfs = findIfStatements(operationConsequent);
+			const nestedIfs = findIfStatements(operationConsequent);
 
-      const nestedConsequents = nestedIfs.flatMap((s) => collectConsequents(s));
+			const nestedConsequents = nestedIfs.flatMap((s) => collectConsequents(s));
 
-      const nestedThrows = nestedConsequents.flatMap((c) =>
-        c.body.filter(isThrowStatement)
-      );
+			const nestedThrows = nestedConsequents.flatMap((c) =>
+				c.body.filter(isThrowStatement)
+			);
 
-      throwStatements.push(...nestedThrows);
+			throwStatements.push(...nestedThrows);
 
-      return [...acc, ...throwStatements];
-    },
-    []
-  );
+			return [...acc, ...throwStatements];
+		},
+		[]
+	);
 }
 
 function isNodeErrorType(newExpressionArg: TSESTree.NewExpression) {
-  return (
-    newExpressionArg.callee.type === AST_NODE_TYPES.Identifier &&
-    NODE_ERROR_TYPES.includes(newExpressionArg.callee.name)
-  );
+	return (
+		newExpressionArg.callee.type === AST_NODE_TYPES.Identifier &&
+		NODE_ERROR_TYPES.includes(newExpressionArg.callee.name)
+	);
 }
 
 function isItemIndexArg(node: TSESTree.Expression) {
-  return (
-    node.type === AST_NODE_TYPES.ObjectExpression &&
-    node.properties.length === 1 &&
-    node.properties[0].type === AST_NODE_TYPES.Property &&
-    node.properties[0].key.type === AST_NODE_TYPES.Identifier &&
-    node.properties[0].key.name === "itemIndex"
-  );
+	return (
+		node.type === AST_NODE_TYPES.ObjectExpression &&
+		node.properties.length === 1 &&
+		node.properties[0].type === AST_NODE_TYPES.Property &&
+		node.properties[0].key.type === AST_NODE_TYPES.Identifier &&
+		node.properties[0].key.name === "itemIndex"
+	);
 }

@@ -14,13 +14,13 @@
 
 ```js
 const test = {
-  displayName: "Limit",
-  name: "limit",
-  default: 50,
-  typeOptions: {
-    minValue: 1,
-  },
-  type: "number",
+	displayName: "Limit",
+	name: "limit",
+	default: 50,
+	typeOptions: {
+		minValue: 1,
+	},
+	type: "number",
 };
 ```
 
@@ -28,14 +28,14 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Limit",
-  name: "limit",
-  default: 50,
-  typeOptions: {
-    minValue: 1,
-  },
-  type: "number",
-  description: "Max number of results to return",
+	displayName: "Limit",
+	name: "limit",
+	default: 50,
+	typeOptions: {
+		minValue: 1,
+	},
+	type: "number",
+	description: "Max number of results to return",
 };
 ```
 

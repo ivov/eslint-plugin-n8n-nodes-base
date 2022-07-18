@@ -3,9 +3,9 @@ import { ruleTester, getRuleName } from "../lib/ast";
 import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
-  valid: [
-    {
-      code: outdent`
+	valid: [
+		{
+			code: outdent`
 			class TestNode {
 				async execute() {
 					const items = this.getInputData();
@@ -42,11 +42,11 @@ ruleTester().run(getRuleName(module), rule, {
 					return [returnData];
 				}
 			}`,
-    },
-  ],
-  invalid: [
-    {
-      code: outdent`
+		},
+	],
+	invalid: [
+		{
+			code: outdent`
 			class TestNode {
 				async execute() {
 					const items = this.getInputData();
@@ -83,12 +83,12 @@ ruleTester().run(getRuleName(module), rule, {
 					return [returnData];
 				}
 			}`,
-      errors: [
-        { messageId: "addItemIndexDifferentName", data: { indexName: "i" } },
-      ],
-    },
-    {
-      code: outdent`
+			errors: [
+				{ messageId: "addItemIndexDifferentName", data: { indexName: "i" } },
+			],
+		},
+		{
+			code: outdent`
 			class TestNode {
 				async execute() {
 					const items = this.getInputData();
@@ -125,12 +125,12 @@ ruleTester().run(getRuleName(module), rule, {
 					return [returnData];
 				}
 			}`,
-      errors: [
-        { messageId: "addItemIndexSameName", data: { indexName: "itemIndex" } },
-      ],
-    },
-    {
-      code: outdent`
+			errors: [
+				{ messageId: "addItemIndexSameName", data: { indexName: "itemIndex" } },
+			],
+		},
+		{
+			code: outdent`
 			class TestNode {
 				async execute() {
 					const items = this.getInputData();
@@ -167,14 +167,14 @@ ruleTester().run(getRuleName(module), rule, {
 					return [returnData];
 				}
 			}`,
-      errors: [
-        {
-          messageId: "changeThirdArgSameName",
-        },
-      ],
-    },
-    {
-      code: outdent`
+			errors: [
+				{
+					messageId: "changeThirdArgSameName",
+				},
+			],
+		},
+		{
+			code: outdent`
 			class TestNode {
 				async execute() {
 					const items = this.getInputData();
@@ -211,12 +211,12 @@ ruleTester().run(getRuleName(module), rule, {
 					return [returnData];
 				}
 			}`,
-      errors: [
-        {
-          messageId: "changeThirdArgDifferentName",
-					data: { indexName: 'i' }
-        },
-      ],
-    },
-  ],
+			errors: [
+				{
+					messageId: "changeThirdArgDifferentName",
+					data: { indexName: "i" },
+				},
+			],
+		},
+	],
 });

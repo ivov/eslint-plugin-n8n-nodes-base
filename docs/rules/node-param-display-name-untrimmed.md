@@ -14,36 +14,36 @@
 
 ```js
 const test = {
-  displayName: "Operation   ",
-  name: "operation",
-  type: "string",
-  default: "",
+	displayName: "Operation   ",
+	name: "operation",
+	type: "string",
+	default: "",
 };
 
 const test = {
-  name: "Operation   ",
-  value: "operation",
+	name: "Operation   ",
+	value: "operation",
 };
 
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "fixedCollection",
-  default: "a",
-  options: [
-    {
-      displayName: "Details   ",
-      name: "details",
-      values: [
-        {
-          displayName: "A",
-          name: "a",
-          type: "string",
-          default: "",
-        },
-      ],
-    },
-  ],
+	displayName: "Test",
+	name: "test",
+	type: "fixedCollection",
+	default: "a",
+	options: [
+		{
+			displayName: "Details   ",
+			name: "details",
+			values: [
+				{
+					displayName: "A",
+					name: "a",
+					type: "string",
+					default: "",
+				},
+			],
+		},
+	],
 };
 ```
 
@@ -51,15 +51,15 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Operation",
-  name: "operation",
-  type: "string",
-  default: "",
+	displayName: "Operation",
+	name: "operation",
+	type: "string",
+	default: "",
 };
 
 const test = {
-  name: "Operation",
-  value: "operation",
+	name: "Operation",
+	value: "operation",
 };
 ```
 

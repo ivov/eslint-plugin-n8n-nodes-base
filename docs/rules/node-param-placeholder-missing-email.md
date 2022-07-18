@@ -14,10 +14,10 @@
 
 ```js
 const test = {
-  displayName: "Email",
-  name: "email",
-  type: "string",
-  default: "",
+	displayName: "Email",
+	name: "email",
+	type: "string",
+	default: "",
 };
 ```
 
@@ -25,11 +25,11 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Email",
-  name: "email",
-  type: "string",
-  default: "",
-  placeholder: "hello@n8n.io",
+	displayName: "Email",
+	name: "email",
+	type: "string",
+	default: "",
+	placeholder: "hello@n8n.io",
 };
 ```
 

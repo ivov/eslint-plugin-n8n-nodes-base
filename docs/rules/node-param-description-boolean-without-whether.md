@@ -12,11 +12,11 @@
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "boolean",
-  default: true,
-  description: "This is wrong",
+	displayName: "Test",
+	name: "test",
+	type: "boolean",
+	default: true,
+	description: "This is wrong",
 };
 ```
 
@@ -24,11 +24,11 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "boolean",
-  default: true,
-  description: "Whether to do something",
+	displayName: "Test",
+	name: "test",
+	type: "boolean",
+	default: true,
+	description: "Whether to do something",
 };
 ```
 

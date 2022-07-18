@@ -3,9 +3,9 @@ import { ruleTester, getRuleName } from "../lib/ast";
 import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
-  valid: [
-    {
-      code: outdent`
+	valid: [
+		{
+			code: outdent`
 			const test = {
 				displayName: 'Operation',
 				name: 'operation',
@@ -52,9 +52,9 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				],
 			};`,
-    },
-    {
-      code: outdent`
+		},
+		{
+			code: outdent`
 			const test = {
 				displayName: 'Action',
 				name: 'action',
@@ -101,11 +101,11 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				],
 			};`,
-    },
-  ],
-  invalid: [
-    {
-      code: outdent`
+		},
+	],
+	invalid: [
+		{
+			code: outdent`
 			const test = {
 				displayName: 'Operation',
 				name: 'operation',
@@ -147,8 +147,8 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				],
 			};`,
-      errors: Array.from({ length: 5 }, () => ({ messageId: "addAction" })),
-      output: outdent`
+			errors: Array.from({ length: 5 }, () => ({ messageId: "addAction" })),
+			output: outdent`
 			const test = {
 				displayName: 'Operation',
 				name: 'operation',
@@ -195,9 +195,9 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				],
 			};`,
-    },
-    {
-      code: outdent`
+		},
+		{
+			code: outdent`
 			const test = {
 				displayName: 'Action',
 				name: 'action',
@@ -239,8 +239,8 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				],
 			};`,
-      errors: Array.from({ length: 5 }, () => ({ messageId: "addAction" })),
-      output: outdent`
+			errors: Array.from({ length: 5 }, () => ({ messageId: "addAction" })),
+			output: outdent`
 			const test = {
 				displayName: 'Action',
 				name: 'action',
@@ -287,6 +287,6 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				],
 			};`,
-    },
-  ],
+		},
+	],
 });

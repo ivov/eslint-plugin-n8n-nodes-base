@@ -12,9 +12,9 @@ The `execute()` method in a node may only throw `NodeApiError` for failed networ
 
 ```js
 class TestNode {
-  execute() {
-    throw new Error("An error occurred");
-  }
+	execute() {
+		throw new Error("An error occurred");
+	}
 }
 ```
 
@@ -22,15 +22,15 @@ class TestNode {
 
 ```js
 class TestNode {
-  execute() {
-    throw new NodeApiError(this.getNode(), "An error occurred");
-  }
+	execute() {
+		throw new NodeApiError(this.getNode(), "An error occurred");
+	}
 }
 
 class TestNode {
-  execute() {
-    throw new NodeOperationError(this.getNode(), "An error occurred");
-  }
+	execute() {
+		throw new NodeOperationError(this.getNode(), "An error occurred");
+	}
 }
 ```
 

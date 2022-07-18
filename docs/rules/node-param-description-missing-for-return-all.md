@@ -14,10 +14,10 @@
 
 ```js
 const test = {
-  displayName: "Return All",
-  name: "returnAll",
-  type: "boolean",
-  default: true,
+	displayName: "Return All",
+	name: "returnAll",
+	type: "boolean",
+	default: true,
 };
 ```
 
@@ -25,11 +25,11 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Return All",
-  name: "returnAll",
-  type: "boolean",
-  description: "Whether to return all results or only up to a given limit",
-  default: true,
+	displayName: "Return All",
+	name: "returnAll",
+	type: "boolean",
+	description: "Whether to return all results or only up to a given limit",
+	default: true,
 };
 ```
 

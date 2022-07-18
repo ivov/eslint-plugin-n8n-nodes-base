@@ -14,17 +14,17 @@ First char in `description` in node parameter must be uppercase. Applicable by e
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: "this is a test",
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "this is a test",
 };
 
 const test = {
-  name: "Username",
-  value: "username",
-  description: "the name of the user",
+	name: "Username",
+	value: "username",
+	description: "the name of the user",
 };
 ```
 
@@ -32,46 +32,46 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: "This is a test",
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "This is a test",
 };
 
 const test = {
-  name: "Username",
-  value: "username",
-  description: "The name of the user",
+	name: "Username",
+	value: "username",
+	description: "The name of the user",
 };
 
 const test = {
-  displayName: "Format",
-  name: "format",
-  type: "options",
-  options: [
-    {
-      name: "bmp",
-      value: "bmp",
-    },
-    {
-      name: "gif",
-      value: "gif",
-    },
-    {
-      name: "jpeg",
-      value: "jpeg",
-    },
-    {
-      name: "png",
-      value: "png",
-    },
-    {
-      name: "tiff",
-      value: "tiff",
-    },
-  ],
-  default: "jpeg",
+	displayName: "Format",
+	name: "format",
+	type: "options",
+	options: [
+		{
+			name: "bmp",
+			value: "bmp",
+		},
+		{
+			name: "gif",
+			value: "gif",
+		},
+		{
+			name: "jpeg",
+			value: "jpeg",
+		},
+		{
+			name: "png",
+			value: "png",
+		},
+		{
+			name: "tiff",
+			value: "tiff",
+		},
+	],
+	default: "jpeg",
 };
 ```
 

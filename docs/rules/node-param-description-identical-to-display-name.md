@@ -14,11 +14,11 @@
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: "The test",
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "The test",
 };
 ```
 
@@ -26,11 +26,11 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: "This is a test",
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "This is a test",
 };
 ```
 

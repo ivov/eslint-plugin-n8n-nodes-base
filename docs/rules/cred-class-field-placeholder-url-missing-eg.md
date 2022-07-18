@@ -14,11 +14,11 @@
 
 ```js
 class MyTestOAuth2Api implements ICredentialType {
-  name = "myTestOAuth2Api";
-  displayName = "My Test OAuth2 API";
-  documentationUrl = "myTest";
-  extends = ["oAuth2Api"];
-  placeholder = "https://n8n.io";
+	name = "myTestOAuth2Api";
+	displayName = "My Test OAuth2 API";
+	documentationUrl = "myTest";
+	extends = ["oAuth2Api"];
+	placeholder = "https://n8n.io";
 }
 ```
 
@@ -26,11 +26,11 @@ class MyTestOAuth2Api implements ICredentialType {
 
 ```js
 class MyTestOAuth2Api implements ICredentialType {
-  name = "myTestOAuth2Api";
-  displayName = "My Test OAuth2 API";
-  documentationUrl = "myTest";
-  extends = ["oAuth2Api"];
-  placeholder = "e.g. https://n8n.io";
+	name = "myTestOAuth2Api";
+	displayName = "My Test OAuth2 API";
+	documentationUrl = "myTest";
+	extends = ["oAuth2Api"];
+	placeholder = "e.g. https://n8n.io";
 }
 ```
 

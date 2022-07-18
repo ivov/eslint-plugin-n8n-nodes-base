@@ -46,17 +46,17 @@ class TestApi implements ICredentialType {
 
 ```js
 class TestApi implements ICredentialType {
-  name = "myTestApi";
-  displayName = "My Test API";
-  documentationUrl = "myTest";
-  properties: INodeProperties[] = [
-    {
-      displayName: "API Root URL",
-      name: "URL",
-      type: "string",
-      default: "https://kf.kobotoolbox.org/",
-    },
-  ];
+	name = "myTestApi";
+	displayName = "My Test API";
+	documentationUrl = "myTest";
+	properties: INodeProperties[] = [
+		{
+			displayName: "API Root URL",
+			name: "URL",
+			type: "string",
+			default: "https://kf.kobotoolbox.org/",
+		},
+	];
 }
 ```
 

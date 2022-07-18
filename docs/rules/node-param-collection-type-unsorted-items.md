@@ -14,32 +14,32 @@ Items in collection-type node parameter must be alphabetized by `name` if five o
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "collection",
-  default: {},
-  options: [
-    {
-      name: "B",
-      value: "b",
-    },
-    {
-      name: "A",
-      value: "a",
-    },
-    {
-      name: "C",
-      value: "c",
-    },
-    {
-      name: "D",
-      value: "d",
-    },
-    {
-      name: "E",
-      value: "e",
-    },
-  ],
+	displayName: "Test",
+	name: "test",
+	type: "collection",
+	default: {},
+	options: [
+		{
+			name: "B",
+			value: "b",
+		},
+		{
+			name: "A",
+			value: "a",
+		},
+		{
+			name: "C",
+			value: "c",
+		},
+		{
+			name: "D",
+			value: "d",
+		},
+		{
+			name: "E",
+			value: "e",
+		},
+	],
 };
 ```
 
@@ -47,57 +47,57 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "collection",
-  default: {},
-  options: [
-    {
-      name: "C",
-      value: "c",
-    },
-    {
-      name: "A",
-      value: "a",
-    },
-    {
-      name: "B",
-      value: "b",
-    },
-    {
-      name: "D",
-      value: "d",
-    },
-  ],
+	displayName: "Test",
+	name: "test",
+	type: "collection",
+	default: {},
+	options: [
+		{
+			name: "C",
+			value: "c",
+		},
+		{
+			name: "A",
+			value: "a",
+		},
+		{
+			name: "B",
+			value: "b",
+		},
+		{
+			name: "D",
+			value: "d",
+		},
+	],
 };
 
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "collection",
-  default: {},
-  options: [
-    {
-      name: "A",
-      value: "a",
-    },
-    {
-      name: "B",
-      value: "b",
-    },
-    {
-      name: "C",
-      value: "c",
-    },
-    {
-      name: "D",
-      value: "d",
-    },
-    {
-      name: "E",
-      value: "e",
-    },
-  ],
+	displayName: "Test",
+	name: "test",
+	type: "collection",
+	default: {},
+	options: [
+		{
+			name: "A",
+			value: "a",
+		},
+		{
+			name: "B",
+			value: "b",
+		},
+		{
+			name: "C",
+			value: "c",
+		},
+		{
+			name: "D",
+			value: "d",
+		},
+		{
+			name: "E",
+			value: "e",
+		},
+	],
 };
 ```
 

@@ -14,17 +14,17 @@
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: "This is a <value>",
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "This is a <value>",
 };
 
 const test = {
-  name: "Test",
-  value: "test",
-  description: "This is a <value>",
+	name: "Test",
+	value: "test",
+	description: "This is a <value>",
 };
 ```
 
@@ -32,30 +32,30 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: "This is a <b>sentence</b>",
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "This is a <b>sentence</b>",
 };
 
 const test = {
-  displayName: "Private Key",
-  name: "privateKey",
-  type: "string",
-  typeOptions: {
-    password: true,
-  },
-  default: "",
-  required: true,
-  description:
-    "Use the multiline editor. Make sure it is in standard PEM key format:<br />-----BEGIN PRIVATE KEY-----<br />KEY DATA GOES HERE<br />-----END PRIVATE KEY-----",
+	displayName: "Private Key",
+	name: "privateKey",
+	type: "string",
+	typeOptions: {
+		password: true,
+	},
+	default: "",
+	required: true,
+	description:
+		"Use the multiline editor. Make sure it is in standard PEM key format:<br />-----BEGIN PRIVATE KEY-----<br />KEY DATA GOES HERE<br />-----END PRIVATE KEY-----",
 };
 
 const test = {
-  name: "Test",
-  value: "test",
-  description: "This is a <b>sentence</b>",
+	name: "Test",
+	value: "test",
+	description: "This is a <b>sentence</b>",
 };
 ```
 

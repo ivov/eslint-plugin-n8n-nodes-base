@@ -14,29 +14,29 @@
 
 ```js
 const test = {
-  displayName: "User Id",
-  name: "userId",
-  type: "string",
-  default: "",
+	displayName: "User Id",
+	name: "userId",
+	type: "string",
+	default: "",
 };
 
 const test = {
-  displayName: "User Ids",
-  name: "userId",
-  type: "string",
-  default: "",
+	displayName: "User Ids",
+	name: "userId",
+	type: "string",
+	default: "",
 };
 
 const test = {
-  displayName: "User id",
-  name: "userId",
-  type: "string",
-  default: "",
+	displayName: "User id",
+	name: "userId",
+	type: "string",
+	default: "",
 };
 
 const test = {
-  name: "User id",
-  value: "userId",
+	name: "User id",
+	value: "userId",
 };
 ```
 
@@ -44,20 +44,20 @@ const test = {
 
 ```js
 const test = {
-  displayName: "User ID",
-  name: "userId",
-  type: "string",
-  default: "",
+	displayName: "User ID",
+	name: "userId",
+	type: "string",
+	default: "",
 };
 
 const test = {
-  name: "User ID",
-  value: "userId",
+	name: "User ID",
+	value: "userId",
 };
 
 const test = {
-  name: "User Identifier",
-  value: "userId",
+	name: "User Identifier",
+	value: "userId",
 };
 ```
 

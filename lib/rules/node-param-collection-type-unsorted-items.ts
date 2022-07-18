@@ -1,58 +1,58 @@
 import {
-  MIN_ITEMS_TO_ALPHABETIZE,
-  MIN_ITEMS_TO_ALPHABETIZE_IN_FULL,
+	MIN_ITEMS_TO_ALPHABETIZE,
+	MIN_ITEMS_TO_ALPHABETIZE_IN_FULL,
 } from "../constants";
 import { utils } from "../ast/utils";
 import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
 
 export default utils.createRule({
-  name: utils.getRuleName(module),
-  meta: {
-    type: "layout",
-    docs: {
-      description: `Items in collection-type node parameter must be alphabetized by \`name\` if ${MIN_ITEMS_TO_ALPHABETIZE_IN_FULL} or more than ${MIN_ITEMS_TO_ALPHABETIZE_IN_FULL}.`,
-      recommended: "error",
-    },
-    fixable: "code",
-    schema: [],
-    messages: {
-      sortItems:
-        "Alphabetize by 'name'. Order: {{ displayOrder }} [autofixable]",
-    },
-  },
-  defaultOptions: [],
-  create(context) {
-    return {
-      ObjectExpression(node) {
-        if (!id.isNodeParameter(node)) return;
+	name: utils.getRuleName(module),
+	meta: {
+		type: "layout",
+		docs: {
+			description: `Items in collection-type node parameter must be alphabetized by \`name\` if ${MIN_ITEMS_TO_ALPHABETIZE_IN_FULL} or more than ${MIN_ITEMS_TO_ALPHABETIZE_IN_FULL}.`,
+			recommended: "error",
+		},
+		fixable: "code",
+		schema: [],
+		messages: {
+			sortItems:
+				"Alphabetize by 'name'. Order: {{ displayOrder }} [autofixable]",
+		},
+	},
+	defaultOptions: [],
+	create(context) {
+		return {
+			ObjectExpression(node) {
+				if (!id.isNodeParameter(node)) return;
 
-        if (!id.nodeParam.isCollectionType(node)) return;
+				if (!id.nodeParam.isCollectionType(node)) return;
 
-        const options = getters.nodeParam.getOptions(node);
+				const options = getters.nodeParam.getOptions(node);
 
-        if (!options) return;
+				if (!options) return;
 
-        if (options.value.length < MIN_ITEMS_TO_ALPHABETIZE) return;
+				if (options.value.length < MIN_ITEMS_TO_ALPHABETIZE) return;
 
-        const sortedOptions = [...options.value].sort(utils.optionComparator);
+				const sortedOptions = [...options.value].sort(utils.optionComparator);
 
-        if (!utils.areIdenticallySortedOptions(options.value, sortedOptions)) {
-          const baseIndentation = utils.getBaseIndentationForOption(options);
+				if (!utils.areIdenticallySortedOptions(options.value, sortedOptions)) {
+					const baseIndentation = utils.getBaseIndentationForOption(options);
 
-          const sorted = utils.formatItems(sortedOptions, baseIndentation);
+					const sorted = utils.formatItems(sortedOptions, baseIndentation);
 
-          const displayOrder = utils.toDisplayOrder(sortedOptions);
+					const displayOrder = utils.toDisplayOrder(sortedOptions);
 
-          context.report({
-            messageId: "sortItems",
-            node: options.ast,
-            data: { displayOrder },
-            fix: (fixer) =>
-              fixer.replaceText(options.ast, `options: ${sorted}`),
-          });
-        }
-      },
-    };
-  },
+					context.report({
+						messageId: "sortItems",
+						node: options.ast,
+						data: { displayOrder },
+						fix: (fixer) =>
+							fixer.replaceText(options.ast, `options: ${sorted}`),
+					});
+				}
+			},
+		};
+	},
 });

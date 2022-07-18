@@ -14,48 +14,48 @@
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "options",
-  options: [
-    {
-      name: "Minus One",
-      value: -1,
-    },
-    {
-      name: "Zero",
-      value: 0,
-    },
-    {
-      name: "One",
-      value: 1,
-    },
-  ],
-  default: "",
+	displayName: "Test",
+	name: "test",
+	type: "options",
+	options: [
+		{
+			name: "Minus One",
+			value: -1,
+		},
+		{
+			name: "Zero",
+			value: 0,
+		},
+		{
+			name: "One",
+			value: 1,
+		},
+	],
+	default: "",
 };
 
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "options",
-  default: "wrong",
-  options: [
-    {
-      name: "First",
-      value: "first",
-    },
-    {
-      name: "Second",
-      value: "second",
-    },
-  ],
+	displayName: "Test",
+	name: "test",
+	type: "options",
+	default: "wrong",
+	options: [
+		{
+			name: "First",
+			value: "first",
+		},
+		{
+			name: "Second",
+			value: "second",
+		},
+	],
 };
 
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "options",
-  default: "wrong",
+	displayName: "Test",
+	name: "test",
+	type: "options",
+	default: "wrong",
 };
 ```
 
@@ -63,47 +63,47 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "options",
-  default: "first",
-  options: [
-    {
-      name: "First",
-      value: "first",
-    },
-    {
-      name: "Second",
-      value: "second",
-    },
-  ],
+	displayName: "Test",
+	name: "test",
+	type: "options",
+	default: "first",
+	options: [
+		{
+			name: "First",
+			value: "first",
+		},
+		{
+			name: "Second",
+			value: "second",
+		},
+	],
 };
 
 const allCurrencies = [];
 const test = {
-  displayName: "Currency",
-  name: "currency",
-  type: "options",
-  default: "eur",
-  options: allCurrencies,
+	displayName: "Currency",
+	name: "currency",
+	type: "options",
+	default: "eur",
+	options: allCurrencies,
 };
 
 const MY_CONSTANT = { a: 1, b: 2 };
 const test = {
-  displayName: "User",
-  name: "currency",
-  type: "options",
-  default: "eur",
-  options: [
-    {
-      name: "a",
-      value: MY_CONSTANT.a,
-    },
-    {
-      name: "a",
-      value: MY_CONSTANT.b,
-    },
-  ],
+	displayName: "User",
+	name: "currency",
+	type: "options",
+	default: "eur",
+	options: [
+		{
+			name: "a",
+			value: MY_CONSTANT.a,
+		},
+		{
+			name: "a",
+			value: MY_CONSTANT.b,
+		},
+	],
 };
 ```
 

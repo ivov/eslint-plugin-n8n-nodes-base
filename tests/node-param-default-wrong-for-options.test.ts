@@ -3,9 +3,9 @@ import { ruleTester, getRuleName } from "../lib/ast";
 import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
-  valid: [
-    {
-      code: outdent`
+	valid: [
+		{
+			code: outdent`
 			const test = {
 				displayName: 'Test',
 				name: 'test',
@@ -22,9 +22,9 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				],
 			};`,
-    },
-    {
-      code: outdent`
+		},
+		{
+			code: outdent`
 			const allCurrencies = [];
 			const test = {
 				displayName: "Currency",
@@ -33,9 +33,9 @@ ruleTester().run(getRuleName(module), rule, {
 				default: "eur",
 				options: allCurrencies,
 			};`,
-    },
-    {
-      code: outdent`
+		},
+		{
+			code: outdent`
 			const MY_CONSTANT = { a: 1, b: 2 };
 			const test = {
 				displayName: "User",
@@ -53,11 +53,11 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				],
 			};`,
-    },
-  ],
-  invalid: [
-    {
-      code: outdent`
+		},
+	],
+	invalid: [
+		{
+			code: outdent`
 			const test = {
 				displayName: 'Test',
 				name: 'test',
@@ -78,13 +78,13 @@ ruleTester().run(getRuleName(module), rule, {
 				],
 				default: '',
 			};`,
-      errors: [
-        {
-          messageId: "chooseOption",
-          data: { eligibleOptions: "-1 or 0 or 1" },
-        },
-      ],
-      output: outdent`
+			errors: [
+				{
+					messageId: "chooseOption",
+					data: { eligibleOptions: "-1 or 0 or 1" },
+				},
+			],
+			output: outdent`
 			const test = {
 				displayName: 'Test',
 				name: 'test',
@@ -105,9 +105,9 @@ ruleTester().run(getRuleName(module), rule, {
 				],
 				default: -1,
 			};`,
-    },
-    {
-      code: outdent`
+		},
+		{
+			code: outdent`
 			const test = {
 				displayName: 'Test',
 				name: 'test',
@@ -124,13 +124,13 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				]
 			};`,
-      errors: [
-        {
-          messageId: "chooseOption",
-          data: { eligibleOptions: "first or second" },
-        },
-      ],
-      output: outdent`
+			errors: [
+				{
+					messageId: "chooseOption",
+					data: { eligibleOptions: "first or second" },
+				},
+			],
+			output: outdent`
 			const test = {
 				displayName: 'Test',
 				name: 'test',
@@ -147,29 +147,29 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				]
 			};`,
-    },
+		},
 
-    // in anticipation of typeOptions.loadOptionsMethod
-    {
-      code: outdent`
+		// in anticipation of typeOptions.loadOptionsMethod
+		{
+			code: outdent`
 			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'options',
 				default: 'wrong',
 			};`,
-      errors: [
-        {
-          messageId: "setEmptyString",
-        },
-      ],
-      output: outdent`
+			errors: [
+				{
+					messageId: "setEmptyString",
+				},
+			],
+			output: outdent`
 			const test = {
 				displayName: 'Test',
 				name: 'test',
 				type: 'options',
 				default: '',
 			};`,
-    },
-  ],
+		},
+	],
 });

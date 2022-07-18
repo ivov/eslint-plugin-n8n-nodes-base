@@ -14,54 +14,54 @@ The number of `inputs` in node class description for trigger node should be zero
 
 ```js
 class TestNode {
-  description = {
-    displayName: "Test",
-    name: "test",
-    icon: "file:test.svg",
-    group: ["transform"],
-    version: 1,
-    subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
-    description: "This is a sentence",
-    defaults: {
-      name: "Test",
-    },
-    inputs: ["main"],
-    outputs: ["main"],
-  };
+	description = {
+		displayName: "Test",
+		name: "test",
+		icon: "file:test.svg",
+		group: ["transform"],
+		version: 1,
+		subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
+		description: "This is a sentence",
+		defaults: {
+			name: "Test",
+		},
+		inputs: ["main"],
+		outputs: ["main"],
+	};
 }
 
 class TestNode {
-  description = {
-    displayName: "Test",
-    name: "test",
-    icon: "file:test.svg",
-    group: ["transform"],
-    version: 1,
-    subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
-    description: "This is a sentence",
-    defaults: {
-      name: "Test",
-    },
-    inputs: ["wrong"],
-    outputs: ["main"],
-  };
+	description = {
+		displayName: "Test",
+		name: "test",
+		icon: "file:test.svg",
+		group: ["transform"],
+		version: 1,
+		subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
+		description: "This is a sentence",
+		defaults: {
+			name: "Test",
+		},
+		inputs: ["wrong"],
+		outputs: ["main"],
+	};
 }
 
 class TestNode {
-  description = {
-    displayName: "Test",
-    name: "test",
-    icon: "file:test.svg",
-    group: ["transform"],
-    version: 1,
-    subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
-    description: "This is a sentence",
-    defaults: {
-      name: "Test",
-    },
-    inputs: ["main", "main"],
-    outputs: ["main"],
-  };
+	description = {
+		displayName: "Test",
+		name: "test",
+		icon: "file:test.svg",
+		group: ["transform"],
+		version: 1,
+		subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
+		description: "This is a sentence",
+		defaults: {
+			name: "Test",
+		},
+		inputs: ["main", "main"],
+		outputs: ["main"],
+	};
 }
 ```
 
@@ -69,20 +69,20 @@ class TestNode {
 
 ```js
 class TestNode {
-  description = {
-    displayName: "Test",
-    name: "test",
-    icon: "file:test.svg",
-    group: ["transform"],
-    version: 1,
-    subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
-    description: "This is a sentence",
-    defaults: {
-      name: "Test",
-    },
-    inputs: [],
-    outputs: ["main"],
-  };
+	description = {
+		displayName: "Test",
+		name: "test",
+		icon: "file:test.svg",
+		group: ["transform"],
+		version: 1,
+		subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
+		description: "This is a sentence",
+		defaults: {
+			name: "Test",
+		},
+		inputs: [],
+		outputs: ["main"],
+	};
 }
 ```
 

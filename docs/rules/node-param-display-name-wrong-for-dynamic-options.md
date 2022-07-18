@@ -14,73 +14,73 @@
 
 ```js
 const test = {
-  displayName: "Field ID",
-  name: "field",
-  type: "options",
-  typeOptions: {
-    loadOptionsMethod: "getFields",
-  },
-  default: "",
+	displayName: "Field ID",
+	name: "field",
+	type: "options",
+	typeOptions: {
+		loadOptionsMethod: "getFields",
+	},
+	default: "",
 };
 
 const test = {
-  displayName: "Field Name",
-  name: "field",
-  type: "options",
-  typeOptions: {
-    loadOptionsMethod: "getFields",
-  },
-  default: "",
+	displayName: "Field Name",
+	name: "field",
+	type: "options",
+	typeOptions: {
+		loadOptionsMethod: "getFields",
+	},
+	default: "",
 };
 
 const test = {
-  displayName: "Field Name or",
-  name: "field",
-  type: "options",
-  typeOptions: {
-    loadOptionsMethod: "getFields",
-  },
-  default: "",
+	displayName: "Field Name or",
+	name: "field",
+	type: "options",
+	typeOptions: {
+		loadOptionsMethod: "getFields",
+	},
+	default: "",
 };
 
 const test = {
-  displayName: "Field Name/ID",
-  name: "field",
-  type: "options",
-  typeOptions: {
-    loadOptionsMethod: "getFields",
-  },
-  default: "",
+	displayName: "Field Name/ID",
+	name: "field",
+	type: "options",
+	typeOptions: {
+		loadOptionsMethod: "getFields",
+	},
+	default: "",
 };
 
 const test = {
-  displayName: "Field ID/Name",
-  name: "field",
-  type: "options",
-  typeOptions: {
-    loadOptionsMethod: "getFields",
-  },
-  default: "",
+	displayName: "Field ID/Name",
+	name: "field",
+	type: "options",
+	typeOptions: {
+		loadOptionsMethod: "getFields",
+	},
+	default: "",
 };
 
 const test = {
-  displayName: "Field Names/IDs",
-  name: "field",
-  type: "options",
-  typeOptions: {
-    loadOptionsMethod: "getFields",
-  },
-  default: "",
+	displayName: "Field Names/IDs",
+	name: "field",
+	type: "options",
+	typeOptions: {
+		loadOptionsMethod: "getFields",
+	},
+	default: "",
 };
 
 const test = {
-  displayName: "Field",
-  name: "field",
-  type: "options",
-  typeOptions: {
-    loadOptionsMethod: "getFields",
-  },
-  default: "",
+	displayName: "Field",
+	name: "field",
+	type: "options",
+	typeOptions: {
+		loadOptionsMethod: "getFields",
+	},
+	default: "",
 };
 ```
 
@@ -88,13 +88,13 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Field Name or ID",
-  name: "field",
-  type: "options",
-  typeOptions: {
-    loadOptionsMethod: "getFields",
-  },
-  default: "",
+	displayName: "Field Name or ID",
+	name: "field",
+	type: "options",
+	typeOptions: {
+		loadOptionsMethod: "getFields",
+	},
+	default: "",
 };
 ```
 

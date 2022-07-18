@@ -3,9 +3,9 @@ import { ruleTester, getRuleName } from "../lib/ast";
 import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
-  valid: [
-    {
-      code: outdent`
+	valid: [
+		{
+			code: outdent`
 			const test = {
 				displayName: 'Test',
 				name: 'test',
@@ -34,11 +34,11 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				],
 			};`,
-    },
-  ],
-  invalid: [
-    {
-      code: outdent`
+		},
+	],
+	invalid: [
+		{
+			code: outdent`
 			const test = {
 				displayName: 'Test',
 				name: 'test',
@@ -67,10 +67,10 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				],
 			};`,
-      errors: [
-        { messageId: "sortItems", data: { displayOrder: "A | B | C | D | E" } },
-      ],
-      output: outdent`
+			errors: [
+				{ messageId: "sortItems", data: { displayOrder: "A | B | C | D | E" } },
+			],
+			output: outdent`
 			const test = {
 				displayName: 'Test',
 				name: 'test',
@@ -99,9 +99,9 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				],
 			};`,
-    },
-    {
-      code: outdent`
+		},
+		{
+			code: outdent`
 			const test = {
 				displayName: 'Events',
 				name: 'events',
@@ -147,16 +147,16 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				],
 			};`,
-      errors: [
-        {
-          messageId: "sortItems",
-          data: {
-            displayOrder:
-              "Date Equal | Invoice Deleted | Invoice Generated | Subscription Renewal Reminder | Transaction Created | Transaction Deleted | Transaction Updated",
-          },
-        },
-      ],
-      output: outdent`
+			errors: [
+				{
+					messageId: "sortItems",
+					data: {
+						displayOrder:
+							"Date Equal | Invoice Deleted | Invoice Generated | Subscription Renewal Reminder | Transaction Created | Transaction Deleted | Transaction Updated",
+					},
+				},
+			],
+			output: outdent`
 			const test = {
 				displayName: 'Events',
 				name: 'events',
@@ -202,6 +202,6 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				],
 			};`,
-    },
-  ],
+		},
+	],
 });

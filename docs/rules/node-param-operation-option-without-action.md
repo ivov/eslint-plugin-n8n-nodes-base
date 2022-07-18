@@ -14,83 +14,83 @@ An option in an Operation node parameter must have an `action` property. The `ac
 
 ```js
 const test = {
-  displayName: "Operation",
-  name: "operation",
-  type: "options",
-  noDataExpression: true,
-  displayOptions: {
-    show: {
-      resource: ["entity"],
-    },
-  },
-  default: "getAll",
-  options: [
-    {
-      name: "Create",
-      value: "create",
-      description: "Create an entity",
-    },
-    {
-      name: "Delete",
-      value: "delete",
-      description: "Delete an entity",
-    },
-    {
-      name: "Get",
-      value: "get",
-      description: "Retrieve an entity",
-    },
-    {
-      name: "Get All",
-      value: "getAll",
-      description: "Retrieve all entities",
-    },
-    {
-      name: "Update",
-      value: "update",
-      description: "Update an entity",
-    },
-  ],
+	displayName: "Operation",
+	name: "operation",
+	type: "options",
+	noDataExpression: true,
+	displayOptions: {
+		show: {
+			resource: ["entity"],
+		},
+	},
+	default: "getAll",
+	options: [
+		{
+			name: "Create",
+			value: "create",
+			description: "Create an entity",
+		},
+		{
+			name: "Delete",
+			value: "delete",
+			description: "Delete an entity",
+		},
+		{
+			name: "Get",
+			value: "get",
+			description: "Retrieve an entity",
+		},
+		{
+			name: "Get All",
+			value: "getAll",
+			description: "Retrieve all entities",
+		},
+		{
+			name: "Update",
+			value: "update",
+			description: "Update an entity",
+		},
+	],
 };
 
 const test = {
-  displayName: "Action",
-  name: "action",
-  type: "options",
-  noDataExpression: true,
-  displayOptions: {
-    show: {
-      resource: ["accountContact"],
-    },
-  },
-  default: "getAll",
-  options: [
-    {
-      name: "Create",
-      value: "create",
-      description: "Create an account contact",
-    },
-    {
-      name: "Delete",
-      value: "delete",
-      description: "Delete an account contact",
-    },
-    {
-      name: "Get",
-      value: "get",
-      description: "Retrieve an account contact",
-    },
-    {
-      name: "Get All",
-      value: "getAll",
-      description: "Retrieve all account contacts",
-    },
-    {
-      name: "Update",
-      value: "update",
-      description: "Update an account contact",
-    },
-  ],
+	displayName: "Action",
+	name: "action",
+	type: "options",
+	noDataExpression: true,
+	displayOptions: {
+		show: {
+			resource: ["accountContact"],
+		},
+	},
+	default: "getAll",
+	options: [
+		{
+			name: "Create",
+			value: "create",
+			description: "Create an account contact",
+		},
+		{
+			name: "Delete",
+			value: "delete",
+			description: "Delete an account contact",
+		},
+		{
+			name: "Get",
+			value: "get",
+			description: "Retrieve an account contact",
+		},
+		{
+			name: "Get All",
+			value: "getAll",
+			description: "Retrieve all account contacts",
+		},
+		{
+			name: "Update",
+			value: "update",
+			description: "Update an account contact",
+		},
+	],
 };
 ```
 
@@ -98,93 +98,93 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Operation",
-  name: "operation",
-  type: "options",
-  noDataExpression: true,
-  displayOptions: {
-    show: {
-      resource: ["entity"],
-    },
-  },
-  default: "getAll",
-  options: [
-    {
-      name: "Create",
-      value: "create",
-      description: "Create an entity",
-      action: "Create an entity",
-    },
-    {
-      name: "Delete",
-      value: "delete",
-      description: "Delete an entity",
-      action: "Delete an entity",
-    },
-    {
-      name: "Get",
-      value: "get",
-      description: "Retrieve an entity",
-      action: "Get an entity",
-    },
-    {
-      name: "Get All",
-      value: "getAll",
-      description: "Retrieve all entities",
-      action: "Get all entities",
-    },
-    {
-      name: "Update",
-      value: "update",
-      description: "Update an entity",
-      action: "Update an entity",
-    },
-  ],
+	displayName: "Operation",
+	name: "operation",
+	type: "options",
+	noDataExpression: true,
+	displayOptions: {
+		show: {
+			resource: ["entity"],
+		},
+	},
+	default: "getAll",
+	options: [
+		{
+			name: "Create",
+			value: "create",
+			description: "Create an entity",
+			action: "Create an entity",
+		},
+		{
+			name: "Delete",
+			value: "delete",
+			description: "Delete an entity",
+			action: "Delete an entity",
+		},
+		{
+			name: "Get",
+			value: "get",
+			description: "Retrieve an entity",
+			action: "Get an entity",
+		},
+		{
+			name: "Get All",
+			value: "getAll",
+			description: "Retrieve all entities",
+			action: "Get all entities",
+		},
+		{
+			name: "Update",
+			value: "update",
+			description: "Update an entity",
+			action: "Update an entity",
+		},
+	],
 };
 
 const test = {
-  displayName: "Action",
-  name: "action",
-  type: "options",
-  noDataExpression: true,
-  displayOptions: {
-    show: {
-      resource: ["entity"],
-    },
-  },
-  default: "getAll",
-  options: [
-    {
-      name: "Create",
-      value: "create",
-      description: "Create an entity",
-      action: "Create an entity",
-    },
-    {
-      name: "Delete",
-      value: "delete",
-      description: "Delete an entity",
-      action: "Delete an entity",
-    },
-    {
-      name: "Get",
-      value: "get",
-      description: "Retrieve an entity",
-      action: "Get an entity",
-    },
-    {
-      name: "Get All",
-      value: "getAll",
-      description: "Retrieve all entities",
-      action: "Get all entities",
-    },
-    {
-      name: "Update",
-      value: "update",
-      description: "Update an entity",
-      action: "Update an entity",
-    },
-  ],
+	displayName: "Action",
+	name: "action",
+	type: "options",
+	noDataExpression: true,
+	displayOptions: {
+		show: {
+			resource: ["entity"],
+		},
+	},
+	default: "getAll",
+	options: [
+		{
+			name: "Create",
+			value: "create",
+			description: "Create an entity",
+			action: "Create an entity",
+		},
+		{
+			name: "Delete",
+			value: "delete",
+			description: "Delete an entity",
+			action: "Delete an entity",
+		},
+		{
+			name: "Get",
+			value: "get",
+			description: "Retrieve an entity",
+			action: "Get an entity",
+		},
+		{
+			name: "Get All",
+			value: "getAll",
+			description: "Retrieve all entities",
+			action: "Get all entities",
+		},
+		{
+			name: "Update",
+			value: "update",
+			description: "Update an entity",
+			action: "Update an entity",
+		},
+	],
 };
 ```
 

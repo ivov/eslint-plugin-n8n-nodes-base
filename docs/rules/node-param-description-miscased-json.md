@@ -14,37 +14,37 @@
 
 ```js
 const test = {
-  displayName: "JSON",
-  name: "json",
-  type: "string",
-  default: "",
-  description: "The json to send",
+	displayName: "JSON",
+	name: "json",
+	type: "string",
+	default: "",
+	description: "The json to send",
 };
 
 const test = {
-  displayName: "JSON",
-  name: "json",
-  type: "string",
-  default: "",
-  description: "The Json to send",
+	displayName: "JSON",
+	name: "json",
+	type: "string",
+	default: "",
+	description: "The Json to send",
 };
 
 const test = {
-  name: "JSON",
-  value: "json",
-  description: "The json to send",
+	name: "JSON",
+	value: "json",
+	description: "The json to send",
 };
 
 const test = {
-  name: "JSON",
-  value: "json",
-  description: "The json to send. The json to send.",
+	name: "JSON",
+	value: "json",
+	description: "The json to send. The json to send.",
 };
 
 const test = {
-  name: "JSON",
-  value: "json",
-  description: "The Json to send",
+	name: "JSON",
+	value: "json",
+	description: "The Json to send",
 };
 ```
 
@@ -52,17 +52,17 @@ const test = {
 
 ```js
 const test = {
-  displayName: "JSON",
-  name: "json",
-  type: "string",
-  default: "",
-  description: "The JSON to send",
+	displayName: "JSON",
+	name: "json",
+	type: "string",
+	default: "",
+	description: "The JSON to send",
 };
 
 const test = {
-  name: "JSON",
-  value: "json",
-  description: "The JSON",
+	name: "JSON",
+	value: "json",
+	description: "The JSON",
 };
 ```
 

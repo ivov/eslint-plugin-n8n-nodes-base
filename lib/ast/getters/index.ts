@@ -7,10 +7,10 @@ import * as nodeExecuteBlock from "./nodeExecuteBlock.getters";
 import * as common from "./common.getters";
 
 export const getters = {
-  nodeParam,
-  nodeClassDescription,
-  credClassBody,
-  communityPackageJson,
-  nodeExecuteBlock,
-  ...common,
+	nodeParam,
+	nodeClassDescription,
+	credClassBody,
+	communityPackageJson,
+	nodeExecuteBlock,
+	...common,
 };

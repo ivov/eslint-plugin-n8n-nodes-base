@@ -14,30 +14,30 @@
 
 ```js
 const test = {
-  displayName: "Resource",
-  name: "resource",
-  type: "options",
-  noDataExpression: false,
-  options: [
-    {
-      name: "User",
-      value: "user",
-    },
-  ],
-  default: "user",
+	displayName: "Resource",
+	name: "resource",
+	type: "options",
+	noDataExpression: false,
+	options: [
+		{
+			name: "User",
+			value: "user",
+		},
+	],
+	default: "user",
 };
 
 const test = {
-  displayName: "Resource",
-  name: "resource",
-  type: "options",
-  options: [
-    {
-      name: "User",
-      value: "user",
-    },
-  ],
-  default: "user",
+	displayName: "Resource",
+	name: "resource",
+	type: "options",
+	options: [
+		{
+			name: "User",
+			value: "user",
+		},
+	],
+	default: "user",
 };
 ```
 
@@ -45,17 +45,17 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Resource",
-  name: "resource",
-  type: "options",
-  noDataExpression: true,
-  options: [
-    {
-      name: "User",
-      value: "user",
-    },
-  ],
-  default: "user",
+	displayName: "Resource",
+	name: "resource",
+	type: "options",
+	noDataExpression: true,
+	options: [
+		{
+			name: "User",
+			value: "user",
+		},
+	],
+	default: "user",
 };
 ```
 

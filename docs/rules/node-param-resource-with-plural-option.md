@@ -14,17 +14,17 @@ Option `name` for a Resource node parameter must be singular.
 
 ```js
 const test = {
-  displayName: "Resource",
-  name: "resource",
-  type: "options",
-  noDataExpression: true,
-  options: [
-    {
-      name: "Users",
-      value: "user",
-    },
-  ],
-  default: "contact",
+	displayName: "Resource",
+	name: "resource",
+	type: "options",
+	noDataExpression: true,
+	options: [
+		{
+			name: "Users",
+			value: "user",
+		},
+	],
+	default: "contact",
 };
 ```
 
@@ -32,17 +32,17 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Resource",
-  name: "resource",
-  type: "options",
-  noDataExpression: true,
-  options: [
-    {
-      name: "User",
-      value: "user",
-    },
-  ],
-  default: "contact",
+	displayName: "Resource",
+	name: "resource",
+	type: "options",
+	noDataExpression: true,
+	options: [
+		{
+			name: "User",
+			value: "user",
+		},
+	],
+	default: "contact",
 };
 ```
 

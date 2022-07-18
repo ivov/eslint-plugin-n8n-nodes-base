@@ -6,177 +6,177 @@ import { plural } from "pluralize";
 import indefinite from "indefinite";
 
 export default utils.createRule({
-  name: utils.getRuleName(module),
-  meta: {
-    type: "layout",
-    docs: {
-      description:
-        "An option in an Operation node parameter must have an `action` property. The `action` property may or may not be identical to the `description` property.",
-      recommended: "error",
-    },
-    fixable: "code",
-    schema: [],
-    messages: {
-      addAction: "Add `action: '{{ actionText }}'` [autofixable]",
-    },
-  },
-  defaultOptions: [],
-  create(context) {
-    return {
-      ObjectExpression(node) {
-        if (!id.isNodeParameter(node)) return;
+	name: utils.getRuleName(module),
+	meta: {
+		type: "layout",
+		docs: {
+			description:
+				"An option in an Operation node parameter must have an `action` property. The `action` property may or may not be identical to the `description` property.",
+			recommended: "error",
+		},
+		fixable: "code",
+		schema: [],
+		messages: {
+			addAction: "Add `action: '{{ actionText }}'` [autofixable]",
+		},
+	},
+	defaultOptions: [],
+	create(context) {
+		return {
+			ObjectExpression(node) {
+				if (!id.isNodeParameter(node)) return;
 
-        if (!id.nodeParam.isOperation(node) && !id.nodeParam.isAction(node)) {
-          return;
-        }
+				if (!id.nodeParam.isOperation(node) && !id.nodeParam.isAction(node)) {
+					return;
+				}
 
-        const options = getters.nodeParam.getOptions(node);
+				const options = getters.nodeParam.getOptions(node);
 
-        if (!options) return;
+				if (!options) return;
 
-        if (allOptionsHaveActions(options)) return; // quick check via `value`
+				if (allOptionsHaveActions(options)) return; // quick check via `value`
 
-        for (const option of options.ast.value.elements) {
-          const { properties: optionProperties } = option as {
-            properties: TSESTree.Property[];
-          };
+				for (const option of options.ast.value.elements) {
+					const { properties: optionProperties } = option as {
+						properties: TSESTree.Property[];
+					};
 
-          const optionHasAction = optionProperties.some(isActionProperty);
+					const optionHasAction = optionProperties.some(isActionProperty);
 
-          if (optionHasAction) continue;
+					if (optionHasAction) continue;
 
-          let actionText = "<summary>";
-          let resourceName = getResourceFromDisplayOptions(node);
-          const operationName = getOperationName(optionProperties);
+					let actionText = "<summary>";
+					let resourceName = getResourceFromDisplayOptions(node);
+					const operationName = getOperationName(optionProperties);
 
-          if (resourceName && operationName) {
-            const resourceParts = splitIfCamelCased(resourceName);
+					if (resourceName && operationName) {
+						const resourceParts = splitIfCamelCased(resourceName);
 
-            if (operationName === "Get All") {
-              resourceName =
-                resourceParts.length > 1
-                  ? [resourceParts[0], plural(resourceParts[1])].join(" ")
-                  : plural(resourceParts[0]);
-              actionText = `Get all ${resourceName}`;
-            } else {
-              const article = indefinite(resourceName, { articleOnly: true });
-              resourceName = resourceParts.join(" ");
-              actionText = `${operationName} ${article} ${resourceName}`;
-            }
-          } else {
-            const description = getters.nodeParam.getDescription(option);
+						if (operationName === "Get All") {
+							resourceName =
+								resourceParts.length > 1
+									? [resourceParts[0], plural(resourceParts[1])].join(" ")
+									: plural(resourceParts[0]);
+							actionText = `Get all ${resourceName}`;
+						} else {
+							const article = indefinite(resourceName, { articleOnly: true });
+							resourceName = resourceParts.join(" ");
+							actionText = `${operationName} ${article} ${resourceName}`;
+						}
+					} else {
+						const description = getters.nodeParam.getDescription(option);
 
-            if (!description) continue;
+						if (!description) continue;
 
-            actionText = description.value;
-          }
+						actionText = description.value;
+					}
 
-          const { indentation, range } = utils.getInsertionArgs({
-            ast: optionProperties[optionProperties.length - 1],
-          });
+					const { indentation, range } = utils.getInsertionArgs({
+						ast: optionProperties[optionProperties.length - 1],
+					});
 
-          const fixed = utils.keyValue("action", actionText);
+					const fixed = utils.keyValue("action", actionText);
 
-          context.report({
-            data: { actionText },
-            messageId: "addAction",
-            node: option,
-            fix: (fixer) =>
-              fixer.insertTextAfterRange(range, `\n${indentation}${fixed},`),
-          });
-        }
-      },
-    };
-  },
+					context.report({
+						data: { actionText },
+						messageId: "addAction",
+						node: option,
+						fix: (fixer) =>
+							fixer.insertTextAfterRange(range, `\n${indentation}${fixed},`),
+					});
+				}
+			},
+		};
+	},
 });
 
 function allOptionsHaveActions(options: { value: Array<{ action?: string }> }) {
-  return options.value.every((o) => o.action !== undefined);
+	return options.value.every((o) => o.action !== undefined);
 }
 
 function isActionProperty(property: TSESTree.Property) {
-  return (
-    property.type === AST_NODE_TYPES.Property &&
-    property.computed === false &&
-    property.key.type === AST_NODE_TYPES.Identifier &&
-    property.key.name === "action"
-  );
+	return (
+		property.type === AST_NODE_TYPES.Property &&
+		property.computed === false &&
+		property.key.type === AST_NODE_TYPES.Identifier &&
+		property.key.name === "action"
+	);
 }
 
 function isNameProperty(
-  property: TSESTree.Property
+	property: TSESTree.Property
 ): property is TSESTree.Property & { value: { value: string } } {
-  return (
-    property.type === AST_NODE_TYPES.Property &&
-    property.computed === false &&
-    property.key.type === AST_NODE_TYPES.Identifier &&
-    property.key.name === "name" &&
-    property.value.type === AST_NODE_TYPES.Literal &&
-    typeof property.value.value === "string"
-  );
+	return (
+		property.type === AST_NODE_TYPES.Property &&
+		property.computed === false &&
+		property.key.type === AST_NODE_TYPES.Identifier &&
+		property.key.name === "name" &&
+		property.value.type === AST_NODE_TYPES.Literal &&
+		typeof property.value.value === "string"
+	);
 }
 
 function getResourceFromDisplayOptions(node: TSESTree.ObjectExpression) {
-  const displayOptions = node.properties.find(id.nodeParam.isDisplayOptions);
+	const displayOptions = node.properties.find(id.nodeParam.isDisplayOptions);
 
-  if (!displayOptions) return null;
+	if (!displayOptions) return null;
 
-  const show = displayOptions.value.properties.find(isShow);
+	const show = displayOptions.value.properties.find(isShow);
 
-  if (!show) return null;
+	if (!show) return null;
 
-  const resourceInShow = show.value.properties.find(isResourceInShow);
+	const resourceInShow = show.value.properties.find(isResourceInShow);
 
-  if (!resourceInShow) return null;
+	if (!resourceInShow) return null;
 
-  /**
-   * Assuming 'operation' node param always has `displayOptions.show`
-   * pointing to single-item array. TODO: Does multi-item case exist?
-   */
-  const [resourceName] = resourceInShow.value.elements;
+	/**
+	 * Assuming 'operation' node param always has `displayOptions.show`
+	 * pointing to single-item array. TODO: Does multi-item case exist?
+	 */
+	const [resourceName] = resourceInShow.value.elements;
 
-  return resourceName.value;
+	return resourceName.value;
 }
 
 function splitIfCamelCased(string: string) {
-  return string.split(/(?=[A-Z])/g).map(part => part.trim().toLowerCase());
+	return string.split(/(?=[A-Z])/g).map((part) => part.trim().toLowerCase());
 }
 
 function isShow(
-  property: TSESTree.ObjectLiteralElement
+	property: TSESTree.ObjectLiteralElement
 ): property is TSESTree.PropertyNonComputedName & {
-  value: { type: AST_NODE_TYPES.ObjectExpression };
+	value: { type: AST_NODE_TYPES.ObjectExpression };
 } {
-  return (
-    property.type === AST_NODE_TYPES.Property &&
-    property.computed === false &&
-    property.key.type === AST_NODE_TYPES.Identifier &&
-    property.key.name === "show" &&
-    property.value.type === AST_NODE_TYPES.ObjectExpression
-  );
+	return (
+		property.type === AST_NODE_TYPES.Property &&
+		property.computed === false &&
+		property.key.type === AST_NODE_TYPES.Identifier &&
+		property.key.name === "show" &&
+		property.value.type === AST_NODE_TYPES.ObjectExpression
+	);
 }
 
 function isResourceInShow(
-  property: TSESTree.ObjectLiteralElement
+	property: TSESTree.ObjectLiteralElement
 ): property is TSESTree.PropertyNonComputedName & {
-  value: {
-    elements: Array<{
-      value: string;
-    }>;
-  };
+	value: {
+		elements: Array<{
+			value: string;
+		}>;
+	};
 } {
-  return (
-    property.type === AST_NODE_TYPES.Property &&
-    property.computed === false &&
-    property.key.type === AST_NODE_TYPES.Identifier &&
-    property.key.name === "resource" &&
-    property.value.type === AST_NODE_TYPES.ArrayExpression
-  );
+	return (
+		property.type === AST_NODE_TYPES.Property &&
+		property.computed === false &&
+		property.key.type === AST_NODE_TYPES.Identifier &&
+		property.key.name === "resource" &&
+		property.value.type === AST_NODE_TYPES.ArrayExpression
+	);
 }
 function getOperationName(optionProperties: TSESTree.Property[]) {
-  const operationNameProperty = optionProperties.find(isNameProperty);
+	const operationNameProperty = optionProperties.find(isNameProperty);
 
-  if (!operationNameProperty) return null;
+	if (!operationNameProperty) return null;
 
-  return operationNameProperty.value.value;
+	return operationNameProperty.value.value;
 }

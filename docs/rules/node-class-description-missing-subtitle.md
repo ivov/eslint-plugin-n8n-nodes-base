@@ -14,27 +14,27 @@
 
 ```js
 class TestNode {
-  description = {
-    displayName: "Test",
-    name: "test",
-    icon: "file:test.svg",
-    group: ["transform"],
-    version: 1,
-    description: "This is a sentence",
-    defaults: {
-      name: "Test",
-    },
-    inputs: ["main"],
-    outputs: ["main"],
-    properties: [
-      {
-        displayName: "Resource",
-      },
-      {
-        displayName: "Operation",
-      },
-    ],
-  };
+	description = {
+		displayName: "Test",
+		name: "test",
+		icon: "file:test.svg",
+		group: ["transform"],
+		version: 1,
+		description: "This is a sentence",
+		defaults: {
+			name: "Test",
+		},
+		inputs: ["main"],
+		outputs: ["main"],
+		properties: [
+			{
+				displayName: "Resource",
+			},
+			{
+				displayName: "Operation",
+			},
+		],
+	};
 }
 ```
 
@@ -42,45 +42,45 @@ class TestNode {
 
 ```js
 class TestNode {
-  description = {
-    displayName: "Test",
-    name: "test",
-    icon: "file:test.svg",
-    group: ["transform"],
-    version: 1,
-    subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
-    description: "This is a sentence",
-    defaults: {
-      name: "Test",
-    },
-    inputs: ["main"],
-    outputs: ["main"],
-    properties: [
-      {
-        displayName: "Resource",
-      },
-      {
-        displayName: "Operation",
-      },
-    ],
-  };
+	description = {
+		displayName: "Test",
+		name: "test",
+		icon: "file:test.svg",
+		group: ["transform"],
+		version: 1,
+		subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
+		description: "This is a sentence",
+		defaults: {
+			name: "Test",
+		},
+		inputs: ["main"],
+		outputs: ["main"],
+		properties: [
+			{
+				displayName: "Resource",
+			},
+			{
+				displayName: "Operation",
+			},
+		],
+	};
 }
 
 class TestTriggerNode {
-  description = {
-    displayName: "Test Trigger",
-    name: "testTrigger",
-    icon: "file:test.svg",
-    group: ["transform"],
-    version: 1,
-    subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
-    description: "This is a sentence",
-    defaults: {
-      name: "Test",
-    },
-    inputs: ["main"],
-    outputs: ["main"],
-  };
+	description = {
+		displayName: "Test Trigger",
+		name: "testTrigger",
+		icon: "file:test.svg",
+		group: ["transform"],
+		version: 1,
+		subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
+		description: "This is a sentence",
+		defaults: {
+			name: "Test",
+		},
+		inputs: ["main"],
+		outputs: ["main"],
+	};
 }
 ```
 

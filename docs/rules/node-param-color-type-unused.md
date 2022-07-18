@@ -14,10 +14,10 @@
 
 ```js
 const test = {
-  displayName: "Foreground Colour",
-  name: "foregroundColor",
-  type: "string",
-  default: "#000000",
+	displayName: "Foreground Colour",
+	name: "foregroundColor",
+	type: "string",
+	default: "#000000",
 };
 ```
 
@@ -25,27 +25,27 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Foreground Colour",
-  name: "foregroundColor",
-  type: "color",
-  default: "#000000",
+	displayName: "Foreground Colour",
+	name: "foregroundColor",
+	type: "color",
+	default: "#000000",
 };
 
 const test = {
-  displayName: "Color",
-  name: "color",
-  type: "options",
-  default: "blue",
-  options: [
-    {
-      name: "Blue",
-      value: "blue",
-    },
-    {
-      name: "Green",
-      value: "green",
-    },
-  ],
+	displayName: "Color",
+	name: "color",
+	type: "options",
+	default: "blue",
+	options: [
+		{
+			name: "Blue",
+			value: "blue",
+		},
+		{
+			name: "Green",
+			value: "green",
+		},
+	],
 };
 ```
 

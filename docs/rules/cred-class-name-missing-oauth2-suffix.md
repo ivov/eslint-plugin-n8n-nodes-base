@@ -12,10 +12,10 @@ Credential class name must mention `OAuth2` if the credential is OAuth2.
 
 ```js
 class MyTestApi implements ICredentialType {
-  name = "myTestOAuth2Api";
-  displayName = "My Test OAuth2 API";
-  documentationUrl = "myTest";
-  extends = ["oAuth2Api"];
+	name = "myTestOAuth2Api";
+	displayName = "My Test OAuth2 API";
+	documentationUrl = "myTest";
+	extends = ["oAuth2Api"];
 }
 ```
 
@@ -23,10 +23,10 @@ class MyTestApi implements ICredentialType {
 
 ```js
 class MyTestOAuth2Api implements ICredentialType {
-  name = "myTestOAuth2Api";
-  displayName = "My Test OAuth2 API";
-  documentationUrl = "myTest";
-  extends = ["oAuth2Api"];
+	name = "myTestOAuth2Api";
+	displayName = "My Test OAuth2 API";
+	documentationUrl = "myTest";
+	extends = ["oAuth2Api"];
 }
 ```
 

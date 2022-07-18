@@ -14,20 +14,20 @@ Option `value` in options-type node parameter must not be a duplicate.
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "options",
-  options: [
-    {
-      name: "A",
-      value: "a",
-    },
-    {
-      name: "B",
-      value: "a",
-    },
-  ],
-  default: "a",
+	displayName: "Test",
+	name: "test",
+	type: "options",
+	options: [
+		{
+			name: "A",
+			value: "a",
+		},
+		{
+			name: "B",
+			value: "a",
+		},
+	],
+	default: "a",
 };
 ```
 
@@ -35,20 +35,20 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "options",
-  options: [
-    {
-      name: "A",
-      value: "a",
-    },
-    {
-      name: "B",
-      value: "b",
-    },
-  ],
-  default: "a",
+	displayName: "Test",
+	name: "test",
+	type: "options",
+	options: [
+		{
+			name: "A",
+			value: "a",
+		},
+		{
+			name: "B",
+			value: "b",
+		},
+	],
+	default: "a",
 };
 ```
 

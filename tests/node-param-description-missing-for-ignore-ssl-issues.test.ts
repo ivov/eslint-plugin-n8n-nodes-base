@@ -4,9 +4,9 @@ import { ruleTester, getRuleName } from "../lib/ast";
 import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
-  valid: [
-    {
-      code: outdent`
+	valid: [
+		{
+			code: outdent`
 			const test = {
 				displayName: '${IGNORE_SSL_ISSUES_NODE_PARAMETER.DISPLAY_NAME}',
 				name: 'allowUnauthorizedCerts',
@@ -14,19 +14,19 @@ ruleTester().run(getRuleName(module), rule, {
 				description: '${IGNORE_SSL_ISSUES_NODE_PARAMETER.DESCRIPTION}',
 				default: true,
 			};`,
-    },
-  ],
-  invalid: [
-    {
-      code: outdent`
+		},
+	],
+	invalid: [
+		{
+			code: outdent`
 			const test = {
 				displayName: '${IGNORE_SSL_ISSUES_NODE_PARAMETER.DISPLAY_NAME}',
 				name: 'allowUnauthorizedCerts',
 				type: 'boolean',
 				default: true,
 			};`,
-      errors: [{ messageId: "addIgnoreSslIssuesDescription" }],
-      output: outdent`
+			errors: [{ messageId: "addIgnoreSslIssuesDescription" }],
+			output: outdent`
 			const test = {
 				displayName: '${IGNORE_SSL_ISSUES_NODE_PARAMETER.DISPLAY_NAME}',
 				name: 'allowUnauthorizedCerts',
@@ -34,6 +34,6 @@ ruleTester().run(getRuleName(module), rule, {
 				description: '${IGNORE_SSL_ISSUES_NODE_PARAMETER.DESCRIPTION}',
 				default: true,
 			};`,
-    },
-  ],
+		},
+	],
 });

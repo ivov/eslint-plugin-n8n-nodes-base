@@ -14,38 +14,38 @@
 
 ```js
 const test = {
-  displayName: "Test   Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: "This a sentence",
+	displayName: "Test   Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "This a sentence",
 };
 
 const test = {
-  name: "Test    Test",
-  value: "test",
-  description: "This is a sentence",
+	name: "Test    Test",
+	value: "test",
+	description: "This is a sentence",
 };
 
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "fixedCollection",
-  default: "a",
-  options: [
-    {
-      displayName: "Details   Test",
-      name: "detailsTest",
-      values: [
-        {
-          displayName: "A",
-          name: "a",
-          type: "string",
-          default: "",
-        },
-      ],
-    },
-  ],
+	displayName: "Test",
+	name: "test",
+	type: "fixedCollection",
+	default: "a",
+	options: [
+		{
+			displayName: "Details   Test",
+			name: "detailsTest",
+			values: [
+				{
+					displayName: "A",
+					name: "a",
+					type: "string",
+					default: "",
+				},
+			],
+		},
+	],
 };
 ```
 
@@ -53,17 +53,17 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Test Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: "This a sentence",
+	displayName: "Test Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "This a sentence",
 };
 
 const test = {
-  name: "Test Test",
-  value: "test",
-  description: "This is a sentence",
+	name: "Test Test",
+	value: "test",
+	description: "This is a sentence",
 };
 ```
 

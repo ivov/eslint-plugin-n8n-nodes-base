@@ -3,9 +3,9 @@ import { ruleTester, getRuleName } from "../lib/ast";
 import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
-  valid: [
-    {
-      code: outdent`
+	valid: [
+		{
+			code: outdent`
 			const test = {
 				displayName: 'Test',
 				name: 'test',
@@ -13,27 +13,27 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				description: 'This a sentence',
 			};`,
-    },
-    {
-      code: outdent`
+		},
+		{
+			code: outdent`
 			const test = {
 				name: 'User ID',
 				value: 'userId',
 				description: 'The ID of the user',
 			};`,
-    },
-    {
-      code: outdent`
+		},
+		{
+			code: outdent`
 			const test = {
 				name: 'Username',
 				value: 'username',
 				description: 'Start e.g. end',
 			};`,
-    },
-  ],
-  invalid: [
-    {
-      code: outdent`
+		},
+	],
+	invalid: [
+		{
+			code: outdent`
 			const test = {
 				displayName: 'Test',
 				name: 'test',
@@ -41,8 +41,8 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				description: 'This a sentence.',
 			};`,
-      errors: [{ messageId: "excessFinalPeriod" }],
-      output: outdent`
+			errors: [{ messageId: "excessFinalPeriod" }],
+			output: outdent`
 			const test = {
 				displayName: 'Test',
 				name: 'test',
@@ -50,24 +50,24 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				description: 'This a sentence',
 			};`,
-    },
-    {
-      code: outdent`
+		},
+		{
+			code: outdent`
 			const test = {
 				name: 'User ID',
 				value: 'userId',
 				description: 'The ID of the user.',
 			};`,
-      errors: [{ messageId: "excessFinalPeriod" }],
-      output: outdent`
+			errors: [{ messageId: "excessFinalPeriod" }],
+			output: outdent`
 			const test = {
 				name: 'User ID',
 				value: 'userId',
 				description: 'The ID of the user',
 			};`,
-    },
-    {
-      code: outdent`
+		},
+		{
+			code: outdent`
 			const test = {
 				displayName: 'Address',
 				name: 'address',
@@ -75,8 +75,8 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				description: 'Person\\'s email address.',
 			};`,
-      errors: [{ messageId: "excessFinalPeriod" }],
-      output: outdent`
+			errors: [{ messageId: "excessFinalPeriod" }],
+			output: outdent`
 			const test = {
 				displayName: 'Address',
 				name: 'address',
@@ -84,9 +84,9 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				description: 'Person\\'s email address',
 			};`,
-    },
-    {
-      code: outdent`
+		},
+		{
+			code: outdent`
 			const test = {
 				displayName: 'Name',
 				name: 'name',
@@ -94,8 +94,8 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				description: \`Custom Field\\'s name.\`,
 			};`,
-      errors: [{ messageId: "excessFinalPeriod" }],
-      output: outdent`
+			errors: [{ messageId: "excessFinalPeriod" }],
+			output: outdent`
 			const test = {
 				displayName: 'Name',
 				name: 'name',
@@ -103,6 +103,6 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				description: 'Custom Field\\'s name',
 			};`,
-    },
-  ],
+		},
+	],
 });

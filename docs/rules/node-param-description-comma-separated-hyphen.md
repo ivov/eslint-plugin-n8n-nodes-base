@@ -14,19 +14,19 @@ The string `comma-separated` in `description` must be hyphenated. Applicable by 
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: "A comma separated list",
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "A comma separated list",
 };
 
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: "Comma separated list",
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "Comma separated list",
 };
 ```
 
@@ -34,19 +34,19 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: "A comma-separated list",
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "A comma-separated list",
 };
 
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: "Comma-separated list",
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "Comma-separated list",
 };
 ```
 

@@ -14,10 +14,10 @@
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "number",
-  default: "0",
+	displayName: "Test",
+	name: "test",
+	type: "number",
+	default: "0",
 };
 ```
 
@@ -25,25 +25,25 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "number",
-  default: 0,
+	displayName: "Test",
+	name: "test",
+	type: "number",
+	default: 0,
 };
 
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "number",
-  default: "",
+	displayName: "Test",
+	name: "test",
+	type: "number",
+	default: "",
 };
 
 const test = {
-  displayName: "Account Contact ID",
-  name: "accountContactId",
-  type: "number",
-  default: "",
-  required: true,
+	displayName: "Account Contact ID",
+	name: "accountContactId",
+	type: "number",
+	default: "",
+	required: true,
 };
 ```
 

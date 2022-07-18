@@ -11,16 +11,16 @@ export const MIN_ITEMS_TO_ALPHABETIZE = 5;
 export const MIN_ITEMS_TO_ALPHABETIZE_IN_FULL = "five";
 
 export const WEAK_DESCRIPTIONS = [
-  "Resource to consume",
-  "Resource to operate on",
-  "Operation to perform",
-  "Action to perform",
-  "Method of authentication",
+	"Resource to consume",
+	"Resource to operate on",
+	"Operation to perform",
+	"Action to perform",
+	"Method of authentication",
 ];
 
 export const SVG_ICON_SOURCES = [
-  "https://vecta.io/symbols",
-  "https://github.com/gilbarbara/logos",
+	"https://vecta.io/symbols",
+	"https://github.com/gilbarbara/logos",
 ];
 
 export const RESOURCE_DESCRIPTION_SUFFIX = "Description.ts";
@@ -28,55 +28,55 @@ export const RESOURCE_DESCRIPTION_SUFFIX = "Description.ts";
 const EXPRESSIONS_DOCS_URL = "https://docs.n8n.io/code-examples/expressions/";
 
 export const DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER = {
-  DISPLAY_NAME_SUFFIX: "Names or IDs",
-  DESCRIPTION: `Choose from the list, or specify IDs using an <a href="${EXPRESSIONS_DOCS_URL}">expression</a>`,
+	DISPLAY_NAME_SUFFIX: "Names or IDs",
+	DESCRIPTION: `Choose from the list, or specify IDs using an <a href="${EXPRESSIONS_DOCS_URL}">expression</a>`,
 };
 
 export const DYNAMIC_OPTIONS_NODE_PARAMETER = {
-  DISPLAY_NAME_SUFFIX: "Name or ID",
-  DESCRIPTION: `Choose from the list, or specify an ID using an <a href="${EXPRESSIONS_DOCS_URL}">expression</a>`,
+	DISPLAY_NAME_SUFFIX: "Name or ID",
+	DESCRIPTION: `Choose from the list, or specify an ID using an <a href="${EXPRESSIONS_DOCS_URL}">expression</a>`,
 };
 
 export const NODE_CLASS_DESCRIPTION_SUBTITLE =
-  '={{ $parameter["operation"] + ": " + $parameter["resource"] }}';
+	'={{ $parameter["operation"] + ": " + $parameter["resource"] }}';
 
 export const LIMIT_NODE_PARAMETER = {
-  DEFAULT_VALUE: 50,
-  DESCRIPTION: "Max number of results to return",
+	DEFAULT_VALUE: 50,
+	DESCRIPTION: "Max number of results to return",
 };
 
 export const UPSERT_NODE_PARAMETER = {
-  DESCRIPTION:
-    "Create a new record, or update the current one if it already exists (upsert)",
+	DESCRIPTION:
+		"Create a new record, or update the current one if it already exists (upsert)",
 };
 
 export const UPDATE_FIELDS_NODE_PARAM_DISPLAY_NAME = "Update Fields";
 
 export const SIMPLIFY_NODE_PARAMETER = {
-  DISPLAY_NAME: "Simplify",
-  DESCRIPTION:
-    "Whether to return a simplified version of the response instead of the raw data",
+	DISPLAY_NAME: "Simplify",
+	DESCRIPTION:
+		"Whether to return a simplified version of the response instead of the raw data",
 };
 
 export const RETURN_ALL_NODE_PARAMETER = {
-  DISPLAY_NAME: "Return All",
-  DESCRIPTION: "Whether to return all results or only up to a given limit",
+	DISPLAY_NAME: "Return All",
+	DESCRIPTION: "Whether to return all results or only up to a given limit",
 };
 
 export const IGNORE_SSL_ISSUES_NODE_PARAMETER = {
-  DISPLAY_NAME: "Ignore SSL Issues",
-  DESCRIPTION:
-    "Whether to connect even if SSL certificate validation is not possible",
+	DISPLAY_NAME: "Ignore SSL Issues",
+	DESCRIPTION:
+		"Whether to connect even if SSL certificate validation is not possible",
 };
 
 export const TOP_LEVEL_FIXED_COLLECTION: {
-  [key: Uppercase<string>]: { [key: Uppercase<string>]: string };
+	[key: Uppercase<string>]: { [key: Uppercase<string>]: string };
 } = {
-  STANDARD_DISPLAY_NAME: {
-    CREATE: "Additional Fields",
-    UPDATE: "Update Fields",
-    GETALL: "Options",
-  },
+	STANDARD_DISPLAY_NAME: {
+		CREATE: "Additional Fields",
+		UPDATE: "Update Fields",
+		GETALL: "Options",
+	},
 };
 
 export const EMAIL_PLACEHOLDER = "name@email.com";
@@ -102,22 +102,22 @@ export const VERSION_REGEX = /^v\d+\.\d+$/;
 // ----------------------------------
 
 export const COMMUNITY_PACKAGE_JSON = {
-  NAME: "n8n-nodes-starter",
-  DESCRIPTION: "Example starter module for custom n8n nodes.",
-  OFFICIAL_TAG: "n8n-community-node-package",
-  LICENSE: "MIT",
-  AUTHOR_NAME: "Jan Oberhauser",
-  AUTHOR_EMAIL: "jan@n8n.io",
-  REPOSITORY_URL: "git+https://github.com/n8n-io/n8n-nodes-starter.git",
-  CREDENTIALS: [
-    "dist/credentials/ExampleCredentials.credentials.js",
-    "dist/credentials/HttpBinApi.credentials.js",
-  ],
-  NODES: [
-    "dist/nodes/ExampleNode/ExampleNode.node.js",
-    "dist/nodes/HttpBin/HttpBin.node.js",
-  ],
-  SCRIPTS: `{
+	NAME: "n8n-nodes-starter",
+	DESCRIPTION: "Example starter module for custom n8n nodes.",
+	OFFICIAL_TAG: "n8n-community-node-package",
+	LICENSE: "MIT",
+	AUTHOR_NAME: "Jan Oberhauser",
+	AUTHOR_EMAIL: "jan@n8n.io",
+	REPOSITORY_URL: "git+https://github.com/n8n-io/n8n-nodes-starter.git",
+	CREDENTIALS: [
+		"dist/credentials/ExampleCredentials.credentials.js",
+		"dist/credentials/HttpBinApi.credentials.js",
+	],
+	NODES: [
+		"dist/nodes/ExampleNode/ExampleNode.node.js",
+		"dist/nodes/HttpBin/HttpBin.node.js",
+	],
+	SCRIPTS: `{
     "dev": "npm run watch",
     "build": "tsc && gulp",
     "lint": "tslint -p tsconfig.json -c tslint.json && node_modules/eslint/bin/eslint.js ./nodes",
@@ -125,7 +125,7 @@ export const COMMUNITY_PACKAGE_JSON = {
     "watch": "tsc --watch",
     "test": "jest"
   }`,
-  DEV_DEPENDENCIES: `{
+	DEV_DEPENDENCIES: `{
     "@types/express": "^4.17.6",
     "@types/request-promise-native": "~1.0.15",
     "@typescript-eslint/parser": "^5.29.0",
@@ -144,11 +144,11 @@ export const COMMUNITY_PACKAGE_JSON = {
 // ----------------------------------
 
 export const DOCUMENTATION = {
-  APPLICABLE_BY_EXTENSION_TO_NAME:
-    "Applicable by extension to `name` in options-type or multi-options-type node parameter.",
+	APPLICABLE_BY_EXTENSION_TO_NAME:
+		"Applicable by extension to `name` in options-type or multi-options-type node parameter.",
 
-  APPLICABLE_BY_EXTENSION_TO_DESCRIPTION_IN_OPTION:
-    "Applicable by extension to `description` in option in options-type and multi-options-type node parameter.",
+	APPLICABLE_BY_EXTENSION_TO_DESCRIPTION_IN_OPTION:
+		"Applicable by extension to `description` in option in options-type and multi-options-type node parameter.",
 };
 
 // ----------------------------------
@@ -163,35 +163,35 @@ export const NODE_ERROR_TYPES = ["NodeOperationError", "NodeApiError"];
  * - `cred-class-field-name-unsuffixed`
  */
 export const CREDS_EXEMPTED_FROM_API_SUFFIX = [
-  "Amqp",
-  "Aws",
-  "CrateDb",
-  "FileMaker",
-  "Ftp",
-  "GitPassword",
-  "GmailOAuth2Api",
-  "GoogleAnalyticsOAuth2Api",
-  "HttpBasicAuth",
-  "HttpDigestAuth",
-  "HttpHeaderAuth",
-  "HttpQueryAuth",
-  "HubspotAppToken",
-  "Imap",
-  "Kafka",
-  "MicrosoftSql",
-  "MongoDb",
-  "Mqtt",
-  "MySql",
-  "NocoDb",
-  "Postgres",
-  "QuestDb",
-  "RabbitMQ",
-  "Redis",
-  "S3",
-  "Sftp",
-  "Smtp",
-  "Snowflake",
-  "SshPassword",
-  "SshPrivateKey",
-  "TimescaleDb",
+	"Amqp",
+	"Aws",
+	"CrateDb",
+	"FileMaker",
+	"Ftp",
+	"GitPassword",
+	"GmailOAuth2Api",
+	"GoogleAnalyticsOAuth2Api",
+	"HttpBasicAuth",
+	"HttpDigestAuth",
+	"HttpHeaderAuth",
+	"HttpQueryAuth",
+	"HubspotAppToken",
+	"Imap",
+	"Kafka",
+	"MicrosoftSql",
+	"MongoDb",
+	"Mqtt",
+	"MySql",
+	"NocoDb",
+	"Postgres",
+	"QuestDb",
+	"RabbitMQ",
+	"Redis",
+	"S3",
+	"Sftp",
+	"Smtp",
+	"Snowflake",
+	"SshPassword",
+	"SshPrivateKey",
+	"TimescaleDb",
 ];

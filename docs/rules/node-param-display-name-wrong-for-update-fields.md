@@ -14,18 +14,18 @@
 
 ```js
 const test = {
-  displayName: "Wrong",
-  name: "updateFields",
-  type: "collection",
-  placeholder: "Add Field",
-  default: {},
-  displayOptions: {
-    show: {
-      resource: ["person"],
-      operation: ["update"],
-    },
-  },
-  options: [],
+	displayName: "Wrong",
+	name: "updateFields",
+	type: "collection",
+	placeholder: "Add Field",
+	default: {},
+	displayOptions: {
+		show: {
+			resource: ["person"],
+			operation: ["update"],
+		},
+	},
+	options: [],
 };
 ```
 
@@ -33,33 +33,33 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Update Fields",
-  name: "updateFields",
-  type: "collection",
-  placeholder: "Add Field",
-  default: {},
-  displayOptions: {
-    show: {
-      resource: ["person"],
-      operation: ["update"],
-    },
-  },
-  options: [],
+	displayName: "Update Fields",
+	name: "updateFields",
+	type: "collection",
+	placeholder: "Add Field",
+	default: {},
+	displayOptions: {
+		show: {
+			resource: ["person"],
+			operation: ["update"],
+		},
+	},
+	options: [],
 };
 
 const test = {
-  displayName: "User ID",
-  name: "userId",
-  type: "collection",
-  placeholder: "Add Field",
-  default: {},
-  displayOptions: {
-    show: {
-      resource: ["user"],
-      operation: ["update"],
-    },
-  },
-  options: [],
+	displayName: "User ID",
+	name: "userId",
+	type: "collection",
+	placeholder: "Add Field",
+	default: {},
+	displayOptions: {
+		show: {
+			resource: ["user"],
+			operation: ["update"],
+		},
+	},
+	options: [],
 };
 ```
 

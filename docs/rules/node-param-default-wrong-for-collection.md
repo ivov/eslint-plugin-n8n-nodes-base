@@ -14,10 +14,10 @@
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "collection",
-  default: 1,
+	displayName: "Test",
+	name: "test",
+	type: "collection",
+	default: 1,
 };
 ```
 
@@ -25,10 +25,10 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "collection",
-  default: {},
+	displayName: "Test",
+	name: "test",
+	type: "collection",
+	default: {},
 };
 ```
 

@@ -14,20 +14,20 @@ The number of `outputs` in node class description for any node must be one, or t
 
 ```js
 class TestNode {
-  description = {
-    displayName: "Test",
-    name: "test",
-    icon: "file:test.svg",
-    group: ["transform"],
-    version: 1,
-    subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
-    description: "This is a sentence",
-    defaults: {
-      name: "Test",
-    },
-    inputs: ["main"],
-    outputs: [],
-  };
+	description = {
+		displayName: "Test",
+		name: "test",
+		icon: "file:test.svg",
+		group: ["transform"],
+		version: 1,
+		subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
+		description: "This is a sentence",
+		defaults: {
+			name: "Test",
+		},
+		inputs: ["main"],
+		outputs: [],
+	};
 }
 ```
 
@@ -35,20 +35,20 @@ class TestNode {
 
 ```js
 class TestNode {
-  description = {
-    displayName: "Test",
-    name: "test",
-    icon: "file:test.svg",
-    group: ["transform"],
-    version: 1,
-    subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
-    description: "This is a sentence",
-    defaults: {
-      name: "Test",
-    },
-    inputs: ["main"],
-    outputs: ["main"],
-  };
+	description = {
+		displayName: "Test",
+		name: "test",
+		icon: "file:test.svg",
+		group: ["transform"],
+		version: 1,
+		subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
+		description: "This is a sentence",
+		defaults: {
+			name: "Test",
+		},
+		inputs: ["main"],
+		outputs: ["main"],
+	};
 }
 ```
 

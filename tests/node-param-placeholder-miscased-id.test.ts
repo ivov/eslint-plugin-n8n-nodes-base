@@ -3,9 +3,9 @@ import { ruleTester, getRuleName } from "../lib/ast";
 import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
-  valid: [
-    {
-      code: outdent`
+	valid: [
+		{
+			code: outdent`
 			const test = {
 				displayName: 'Value ID',
 				name: 'valueId',
@@ -13,9 +13,9 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				placeholder: 'The ID of the value',
 			};`,
-    },
-    {
-      code: outdent`
+		},
+		{
+			code: outdent`
 			const test = {
 				displayName: 'Value ID',
 				name: 'valueId',
@@ -23,9 +23,9 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				placeholder: 'id,name,description',
 			};`,
-    },
-    {
-      code: outdent`
+		},
+		{
+			code: outdent`
 			const test = {
 				displayName: 'Value ID',
 				name: 'valueId',
@@ -33,11 +33,11 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				placeholder: 'SELECT id, name FROM product WHERE quantity > $1 AND price <= $2',
 			};`,
-    },
-  ],
-  invalid: [
-    {
-      code: outdent`
+		},
+	],
+	invalid: [
+		{
+			code: outdent`
 			const test = {
 				displayName: 'Value ID',
 				name: 'valueId',
@@ -45,8 +45,8 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				placeholder: 'The Id of the value',
 			};`,
-      errors: [{ messageId: "uppercaseId" }],
-      output: outdent`
+			errors: [{ messageId: "uppercaseId" }],
+			output: outdent`
 			const test = {
 				displayName: 'Value ID',
 				name: 'valueId',
@@ -54,9 +54,9 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				placeholder: 'The ID of the value',
 			};`,
-    },
-    {
-      code: outdent`
+		},
+		{
+			code: outdent`
 			const test = {
 				displayName: 'Value ID',
 				name: 'valueId',
@@ -64,8 +64,8 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				placeholder: 'The ids of the value',
 			};`,
-      errors: [{ messageId: "uppercaseId" }],
-      output: outdent`
+			errors: [{ messageId: "uppercaseId" }],
+			output: outdent`
 			const test = {
 				displayName: 'Value ID',
 				name: 'valueId',
@@ -73,9 +73,9 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				placeholder: 'The IDs of the value',
 			};`,
-    },
-    {
-      code: outdent`
+		},
+		{
+			code: outdent`
 			const test = {
 				displayName: 'Value ID',
 				name: 'valueId',
@@ -83,8 +83,8 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				placeholder: 'The id of the value',
 			};`,
-      errors: [{ messageId: "uppercaseId" }],
-      output: outdent`
+			errors: [{ messageId: "uppercaseId" }],
+			output: outdent`
 			const test = {
 				displayName: 'Value ID',
 				name: 'valueId',
@@ -92,6 +92,6 @@ ruleTester().run(getRuleName(module), rule, {
 				default: '',
 				placeholder: 'The ID of the value',
 			};`,
-    },
-  ],
+		},
+	],
 });

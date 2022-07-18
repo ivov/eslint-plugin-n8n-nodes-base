@@ -14,8 +14,8 @@ Option `name` for Upsert node parameter must be `Create or Update`.
 
 ```js
 const test = {
-  name: "Insert or Create",
-  value: "upsert",
+	name: "Insert or Create",
+	value: "upsert",
 };
 ```
 
@@ -23,8 +23,8 @@ const test = {
 
 ```js
 const test = {
-  name: "Create or Update",
-  value: "upsert",
+	name: "Create or Update",
+	value: "upsert",
 };
 ```
 

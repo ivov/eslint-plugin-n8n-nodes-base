@@ -14,33 +14,33 @@
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: "This a sentence.",
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "This a sentence.",
 };
 
 const test = {
-  name: "User ID",
-  value: "userId",
-  description: "The ID of the user.",
+	name: "User ID",
+	value: "userId",
+	description: "The ID of the user.",
 };
 
 const test = {
-  displayName: "Address",
-  name: "address",
-  type: "string",
-  default: "",
-  description: "Person's email address.",
+	displayName: "Address",
+	name: "address",
+	type: "string",
+	default: "",
+	description: "Person's email address.",
 };
 
 const test = {
-  displayName: "Name",
-  name: "name",
-  type: "string",
-  default: "",
-  description: `Custom Field\'s name.`,
+	displayName: "Name",
+	name: "name",
+	type: "string",
+	default: "",
+	description: `Custom Field\'s name.`,
 };
 ```
 
@@ -48,23 +48,23 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: "This a sentence",
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "This a sentence",
 };
 
 const test = {
-  name: "User ID",
-  value: "userId",
-  description: "The ID of the user",
+	name: "User ID",
+	value: "userId",
+	description: "The ID of the user",
 };
 
 const test = {
-  name: "Username",
-  value: "username",
-  description: "Start e.g. end",
+	name: "Username",
+	value: "username",
+	description: "Start e.g. end",
 };
 ```
 

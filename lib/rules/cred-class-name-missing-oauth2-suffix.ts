@@ -3,43 +3,43 @@ import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
 
 export default utils.createRule({
-  name: utils.getRuleName(module),
-  meta: {
-    type: "layout",
-    docs: {
-      description:
-        "Credential class name must mention `OAuth2` if the credential is OAuth2.",
-      recommended: "error",
-    },
-    schema: [],
-    messages: {
-      addOAuth2: "Insert 'OAuth2' [non-autofixable]", // unpredictable input
-    },
-  },
-  defaultOptions: [],
-  create(context) {
-    return {
-      ClassDeclaration(node) {
-        if (!id.isCredentialClass(node)) return;
+	name: utils.getRuleName(module),
+	meta: {
+		type: "layout",
+		docs: {
+			description:
+				"Credential class name must mention `OAuth2` if the credential is OAuth2.",
+			recommended: "error",
+		},
+		schema: [],
+		messages: {
+			addOAuth2: "Insert 'OAuth2' [non-autofixable]", // unpredictable input
+		},
+	},
+	defaultOptions: [],
+	create(context) {
+		return {
+			ClassDeclaration(node) {
+				if (!id.isCredentialClass(node)) return;
 
-        const extendsOAuth2 = getters.credClassBody.getExtendsOAuth2(node.body);
+				const extendsOAuth2 = getters.credClassBody.getExtendsOAuth2(node.body);
 
-        if (!extendsOAuth2) return;
+				if (!extendsOAuth2) return;
 
-        const className = getters.getClassName(node);
+				const className = getters.getClassName(node);
 
-        if (!className) return;
+				if (!className) return;
 
-        if (
-          extendsOAuth2.value.includes("oAuth2Api") &&
-          !className.value.endsWith("OAuth2Api")
-        ) {
-          context.report({
-            messageId: "addOAuth2",
-            node: className.ast,
-          });
-        }
-      },
-    };
-  },
+				if (
+					extendsOAuth2.value.includes("oAuth2Api") &&
+					!className.value.endsWith("OAuth2Api")
+				) {
+					context.report({
+						messageId: "addOAuth2",
+						node: className.ast,
+					});
+				}
+			},
+		};
+	},
 });

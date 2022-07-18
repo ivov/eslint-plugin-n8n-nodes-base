@@ -4,9 +4,9 @@ import outdent from "outdent";
 import { COMMUNITY_PACKAGE_JSON } from "../lib/constants";
 
 ruleTester().run(getRuleName(module), rule, {
-  valid: [
-    {
-      code: outdent`
+	valid: [
+		{
+			code: outdent`
 			const packageJson = {
 				"name": "n8n-nodes-service",
 				"version": "0.1.1",
@@ -41,11 +41,11 @@ ruleTester().run(getRuleName(module), rule, {
 						"n8n-core": "~0.101.0"
 				}
 			}`,
-    },
-  ],
-  invalid: [
-    {
-      code: outdent`
+		},
+	],
+	invalid: [
+		{
+			code: outdent`
 			const packageJson = {
 				"_name": "n8n-nodes-service",
 				"version": "0.1.1",
@@ -80,7 +80,7 @@ ruleTester().run(getRuleName(module), rule, {
 						"n8n-core": "~0.101.0"
 				}
 			}`,
-      errors: [{ messageId: "addName" }],
-    },
-  ],
+			errors: [{ messageId: "addName" }],
+		},
+	],
 });

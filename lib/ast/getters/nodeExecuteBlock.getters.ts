@@ -2,58 +2,58 @@ import { TSESTree, AST_NODE_TYPES } from "@typescript-eslint/utils";
 import { id } from "../identifiers";
 
 export function getOperationConsequents(
-  node: TSESTree.MethodDefinition,
-  { filter }: { filter: "singular" | "plural" | "all" } // filter getAll or non-getAll or do not filter
+	node: TSESTree.MethodDefinition,
+	{ filter }: { filter: "singular" | "plural" | "all" } // filter getAll or non-getAll or do not filter
 ) {
-  const executeMethod = getExecuteContent(node);
+	const executeMethod = getExecuteContent(node);
 
-  if (!executeMethod) return;
+	if (!executeMethod) return;
 
-  const returnDataArrayName = getReturnDataArrayName(executeMethod);
+	const returnDataArrayName = getReturnDataArrayName(executeMethod);
 
-  if (!returnDataArrayName) return;
+	if (!returnDataArrayName) return;
 
-  const forLoop = executeMethod.body.find(id.nodeExecuteBlock.isForLoop);
+	const forLoop = executeMethod.body.find(id.nodeExecuteBlock.isForLoop);
 
-  if (!forLoop) return;
+	if (!forLoop) return;
 
-  const inputItemsIndexName = getInputItemsIndexName(forLoop);
+	const inputItemsIndexName = getInputItemsIndexName(forLoop);
 
-  if (!inputItemsIndexName) return;
+	if (!inputItemsIndexName) return;
 
-  const tryCatch = forLoop.body.body.find(id.nodeExecuteBlock.isTryCatch);
+	const tryCatch = forLoop.body.body.find(id.nodeExecuteBlock.isTryCatch);
 
-  if (!tryCatch) return;
+	if (!tryCatch) return;
 
-  const resourcesRoot = tryCatch.block.body.find(
-    id.nodeExecuteBlock.isResourceChecksRoot
-  );
+	const resourcesRoot = tryCatch.block.body.find(
+		id.nodeExecuteBlock.isResourceChecksRoot
+	);
 
-  if (!resourcesRoot) return;
+	if (!resourcesRoot) return;
 
-  const operationConsequents = collectConsequents(resourcesRoot).reduce<
-    TSESTree.BlockStatement[]
-  >((acc, resourceConsequent) => {
-    // TODO: Handle resource consequent with more than one `IfStatement`
-    if (resourceConsequent.body.length !== 1) return acc;
+	const operationConsequents = collectConsequents(resourcesRoot).reduce<
+		TSESTree.BlockStatement[]
+	>((acc, resourceConsequent) => {
+		// TODO: Handle resource consequent with more than one `IfStatement`
+		if (resourceConsequent.body.length !== 1) return acc;
 
-    const [operationsRoot] = resourceConsequent.body;
+		const [operationsRoot] = resourceConsequent.body;
 
-    const opConsequentsPerResource =
-      filter === "all"
-        ? collectConsequents(operationsRoot)
-        : collectConsequents(operationsRoot).filter((consequent) =>
-            filter === "plural" ? isGetAll(consequent) : !isGetAll(consequent)
-          );
+		const opConsequentsPerResource =
+			filter === "all"
+				? collectConsequents(operationsRoot)
+				: collectConsequents(operationsRoot).filter((consequent) =>
+						filter === "plural" ? isGetAll(consequent) : !isGetAll(consequent)
+				  );
 
-    return [...acc, ...opConsequentsPerResource];
-  }, []);
+		return [...acc, ...opConsequentsPerResource];
+	}, []);
 
-  return {
-    operationConsequents,
-    inputItemsIndexName,
-    returnDataArrayName,
-  };
+	return {
+		operationConsequents,
+		inputItemsIndexName,
+		returnDataArrayName,
+	};
 }
 
 /**
@@ -70,14 +70,14 @@ export function getOperationConsequents(
  * https://github.com/aelbore/esbuild-jest/blob/master/src/index.ts#L33-L40
  */
 export function getExecuteContent({ key, value }: TSESTree.MethodDefinition) {
-  if (
-    key.type === AST_NODE_TYPES.Identifier &&
-    key.name === "execute" &&
-    value.type === AST_NODE_TYPES.FunctionExpression &&
-    value.body.type === AST_NODE_TYPES.BlockStatement
-  ) {
-    return value.body;
-  }
+	if (
+		key.type === AST_NODE_TYPES.Identifier &&
+		key.name === "execute" &&
+		value.type === AST_NODE_TYPES.FunctionExpression &&
+		value.body.type === AST_NODE_TYPES.BlockStatement
+	) {
+		return value.body;
+	}
 }
 
 /**
@@ -89,31 +89,31 @@ export function getExecuteContent({ key, value }: TSESTree.MethodDefinition) {
  * ```
  */
 function getReturnDataArrayName(executeMethod: TSESTree.BlockStatement) {
-  for (const node of executeMethod.body) {
-    if (
-      node.type === AST_NODE_TYPES.VariableDeclaration &&
-      node.declarations.length === 1 &&
-      node.declarations[0].id.type === AST_NODE_TYPES.Identifier &&
-      node.declarations[0].init !== null &&
-      node.declarations[0].init.type === AST_NODE_TYPES.ArrayExpression &&
-      node.declarations[0].init.elements.length === 0 &&
-      node.declarations[0].id.typeAnnotation !== undefined &&
-      node.declarations[0].id.typeAnnotation.typeAnnotation.type ===
-        AST_NODE_TYPES.TSArrayType &&
-      node.declarations[0].id.typeAnnotation.typeAnnotation.elementType.type ===
-        AST_NODE_TYPES.TSTypeReference &&
-      node.declarations[0].id.typeAnnotation.typeAnnotation.elementType.typeName
-        .type === AST_NODE_TYPES.Identifier &&
-      ["IDataObject", "INodeExecutionData"].includes(
-        node.declarations[0].id.typeAnnotation.typeAnnotation.elementType
-          .typeName.name
-      )
-    ) {
-      return node.declarations[0].id.name;
-    }
-  }
+	for (const node of executeMethod.body) {
+		if (
+			node.type === AST_NODE_TYPES.VariableDeclaration &&
+			node.declarations.length === 1 &&
+			node.declarations[0].id.type === AST_NODE_TYPES.Identifier &&
+			node.declarations[0].init !== null &&
+			node.declarations[0].init.type === AST_NODE_TYPES.ArrayExpression &&
+			node.declarations[0].init.elements.length === 0 &&
+			node.declarations[0].id.typeAnnotation !== undefined &&
+			node.declarations[0].id.typeAnnotation.typeAnnotation.type ===
+				AST_NODE_TYPES.TSArrayType &&
+			node.declarations[0].id.typeAnnotation.typeAnnotation.elementType.type ===
+				AST_NODE_TYPES.TSTypeReference &&
+			node.declarations[0].id.typeAnnotation.typeAnnotation.elementType.typeName
+				.type === AST_NODE_TYPES.Identifier &&
+			["IDataObject", "INodeExecutionData"].includes(
+				node.declarations[0].id.typeAnnotation.typeAnnotation.elementType
+					.typeName.name
+			)
+		) {
+			return node.declarations[0].id.name;
+		}
+	}
 
-  return null;
+	return null;
 }
 
 /**
@@ -124,46 +124,46 @@ function getReturnDataArrayName(executeMethod: TSESTree.BlockStatement) {
  * ```
  */
 export function getInputItemsIndexName(
-  forLoop: TSESTree.ForStatement & {
-    body: TSESTree.BlockStatement;
-  }
+	forLoop: TSESTree.ForStatement & {
+		body: TSESTree.BlockStatement;
+	}
 ) {
-  if (
-    forLoop.init !== null &&
-    forLoop.init.type === AST_NODE_TYPES.VariableDeclaration &&
-    forLoop.init.declarations.length > 0 &&
-    forLoop.init.declarations[0].type === AST_NODE_TYPES.VariableDeclarator &&
-    forLoop.init.declarations[0].id.type === AST_NODE_TYPES.Identifier
-  ) {
-    return forLoop.init.declarations[0].id.name;
-  }
+	if (
+		forLoop.init !== null &&
+		forLoop.init.type === AST_NODE_TYPES.VariableDeclaration &&
+		forLoop.init.declarations.length > 0 &&
+		forLoop.init.declarations[0].type === AST_NODE_TYPES.VariableDeclarator &&
+		forLoop.init.declarations[0].id.type === AST_NODE_TYPES.Identifier
+	) {
+		return forLoop.init.declarations[0].id.name;
+	}
 
-  return null;
+	return null;
 }
 
 /**
  * Recursively collect every alternate and consequent in an `IfStatement` and its children.
  */
 export function collectConsequents(
-  node: TSESTree.Node,
-  collection: TSESTree.BlockStatement[] = []
+	node: TSESTree.Node,
+	collection: TSESTree.BlockStatement[] = []
 ) {
-  if (
-    node.type === AST_NODE_TYPES.IfStatement &&
-    node.consequent.type === AST_NODE_TYPES.BlockStatement
-  ) {
-    collection.push(node.consequent);
-  }
+	if (
+		node.type === AST_NODE_TYPES.IfStatement &&
+		node.consequent.type === AST_NODE_TYPES.BlockStatement
+	) {
+		collection.push(node.consequent);
+	}
 
-  if (
-    node.type === AST_NODE_TYPES.IfStatement &&
-    node.alternate !== null &&
-    node.alternate.type === AST_NODE_TYPES.IfStatement
-  ) {
-    collectConsequents(node.alternate, collection);
-  }
+	if (
+		node.type === AST_NODE_TYPES.IfStatement &&
+		node.alternate !== null &&
+		node.alternate.type === AST_NODE_TYPES.IfStatement
+	) {
+		collectConsequents(node.alternate, collection);
+	}
 
-  return collection;
+	return collection;
 }
 
 /**
@@ -175,50 +175,50 @@ export function collectConsequents(
  * ```
  */
 export function getPairedItemValue(
-  properties: TSESTree.ObjectLiteralElement[]
+	properties: TSESTree.ObjectLiteralElement[]
 ) {
-  const found = properties.find(
-    (
-      property
-    ): property is TSESTree.ObjectLiteralElement & {
-      value: {
-        type: AST_NODE_TYPES.ObjectExpression;
-        properties: TSESTree.Property[];
-      };
-    } =>
-      property.type === AST_NODE_TYPES.Property &&
-      property.value.type === AST_NODE_TYPES.ObjectExpression
-  );
+	const found = properties.find(
+		(
+			property
+		): property is TSESTree.ObjectLiteralElement & {
+			value: {
+				type: AST_NODE_TYPES.ObjectExpression;
+				properties: TSESTree.Property[];
+			};
+		} =>
+			property.type === AST_NODE_TYPES.Property &&
+			property.value.type === AST_NODE_TYPES.ObjectExpression
+	);
 
-  return found ? found.value : null;
+	return found ? found.value : null;
 }
 
 /**
  * Get the AST node where the pairing rule will be flagged.
  */
 export function getMarkedNodeFromConsequent(
-  consequent: TSESTree.BlockStatement
+	consequent: TSESTree.BlockStatement
 ) {
-  if (
-    consequent.parent?.type === AST_NODE_TYPES.IfStatement &&
-    consequent.parent?.test.type === AST_NODE_TYPES.BinaryExpression &&
-    consequent.parent?.test.operator === "===" &&
-    consequent.parent?.test.left.type === AST_NODE_TYPES.Identifier &&
-    consequent.parent?.test.left.name === "operation"
-  ) {
-    return consequent.parent?.test.right;
-  }
+	if (
+		consequent.parent?.type === AST_NODE_TYPES.IfStatement &&
+		consequent.parent?.test.type === AST_NODE_TYPES.BinaryExpression &&
+		consequent.parent?.test.operator === "===" &&
+		consequent.parent?.test.left.type === AST_NODE_TYPES.Identifier &&
+		consequent.parent?.test.left.name === "operation"
+	) {
+		return consequent.parent?.test.right;
+	}
 }
 
 function isGetAll(consequent: TSESTree.BlockStatement) {
-  return (
-    consequent.parent !== undefined &&
-    consequent.parent.type === AST_NODE_TYPES.IfStatement &&
-    consequent.parent.test.type === AST_NODE_TYPES.BinaryExpression &&
-    consequent.parent.test.operator === "===" &&
-    consequent.parent.test.left.type === AST_NODE_TYPES.Identifier &&
-    consequent.parent.test.left.name === "operation" &&
-    consequent.parent.test.right.type === AST_NODE_TYPES.Literal &&
-    consequent.parent.test.right.value === "getAll"
-  );
+	return (
+		consequent.parent !== undefined &&
+		consequent.parent.type === AST_NODE_TYPES.IfStatement &&
+		consequent.parent.test.type === AST_NODE_TYPES.BinaryExpression &&
+		consequent.parent.test.operator === "===" &&
+		consequent.parent.test.left.type === AST_NODE_TYPES.Identifier &&
+		consequent.parent.test.left.name === "operation" &&
+		consequent.parent.test.right.type === AST_NODE_TYPES.Literal &&
+		consequent.parent.test.right.value === "getAll"
+	);
 }

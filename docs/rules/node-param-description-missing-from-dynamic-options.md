@@ -14,13 +14,13 @@
 
 ```js
 const test = {
-  displayName: "Field Name or ID",
-  name: "field",
-  type: "options",
-  typeOptions: {
-    loadOptionsMethod: "getFields",
-  },
-  default: "",
+	displayName: "Field Name or ID",
+	name: "field",
+	type: "options",
+	typeOptions: {
+		loadOptionsMethod: "getFields",
+	},
+	default: "",
 };
 ```
 
@@ -28,15 +28,15 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Field Name or ID",
-  name: "field",
-  type: "options",
-  description:
-    'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
-  typeOptions: {
-    loadOptionsMethod: "getFields",
-  },
-  default: "",
+	displayName: "Field Name or ID",
+	name: "field",
+	type: "options",
+	description:
+		'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
+	typeOptions: {
+		loadOptionsMethod: "getFields",
+	},
+	default: "",
 };
 ```
 

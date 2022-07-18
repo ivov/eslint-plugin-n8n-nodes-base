@@ -14,9 +14,9 @@
 
 ```js
 const test = {
-  name: "Full Name",
-  value: "fullName",
-  description: "The full name",
+	name: "Full Name",
+	value: "fullName",
+	description: "The full name",
 };
 ```
 
@@ -24,9 +24,9 @@ const test = {
 
 ```js
 const test = {
-  name: "Full Name",
-  value: "fullName",
-  description: "First and last name of the user",
+	name: "Full Name",
+	value: "fullName",
+	description: "First and last name of the user",
 };
 ```
 

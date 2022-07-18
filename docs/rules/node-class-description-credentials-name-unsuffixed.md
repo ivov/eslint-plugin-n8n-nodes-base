@@ -14,78 +14,78 @@
 
 ```js
 class TestNode {
-  description = {
-    displayName: "Test",
-    name: "test",
-    icon: "file:test.svg",
-    group: ["transform"],
-    version: 1,
-    subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
-    description: "This is a sentence",
-    defaults: {
-      name: "Test",
-    },
-    inputs: ["main"],
-    outputs: ["main"],
-    credentials: [
-      {
-        name: "testOAuth2",
-      },
-      {
-        name: "testApi",
-      },
-    ],
-  };
+	description = {
+		displayName: "Test",
+		name: "test",
+		icon: "file:test.svg",
+		group: ["transform"],
+		version: 1,
+		subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
+		description: "This is a sentence",
+		defaults: {
+			name: "Test",
+		},
+		inputs: ["main"],
+		outputs: ["main"],
+		credentials: [
+			{
+				name: "testOAuth2",
+			},
+			{
+				name: "testApi",
+			},
+		],
+	};
 }
 
 class TestNode {
-  description = {
-    displayName: "Test",
-    name: "test",
-    icon: "file:test.svg",
-    group: ["transform"],
-    version: 1,
-    subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
-    description: "This is a sentence",
-    defaults: {
-      name: "Test",
-    },
-    inputs: ["main"],
-    outputs: ["main"],
-    credentials: [
-      {
-        name: "testOAuth2Ap",
-      },
-      {
-        name: "testApi",
-      },
-    ],
-  };
+	description = {
+		displayName: "Test",
+		name: "test",
+		icon: "file:test.svg",
+		group: ["transform"],
+		version: 1,
+		subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
+		description: "This is a sentence",
+		defaults: {
+			name: "Test",
+		},
+		inputs: ["main"],
+		outputs: ["main"],
+		credentials: [
+			{
+				name: "testOAuth2Ap",
+			},
+			{
+				name: "testApi",
+			},
+		],
+	};
 }
 
 class TestNode {
-  description = {
-    displayName: "Test",
-    name: "test",
-    icon: "file:test.svg",
-    group: ["transform"],
-    version: 1,
-    subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
-    description: "This is a sentence",
-    defaults: {
-      name: "Test",
-    },
-    inputs: ["main"],
-    outputs: ["main"],
-    credentials: [
-      {
-        name: "testOAuth2A",
-      },
-      {
-        name: "testApi",
-      },
-    ],
-  };
+	description = {
+		displayName: "Test",
+		name: "test",
+		icon: "file:test.svg",
+		group: ["transform"],
+		version: 1,
+		subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
+		description: "This is a sentence",
+		defaults: {
+			name: "Test",
+		},
+		inputs: ["main"],
+		outputs: ["main"],
+		credentials: [
+			{
+				name: "testOAuth2A",
+			},
+			{
+				name: "testApi",
+			},
+		],
+	};
 }
 ```
 
@@ -93,28 +93,28 @@ class TestNode {
 
 ```js
 class TestNode {
-  description = {
-    displayName: "Test",
-    name: "test",
-    icon: "file:test.svg",
-    group: ["transform"],
-    version: 1,
-    subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
-    description: "This is a sentence",
-    defaults: {
-      name: "Test",
-    },
-    inputs: ["main"],
-    outputs: ["main"],
-    credentials: [
-      {
-        name: "testOAuth2Api",
-      },
-      {
-        name: "testApi",
-      },
-    ],
-  };
+	description = {
+		displayName: "Test",
+		name: "test",
+		icon: "file:test.svg",
+		group: ["transform"],
+		version: 1,
+		subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
+		description: "This is a sentence",
+		defaults: {
+			name: "Test",
+		},
+		inputs: ["main"],
+		outputs: ["main"],
+		credentials: [
+			{
+				name: "testOAuth2Api",
+			},
+			{
+				name: "testApi",
+			},
+		],
+	};
 }
 ```
 

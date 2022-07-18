@@ -1,6 +1,4 @@
-.vscode
-node_modules
 dist
-NOTES.md
+node_modules
 .DS_Store
 .todo

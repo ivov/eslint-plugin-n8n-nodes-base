@@ -14,11 +14,11 @@
 
 ```js
 const test = {
-  displayName: "Limit",
-  name: "limit",
-  type: "number",
-  default: "",
-  description: "Wrong",
+	displayName: "Limit",
+	name: "limit",
+	type: "number",
+	default: "",
+	description: "Wrong",
 };
 ```
 
@@ -26,11 +26,11 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Limit",
-  name: "limit",
-  type: "number",
-  default: "",
-  description: "Max number of results to return",
+	displayName: "Limit",
+	name: "limit",
+	type: "number",
+	default: "",
+	description: "Max number of results to return",
 };
 ```
 

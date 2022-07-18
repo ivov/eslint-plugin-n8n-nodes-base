@@ -3,9 +3,9 @@ import { ruleTester, getRuleName } from "../lib/ast";
 import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
-  valid: [
-    {
-      code: outdent`
+	valid: [
+		{
+			code: outdent`
 			class TestApi implements ICredentialType {
 				name = 'myTestApi';
 				displayName = 'My Test API';
@@ -19,11 +19,11 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				];
 			}`,
-    },
-  ],
-  invalid: [
-    {
-      code: outdent`
+		},
+	],
+	invalid: [
+		{
+			code: outdent`
 			class TestApi implements ICredentialType {
 				name = 'myTestApi';
 				displayName = 'My Test API';
@@ -37,8 +37,8 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				];
 			}`,
-      errors: [{ messageId: "removeAssertionAndType" }],
-      output: outdent`
+			errors: [{ messageId: "removeAssertionAndType" }],
+			output: outdent`
 			class TestApi implements ICredentialType {
 				name = 'myTestApi';
 				displayName = 'My Test API';
@@ -52,9 +52,9 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				];
 			}`,
-    },
-    {
-      code: outdent`
+		},
+		{
+			code: outdent`
 			class TestApi implements ICredentialType {
 				name = 'myTestApi';
 				displayName = 'My Test API';
@@ -68,8 +68,8 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				];
 			}`,
-      errors: [{ messageId: "removeAssertion" }],
-      output: outdent`
+			errors: [{ messageId: "removeAssertion" }],
+			output: outdent`
 			class TestApi implements ICredentialType {
 				name = 'myTestApi';
 				displayName = 'My Test API';
@@ -83,6 +83,6 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				];
 			}`,
-    },
-  ],
+		},
+	],
 });

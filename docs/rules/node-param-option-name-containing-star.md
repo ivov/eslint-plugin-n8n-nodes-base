@@ -14,20 +14,20 @@ Option `name` in options-type node parameter must not contain `*`. Use `[All]` i
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "options",
-  default: "some",
-  options: [
-    {
-      name: "*",
-      value: "all",
-    },
-    {
-      name: "Some",
-      value: "some",
-    },
-  ],
+	displayName: "Test",
+	name: "test",
+	type: "options",
+	default: "some",
+	options: [
+		{
+			name: "*",
+			value: "all",
+		},
+		{
+			name: "Some",
+			value: "some",
+		},
+	],
 };
 ```
 
@@ -35,20 +35,20 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "options",
-  default: "some",
-  options: [
-    {
-      name: "[All]",
-      value: "all",
-    },
-    {
-      name: "Some",
-      value: "some",
-    },
-  ],
+	displayName: "Test",
+	name: "test",
+	type: "options",
+	default: "some",
+	options: [
+		{
+			name: "[All]",
+			value: "all",
+		},
+		{
+			name: "Some",
+			value: "some",
+		},
+	],
 };
 ```
 

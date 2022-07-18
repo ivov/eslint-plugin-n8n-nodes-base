@@ -14,11 +14,11 @@
 
 ```js
 const test = {
-  displayName: "Ignore SSL Issues",
-  name: "allowUnauthorizedCerts",
-  type: "boolean",
-  default: true,
-  description: "Wrong",
+	displayName: "Ignore SSL Issues",
+	name: "allowUnauthorizedCerts",
+	type: "boolean",
+	default: true,
+	description: "Wrong",
 };
 ```
 
@@ -26,12 +26,12 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Ignore SSL Issues",
-  name: "allowUnauthorizedCerts",
-  type: "boolean",
-  default: true,
-  description:
-    "Whether to connect even if SSL certificate validation is not possible",
+	displayName: "Ignore SSL Issues",
+	name: "allowUnauthorizedCerts",
+	type: "boolean",
+	default: true,
+	description:
+		"Whether to connect even if SSL certificate validation is not possible",
 };
 ```
 

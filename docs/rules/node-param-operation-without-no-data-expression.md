@@ -14,30 +14,30 @@
 
 ```js
 const test = {
-  displayName: "Operation",
-  name: "operation",
-  type: "options",
-  noDataExpression: false,
-  options: [
-    {
-      name: "Get",
-      value: "get",
-    },
-  ],
-  default: "contact",
+	displayName: "Operation",
+	name: "operation",
+	type: "options",
+	noDataExpression: false,
+	options: [
+		{
+			name: "Get",
+			value: "get",
+		},
+	],
+	default: "contact",
 };
 
 const test = {
-  displayName: "Operation",
-  name: "operation",
-  type: "options",
-  options: [
-    {
-      name: "Get",
-      value: "get",
-    },
-  ],
-  default: "contact",
+	displayName: "Operation",
+	name: "operation",
+	type: "options",
+	options: [
+		{
+			name: "Get",
+			value: "get",
+		},
+	],
+	default: "contact",
 };
 ```
 
@@ -45,17 +45,17 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Operation",
-  name: "operation",
-  type: "options",
-  noDataExpression: true,
-  options: [
-    {
-      name: "Get",
-      value: "get",
-    },
-  ],
-  default: "contact",
+	displayName: "Operation",
+	name: "operation",
+	type: "options",
+	noDataExpression: true,
+	options: [
+		{
+			name: "Get",
+			value: "get",
+		},
+	],
+	default: "contact",
 };
 ```
 

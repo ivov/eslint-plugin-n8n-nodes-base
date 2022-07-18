@@ -9,87 +9,87 @@ const path = require("path");
 const rulesPath = path.join(__dirname, "..", "dist", "lib", "rules");
 
 const DEPENDS_AUTOFIXABLE = [
-  "node-execute-block-operation-missing-plural-pairing",
+	"node-execute-block-operation-missing-plural-pairing",
 ];
 
 const allRuleNames = fs
-  .readdirSync(rulesPath)
-  .filter((fileName) => fileName.endsWith(".js"))
-  .map((fileName) => fileName.replace(/\.js$/, ""));
+	.readdirSync(rulesPath)
+	.filter((fileName) => fileName.endsWith(".js"))
+	.map((fileName) => fileName.replace(/\.js$/, ""));
 
 updateMarkedSegment("./README.md", makeRulesTable(), {
-  start: "<!-- RULES_TABLE -->",
-  end: "<!-- /RULES_TABLE -->",
+	start: "<!-- RULES_TABLE -->",
+	end: "<!-- /RULES_TABLE -->",
 });
 
 async function updateMarkedSegment(filepath, updateText, mark) {
-  const oldContent = await fs.promises.readFile(filepath, "utf8");
-  const newContent = replaceInsideMarkedSegment(oldContent, updateText, mark);
+	const oldContent = await fs.promises.readFile(filepath, "utf8");
+	const newContent = replaceInsideMarkedSegment(oldContent, updateText, mark);
 
-  if (newContent === oldContent) return;
+	if (newContent === oldContent) return;
 
-  fs.writeFileSync(filepath, newContent);
+	fs.writeFileSync(filepath, newContent);
 }
 
 function replaceInsideMarkedSegment(original, updateText, mark) {
-  const startMarkIndex = original.indexOf(mark.start);
-  const endMarkIndex = original.indexOf(mark.end);
+	const startMarkIndex = original.indexOf(mark.start);
+	const endMarkIndex = original.indexOf(mark.end);
 
-  if (!updateText) {
-    throw new Error("Update text is required.");
-  }
+	if (!updateText) {
+		throw new Error("Update text is required.");
+	}
 
-  if (!mark) {
-    throw new Error("Segment mark is required.");
-  }
+	if (!mark) {
+		throw new Error("Segment mark is required.");
+	}
 
-  if (startMarkIndex === -1) {
-    throw new Error(`Failed to find ${mark.start}' in file ${original}.`);
-  }
+	if (startMarkIndex === -1) {
+		throw new Error(`Failed to find ${mark.start}' in file ${original}.`);
+	}
 
-  if (endMarkIndex === -1) {
-    throw new Error(`Failed to find ${mark.end}' in file.`);
-  }
+	if (endMarkIndex === -1) {
+		throw new Error(`Failed to find ${mark.end}' in file.`);
+	}
 
-  if (startMarkIndex > endMarkIndex) {
-    throw new Error(`Use '${mark.start}' before '${mark.end}'.`);
-  }
+	if (startMarkIndex > endMarkIndex) {
+		throw new Error(`Use '${mark.start}' before '${mark.end}'.`);
+	}
 
-  const before = original.slice(0, startMarkIndex + mark.start.length);
-  const after = original.slice(endMarkIndex);
+	const before = original.slice(0, startMarkIndex + mark.start.length);
+	const after = original.slice(endMarkIndex);
 
-  return before + `\n${updateText}\n` + after;
+	return before + `\n${updateText}\n` + after;
 }
 
 function makeRulesTable() {
-  const rules = allRuleNames.map((ruleName) => {
-    const rule = require(path.join(rulesPath, ruleName)).default;
+	const rules = allRuleNames.map((ruleName) => {
+		const rule = require(path.join(rulesPath, ruleName)).default;
 
-    return {
-      id: ruleName,
-      meta: rule.meta,
-      isAutofixable: rule.meta.fixable !== undefined,
-    };
-  });
+		return {
+			id: ruleName,
+			meta: rule.meta,
+			isAutofixable: rule.meta.fixable !== undefined,
+		};
+	});
 
-  const rulesTableContent = rules
-    .map((rule) => {
-      const url = `docs/rules/${rule.id}.md`;
-      const link = `[${rule.id}](${url})`;
+	const rulesTableContent = rules
+		.map((rule) => {
+			const url = `docs/rules/${rule.id}.md`;
+			const link = `[${rule.id}](${url})`;
 
-      const { description } = rule.meta.docs;
+			const { description } = rule.meta.docs;
 
-      const autofixableOrNot = DEPENDS_AUTOFIXABLE.includes(rule.id)
-        ? "Depends"
-        : rule.isAutofixable
-        ? "Yes"
-        : "No";
+			const autofixableOrNot = DEPENDS_AUTOFIXABLE.includes(rule.id)
+				? "Depends"
+				: rule.isAutofixable
+				? "Yes"
+				: "No";
 
-      return `| ${[link, description, autofixableOrNot].join(" | ")} |`;
-    })
-    .join("\n");
+			return `| ${[link, description, autofixableOrNot].join(" | ")} |`;
+		})
+		.join("\n");
 
-  return outdent`
+	return outdent`
 		| Name${"&nbsp;".repeat(40)} | Description | Autofixable |
 		|${" :-- |".repeat(3)}
 		${rulesTableContent}

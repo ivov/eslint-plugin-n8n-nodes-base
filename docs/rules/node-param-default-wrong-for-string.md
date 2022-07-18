@@ -14,10 +14,10 @@
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: 1,
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: 1,
 };
 ```
 
@@ -25,21 +25,21 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
 };
 
 const test = {
-  displayName: "Tags",
-  name: "tags",
-  type: "string",
-  typeOptions: {
-    multipleValues: true,
-    multipleValueButtonText: "Add Tag",
-  },
-  default: [],
+	displayName: "Tags",
+	name: "tags",
+	type: "string",
+	typeOptions: {
+		multipleValues: true,
+		multipleValueButtonText: "Add Tag",
+	},
+	default: [],
 };
 ```
 

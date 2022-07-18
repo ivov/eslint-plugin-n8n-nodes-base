@@ -14,8 +14,8 @@ Option `name` for Get All node parameter must be `Get All`
 
 ```js
 const test = {
-  name: "List",
-  value: "getAll",
+	name: "List",
+	value: "getAll",
 };
 ```
 
@@ -23,8 +23,8 @@ const test = {
 
 ```js
 const test = {
-  name: "Get All",
-  value: "getAll",
+	name: "Get All",
+	value: "getAll",
 };
 ```
 

@@ -14,25 +14,25 @@
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "options",
-  options: [
-    {
-      name: "First Option",
-      value: "firstOption",
-    },
-    {
-      name: "Second Option",
-      value: "secondOption",
-    },
-  ],
+	displayName: "Test",
+	name: "test",
+	type: "options",
+	options: [
+		{
+			name: "First Option",
+			value: "firstOption",
+		},
+		{
+			name: "Second Option",
+			value: "secondOption",
+		},
+	],
 };
 
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "options",
+	displayName: "Test",
+	name: "test",
+	type: "options",
 };
 ```
 
@@ -40,41 +40,41 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "options",
-  default: "firstOption",
-  options: [
-    {
-      name: "First Option",
-      value: "firstOption",
-    },
-    {
-      name: "Second Option",
-      value: "secondOption",
-    },
-  ],
+	displayName: "Test",
+	name: "test",
+	type: "options",
+	default: "firstOption",
+	options: [
+		{
+			name: "First Option",
+			value: "firstOption",
+		},
+		{
+			name: "Second Option",
+			value: "secondOption",
+		},
+	],
 };
 
 const test = {
-  displayName: "Scope",
-  name: "scope",
-  type: "hidden",
-  default: scopes.join(","),
+	displayName: "Scope",
+	name: "scope",
+	type: "hidden",
+	default: scopes.join(","),
 };
 
 const test = {
-  displayName: "Auth URI Query Parameters",
-  name: "authQueryParameters",
-  type: "hidden",
-  default: `user_scope=${userScopes.join(" ")}`,
+	displayName: "Auth URI Query Parameters",
+	name: "authQueryParameters",
+	type: "hidden",
+	default: `user_scope=${userScopes.join(" ")}`,
 };
 
 const test = {
-  displayName: "Value",
-  name: "value",
-  type: "number",
-  default: -1,
+	displayName: "Value",
+	name: "value",
+	type: "number",
+	default: -1,
 };
 ```
 

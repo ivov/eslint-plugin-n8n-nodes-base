@@ -14,10 +14,10 @@
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "boolean",
-  default: "",
+	displayName: "Test",
+	name: "test",
+	type: "boolean",
+	default: "",
 };
 ```
 
@@ -25,10 +25,10 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "boolean",
-  default: false,
+	displayName: "Test",
+	name: "test",
+	type: "boolean",
+	default: false,
 };
 ```
 

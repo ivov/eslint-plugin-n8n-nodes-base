@@ -9,122 +9,122 @@ import { WEAK_DESCRIPTIONS } from "../../constants";
  * Check whether the property has a specific key name and value type.
  */
 function isTargetProperty(
-  {
-    keyName,
-    valueType,
-  }: {
-    keyName: string;
-    valueType: "string" | "number" | "boolean" | "object" | "array";
-  },
-  property: TSESTree.ObjectLiteralElement
+	{
+		keyName,
+		valueType,
+	}: {
+		keyName: string;
+		valueType: "string" | "number" | "boolean" | "object" | "array";
+	},
+	property: TSESTree.ObjectLiteralElement
 ) {
-  if (
-    property.type !== AST_NODE_TYPES.Property ||
-    property.computed !== false ||
-    property.key.type !== AST_NODE_TYPES.Identifier ||
-    property.key.name !== keyName
-  ) {
-    return false;
-  }
+	if (
+		property.type !== AST_NODE_TYPES.Property ||
+		property.computed !== false ||
+		property.key.type !== AST_NODE_TYPES.Identifier ||
+		property.key.name !== keyName
+	) {
+		return false;
+	}
 
-  // non-computed property with specific key name, now check type
+	// non-computed property with specific key name, now check type
 
-  if (valueType === "object") {
-    return property.value.type === AST_NODE_TYPES.ObjectExpression;
-  }
+	if (valueType === "object") {
+		return property.value.type === AST_NODE_TYPES.ObjectExpression;
+	}
 
-  if (valueType === "array") {
-    return property.value.type === AST_NODE_TYPES.ArrayExpression;
-  }
+	if (valueType === "array") {
+		return property.value.type === AST_NODE_TYPES.ArrayExpression;
+	}
 
-  return (
-    property.value.type === AST_NODE_TYPES.Literal &&
-    typeof property.value.value === valueType
-  );
+	return (
+		property.value.type === AST_NODE_TYPES.Literal &&
+		typeof property.value.value === valueType
+	);
 }
 
 /**
  * Check whether the property has a specific key name and points to a string `Literal`.
  */
 export function isStringPropertyNamed(
-  keyName:
-    | "displayName"
-    | "name"
-    | "type"
-    | "description"
-    | "placeholder"
-    | "loadOptionsMethod"
-    | "subtitle"
-    | "icon"
-    | "value", // option in options-type node param,
-  property: TSESTree.ObjectLiteralElement
+	keyName:
+		| "displayName"
+		| "name"
+		| "type"
+		| "description"
+		| "placeholder"
+		| "loadOptionsMethod"
+		| "subtitle"
+		| "icon"
+		| "value", // option in options-type node param,
+	property: TSESTree.ObjectLiteralElement
 ) {
-  return isTargetProperty({ keyName, valueType: "string" }, property);
+	return isTargetProperty({ keyName, valueType: "string" }, property);
 }
 
 /**
  * Check whether the property has a specific key name and points to a number `Literal`.
  */
 export function isNumericPropertyNamed(
-  keyName: "version" | "defaultVersion",
-  property: TSESTree.ObjectLiteralElement
+	keyName: "version" | "defaultVersion",
+	property: TSESTree.ObjectLiteralElement
 ) {
-  return isTargetProperty({ keyName, valueType: "number" }, property);
+	return isTargetProperty({ keyName, valueType: "number" }, property);
 }
 
 /**
  * Check whether the property has a specific key name and points to a boolean `Literal`.
  */
 export function isBooleanPropertyNamed(
-  keyName: "required" | "noDataExpression",
-  property: TSESTree.ObjectLiteralElement
+	keyName: "required" | "noDataExpression",
+	property: TSESTree.ObjectLiteralElement
 ) {
-  return isTargetProperty({ keyName, valueType: "boolean" }, property);
+	return isTargetProperty({ keyName, valueType: "boolean" }, property);
 }
 
 /**
  * Check whether the property has a specific key name and points to an `ObjectExpression`.
  */
 export function isObjectPropertyNamed(
-  keyName: "displayOptions" | "typeOptions" | "show" | "default",
-  property: TSESTree.ObjectLiteralElement
+	keyName: "displayOptions" | "typeOptions" | "show" | "default",
+	property: TSESTree.ObjectLiteralElement
 ) {
-  return isTargetProperty({ keyName, valueType: "object" }, property);
+	return isTargetProperty({ keyName, valueType: "object" }, property);
 }
 
 /**
  * Check whether the property has a specific key name and points to an `ArrayExpression`.
  */
 export function isArrayPropertyNamed(
-  keyName:
-    | "options" // node parameter
-    | "default" // node parameter
-    | "resource" // displayOptions.show
-    | "operation" // displayOptions.show
-    | "values" // fixed collection section
-    | "inputs" // node class description
-    | "outputs" // node class description
-    | "credentials" // node class description
-    | "properties", // node class description
-  property: TSESTree.ObjectLiteralElement
+	keyName:
+		| "options" // node parameter
+		| "default" // node parameter
+		| "resource" // displayOptions.show
+		| "operation" // displayOptions.show
+		| "values" // fixed collection section
+		| "inputs" // node class description
+		| "outputs" // node class description
+		| "credentials" // node class description
+		| "properties", // node class description
+	property: TSESTree.ObjectLiteralElement
 ) {
-  return isTargetProperty({ keyName, valueType: "array" }, property);
+	return isTargetProperty({ keyName, valueType: "array" }, property);
 }
 
 /**
  * Check whether a property points to an identifier, e.g. `options: myVar`
  */
 export function isIdentifierPropertyNamed(
-  keyName: "options",
-  property: TSESTree.ObjectLiteralElement
+	keyName: "options",
+	property: TSESTree.ObjectLiteralElement
 ) {
-  return (
-    property.type === AST_NODE_TYPES.Property &&
-    property.computed === false &&
-    property.key.type === AST_NODE_TYPES.Identifier &&
-    property.key.name === keyName &&
-    property.value.type === AST_NODE_TYPES.Identifier
-  );
+	return (
+		property.type === AST_NODE_TYPES.Property &&
+		property.computed === false &&
+		property.key.type === AST_NODE_TYPES.Identifier &&
+		property.key.name === keyName &&
+		property.value.type === AST_NODE_TYPES.Identifier
+	);
 }
 
 // ----------------------------------------
@@ -132,49 +132,49 @@ export function isIdentifierPropertyNamed(
 // ----------------------------------------
 
 export function isCredentialClass(node: TSESTree.ClassDeclaration) {
-  return (
-    node.implements?.length === 1 &&
-    node.implements[0].type === AST_NODE_TYPES.TSClassImplements &&
-    node.implements[0].expression.type === AST_NODE_TYPES.Identifier &&
-    node.implements[0].expression.name === "ICredentialType"
-  );
+	return (
+		node.implements?.length === 1 &&
+		node.implements[0].type === AST_NODE_TYPES.TSClassImplements &&
+		node.implements[0].expression.type === AST_NODE_TYPES.Identifier &&
+		node.implements[0].expression.name === "ICredentialType"
+	);
 }
 
 export function hasValue(
-  value: "getAll" | "upsert",
-  nodeParam: TSESTree.ObjectExpression
+	value: "getAll" | "upsert",
+	nodeParam: TSESTree.ObjectExpression
 ) {
-  for (const property of nodeParam.properties) {
-    if (
-      property.type === AST_NODE_TYPES.Property &&
-      property.computed === false &&
-      property.key.type === AST_NODE_TYPES.Identifier &&
-      property.value.type === AST_NODE_TYPES.Literal &&
-      property.value.value === value &&
-      typeof property.value.value === "string"
-    ) {
-      return true;
-    }
-  }
+	for (const property of nodeParam.properties) {
+		if (
+			property.type === AST_NODE_TYPES.Property &&
+			property.computed === false &&
+			property.key.type === AST_NODE_TYPES.Identifier &&
+			property.value.type === AST_NODE_TYPES.Literal &&
+			property.value.value === value &&
+			typeof property.value.value === "string"
+		) {
+			return true;
+		}
+	}
 
-  return false;
+	return false;
 }
 
 export function isReturnValue(node: TSESTree.Node) {
-  return node.parent?.type === AST_NODE_TYPES.ReturnStatement;
+	return node.parent?.type === AST_NODE_TYPES.ReturnStatement;
 }
 
 export function isArgument(node: TSESTree.Node) {
-  return (
-    node.parent?.type === AST_NODE_TYPES.TSAsExpression ||
-    node.parent?.type === AST_NODE_TYPES.CallExpression
-  );
+	return (
+		node.parent?.type === AST_NODE_TYPES.TSAsExpression ||
+		node.parent?.type === AST_NODE_TYPES.CallExpression
+	);
 }
 
 export function isWeakDescription({ value }: { value: string }) {
-  return WEAK_DESCRIPTIONS.some((wd) =>
-    value.toLowerCase().includes(wd.toLowerCase())
-  );
+	return WEAK_DESCRIPTIONS.some((wd) =>
+		value.toLowerCase().includes(wd.toLowerCase())
+	);
 }
 
 // ----------------------------------------
@@ -182,45 +182,45 @@ export function isWeakDescription({ value }: { value: string }) {
 // ----------------------------------------
 
 export const isLiteral = (
-  property: TSESTree.ObjectLiteralElement
+	property: TSESTree.ObjectLiteralElement
 ): property is TSESTree.PropertyNonComputedName & {
-  key: { name: string };
-  value: { value: string };
+	key: { name: string };
+	value: { value: string };
 } => {
-  return (
-    property.type === AST_NODE_TYPES.Property &&
-    property.computed === false &&
-    property.key.type === AST_NODE_TYPES.Identifier &&
-    property.value.type === AST_NODE_TYPES.Literal
-  );
+	return (
+		property.type === AST_NODE_TYPES.Property &&
+		property.computed === false &&
+		property.key.type === AST_NODE_TYPES.Identifier &&
+		property.value.type === AST_NODE_TYPES.Literal
+	);
 };
 
 export const isArrayExpression = (
-  property: TSESTree.ObjectLiteralElement
+	property: TSESTree.ObjectLiteralElement
 ): property is TSESTree.PropertyNonComputedName & {
-  key: { name: string };
-  value: { elements: TSESTree.ObjectExpression[] }; // @TODO: Double-check type
+	key: { name: string };
+	value: { elements: TSESTree.ObjectExpression[] }; // @TODO: Double-check type
 } => {
-  return (
-    property.type === AST_NODE_TYPES.Property &&
-    property.computed === false &&
-    property.key.type === AST_NODE_TYPES.Identifier &&
-    typeof property.key.name === "string" &&
-    property.value.type === AST_NODE_TYPES.ArrayExpression
-  );
+	return (
+		property.type === AST_NODE_TYPES.Property &&
+		property.computed === false &&
+		property.key.type === AST_NODE_TYPES.Identifier &&
+		typeof property.key.name === "string" &&
+		property.value.type === AST_NODE_TYPES.ArrayExpression
+	);
 };
 
 export const isMemberExpression = (
-  property: TSESTree.ObjectLiteralElement
+	property: TSESTree.ObjectLiteralElement
 ): property is TSESTree.PropertyNonComputedName & {
-  key: { name: string };
-  value: { object: { name: string }; property: { name: string } };
+	key: { name: string };
+	value: { object: { name: string }; property: { name: string } };
 } => {
-  return (
-    property.type === AST_NODE_TYPES.Property &&
-    property.computed === false &&
-    property.key.type === AST_NODE_TYPES.Identifier &&
-    typeof property.key.name === "string" &&
-    property.value.type === AST_NODE_TYPES.MemberExpression
-  );
+	return (
+		property.type === AST_NODE_TYPES.Property &&
+		property.computed === false &&
+		property.key.type === AST_NODE_TYPES.Identifier &&
+		typeof property.key.name === "string" &&
+		property.value.type === AST_NODE_TYPES.MemberExpression
+	);
 };

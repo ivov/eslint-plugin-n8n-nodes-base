@@ -5,58 +5,58 @@ import { getters } from "../ast/getters";
 const isTestRun = process.env.NODE_ENV === "test";
 
 export default utils.createRule({
-  name: utils.getRuleName(module),
-  meta: {
-    type: "layout",
-    docs: {
-      description:
-        "`documentationUrl` field in credential class must be an HTTP URL. Only applicable to community credentials.",
-      recommended: "error",
-    },
-    schema: [],
-    messages: {
-      useHttpUrl:
-        "Use an HTTP URL, e.g. `https://example.com/docs/auth` [non-autofixable]",
-    },
-  },
-  defaultOptions: [],
-  create(context) {
-    return {
-      ClassDeclaration(node) {
-        if (
-          !id.isCredentialClass(node) ||
-          !isCommunityCredential(context.getFilename())
-        )
-          return;
+	name: utils.getRuleName(module),
+	meta: {
+		type: "layout",
+		docs: {
+			description:
+				"`documentationUrl` field in credential class must be an HTTP URL. Only applicable to community credentials.",
+			recommended: "error",
+		},
+		schema: [],
+		messages: {
+			useHttpUrl:
+				"Use an HTTP URL, e.g. `https://example.com/docs/auth` [non-autofixable]",
+		},
+	},
+	defaultOptions: [],
+	create(context) {
+		return {
+			ClassDeclaration(node) {
+				if (
+					!id.isCredentialClass(node) ||
+					!isCommunityCredential(context.getFilename())
+				)
+					return;
 
-        const documentationUrl = getters.credClassBody.getDocumentationUrl(
-          node.body
-        );
+				const documentationUrl = getters.credClassBody.getDocumentationUrl(
+					node.body
+				);
 
-        if (!documentationUrl) return;
+				if (!documentationUrl) return;
 
-        if (!isHttpUrl(documentationUrl.value)) {
-          context.report({
-            messageId: "useHttpUrl",
-            node: documentationUrl.ast,
-          });
-        }
-      },
-    };
-  },
+				if (!isHttpUrl(documentationUrl.value)) {
+					context.report({
+						messageId: "useHttpUrl",
+						node: documentationUrl.ast,
+					});
+				}
+			},
+		};
+	},
 });
 
 function isHttpUrl(string: string) {
-  let url;
+	let url;
 
-  try {
-    url = new URL(string);
-  } catch (_) {
-    return false;
-  }
+	try {
+		url = new URL(string);
+	} catch (_) {
+		return false;
+	}
 
-  return url.protocol === "http:" || url.protocol === "https:";
+	return url.protocol === "http:" || url.protocol === "https:";
 }
 
 const isCommunityCredential = (filename: string) =>
-  !filename.includes("packages/credentials") || isTestRun;
+	!filename.includes("packages/credentials") || isTestRun;

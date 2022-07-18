@@ -32,10 +32,10 @@ class TestNode {
 
 ```js
 class TestNode {
-  async execute() {
-    const items = this.getInputData();
-    const length = items.length;
-  }
+	async execute() {
+		const items = this.getInputData();
+		const length = items.length;
+	}
 }
 ```
 

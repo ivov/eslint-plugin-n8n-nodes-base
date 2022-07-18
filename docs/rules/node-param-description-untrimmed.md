@@ -14,17 +14,17 @@
 
 ```js
 const test = {
-  displayName: "Operation",
-  name: "operation",
-  type: "string",
-  default: "",
-  description: "This is a description   ",
+	displayName: "Operation",
+	name: "operation",
+	type: "string",
+	default: "",
+	description: "This is a description   ",
 };
 
 const test = {
-  name: "User ID",
-  value: "userId",
-  description: "The ID of the user   ",
+	name: "User ID",
+	value: "userId",
+	description: "The ID of the user   ",
 };
 ```
 
@@ -32,17 +32,17 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Operation",
-  name: "operation",
-  type: "string",
-  default: "",
-  description: "This is a description",
+	displayName: "Operation",
+	name: "operation",
+	type: "string",
+	default: "",
+	description: "This is a description",
 };
 
 const test = {
-  name: "User ID",
-  value: "userId",
-  description: "The ID of the user",
+	name: "User ID",
+	value: "userId",
+	description: "The ID of the user",
 };
 ```
 

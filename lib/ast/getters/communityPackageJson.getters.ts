@@ -1,35 +1,35 @@
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 
 type TopLevelPackageJsonKey =
-  | "name"
-  | "keywords"
-  | "description"
-  | "version"
-  | "n8n"
-  | "author"
-  | "license"
-  | "repository";
+	| "name"
+	| "keywords"
+	| "description"
+	| "version"
+	| "n8n"
+	| "author"
+	| "license"
+	| "repository";
 
 const getPackageJsonProperty =
-  (keyName: TopLevelPackageJsonKey) => (node: TSESTree.ObjectExpression) => {
-    const found = node.properties.find((property) => {
-      return (
-        property.type === AST_NODE_TYPES.Property &&
-        property.key.type === AST_NODE_TYPES.Literal &&
-        property.key.value === keyName
-      );
-    });
+	(keyName: TopLevelPackageJsonKey) => (node: TSESTree.ObjectExpression) => {
+		const found = node.properties.find((property) => {
+			return (
+				property.type === AST_NODE_TYPES.Property &&
+				property.key.type === AST_NODE_TYPES.Literal &&
+				property.key.value === keyName
+			);
+		});
 
-    if (!found) return null;
+		if (!found) return null;
 
-    return {
-      ast: found,
-      // @ts-ignore
-      value: (found.value.value as string) ?? "TODO restored object",
-      // TODO: Restoring nested object unneeded for now
-      // 'Literal' (found.value.value) or 'ObjectExpression' (nested object)
-    };
-  };
+		return {
+			ast: found,
+			// @ts-ignore
+			value: (found.value.value as string) ?? "TODO restored object",
+			// TODO: Restoring nested object unneeded for now
+			// 'Literal' (found.value.value) or 'ObjectExpression' (nested object)
+		};
+	};
 
 export const getName = getPackageJsonProperty("name");
 

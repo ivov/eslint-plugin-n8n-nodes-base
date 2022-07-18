@@ -3,9 +3,9 @@ import { ruleTester, getRuleName } from "../lib/ast";
 import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
-  valid: [
-    {
-      code: outdent`
+	valid: [
+		{
+			code: outdent`
 			class TestNode {
 				async execute() {
 					const items = this.getInputData();
@@ -62,11 +62,11 @@ ruleTester().run(getRuleName(module), rule, {
 					return [returnData];
 				}
 			}`,
-    },
-  ],
-  invalid: [
-    {
-      code: outdent`
+		},
+	],
+	invalid: [
+		{
+			code: outdent`
 			class TestNode {
 				async execute() {
 					const items = this.getInputData();
@@ -116,7 +116,7 @@ ruleTester().run(getRuleName(module), rule, {
 					return [returnData];
 				}
 			}`,
-      errors: [{ messageId: "missingSingularPairing" }],
-		}
-  ],
+			errors: [{ messageId: "missingSingularPairing" }],
+		},
+	],
 });

@@ -22,6 +22,7 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "doc": "npm run build; node scripts/make-docs.mjs",
+    "format": "prettier lib scripts tests --write",
     "lint": "eslint lib tests --ext .ts",
     "test": "jest",
     "test:watch": "jest --watch",

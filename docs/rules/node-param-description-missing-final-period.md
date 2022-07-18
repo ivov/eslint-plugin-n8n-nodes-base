@@ -14,23 +14,23 @@
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: "This a sentence. This is another",
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "This a sentence. This is another",
 };
 
 const test = {
-  name: "Username",
-  value: "username",
-  description: "First sentence. Second sentence",
+	name: "Username",
+	value: "username",
+	description: "First sentence. Second sentence",
 };
 
 const test = {
-  name: "Username",
-  value: "username",
-  description: "Person's email address. Another",
+	name: "Username",
+	value: "username",
+	description: "Person's email address. Another",
 };
 ```
 
@@ -38,40 +38,40 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: "This a sentence. This is another.",
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "This a sentence. This is another.",
 };
 
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: "This a sentence. This is another</code>",
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "This a sentence. This is another</code>",
 };
 
 const test = {
-  name: "Username",
-  value: "username",
-  description: "First sentence. Second sentence.",
+	name: "Username",
+	value: "username",
+	description: "First sentence. Second sentence.",
 };
 
 const test = {
-  name: "Username",
-  value: "username",
-  description: "Start e.g. end",
+	name: "Username",
+	value: "username",
+	description: "Start e.g. end",
 };
 
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description:
-    "Use the multiline editor. Make sure it is in standard PEM key format:-----BEGIN PRIVATE KEY-----KEY DATA GOES HERE-----END PRIVATE KEY-----",
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description:
+		"Use the multiline editor. Make sure it is in standard PEM key format:-----BEGIN PRIVATE KEY-----KEY DATA GOES HERE-----END PRIVATE KEY-----",
 };
 ```
 

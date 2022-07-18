@@ -14,26 +14,26 @@
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: "This a  sentence",
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "This a  sentence",
 };
 
 const test = {
-  displayName: "Row ID",
-  name: "rowId",
-  type: "string",
-  required: true,
-  default: "",
-  displayOptions: {
-    show: {
-      resource: ["table"],
-      operation: ["getRow"],
-    },
-  },
-  description: `ID or name of the row. Names are discouraged because
+	displayName: "Row ID",
+	name: "rowId",
+	type: "string",
+	required: true,
+	default: "",
+	displayOptions: {
+		show: {
+			resource: ["table"],
+			operation: ["getRow"],
+		},
+	},
+	description: `ID or name of the row. Names are discouraged because
     they're easily prone to being changed by users. If you're
     using a name, be sure to URI-encode it. If there are
     multiple rows with the same value in the identifying column,
@@ -41,18 +41,18 @@ const test = {
 };
 
 const test = {
-  displayName: "Incident Key",
-  name: "incidentKey",
-  type: "string",
-  default: "",
-  description: `Sending subsequent requests referencing the same service and with the same incident_key
+	displayName: "Incident Key",
+	name: "incidentKey",
+	type: "string",
+	default: "",
+	description: `Sending subsequent requests referencing the same service and with the same incident_key
                 will result in those requests being rejected if an open incident matches that incident_key.`,
 };
 
 const test = {
-  name: "User ID",
-  value: "userId",
-  description: "The ID    of the user",
+	name: "User ID",
+	value: "userId",
+	description: "The ID    of the user",
 };
 ```
 
@@ -60,25 +60,25 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: "This a sentence",
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "This a sentence",
 };
 
 const test = {
-  name: "User ID",
-  value: "userId",
-  description: "The ID of the user",
+	name: "User ID",
+	value: "userId",
+	description: "The ID of the user",
 };
 
 const test = {
-  displayName: "Access Token",
-  name: "accessToken",
-  type: "string",
-  default: "",
-  description: `The access token must have the following scopes:
+	displayName: "Access Token",
+	name: "accessToken",
+	type: "string",
+	default: "",
+	description: `The access token must have the following scopes:
     <ul>
         <li>Create/modify webhooks</li>
         <li>View webhooks</li>

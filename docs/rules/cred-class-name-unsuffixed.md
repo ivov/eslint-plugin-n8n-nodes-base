@@ -14,9 +14,9 @@ Credential class name must be suffixed with `-Api`.
 
 ```js
 class MyTest implements ICredentialType {
-  name = "myTestApi";
-  displayName = "My Test API";
-  documentationUrl = "myTest";
+	name = "myTestApi";
+	displayName = "My Test API";
+	documentationUrl = "myTest";
 }
 ```
 
@@ -24,9 +24,9 @@ class MyTest implements ICredentialType {
 
 ```js
 class MyTestApi implements ICredentialType {
-  name = "myTestApi";
-  displayName = "My Test API";
-  documentationUrl = "myTest";
+	name = "myTestApi";
+	displayName = "My Test API";
+	documentationUrl = "myTest";
 }
 ```
 

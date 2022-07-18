@@ -14,32 +14,32 @@ Items in options-type node parameter must be alphabetized by `name` if five or m
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "options",
-  default: "a",
-  options: [
-    {
-      name: "B",
-      value: "b",
-    },
-    {
-      name: "A",
-      value: "a",
-    },
-    {
-      name: "C",
-      value: "c",
-    },
-    {
-      name: "D",
-      value: "d",
-    },
-    {
-      name: "E",
-      value: "e",
-    },
-  ],
+	displayName: "Test",
+	name: "test",
+	type: "options",
+	default: "a",
+	options: [
+		{
+			name: "B",
+			value: "b",
+		},
+		{
+			name: "A",
+			value: "a",
+		},
+		{
+			name: "C",
+			value: "c",
+		},
+		{
+			name: "D",
+			value: "d",
+		},
+		{
+			name: "E",
+			value: "e",
+		},
+	],
 };
 ```
 
@@ -47,32 +47,32 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "options",
-  default: "a",
-  options: [
-    {
-      name: "A",
-      value: "a",
-    },
-    {
-      name: "B",
-      value: "b",
-    },
-    {
-      name: "C",
-      value: "c",
-    },
-    {
-      name: "D",
-      value: "d",
-    },
-    {
-      name: "E",
-      value: "e",
-    },
-  ],
+	displayName: "Test",
+	name: "test",
+	type: "options",
+	default: "a",
+	options: [
+		{
+			name: "A",
+			value: "a",
+		},
+		{
+			name: "B",
+			value: "b",
+		},
+		{
+			name: "C",
+			value: "c",
+		},
+		{
+			name: "D",
+			value: "d",
+		},
+		{
+			name: "E",
+			value: "e",
+		},
+	],
 };
 ```
 

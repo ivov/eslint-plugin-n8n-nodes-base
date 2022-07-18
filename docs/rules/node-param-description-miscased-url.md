@@ -14,47 +14,47 @@
 
 ```js
 const test = {
-  displayName: "Operation",
-  name: "operation",
-  type: "string",
-  default: "",
-  description: "The url of the curly user",
+	displayName: "Operation",
+	name: "operation",
+	type: "string",
+	default: "",
+	description: "The url of the curly user",
 };
 
 const test = {
-  displayName: "Operation",
-  name: "operation",
-  type: "string",
-  default: "",
-  description: "An avatar image url. note: the image url needs to be https.",
+	displayName: "Operation",
+	name: "operation",
+	type: "string",
+	default: "",
+	description: "An avatar image url. note: the image url needs to be https.",
 };
 
 const test = {
-  displayName: "Operation",
-  name: "operation",
-  type: "string",
-  default: "",
-  description: "The Url of the curly user",
+	displayName: "Operation",
+	name: "operation",
+	type: "string",
+	default: "",
+	description: "The Url of the curly user",
 };
 
 const test = {
-  displayName: "Operation",
-  name: "operation",
-  type: "string",
-  default: "",
-  description: "Url of the user",
+	displayName: "Operation",
+	name: "operation",
+	type: "string",
+	default: "",
+	description: "Url of the user",
 };
 
 const test = {
-  name: "User ID",
-  value: "userId",
-  description: "The url of the curly user",
+	name: "User ID",
+	value: "userId",
+	description: "The url of the curly user",
 };
 
 const test = {
-  name: "User ID",
-  value: "userId",
-  description: "The Url of the curly user",
+	name: "User ID",
+	value: "userId",
+	description: "The Url of the curly user",
 };
 ```
 
@@ -62,23 +62,23 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Operation",
-  name: "operation",
-  type: "string",
-  default: "",
-  description: "The URL of the user",
+	displayName: "Operation",
+	name: "operation",
+	type: "string",
+	default: "",
+	description: "The URL of the user",
 };
 
 const test = {
-  name: "User ID",
-  value: "userId",
-  description: "The URL of the user",
+	name: "User ID",
+	value: "userId",
+	description: "The URL of the user",
 };
 
 const test = {
-  name: "User ID",
-  value: "userId",
-  description: "The cURL command",
+	name: "User ID",
+	value: "userId",
+	description: "The cURL command",
 };
 ```
 

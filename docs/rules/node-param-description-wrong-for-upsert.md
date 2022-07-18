@@ -14,9 +14,9 @@
 
 ```js
 const test = {
-  name: "Upsert",
-  value: "upsert",
-  description: "Wrong",
+	name: "Upsert",
+	value: "upsert",
+	description: "Wrong",
 };
 ```
 
@@ -24,17 +24,17 @@ const test = {
 
 ```js
 const test = {
-  name: "Upsert",
-  value: "upsert",
-  description:
-    "Create a new record, or update the current one if it already exists (upsert)",
+	name: "Upsert",
+	value: "upsert",
+	description:
+		"Create a new record, or update the current one if it already exists (upsert)",
 };
 
 const test = {
-  name: "Upsert",
-  value: "upsert",
-  description:
-    "Create a new contact, or update the current one if it already exists (upsert)",
+	name: "Upsert",
+	value: "upsert",
+	description:
+		"Create a new contact, or update the current one if it already exists (upsert)",
 };
 ```
 

@@ -14,43 +14,43 @@
 
 ```js
 const test = {
-  displayName: "Fields",
-  name: "field",
-  type: "multiOptions",
-  typeOptions: {
-    loadOptionsMethod: "getFields",
-  },
-  default: "",
+	displayName: "Fields",
+	name: "field",
+	type: "multiOptions",
+	typeOptions: {
+		loadOptionsMethod: "getFields",
+	},
+	default: "",
 };
 
 const test = {
-  displayName: "Field",
-  name: "field",
-  type: "multiOptions",
-  typeOptions: {
-    loadOptionsMethod: "getFields",
-  },
-  default: "",
+	displayName: "Field",
+	name: "field",
+	type: "multiOptions",
+	typeOptions: {
+		loadOptionsMethod: "getFields",
+	},
+	default: "",
 };
 
 const test = {
-  displayName: "Fields Name or ID",
-  name: "field",
-  type: "multiOptions",
-  typeOptions: {
-    loadOptionsMethod: "getFields",
-  },
-  default: "",
+	displayName: "Fields Name or ID",
+	name: "field",
+	type: "multiOptions",
+	typeOptions: {
+		loadOptionsMethod: "getFields",
+	},
+	default: "",
 };
 
 const test = {
-  displayName: "Custom Schemas",
-  name: "customSchema",
-  type: "multiOptions",
-  typeOptions: {
-    loadOptionsMethod: "getSchemas",
-  },
-  default: "",
+	displayName: "Custom Schemas",
+	name: "customSchema",
+	type: "multiOptions",
+	typeOptions: {
+		loadOptionsMethod: "getSchemas",
+	},
+	default: "",
 };
 ```
 
@@ -58,23 +58,23 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Field Names or IDs",
-  name: "field",
-  type: "multiOptions",
-  typeOptions: {
-    loadOptionsMethod: "getFields",
-  },
-  default: "",
+	displayName: "Field Names or IDs",
+	name: "field",
+	type: "multiOptions",
+	typeOptions: {
+		loadOptionsMethod: "getFields",
+	},
+	default: "",
 };
 
 const test = {
-  displayName: "Properties with History",
-  name: "field",
-  type: "multiOptions",
-  typeOptions: {
-    loadOptionsMethod: "getProperties",
-  },
-  default: "",
+	displayName: "Properties with History",
+	name: "field",
+	type: "multiOptions",
+	typeOptions: {
+		loadOptionsMethod: "getProperties",
+	},
+	default: "",
 };
 ```
 

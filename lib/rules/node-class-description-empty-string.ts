@@ -3,35 +3,36 @@ import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
 
 export default utils.createRule({
-  name: utils.getRuleName(module),
-  meta: {
-    type: "layout",
-    docs: {
-      description: "`description` in node class description must be filled out.",
-      recommended: "error",
-    },
-    schema: [],
-    messages: {
-      fillOutDescription: "Fill out description [non-autofixable]", // unknowable description
-    },
-  },
-  defaultOptions: [],
-  create(context) {
-    return {
-      ObjectExpression(node) {
-        if (!id.isNodeClassDescription(node)) return;
+	name: utils.getRuleName(module),
+	meta: {
+		type: "layout",
+		docs: {
+			description:
+				"`description` in node class description must be filled out.",
+			recommended: "error",
+		},
+		schema: [],
+		messages: {
+			fillOutDescription: "Fill out description [non-autofixable]", // unknowable description
+		},
+	},
+	defaultOptions: [],
+	create(context) {
+		return {
+			ObjectExpression(node) {
+				if (!id.isNodeClassDescription(node)) return;
 
-        const description = getters.nodeClassDescription.getDescription(node);
+				const description = getters.nodeClassDescription.getDescription(node);
 
-        if (!description) return;
+				if (!description) return;
 
-        if (description.value === "") {
-          context.report({
-            messageId: "fillOutDescription",
-            node: description.ast,
-          });
-        }
-      },
-    };
-  },
+				if (description.value === "") {
+					context.report({
+						messageId: "fillOutDescription",
+						node: description.ast,
+					});
+				}
+			},
+		};
+	},
 });

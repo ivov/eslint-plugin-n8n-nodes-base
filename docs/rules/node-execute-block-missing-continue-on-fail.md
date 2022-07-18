@@ -12,51 +12,51 @@ The `execute()` method in a node must implement `continueOnFail` in a try-catch 
 
 ```js
 class TestNode {
-  description = {
-    displayName: "Test",
-    name: "test",
-    icon: "file:test.svg",
-    group: ["transform"],
-    version: 1,
-    subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
-    description: "This is a sentence",
-    defaults: {
-      name: "Test",
-    },
-    inputs: ["main"],
-    outputs: ["main"],
-  };
-  async execute() {
-    for (let i = 0; i < items.length; i++) {
-      try {
-        // ...
-      } catch (error) {
-        // ...
-      }
-    }
-  }
+	description = {
+		displayName: "Test",
+		name: "test",
+		icon: "file:test.svg",
+		group: ["transform"],
+		version: 1,
+		subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
+		description: "This is a sentence",
+		defaults: {
+			name: "Test",
+		},
+		inputs: ["main"],
+		outputs: ["main"],
+	};
+	async execute() {
+		for (let i = 0; i < items.length; i++) {
+			try {
+				// ...
+			} catch (error) {
+				// ...
+			}
+		}
+	}
 }
 
 class TestNode {
-  description = {
-    displayName: "Test",
-    name: "test",
-    icon: "file:test.svg",
-    group: ["transform"],
-    version: 1,
-    subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
-    description: "This is a sentence",
-    defaults: {
-      name: "Test",
-    },
-    inputs: ["main"],
-    outputs: ["main"],
-  };
-  async execute() {
-    for (let i = 0; i < items.length; i++) {
-      // ...
-    }
-  }
+	description = {
+		displayName: "Test",
+		name: "test",
+		icon: "file:test.svg",
+		group: ["transform"],
+		version: 1,
+		subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
+		description: "This is a sentence",
+		defaults: {
+			name: "Test",
+		},
+		inputs: ["main"],
+		outputs: ["main"],
+	};
+	async execute() {
+		for (let i = 0; i < items.length; i++) {
+			// ...
+		}
+	}
 }
 ```
 
@@ -64,31 +64,31 @@ class TestNode {
 
 ```js
 class TestNode {
-  description = {
-    displayName: "Test",
-    name: "test",
-    icon: "file:test.svg",
-    group: ["transform"],
-    version: 1,
-    subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
-    description: "This is a sentence",
-    defaults: {
-      name: "Test",
-    },
-    inputs: ["main"],
-    outputs: ["main"],
-  };
-  async execute() {
-    for (let i = 0; i < items.length; i++) {
-      try {
-        // ...
-      } catch (error) {
-        if (this.continueOnFail()) {
-          // ...
-        }
-      }
-    }
-  }
+	description = {
+		displayName: "Test",
+		name: "test",
+		icon: "file:test.svg",
+		group: ["transform"],
+		version: 1,
+		subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
+		description: "This is a sentence",
+		defaults: {
+			name: "Test",
+		},
+		inputs: ["main"],
+		outputs: ["main"],
+	};
+	async execute() {
+		for (let i = 0; i < items.length; i++) {
+			try {
+				// ...
+			} catch (error) {
+				if (this.continueOnFail()) {
+					// ...
+				}
+			}
+		}
+	}
 }
 ```
 

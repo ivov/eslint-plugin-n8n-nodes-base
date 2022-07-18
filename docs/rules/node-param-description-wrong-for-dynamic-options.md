@@ -14,25 +14,25 @@
 
 ```js
 const test = {
-  displayName: "Field Name or ID",
-  name: "field",
-  type: "options",
-  typeOptions: {
-    loadOptionsMethod: "getFields",
-  },
-  default: "",
-  description: "This is a sentence",
+	displayName: "Field Name or ID",
+	name: "field",
+	type: "options",
+	typeOptions: {
+		loadOptionsMethod: "getFields",
+	},
+	default: "",
+	description: "This is a sentence",
 };
 
 const test = {
-  displayName: "Field Name or ID",
-  name: "field",
-  type: "options",
-  typeOptions: {
-    loadOptionsMethod: "getFields",
-  },
-  default: "",
-  description: "This is a sentence. This is another.",
+	displayName: "Field Name or ID",
+	name: "field",
+	type: "options",
+	typeOptions: {
+		loadOptionsMethod: "getFields",
+	},
+	default: "",
+	description: "This is a sentence. This is another.",
 };
 ```
 
@@ -40,27 +40,27 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Field Name or ID",
-  name: "field",
-  type: "options",
-  typeOptions: {
-    loadOptionsMethod: "getFields",
-  },
-  default: "",
-  description:
-    'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
+	displayName: "Field Name or ID",
+	name: "field",
+	type: "options",
+	typeOptions: {
+		loadOptionsMethod: "getFields",
+	},
+	default: "",
+	description:
+		'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
 };
 
 const test = {
-  displayName: "Field Name or ID",
-  name: "field",
-  type: "options",
-  typeOptions: {
-    loadOptionsMethod: "getFields",
-  },
-  default: "",
-  description:
-    'This is a sentence. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>.',
+	displayName: "Field Name or ID",
+	name: "field",
+	type: "options",
+	typeOptions: {
+		loadOptionsMethod: "getFields",
+	},
+	default: "",
+	description:
+		'This is a sentence. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>.',
 };
 ```
 

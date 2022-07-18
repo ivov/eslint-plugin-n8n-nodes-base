@@ -14,17 +14,17 @@
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: 'This is a <a href="github.com">link</a>',
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: 'This is a <a href="github.com">link</a>',
 };
 
 const test = {
-  name: "Test",
-  value: "test",
-  description: 'This is a <a href="github.com">link</a>',
+	name: "Test",
+	value: "test",
+	description: 'This is a <a href="github.com">link</a>',
 };
 ```
 
@@ -32,17 +32,17 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "string",
-  default: "",
-  description: 'This is a <a href="https://github.com">link</a>',
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: 'This is a <a href="https://github.com">link</a>',
 };
 
 const test = {
-  name: "Test",
-  value: "test",
-  description: 'This is a <a href="https://github.com">link</a>',
+	name: "Test",
+	value: "test",
+	description: 'This is a <a href="https://github.com">link</a>',
 };
 ```
 

@@ -14,49 +14,49 @@
 
 ```js
 const test = {
-  displayName: "Test of tests",
-  name: "testOfTests",
-  type: "string",
-  default: "",
+	displayName: "Test of tests",
+	name: "testOfTests",
+	type: "string",
+	default: "",
 };
 
 const test = {
-  name: "Using 'Respond to Webhook' node",
-  value: "responseNode",
-  description: "Response defined in that node",
+	name: "Using 'Respond to Webhook' node",
+	value: "responseNode",
+	description: "Response defined in that node",
 };
 
 const test = {
-  displayName: "Deal's contact ID",
-  name: "testOfTests",
-  type: "string",
-  default: "",
+	displayName: "Deal's contact ID",
+	name: "testOfTests",
+	type: "string",
+	default: "",
 };
 
 const test = {
-  name: "Test of tests",
-  value: "testOfTests",
+	name: "Test of tests",
+	value: "testOfTests",
 };
 
 const test = {
-  displayName: "Test",
-  name: "test",
-  type: "fixedCollection",
-  default: "a",
-  options: [
-    {
-      displayName: "Details test",
-      name: "detailsTest",
-      values: [
-        {
-          displayName: "A",
-          name: "a",
-          type: "string",
-          default: "",
-        },
-      ],
-    },
-  ],
+	displayName: "Test",
+	name: "test",
+	type: "fixedCollection",
+	default: "a",
+	options: [
+		{
+			displayName: "Details test",
+			name: "detailsTest",
+			values: [
+				{
+					displayName: "A",
+					name: "a",
+					type: "string",
+					default: "",
+				},
+			],
+		},
+	],
 };
 ```
 
@@ -64,55 +64,55 @@ const test = {
 
 ```js
 const test = {
-  displayName: "Test of Tests",
-  name: "testOfTests",
-  type: "string",
-  default: "",
+	displayName: "Test of Tests",
+	name: "testOfTests",
+	type: "string",
+	default: "",
 };
 
 const test = {
-  name: "Test of Tests",
-  value: "testOfTests",
+	name: "Test of Tests",
+	value: "testOfTests",
 };
 
 const test = {
-  displayName: "API Domain",
-  name: "apiDomain",
-  type: "options",
-  options: [
-    {
-      name: "api.jotform.com",
-      value: "api.jotform.com",
-    },
-    {
-      name: "eu-api.jotform.com",
-      value: "eu-api.jotform.com",
-    },
-  ],
-  default: "api.jotform.com",
-  description:
-    'The API domain to use. Use "eu-api.jotform.com" if your account is in based in Europe.',
+	displayName: "API Domain",
+	name: "apiDomain",
+	type: "options",
+	options: [
+		{
+			name: "api.jotform.com",
+			value: "api.jotform.com",
+		},
+		{
+			name: "eu-api.jotform.com",
+			value: "eu-api.jotform.com",
+		},
+	],
+	default: "api.jotform.com",
+	description:
+		'The API domain to use. Use "eu-api.jotform.com" if your account is in based in Europe.',
 };
 
 const test = {
-  displayName: "SASL Mechanism",
-  name: "saslMechanism",
-  type: "options",
-  options: [
-    {
-      name: "Plain",
-      value: "plain",
-    },
-    {
-      name: "scram-sha-256",
-      value: "scram-sha-256",
-    },
-    {
-      name: "scram-sha-512",
-      value: "scram-sha-512",
-    },
-  ],
-  default: "plain",
+	displayName: "SASL Mechanism",
+	name: "saslMechanism",
+	type: "options",
+	options: [
+		{
+			name: "Plain",
+			value: "plain",
+		},
+		{
+			name: "scram-sha-256",
+			value: "scram-sha-256",
+		},
+		{
+			name: "scram-sha-512",
+			value: "scram-sha-512",
+		},
+	],
+	default: "plain",
 };
 ```
 

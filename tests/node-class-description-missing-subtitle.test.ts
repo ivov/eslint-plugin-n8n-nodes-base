@@ -4,9 +4,9 @@ import { ruleTester, getRuleName } from "../lib/ast";
 import outdent from "outdent";
 
 ruleTester().run(getRuleName(module), rule, {
-  valid: [
-    {
-      code: outdent`
+	valid: [
+		{
+			code: outdent`
 			class TestNode {
 				description = {
 					displayName: 'Test',
@@ -31,11 +31,11 @@ ruleTester().run(getRuleName(module), rule, {
 					],
 				};
 			}`,
-    },
+		},
 
 		// tolerate `subtitle` absence if no subtitle components (resource + operation)
-    {
-      code: outdent`
+		{
+			code: outdent`
 			class TestTriggerNode {
 				description = {
 					displayName: 'Test Trigger',
@@ -52,11 +52,11 @@ ruleTester().run(getRuleName(module), rule, {
 					outputs: ['main'],
 				};
 			}`,
-    },
-  ],
-  invalid: [
-    {
-      code: outdent`
+		},
+	],
+	invalid: [
+		{
+			code: outdent`
 			class TestNode {
 				description = {
 					displayName: 'Test',
@@ -80,8 +80,8 @@ ruleTester().run(getRuleName(module), rule, {
 					],
 				};
 			}`,
-      errors: [{ messageId: "addSubtitle" }],
-      output: outdent`
+			errors: [{ messageId: "addSubtitle" }],
+			output: outdent`
 			class TestNode {
 				description = {
 					displayName: 'Test',
@@ -106,6 +106,6 @@ ruleTester().run(getRuleName(module), rule, {
 					],
 				};
 			}`,
-    },
-  ],
+		},
+	],
 });

@@ -23,9 +23,14 @@ export default utils.createRule({
 	create(context) {
 		return {
 			ClassDeclaration(node) {
+				const filename = context.getFilename();
+
+				// apply only to credential class in community package once renamed away from n8n-nodes-starter
+
 				if (
+					filename.includes("n8n-nodes-starter") ||
 					!id.isCredentialClass(node) ||
-					!isCommunityCredential(context.getFilename())
+					!isCommunityCredential(filename)
 				)
 					return;
 

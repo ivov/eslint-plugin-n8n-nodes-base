@@ -33,7 +33,8 @@ export default utils.createRule({
 					node.body
 				);
 
-				if (!documentationUrl) return;
+				if (!documentationUrl || documentationUrl.value === "<your-docs-url>")
+					return;
 
 				if (!isHttpUrl(documentationUrl.value)) {
 					context.report({

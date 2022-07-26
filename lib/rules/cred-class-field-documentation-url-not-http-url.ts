@@ -64,4 +64,6 @@ function isHttpUrl(string: string) {
 }
 
 const isCommunityCredential = (filename: string) =>
-	!filename.includes("packages/credentials") || isTestRun;
+	!filename.includes("packages/credentials") ||
+	!filename.includes("packages\\credentials") ||
+	isTestRun;

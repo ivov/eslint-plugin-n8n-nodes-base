@@ -26,7 +26,7 @@ export default utils.createRule({
 
 				if (!name) return;
 
-				const actual = utils.getNodeFilename(context.getFilename());
+				const actual = utils.getNodeFilename(context.getFilename().replace(/\\/g, '/'));
 				const expected = utils.toExpectedNodeFilename(name.value);
 
 				if (actual !== expected) {

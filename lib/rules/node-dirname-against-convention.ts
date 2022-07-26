@@ -23,7 +23,7 @@ export default utils.createRule({
 				if (!filepath.endsWith(".node.ts")) return;
 
 				const [filename, parentDir] = filepath
-					.toLowerCase()
+					.replace(/\\/g, '/')
 					.split("/")
 					.reverse()
 					.map((i) => i.replace("trigger", ""));
@@ -34,7 +34,7 @@ export default utils.createRule({
 				 * `includes` because nested dirs are sections of full expected name
 				 * e.g. /Cisco/Webex/CiscoWebex.node.ts → "ciscowebex".includes("cisco")
 				 */
-				if (!expected.includes(parentDir)) {
+				if (!expected.toLowerCase().includes(parentDir.toLowerCase())) {
 					const topOfFile = { line: 1, column: 1 };
 
 					context.report({

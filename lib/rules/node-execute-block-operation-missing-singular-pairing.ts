@@ -78,4 +78,4 @@ export default utils.createRule({
 });
 
 const isOfficialNode = (filename: string) =>
-	filename.includes("packages/nodes");
+	filename.includes("packages/nodes") || filename.includes("packages\\nodes");

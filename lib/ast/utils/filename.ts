@@ -3,7 +3,7 @@ const isTestRun = process.env.NODE_ENV === "test";
 export function getNodeFilename(fullPath: string) {
 	if (isTestRun) return "Test.node.ts";
 
-	const filename = fullPath.split("/").pop();
+	const filename = fullPath.replace(/\\/g, '/').split("/").pop();
 
 	if (!filename) {
 		throw new Error(`Failed to extract node filename from path: ${fullPath}`);

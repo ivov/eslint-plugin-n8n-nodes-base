@@ -24,7 +24,11 @@ export default utils.createRule({
 			ClassDeclaration(node) {
 				if (!id.isCredentialClass(node)) return;
 
-				const actual = context.getFilename().split("/").pop();
+				const actual = context
+					.getFilename()
+					.replace(/\\/g, "/")
+					.split("/")
+					.pop();
 
 				if (!actual) return;
 

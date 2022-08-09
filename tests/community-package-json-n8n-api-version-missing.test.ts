@@ -21,7 +21,7 @@ ruleTester().run(getRuleName(module), rule, {
 						"url": "git+https://github.com/johnsmith/n8n-nodes-service.git"
 				},
 				"keywords": [
-						"n8n-community-node-package"
+						"${COMMUNITY_PACKAGE_JSON.OFFICIAL_TAG}"
 				],
 				"main": "index.js",
 				"scripts": ${COMMUNITY_PACKAGE_JSON.SCRIPTS},
@@ -61,7 +61,7 @@ ruleTester().run(getRuleName(module), rule, {
 						"url": "git+https://github.com/johnsmith/n8n-nodes-service.git"
 				},
 				"keywords": [
-						"n8n-community-node-package"
+						"${COMMUNITY_PACKAGE_JSON.OFFICIAL_TAG}"
 				],
 				"main": "index.js",
 				"scripts": ${COMMUNITY_PACKAGE_JSON.SCRIPTS},

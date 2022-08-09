@@ -2,7 +2,7 @@
 
 # community-package-json-author-name-still-default
 
-The `author.name` value in the `package.json` of a community package must be different from the default value `Jan Oberhauser`.
+The `author.name` value in the `package.json` of a community package must be different from the default value ``or a user-defined default with`authorName`.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/community` config.
 
@@ -12,12 +12,12 @@ The `author.name` value in the `package.json` of a community package must be dif
 
 ```json
 {
-	"name": "n8n-nodes-starter",
+	"name": "n8n-nodes-<...>",
 	"version": "0.1.1",
-	"description": "Example starter module for custom n8n nodes.",
+	"description": "",
 	"license": "MIT",
 	"author": {
-		"name": "Jan Oberhauser",
+		"name": "",
 		"email": "john.smith@mail.com"
 	},
 	"repository": {

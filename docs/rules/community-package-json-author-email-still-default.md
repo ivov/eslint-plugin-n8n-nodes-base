@@ -2,7 +2,7 @@
 
 # community-package-json-author-email-still-default
 
-The `author.email` value in the `package.json` of a community package must be different from the default value `jan@n8n.io`.
+The `author.email` value in the `package.json` of a community package must be different from the default value ``or a user-defined default with`authorEmail`.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/community` config.
 
@@ -12,13 +12,13 @@ The `author.email` value in the `package.json` of a community package must be di
 
 ```json
 {
-	"name": "n8n-nodes-starter",
+	"name": "n8n-nodes-<...>",
 	"version": "0.1.1",
-	"description": "Example starter module for custom n8n nodes.",
+	"description": "",
 	"license": "MIT",
 	"author": {
-		"name": "John Smith",
-		"email": "jan@n8n.io"
+		"name": "",
+		"email": ""
 	},
 	"repository": {
 		"type": "git",

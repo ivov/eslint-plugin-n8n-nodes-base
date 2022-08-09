@@ -3,22 +3,33 @@ import { getters } from "../ast/getters";
 import { utils } from "../ast/utils";
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 import { COMMUNITY_PACKAGE_JSON } from "../constants";
+import { getDefaultValue } from "../ast/utils/defaultValue";
 
 export default utils.createRule({
 	name: utils.getRuleName(module),
+	defaultOptions: [{ repositoryUrl: COMMUNITY_PACKAGE_JSON.REPOSITORY_URL }],
 	meta: {
 		type: "layout",
 		docs: {
-			description: `The \`repository.url\` value in the \`package.json\` of a community package must be different from the default value \`${COMMUNITY_PACKAGE_JSON.REPOSITORY_URL}\`.`,
+			description: `The \`repository.url\` value in the \`package.json\` of a community package must be different from the default value \`${COMMUNITY_PACKAGE_JSON.REPOSITORY_URL}\` or a user-defined default with \`repositoryUrl\`.`,
 			recommended: "error",
 		},
-		schema: [],
+		schema: [
+			{
+				type: "object",
+				properties: {
+					repositoryUrl: {
+						type: "string",
+					},
+				},
+				additionalProperties: false,
+			},
+		],
 		messages: {
 			updateRepositoryUrl: "Update the `repository.url` key in package.json",
 		},
 	},
-	defaultOptions: [],
-	create(context) {
+	create(context, options) {
 		return {
 			ObjectExpression(node) {
 				if (!id.isCommunityPackageJson(context.getFilename(), node)) return;
@@ -29,7 +40,11 @@ export default utils.createRule({
 
 				const repositoryUrl = getRepositoryUrl(repository);
 
-				if (repositoryUrl === COMMUNITY_PACKAGE_JSON.REPOSITORY_URL) {
+				if (!repositoryUrl) return;
+
+				const defaultRepositoryUrl = getDefaultValue(options, "repositoryUrl");
+
+				if (repositoryUrl === defaultRepositoryUrl) {
 					context.report({
 						messageId: "updateRepositoryUrl",
 						node,
@@ -49,11 +64,12 @@ function getRepositoryUrl(repository: { ast: TSESTree.ObjectLiteralElement }) {
 			id.hasUrlLiteral
 		);
 
-		if (!repositoryUrl) return false;
+		if (!repositoryUrl) return null;
 
 		if (
 			repositoryUrl.type === AST_NODE_TYPES.Property &&
-			repositoryUrl.value.type === AST_NODE_TYPES.Literal
+			repositoryUrl.value.type === AST_NODE_TYPES.Literal &&
+			typeof repositoryUrl.value.value === "string"
 		) {
 			return repositoryUrl.value.value;
 		}

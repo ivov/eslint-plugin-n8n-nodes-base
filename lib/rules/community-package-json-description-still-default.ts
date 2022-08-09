@@ -2,22 +2,33 @@ import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
 import { utils } from "../ast/utils";
 import { COMMUNITY_PACKAGE_JSON } from "../constants";
+import { getDefaultValue } from "../ast/utils/defaultValue";
 
 export default utils.createRule({
 	name: utils.getRuleName(module),
+	defaultOptions: [{ description: COMMUNITY_PACKAGE_JSON.DESCRIPTION }],
 	meta: {
 		type: "layout",
 		docs: {
-			description: `The \`description\` value in the \`package.json\` of a community package must be different from the default value \`${COMMUNITY_PACKAGE_JSON.DESCRIPTION}\`.`,
+			description: `The \`description\` value in the \`package.json\` of a community package must be different from the default value \`${COMMUNITY_PACKAGE_JSON.DESCRIPTION}\` or a user-defined default value with \`description\`.`,
 			recommended: "error",
 		},
-		schema: [],
+		schema: [
+			{
+				type: "object",
+				properties: {
+					description: {
+						type: "string",
+					},
+				},
+				additionalProperties: false,
+			},
+		],
 		messages: {
 			updateDescription: "Update the `description` key in package.json",
 		},
 	},
-	defaultOptions: [],
-	create(context) {
+	create(context, options) {
 		return {
 			ObjectExpression(node) {
 				if (!id.isCommunityPackageJson(context.getFilename(), node)) return;
@@ -26,7 +37,9 @@ export default utils.createRule({
 
 				if (!description) return;
 
-				if (description.value === COMMUNITY_PACKAGE_JSON.DESCRIPTION) {
+				const defaultDescription = getDefaultValue(options, "description");
+
+				if (description.value === defaultDescription) {
 					context.report({
 						messageId: "updateDescription",
 						node,

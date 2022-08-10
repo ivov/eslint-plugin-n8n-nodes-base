@@ -1,4 +1,6 @@
+import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 import { utils } from "../ast/utils";
+import { N8N_NODE_ERROR_TYPES } from "../constants";
 
 export default utils.createRule({
 	name: utils.getRuleName(module),
@@ -6,32 +8,26 @@ export default utils.createRule({
 		type: "layout",
 		docs: {
 			description:
-				"The `execute()` method in a node may only throw `NodeApiError` for failed network requests and `NodeOperationError` for internal errors, not the built-in `Error`. Refer to [`NodeErrors.ts`](https://github.com/n8n-io/n8n/blob/master/packages/workflow/src/NodeErrors.ts).",
+				"The `execute()` method in a node may only throw `NodeApiError` for failed API requests and `NodeOperationError` for internal errors, not the built-in `Error`. Refer to [`NodeErrors.ts`](https://github.com/n8n-io/n8n/blob/master/packages/workflow/src/NodeErrors.ts).",
 			recommended: "error",
 		},
 		schema: [],
 		messages: {
 			useProperError:
-				"Use `NodeApiError` or `NodeOperationError` [non-autofixable]", // complex inferral
+				"Use `NodeApiError` or `NodeOperationError` [non-autofixable]",
 		},
 	},
 	defaultOptions: [],
 	create(context) {
 		return {
-			ThrowStatement(node) {
+			"ThrowStatement > NewExpression"(node: TSESTree.NewExpression) {
 				if (!utils.isNodeFile(context.getFilename())) return;
 
-				// `ThrowStatement` should be narrowed down into `NewExpression`
-				// but `ThrowStatement.argument` is `Statement | TSAsExpression | null`
-				// and `Statement` is `ThrowStatement | IfStatement | (many others)`
+				if (node.callee.type !== AST_NODE_TYPES.Identifier) return;
 
-				// @ts-ignore
-				const errorKind: string | undefined = node?.argument?.callee?.name;
+				const { name: errorType } = node.callee;
 
-				if (
-					errorKind &&
-					!["NodeApiError", "NodeOperationError"].includes(errorKind)
-				) {
+				if (!N8N_NODE_ERROR_TYPES.includes(errorType)) {
 					context.report({
 						messageId: "useProperError",
 						node,

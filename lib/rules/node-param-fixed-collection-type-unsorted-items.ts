@@ -1,6 +1,6 @@
 import {
 	MIN_ITEMS_TO_ALPHABETIZE,
-	MIN_ITEMS_TO_ALPHABETIZE_IN_FULL,
+	MIN_ITEMS_TO_ALPHABETIZE_SPELLED_OUT,
 } from "../constants";
 import { utils } from "../ast/utils";
 import { id } from "../ast/identifiers";
@@ -12,7 +12,7 @@ export default utils.createRule({
 	meta: {
 		type: "layout",
 		docs: {
-			description: `Items in a fixed-collection-type node parameter section must be alphabetized by \`displayName\` if ${MIN_ITEMS_TO_ALPHABETIZE_IN_FULL} or more than ${MIN_ITEMS_TO_ALPHABETIZE_IN_FULL}, unless the items are address fields.`,
+			description: `Items in a fixed-collection-type node parameter section must be alphabetized by \`displayName\` if ${MIN_ITEMS_TO_ALPHABETIZE_SPELLED_OUT} or more than ${MIN_ITEMS_TO_ALPHABETIZE_SPELLED_OUT}, unless the items are address fields.`,
 			recommended: "error",
 		},
 		fixable: "code",

@@ -1,4 +1,5 @@
 import { isPlural, singular } from "pluralize";
+import { pascalCase } from "pascal-case";
 import { RESOURCE_DESCRIPTION_SUFFIX } from "../constants";
 import { utils } from "../ast/utils";
 import { id } from "../ast/identifiers";
@@ -31,7 +32,7 @@ export default utils.createRule({
 
 				const resourceName = parts.shift();
 
-				if (resourceName && isPlural(resourceName)) {
+				if (resourceName && isPlural(resourceName) && !isPluralException(resourceName)) {
 					const topOfFile = { line: 1, column: 1 };
 
 					context.report({
@@ -46,3 +47,11 @@ export default utils.createRule({
 		};
 	},
 });
+
+function isPluralException(resourceName: string) {
+	if (resourceName === pascalCase(resourceName)) return true;
+
+	const PLURAL_EXCEPTIONS = ["Media", "Sms", "Mms", "Software", "Sm", "Mail"];
+
+	return PLURAL_EXCEPTIONS.includes(resourceName);
+}

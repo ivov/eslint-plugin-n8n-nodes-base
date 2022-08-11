@@ -1,6 +1,6 @@
 import {
 	MIN_ITEMS_TO_ALPHABETIZE,
-	MIN_ITEMS_TO_ALPHABETIZE_IN_FULL,
+	MIN_ITEMS_TO_ALPHABETIZE_SPELLED_OUT,
 } from "../constants";
 import { utils } from "../ast/utils";
 import { id } from "../ast/identifiers";
@@ -11,7 +11,7 @@ export default utils.createRule({
 	meta: {
 		type: "layout",
 		docs: {
-			description: `Items in options-type node parameter must be alphabetized by \`name\` if ${MIN_ITEMS_TO_ALPHABETIZE_IN_FULL} or more than ${MIN_ITEMS_TO_ALPHABETIZE_IN_FULL}.`,
+			description: `Items in options-type node parameter must be alphabetized by \`name\` if ${MIN_ITEMS_TO_ALPHABETIZE_SPELLED_OUT} or more than ${MIN_ITEMS_TO_ALPHABETIZE_SPELLED_OUT}.`,
 			recommended: "error",
 		},
 		fixable: "code",
@@ -34,6 +34,8 @@ export default utils.createRule({
 				if (!options) return;
 
 				if (options.value.length < MIN_ITEMS_TO_ALPHABETIZE) return;
+
+				if (/^\d+$/.test(options.value[0].value)) return; // do not sort numeric strings
 
 				const sortedOptions = [...options.value].sort(utils.optionComparator);
 

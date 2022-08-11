@@ -8,7 +8,7 @@
  */
 export const MIN_ITEMS_TO_ALPHABETIZE = 5;
 
-export const MIN_ITEMS_TO_ALPHABETIZE_IN_FULL = "five";
+export const MIN_ITEMS_TO_ALPHABETIZE_SPELLED_OUT = "five";
 
 export const WEAK_DESCRIPTIONS = [
 	"Resource to consume",

@@ -3,22 +3,33 @@ import { getters } from "../ast/getters";
 import { utils } from "../ast/utils";
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 import { COMMUNITY_PACKAGE_JSON } from "../constants";
+import { getDefaultValue } from "../ast/utils/defaultValue";
 
 export default utils.createRule({
 	name: utils.getRuleName(module),
+	defaultOptions: [{ authorName: COMMUNITY_PACKAGE_JSON.AUTHOR_NAME }],
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
-			description: `The \`author.name\` value in the \`package.json\` of a community package must be different from the default value \`${COMMUNITY_PACKAGE_JSON.AUTHOR_NAME}\`.`,
+			description: `The \`author.name\` value in the \`package.json\` of a community package must be different from the default value \`${COMMUNITY_PACKAGE_JSON.AUTHOR_NAME}\` or a user-defined default with \`authorName\`.`,
 			recommended: "error",
 		},
-		schema: [],
+		schema: [
+			{
+				type: "object",
+				properties: {
+					authorName: {
+						type: "string",
+					},
+				},
+				additionalProperties: false,
+			},
+		],
 		messages: {
 			updateAuthorName: "Update the `author.name` key in package.json",
 		},
 	},
-	defaultOptions: [],
-	create(context) {
+	create(context, options) {
 		return {
 			ObjectExpression(node) {
 				if (!id.isCommunityPackageJson(context.getFilename(), node)) return;
@@ -29,7 +40,11 @@ export default utils.createRule({
 
 				const authorName = getAuthorName(author);
 
-				if (authorName === COMMUNITY_PACKAGE_JSON.AUTHOR_NAME) {
+				if (authorName === null) return;
+
+				const defaultAuthorName = getDefaultValue(options, "authorName");
+
+				if (authorName === defaultAuthorName) {
 					context.report({
 						messageId: "updateAuthorName",
 						node,
@@ -47,11 +62,12 @@ function getAuthorName(author: { ast: TSESTree.ObjectLiteralElement }) {
 	) {
 		const authorName = author.ast.value.properties.find(id.hasNameLiteral);
 
-		if (!authorName) return false;
+		if (authorName === undefined) return null;
 
 		if (
 			authorName.type === AST_NODE_TYPES.Property &&
-			authorName.value.type === AST_NODE_TYPES.Literal
+			authorName.value.type === AST_NODE_TYPES.Literal &&
+			typeof authorName.value.value === "string"
 		) {
 			return authorName.value.value;
 		}

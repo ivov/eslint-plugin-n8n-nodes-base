@@ -21,7 +21,7 @@ ruleTester().run(getRuleName(module), rule, {
 						"url": "git+https://github.com/johnsmith/n8n-nodes-service.git"
 				},
 				"keywords": [
-						"n8n-community-node-package"
+						"${COMMUNITY_PACKAGE_JSON.OFFICIAL_TAG}"
 				],
 				"main": "index.js",
 				"scripts": ${COMMUNITY_PACKAGE_JSON.SCRIPTS},
@@ -47,7 +47,7 @@ ruleTester().run(getRuleName(module), rule, {
 		{
 			code: outdent`
 			const packageJson = {
-				"name": "n8n-nodes-starter",
+				"name": "${COMMUNITY_PACKAGE_JSON.NAME}",
 				"version": "0.1.1",
 				"description": "Consumes Service API",
 				"license": "MIT",
@@ -60,7 +60,7 @@ ruleTester().run(getRuleName(module), rule, {
 						"url": "git+https://github.com/johnsmith/n8n-nodes-service.git"
 				},
 				"keywords": [
-						"n8n-community-node-package"
+						"${COMMUNITY_PACKAGE_JSON.OFFICIAL_TAG}"
 				],
 				"main": "index.js",
 				"scripts": ${COMMUNITY_PACKAGE_JSON.SCRIPTS},

@@ -21,7 +21,7 @@ ruleTester().run(getRuleName(module), rule, {
 						"url": "git+https://github.com/johnsmith/n8n-nodes-service.git"
 				},
 				"keywords": [
-						"n8n-community-node-package"
+						"${COMMUNITY_PACKAGE_JSON.OFFICIAL_TAG}"
 				],
 				"main": "index.js",
 				"scripts": ${COMMUNITY_PACKAGE_JSON.SCRIPTS},
@@ -47,9 +47,9 @@ ruleTester().run(getRuleName(module), rule, {
 		{
 			code: outdent`
 			const packageJson = {
-				"name": "n8n-nodes-starter",
+				"name": "${COMMUNITY_PACKAGE_JSON.NAME}",
 				"version": "0.1.1",
-				"description": "Example starter module for custom n8n nodes.",
+				"description": "${COMMUNITY_PACKAGE_JSON.DESCRIPTION}",
 				"license": "MIT",
 				"author": {
 						"name": "John Smith",
@@ -57,10 +57,10 @@ ruleTester().run(getRuleName(module), rule, {
 				},
 				"repository": {
 						"type": "git",
-						"url": "git+https://github.com/n8n-io/n8n-nodes-starter.git"
+						"url": "${COMMUNITY_PACKAGE_JSON.REPOSITORY_URL}"
 				},
 				"keywords": [
-						"n8n-community-node-package"
+						"${COMMUNITY_PACKAGE_JSON.OFFICIAL_TAG}"
 				],
 				"main": "index.js",
 				"scripts": ${COMMUNITY_PACKAGE_JSON.SCRIPTS},

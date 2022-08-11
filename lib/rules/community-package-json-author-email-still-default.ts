@@ -3,22 +3,33 @@ import { getters } from "../ast/getters";
 import { utils } from "../ast/utils";
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 import { COMMUNITY_PACKAGE_JSON } from "../constants";
+import { getDefaultValue } from "../ast/utils/defaultValue";
 
 export default utils.createRule({
 	name: utils.getRuleName(module),
+	defaultOptions: [{ authorEmail: COMMUNITY_PACKAGE_JSON.AUTHOR_EMAIL }],
 	meta: {
 		type: "layout",
 		docs: {
-			description: `The \`author.email\` value in the \`package.json\` of a community package must be different from the default value \`${COMMUNITY_PACKAGE_JSON.AUTHOR_EMAIL}\`.`,
+			description: `The \`author.email\` value in the \`package.json\` of a community package must be different from the default value \`${COMMUNITY_PACKAGE_JSON.AUTHOR_EMAIL}\` or a user-defined default with \`authorEmail\`.`,
 			recommended: "error",
 		},
-		schema: [],
+		schema: [
+			{
+				type: "object",
+				properties: {
+					authorEmail: {
+						type: "string",
+					},
+				},
+				additionalProperties: false,
+			},
+		],
 		messages: {
 			updateAuthorEmail: "Update the `author.email` key in package.json",
 		},
 	},
-	defaultOptions: [],
-	create(context) {
+	create(context, options) {
 		return {
 			ObjectExpression(node) {
 				if (!id.isCommunityPackageJson(context.getFilename(), node)) return;
@@ -27,9 +38,13 @@ export default utils.createRule({
 
 				if (!author) return;
 
-				const authorName = getAuthorEmail(author);
+				const authorEmail = getAuthorEmail(author);
 
-				if (authorName === COMMUNITY_PACKAGE_JSON.AUTHOR_EMAIL) {
+				if (authorEmail === null) return;
+
+				const defaultAuthorEmail = getDefaultValue(options, "authorEmail");
+
+				if (authorEmail === defaultAuthorEmail) {
 					context.report({
 						messageId: "updateAuthorEmail",
 						node,
@@ -45,15 +60,16 @@ function getAuthorEmail(author: { ast: TSESTree.ObjectLiteralElement }) {
 		author.ast.type === AST_NODE_TYPES.Property &&
 		author.ast.value.type === AST_NODE_TYPES.ObjectExpression
 	) {
-		const authorName = author.ast.value.properties.find(id.hasEmailLiteral);
+		const authorEmail = author.ast.value.properties.find(id.hasEmailLiteral);
 
-		if (!authorName) return false;
+		if (authorEmail === undefined) return null;
 
 		if (
-			authorName.type === AST_NODE_TYPES.Property &&
-			authorName.value.type === AST_NODE_TYPES.Literal
+			authorEmail.type === AST_NODE_TYPES.Property &&
+			authorEmail.value.type === AST_NODE_TYPES.Literal &&
+			typeof authorEmail.value.value === "string"
 		) {
-			return authorName.value.value;
+			return authorEmail.value.value;
 		}
 	}
 

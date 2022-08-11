@@ -2,7 +2,7 @@
 
 # community-package-json-name-still-default
 
-The `name` key in the `package.json` of a community package must be different from the default value `n8n-nodes-starter`.
+The `name` key in the `package.json` of a community package must be different from the default value `n8n-nodes-<...>` or a user-defined default with `name`.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/community` config.
 
@@ -12,7 +12,7 @@ The `name` key in the `package.json` of a community package must be different fr
 
 ```json
 {
-	"name": "n8n-nodes-starter",
+	"name": "n8n-nodes-<...>",
 	"version": "0.1.1",
 	"description": "Consumes Service API",
 	"license": "MIT",

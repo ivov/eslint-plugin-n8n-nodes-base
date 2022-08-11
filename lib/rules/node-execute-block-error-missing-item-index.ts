@@ -1,7 +1,7 @@
 import { utils } from "../ast/utils";
 import { getters } from "../ast/getters";
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
-import { NODE_ERROR_TYPES } from "../constants";
+import { N8N_NODE_ERROR_TYPES } from "../constants";
 
 const {
 	nodeExecuteBlock: { getOperationConsequents, collectConsequents },
@@ -48,18 +48,19 @@ export default utils.createRule({
 				const throwStatements = findThrowStatements(opConsequents);
 
 				for (const statement of throwStatements) {
-					if (statement.argument === null) continue;
-
-					// actual type of `argument` is `NewExpression`, but `ThrowStatement.argument`
-					// is typed in lib as `Statement | TSAsExpression | null`
-					const arg = statement.argument as unknown as TSESTree.NewExpression;
+					if (
+						statement.argument === null ||
+						statement.argument.type !== AST_NODE_TYPES.NewExpression
+					) {
+						continue;
+					}
 
 					// covered by node-execute-block-wrong-error-thrown
-					if (!isNodeErrorType(arg)) continue;
+					if (!isNodeErrorType(statement.argument)) continue;
 
-					const { arguments: errorArgs } = arg; // NodeOperationError(_), NodeApiError(_)
+					const { arguments: errorArguments } = statement.argument;
 
-					if (errorArgs.length !== 3 && indexName === "itemIndex") {
+					if (errorArguments.length !== 3 && indexName === "itemIndex") {
 						context.report({
 							messageId: "addItemIndexSameName",
 							node: statement,
@@ -68,7 +69,7 @@ export default utils.createRule({
 						continue;
 					}
 
-					if (errorArgs.length !== 3 && indexName !== "itemIndex") {
+					if (errorArguments.length !== 3 && indexName !== "itemIndex") {
 						context.report({
 							messageId: "addItemIndexDifferentName",
 							node: statement,
@@ -78,7 +79,7 @@ export default utils.createRule({
 						continue;
 					}
 
-					const [thirdArg] = errorArgs.slice().reverse();
+					const [thirdArg] = [...errorArguments].reverse();
 
 					if (!isItemIndexArg(thirdArg) && indexName === "itemIndex") {
 						context.report({
@@ -154,7 +155,7 @@ function findThrowStatements(operationConsequents: TSESTree.BlockStatement[]) {
 function isNodeErrorType(newExpressionArg: TSESTree.NewExpression) {
 	return (
 		newExpressionArg.callee.type === AST_NODE_TYPES.Identifier &&
-		NODE_ERROR_TYPES.includes(newExpressionArg.callee.name)
+		N8N_NODE_ERROR_TYPES.includes(newExpressionArg.callee.name)
 	);
 }
 

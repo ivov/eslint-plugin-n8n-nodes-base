@@ -1,7 +1,7 @@
 import { utils } from "../ast/utils";
 import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
-import { CREDS_EXEMPTED_FROM_API_SUFFIX } from "../constants";
+import { isExemptedFromApiSuffix } from "../ast/utils/apiSuffixExemption";
 
 export default utils.createRule({
 	name: utils.getRuleName(module),
@@ -44,6 +44,3 @@ export default utils.createRule({
 	},
 });
 
-function isExemptedFromApiSuffix(filename: string) {
-	return CREDS_EXEMPTED_FROM_API_SUFFIX.some((cred) => filename.includes(cred));
-}

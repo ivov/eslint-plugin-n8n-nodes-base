@@ -1,6 +1,7 @@
 import { utils } from "../ast/utils";
 import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
+import { isExemptedFromApiSuffix } from "../ast/utils/apiSuffixExemption";
 
 export default utils.createRule({
 	name: utils.getRuleName(module),
@@ -23,6 +24,8 @@ export default utils.createRule({
 			ClassDeclaration(node) {
 				if (!id.isCredentialClass(node)) return;
 
+				if (isExemptedFromApiSuffix(context.getFilename())) return;
+
 				const displayName = getters.credClassBody.getDisplayName(node.body);
 
 				if (!displayName) return;
@@ -43,3 +46,4 @@ export default utils.createRule({
 		};
 	},
 });
+

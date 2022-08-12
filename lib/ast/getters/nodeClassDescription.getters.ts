@@ -1,6 +1,6 @@
 import { TSESTree } from "@typescript-eslint/utils";
 import { id } from "../identifiers";
-import { restoreClassDescriptionOptions, restoreArray } from "../restorers";
+import { restoreClassDescriptionOptions, restoreArray, restoreObject } from "../restorers";
 import {
 	getName as nodeParamGetName,
 	getDisplayName as nodeParamGetDisplayName,
@@ -29,6 +29,7 @@ export function getInputs(nodeParam: TSESTree.ObjectExpression) {
 
 	return {
 		ast: found,
+		// @ts-ignore @TODO
 		value: restoreArray(found.value.elements),
 	};
 }
@@ -40,6 +41,7 @@ export function getOutputs(nodeParam: TSESTree.ObjectExpression) {
 
 	return {
 		ast: found,
+		// @ts-ignore @TODO
 		value: restoreArray(found.value.elements),
 	};
 }
@@ -71,4 +73,15 @@ export function getDefaultVersion(nodeParam: TSESTree.ObjectExpression) {
 
 export function getIcon(nodeParam: TSESTree.ObjectExpression) {
 	return getStringProperty(id.nodeClassDescription.isIcon, nodeParam);
+}
+
+export function getDefaults(nodeParam: TSESTree.ObjectExpression) {
+	const found = nodeParam.properties.find(id.nodeClassDescription.isDefaults);
+
+	if (!found) return null;
+
+	return {
+		ast: found,
+		value: restoreObject(found.value),
+	};
 }

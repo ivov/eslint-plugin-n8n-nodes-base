@@ -3,6 +3,7 @@ import { TSESTree } from "@typescript-eslint/utils";
 import {
 	isArrayPropertyNamed,
 	isNumericPropertyNamed,
+	isObjectPropertyNamed,
 	isStringPropertyNamed,
 } from "./common.identifiers";
 
@@ -97,4 +98,14 @@ export function isProperties(
 	value: { elements: TSESTree.ObjectExpression[] };
 } {
 	return isArrayPropertyNamed("properties", property);
+}
+
+export function isDefaults(
+	property: TSESTree.ObjectLiteralElement
+): property is TSESTree.PropertyNonComputedName & {
+	value: {
+		properties: TSESTree.ObjectLiteralElement[];
+	} & TSESTree.ObjectExpression;
+} {
+	return isObjectPropertyNamed("defaults", property);
 }

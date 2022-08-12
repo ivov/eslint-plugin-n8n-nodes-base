@@ -6,6 +6,7 @@ import {
 	restoreObject,
 	restoreNodeParamOptions,
 	restoreFixedCollectionValues,
+	restoreNodeParamCollectionOptions,
 } from "../restorers";
 
 import type {
@@ -128,6 +129,41 @@ export function getOptions(nodeParam: TSESTree.ObjectExpression) {
 	return {
 		ast: found,
 		value: restoreNodeParamOptions(elements),
+	};
+}
+
+// @TODO: Deduplicate with getOptions
+export function getCollectionOptions(nodeParam: TSESTree.ObjectExpression) {
+	const found = nodeParam.properties.find(id.nodeParam.isOptions);
+
+	if (!found) return null;
+
+	if (!found.value.elements) {
+		return {
+			ast: found,
+			value: [{ displayName: "" }], // unused placeholder
+			hasPropertyPointingToIdentifier: true,
+		};
+	}
+
+	const elements = found.value.elements.filter(
+		(i) => i.type === "ObjectExpression"
+	);
+
+	if (!elements.length) return null;
+
+	if (hasMemberExpression(elements)) {
+		return {
+			ast: found,
+			value: restoreNodeParamCollectionOptions(elements),
+			hasPropertyPointingToMemberExpression: true,
+		};
+	}
+
+	return {
+		ast: found,
+		value: restoreNodeParamCollectionOptions(elements),
+		hasPropertyPointingToIdentifier: false,
 	};
 }
 

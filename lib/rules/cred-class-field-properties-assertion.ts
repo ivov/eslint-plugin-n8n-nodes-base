@@ -1,6 +1,9 @@
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 import { utils } from "../ast/utils";
 
+// @TODO: Rename to cred-class-field-properties-type-assertion
+// @TODO: In other rules, undo unneeded escaping \` → `
+
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {

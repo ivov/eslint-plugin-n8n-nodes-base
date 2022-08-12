@@ -272,18 +272,30 @@ export function isTypeOptions(
 	return isObjectPropertyNamed("typeOptions", property);
 }
 
-export function isMinValue(
-	property: TSESTree.ObjectLiteralElement
+function isTypeOptionsValue(
+	property: TSESTree.ObjectLiteralElement,
+	keyName: string,
+	valueType: string
 ): property is NumberProperty {
 	return (
 		property.type === AST_NODE_TYPES.Property &&
 		property.computed === false &&
 		property.key.type === AST_NODE_TYPES.Identifier &&
 		property.value.type === AST_NODE_TYPES.Literal &&
-		property.key.name === "minValue" &&
-		typeof property.value.value === "number"
+		property.key.name === keyName &&
+		typeof property.value.value === valueType
 	);
 }
+
+export const isMinValue = (
+	property: TSESTree.ObjectLiteralElement
+): property is NumberProperty =>
+	isTypeOptionsValue(property, "minValue", "number");
+
+export const isMaxValue = (
+	property: TSESTree.ObjectLiteralElement
+): property is NumberProperty =>
+	isTypeOptionsValue(property, "maxValue", "number");
 
 export function isLoadOptionsMethod(
 	property: TSESTree.ObjectLiteralElement

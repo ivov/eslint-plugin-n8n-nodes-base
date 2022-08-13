@@ -2,7 +2,7 @@
 
 # community-package-json-author-name-still-default
 
-The `author.name` value in the `package.json` of a community package must be different from the default value ``or a user-defined default with`authorName`.
+The `author.name` value in the `package.json` of a community package must be different from the default value `''` (empty string) or a user-defined default.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/community` config.
 

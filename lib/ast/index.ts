@@ -1,3 +1,4 @@
+export * from "./utils/docline";
 export * from "./utils/filename";
 export * from "./utils/format";
 export * from "./utils/insertion";

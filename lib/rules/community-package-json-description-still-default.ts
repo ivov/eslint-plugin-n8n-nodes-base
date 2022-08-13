@@ -3,6 +3,7 @@ import { getters } from "../ast/getters";
 import { utils } from "../ast/utils";
 import { COMMUNITY_PACKAGE_JSON } from "../constants";
 import { getDefaultValue } from "../ast/utils/defaultValue";
+import { docline } from "../ast";
 
 export default utils.createRule({
 	name: utils.getRuleName(module),
@@ -10,7 +11,7 @@ export default utils.createRule({
 	meta: {
 		type: "layout",
 		docs: {
-			description: `The \`description\` value in the \`package.json\` of a community package must be different from the default value \`${COMMUNITY_PACKAGE_JSON.DESCRIPTION}\` or a user-defined default value with \`description\`.`,
+			description: docline`The \`description\` value in the \`package.json\` of a community package must be different from the default value ${COMMUNITY_PACKAGE_JSON.DESCRIPTION} or a user-defined default.`,
 			recommended: "error",
 		},
 		schema: [

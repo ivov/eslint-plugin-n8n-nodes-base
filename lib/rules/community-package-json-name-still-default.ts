@@ -13,7 +13,7 @@ export default utils.createRule({
 	meta: {
 		type: "layout",
 		docs: {
-			description: `The \`name\` key in the \`package.json\` of a community package must be different from the default value \`${COMMUNITY_PACKAGE_JSON.NAME}\` or a user-defined default with \`name\`.`,
+			description: `The \`name\` key in the \`package.json\` of a community package must be different from the default value ${COMMUNITY_PACKAGE_JSON.NAME} or a user-defined default.`,
 			recommended: "error",
 		},
 		schema: [

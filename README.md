@@ -52,7 +52,7 @@ If you specify both the plugin and a config, all config rules are **enabled by d
 
 ### User-defined defaults
 
-In the `community` ruleset, you can define your own defaults for the `*-still-default` rules:
+In the `community` ruleset, the five `*-still-default` rules allow you to define your own default values:
 
 ```js
 {
@@ -72,12 +72,12 @@ In the `community` ruleset, you can define your own defaults for the `*-still-de
 <!-- RULES_TABLE -->
 | Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Description | Autofixable |
 | :-- | :-- | :-- |
-| [community-package-json-author-email-still-default](docs/rules/community-package-json-author-email-still-default.md) | The `author.email` value in the `package.json` of a community package must be different from the default value `` or a user-defined default with `authorEmail`. | No |
+| [community-package-json-author-email-still-default](docs/rules/community-package-json-author-email-still-default.md) | The `author.email` value in the `package.json` of a community package must be different from the default value `''` (empty string) or a user-defined default. | No |
 | [community-package-json-author-missing](docs/rules/community-package-json-author-missing.md) | The `author` key must be present in the `package.json` of a community package. | No |
 | [community-package-json-author-name-missing](docs/rules/community-package-json-author-name-missing.md) | The `author.name` key must be present in the `package.json` of a community package. | No |
-| [community-package-json-author-name-still-default](docs/rules/community-package-json-author-name-still-default.md) | The `author.name` value in the `package.json` of a community package must be different from the default value `` or a user-defined default with `authorName`. | No |
+| [community-package-json-author-name-still-default](docs/rules/community-package-json-author-name-still-default.md) | The `author.name` value in the `package.json` of a community package must be different from the default value `''` (empty string) or a user-defined default. | No |
 | [community-package-json-description-missing](docs/rules/community-package-json-description-missing.md) | The `description` key must be present in the `package.json` of a community package. | No |
-| [community-package-json-description-still-default](docs/rules/community-package-json-description-still-default.md) | The `description` value in the `package.json` of a community package must be different from the default value `` or a user-defined default value with `description`. | No |
+| [community-package-json-description-still-default](docs/rules/community-package-json-description-still-default.md) | The `description` value in the `package.json` of a community package must be different from the default value `''` (empty string) or a user-defined default. | No |
 | [community-package-json-keywords-missing](docs/rules/community-package-json-keywords-missing.md) | The `keywords` key must be present in the `package.json` of a community package. | No |
 | [community-package-json-keywords-without-official-tag](docs/rules/community-package-json-keywords-without-official-tag.md) | The `keywords` value in the `package.json` of a community package must be an array containing the value `'n8n-community-node-package'`. | No |
 | [community-package-json-license-missing](docs/rules/community-package-json-license-missing.md) | The `description` key must be present in the `package.json` of a community package. | No |
@@ -88,8 +88,8 @@ In the `community` ruleset, you can define your own defaults for the `*-still-de
 | [community-package-json-n8n-nodes-empty](docs/rules/community-package-json-n8n-nodes-empty.md) | The `n8n.nodes` value in the `package.json` of a community package must contain at least one filepath. | No |
 | [community-package-json-n8n-nodes-missing](docs/rules/community-package-json-n8n-nodes-missing.md) | The `n8n.nodes` key must be present in the `package.json` of a community package. | No |
 | [community-package-json-name-missing](docs/rules/community-package-json-name-missing.md) | The `name` key must be present in the `package.json` of a community package. | No |
-| [community-package-json-name-still-default](docs/rules/community-package-json-name-still-default.md) | The `name` key in the `package.json` of a community package must be different from the default value `n8n-nodes-<...>` or a user-defined default with `name`. | No |
-| [community-package-json-repository-url-still-default](docs/rules/community-package-json-repository-url-still-default.md) | The `repository.url` value in the `package.json` of a community package must be different from the default value `https://github.com/<...>/n8n-nodes-<...>.git` or a user-defined default with `repositoryUrl`. | No |
+| [community-package-json-name-still-default](docs/rules/community-package-json-name-still-default.md) | The `name` key in the `package.json` of a community package must be different from the default value n8n-nodes-<...> or a user-defined default. | No |
+| [community-package-json-repository-url-still-default](docs/rules/community-package-json-repository-url-still-default.md) | The `repository.url` value in the `package.json` of a community package must be different from the default value https://github.com/<...>/n8n-nodes-<...>.git or a user-defined default. | No |
 | [community-package-json-version-missing](docs/rules/community-package-json-version-missing.md) | The `version` key must be present in the `package.json` of a community package. | No |
 | [cred-class-field-display-name-miscased](docs/rules/cred-class-field-display-name-miscased.md) | `displayName` field in credential class must be title cased. | Yes |
 | [cred-class-field-display-name-missing-api](docs/rules/cred-class-field-display-name-missing-api.md) | `displayName` field in credential class must be end with `API`. | Yes |

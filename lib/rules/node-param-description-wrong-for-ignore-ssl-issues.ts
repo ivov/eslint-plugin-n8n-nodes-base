@@ -6,7 +6,7 @@ import { getters } from "../ast/getters";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description: `\`description\` for Ignore SSL node parameter must be \`${IGNORE_SSL_ISSUES_NODE_PARAMETER.DESCRIPTION}\``,
 			recommended: "error",

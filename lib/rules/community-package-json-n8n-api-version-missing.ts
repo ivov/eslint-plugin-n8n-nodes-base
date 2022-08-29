@@ -6,7 +6,7 @@ import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description:
 				"The `n8n.n8nNodesApiVersion` key must be present in the `package.json` of a community package.",

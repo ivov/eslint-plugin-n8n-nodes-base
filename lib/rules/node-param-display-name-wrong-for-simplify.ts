@@ -6,7 +6,7 @@ import { getters } from "../ast/getters";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description: `\`displayName\` for Simplify node parameter must be ${SIMPLIFY_NODE_PARAMETER.DISPLAY_NAME}`,
 			recommended: "error",

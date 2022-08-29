@@ -5,7 +5,7 @@ import { getters } from "../ast/getters";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description:
 				"`default` for a multi-options-type node parameter must be an array.",

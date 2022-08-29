@@ -6,7 +6,7 @@ import { getters } from "../ast/getters";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description: `\`description\` in node parameter must encode angle brackets for them to render. ${DOCUMENTATION.APPLICABLE_BY_EXTENSION_TO_DESCRIPTION_IN_OPTION}`,
 			recommended: "error",

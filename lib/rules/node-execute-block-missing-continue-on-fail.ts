@@ -4,7 +4,7 @@ import { utils } from "../ast/utils";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description:
 				"The `execute()` method in a node must implement `continueOnFail` in a try-catch block.",

@@ -5,7 +5,7 @@ import { getters } from "../ast/getters";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description:
 				"`placeholder` for a URL in credential class must be prepended with `e.g.`.",

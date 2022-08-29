@@ -7,7 +7,7 @@ import { TSESTree } from "@typescript-eslint/utils";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description: "`subtitle` in node class description must be present.",
 			recommended: "error",

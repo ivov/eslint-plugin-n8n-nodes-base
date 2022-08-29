@@ -7,7 +7,7 @@ const isTestRun = process.env.NODE_ENV === "test";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description:
 				"`documentationUrl` field in credential class must be an HTTP URL. Only applicable to community credentials.",

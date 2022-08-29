@@ -7,7 +7,7 @@ import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description: `The \`keywords\` value in the \`package.json\` of a community package must be an array containing the value \`'${COMMUNITY_PACKAGE_JSON.OFFICIAL_TAG}'\`.`,
 			recommended: "error",

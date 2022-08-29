@@ -6,7 +6,7 @@ import { getters } from "../ast/getters";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description: "`placeholder` for Email node parameter must exist.",
 			recommended: "error",

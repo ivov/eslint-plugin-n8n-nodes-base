@@ -7,7 +7,7 @@ import { plural, singular } from "pluralize";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description: `\`displayName\` for dynamic-multi-options-type node parameter must end with \`${DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER.DISPLAY_NAME_SUFFIX}\``,
 			recommended: "error",

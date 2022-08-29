@@ -6,7 +6,7 @@ import { COMMUNITY_PACKAGE_JSON } from "../constants";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description: `The \`license\` key in the \`package.json\` of a community package must be the default value \`${COMMUNITY_PACKAGE_JSON.LICENSE}\`.`,
 			recommended: "error",

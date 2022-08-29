@@ -8,7 +8,7 @@ import indefinite from "indefinite";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description:
 				"An option in an Operation node parameter must have an `action` property. The `action` property may or may not be identical to the `description` property.",

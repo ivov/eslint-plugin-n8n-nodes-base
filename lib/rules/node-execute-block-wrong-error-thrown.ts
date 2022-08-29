@@ -5,7 +5,7 @@ import { N8N_NODE_ERROR_TYPES } from "../constants";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description:
 				"The `execute()` method in a node may only throw `NodeApiError` for failed API requests and `NodeOperationError` for internal errors, not the built-in `Error`. Refer to [`NodeErrors.ts`](https://github.com/n8n-io/n8n/blob/master/packages/workflow/src/NodeErrors.ts).",

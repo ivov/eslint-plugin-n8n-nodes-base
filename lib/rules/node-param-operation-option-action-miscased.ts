@@ -7,7 +7,7 @@ import { sentenceCase } from "sentence-case";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description:
 				"The property `action` in an option in an Operation node parameter must be sentence-cased.",

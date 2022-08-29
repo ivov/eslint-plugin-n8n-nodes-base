@@ -5,7 +5,7 @@ import { getters } from "../ast/getters";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description:
 				"`maxValue` in `typeOptions` in Limit node parameter is deprecated and must not be present.",

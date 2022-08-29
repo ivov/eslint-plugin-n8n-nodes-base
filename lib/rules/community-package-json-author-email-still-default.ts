@@ -10,7 +10,7 @@ export default utils.createRule({
 	name: utils.getRuleName(module),
 	defaultOptions: [{ authorEmail: COMMUNITY_PACKAGE_JSON.AUTHOR_EMAIL }],
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description: docline`The \`author.email\` value in the \`package.json\` of a community package must be different from the default value ${COMMUNITY_PACKAGE_JSON.AUTHOR_EMAIL} or a user-defined default.`,
 			recommended: "error",

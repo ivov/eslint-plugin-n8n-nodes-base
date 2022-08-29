@@ -5,7 +5,7 @@ import { getters } from "../ast/getters";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description:
 				"Node filename must match `name` in node class description, excluding the filename suffix. Example: `Test.node.ts` matches `Test` in property `Test.description.name`.",

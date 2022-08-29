@@ -11,7 +11,7 @@ export default utils.createRule({
 	name: utils.getRuleName(module),
 	defaultOptions: [{ name: COMMUNITY_PACKAGE_JSON.NAME }],
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description: `The \`name\` key in the \`package.json\` of a community package must be different from the default value ${COMMUNITY_PACKAGE_JSON.NAME} or a user-defined default.`,
 			recommended: "error",

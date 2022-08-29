@@ -30,6 +30,8 @@ export default utils.createRule({
 				if (!description) return;
 
 				if (description.value.includes("PRIVATE KEY")) return; // <br> allowed in PEM key example
+				
+				if (description.value.includes("<br><br>")) return; // <br><br> allowed (temp until fixed in client)
 
 				if (LINE_BREAK_HTML_TAG_REGEX.test(description.value)) {
 					const clean = description.value

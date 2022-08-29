@@ -109,6 +109,14 @@ const test = {
 };
 
 const test = {
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "This is a sentence.<br><br> This is another.",
+};
+
+const test = {
 	name: "Test",
 	value: "test",
 	description: "This is a sentence",

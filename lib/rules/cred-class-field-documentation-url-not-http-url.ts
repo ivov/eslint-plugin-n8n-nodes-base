@@ -25,14 +25,10 @@ export default utils.createRule({
 			ClassDeclaration(node) {
 				const filename = context.getFilename();
 
-				// apply only to credential class in community package once renamed away from n8n-nodes-starter
-
-				if (
-					filename.includes("n8n-nodes-starter") ||
-					!id.isCredentialClass(node) ||
-					!isCommunityCredential(filename)
-				)
+				// only apply to community credential
+				if (!id.isCredentialClass(node) || !isCommunityCredential(filename)) {
 					return;
+				}
 
 				const documentationUrl = getters.credClassBody.getDocumentationUrl(
 					node.body
@@ -64,6 +60,7 @@ function isHttpUrl(string: string) {
 }
 
 const isCommunityCredential = (filename: string) =>
-	!filename.includes("packages/credentials") ||
-	!filename.includes("packages\\credentials") ||
-	isTestRun;
+	(!filename.includes("packages/credentials") ||
+		!filename.includes("packages\\credentials") ||
+		isTestRun) &&
+	!filename.includes("scratchpad"); // @TODO: Frail check

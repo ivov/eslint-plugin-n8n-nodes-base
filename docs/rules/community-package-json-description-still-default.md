@@ -2,7 +2,7 @@
 
 # community-package-json-description-still-default
 
-The `description` value in the `package.json` of a community package must be different from the default value ``or a user-defined default value with`description`.
+The `description` value in the `package.json` of a community package must be different from the default value `''` (empty string) or a user-defined default.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/community` config.
 

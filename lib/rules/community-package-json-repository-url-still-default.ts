@@ -4,6 +4,7 @@ import { utils } from "../ast/utils";
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 import { COMMUNITY_PACKAGE_JSON } from "../constants";
 import { getDefaultValue } from "../ast/utils/defaultValue";
+import { docline } from "../ast";
 
 export default utils.createRule({
 	name: utils.getRuleName(module),
@@ -11,7 +12,7 @@ export default utils.createRule({
 	meta: {
 		type: "layout",
 		docs: {
-			description: `The \`repository.url\` value in the \`package.json\` of a community package must be different from the default value \`${COMMUNITY_PACKAGE_JSON.REPOSITORY_URL}\` or a user-defined default with \`repositoryUrl\`.`,
+			description: docline`The \`repository.url\` value in the \`package.json\` of a community package must be different from the default value ${COMMUNITY_PACKAGE_JSON.REPOSITORY_URL} or a user-defined default.`,
 			recommended: "error",
 		},
 		schema: [

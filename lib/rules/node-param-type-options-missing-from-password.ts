@@ -7,7 +7,7 @@ export default utils.createRule({
 		type: "layout",
 		docs: {
 			description:
-				"`typeOptions.password` must be set to `true` in a Password node parameter, to obscure the password input",
+				"`typeOptions.password` must be set to `true` in a Password node parameter, to obscure the password input.",
 			recommended: "error",
 		},
 		fixable: "code",

@@ -2,7 +2,7 @@
 
 # node-param-type-options-missing-from-password
 
-`typeOptions.password` must be set to `true` in a Password node parameter, to obscure the password input
+`typeOptions.password` must be set to `true` in a Password node parameter, to obscure the password input.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/nodes` config.
 

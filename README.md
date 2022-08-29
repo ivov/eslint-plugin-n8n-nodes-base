@@ -195,7 +195,7 @@ In the `community` ruleset, the five `*-still-default` rules allow you to define
 | [node-param-resource-without-no-data-expression](docs/rules/node-param-resource-without-no-data-expression.md) | `noDataExpression` in a Resource node parameter must be present and enabled. | Yes |
 | [node-param-type-options-max-value-present](docs/rules/node-param-type-options-max-value-present.md) | `maxValue` in `typeOptions` in Limit node parameter is deprecated and must not be present. | Yes |
 | [node-param-type-options-missing-from-limit](docs/rules/node-param-type-options-missing-from-limit.md) | `typeOptions` in Limit node parameter must be present. | Yes |
-| [node-param-type-options-missing-from-password](docs/rules/node-param-type-options-missing-from-password.md) | `typeOptions.password` must be set to `true` in a Password node parameter, to obscure the password input | Yes |
+| [node-param-type-options-missing-from-password](docs/rules/node-param-type-options-missing-from-password.md) | `typeOptions.password` must be set to `true` in a Password node parameter, to obscure the password input. | Yes |
 | [node-resource-description-filename-against-convention](docs/rules/node-resource-description-filename-against-convention.md) | Resource description file must use singular form. Example: `UserDescription.ts`, not `UsersDescription.ts`. | No |
 <!-- /RULES_TABLE -->
 

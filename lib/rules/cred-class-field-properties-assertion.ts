@@ -7,7 +7,7 @@ import { utils } from "../ast/utils";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description:
 				"In a credential class, the field `properties` must be typed `INodeProperties` and individual properties must have no assertions.",

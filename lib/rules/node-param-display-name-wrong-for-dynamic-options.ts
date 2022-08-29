@@ -6,7 +6,7 @@ import { getters } from "../ast/getters";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description: `\`displayName\` for dynamic-options-type node parameter must end with \`${DYNAMIC_OPTIONS_NODE_PARAMETER.DISPLAY_NAME_SUFFIX}\``,
 			recommended: "error",

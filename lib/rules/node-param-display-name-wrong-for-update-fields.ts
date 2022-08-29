@@ -6,7 +6,7 @@ import { getters } from "../ast/getters";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description: `\`displayName\` for Update operation node parameter must be \`${UPDATE_FIELDS_NODE_PARAM_DISPLAY_NAME}\``,
 			recommended: "error",

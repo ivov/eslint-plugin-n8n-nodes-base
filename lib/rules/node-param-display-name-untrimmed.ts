@@ -6,7 +6,7 @@ import { getters } from "../ast/getters";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description: `\`displayName\` in node parameter or in fixed collection section must be trimmed. ${DOCUMENTATION.APPLICABLE_BY_EXTENSION_TO_NAME}`,
 			recommended: "error",

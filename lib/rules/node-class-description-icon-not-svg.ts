@@ -8,7 +8,7 @@ const iconSources = SVG_ICON_SOURCES.join(" | ");
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description: "`icon` in node class description should be an SVG icon.",
 			recommended: "error",

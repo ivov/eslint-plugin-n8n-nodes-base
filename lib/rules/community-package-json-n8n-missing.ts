@@ -5,7 +5,7 @@ import { utils } from "../ast/utils";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description:
 				"The `n8n` key must be present in the `package.json` of a community package.",

@@ -5,7 +5,7 @@ import { id } from "../ast/identifiers";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description: "Array of node parameters must be typed, not type-asserted.",
 			recommended: "error",

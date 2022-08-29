@@ -10,7 +10,7 @@ import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description: `Items in a fixed-collection-type node parameter section must be alphabetized by \`displayName\` if ${MIN_ITEMS_TO_ALPHABETIZE_SPELLED_OUT} or more than ${MIN_ITEMS_TO_ALPHABETIZE_SPELLED_OUT}, unless the items are address fields.`,
 			recommended: "error",

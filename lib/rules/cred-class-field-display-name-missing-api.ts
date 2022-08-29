@@ -6,7 +6,7 @@ import { isExemptedFromApiSuffix } from "../ast/utils/apiSuffixExemption";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description:
 				"`displayName` field in credential class must be end with `API`.",

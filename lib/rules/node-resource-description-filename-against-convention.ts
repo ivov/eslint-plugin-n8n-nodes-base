@@ -7,7 +7,7 @@ import { id } from "../ast/identifiers";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description:
 				"Resource description file must use singular form. Example: `UserDescription.ts`, not `UsersDescription.ts`.",

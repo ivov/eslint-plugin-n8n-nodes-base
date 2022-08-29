@@ -6,7 +6,7 @@ import { getters } from "../ast/getters";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description: `\`default\` for a Limit node parameter must be \`${LIMIT_NODE_PARAMETER.DEFAULT_VALUE}\`.`,
 			recommended: "error",

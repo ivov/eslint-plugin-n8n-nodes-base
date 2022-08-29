@@ -4,7 +4,7 @@ import { getters } from "../ast/getters";
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
-		type: "layout",
+		type: "problem",
 		docs: {
 			description:
 				"`typeOptions.password` must be set to `true` in a Password node parameter, to obscure the password input.",

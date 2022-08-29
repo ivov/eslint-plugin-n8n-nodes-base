@@ -154,14 +154,19 @@ export function getFixedCollectionValues(nodeParam: TSESTree.ObjectExpression) {
 	};
 }
 
-export function getMinValue(nodeParam: TSESTree.ObjectExpression) {
+function getTypeOptionsValue(
+	nodeParam: TSESTree.ObjectExpression,
+	identifier: (
+		property: TSESTree.ObjectLiteralElement
+	) => property is NumberProperty
+) {
 	const typeOptions = getTypeOptions(nodeParam);
 
 	if (!typeOptions) return null;
 
 	const { properties } = typeOptions.ast.value;
 
-	const found = properties.find(id.nodeParam.isMinValue);
+	const found = properties.find(identifier);
 
 	if (!found) return null;
 
@@ -170,6 +175,12 @@ export function getMinValue(nodeParam: TSESTree.ObjectExpression) {
 		value: found.value.value,
 	};
 }
+
+export const getMinValue = (nodeParam: TSESTree.ObjectExpression) =>
+	getTypeOptionsValue(nodeParam, id.nodeParam.isMinValue);
+
+export const getMaxValue = (nodeParam: TSESTree.ObjectExpression) =>
+	getTypeOptionsValue(nodeParam, id.nodeParam.isMaxValue);
 
 export function getLoadOptionsMethod(nodeParam: TSESTree.ObjectExpression) {
 	const typeOptions = getTypeOptions(nodeParam);

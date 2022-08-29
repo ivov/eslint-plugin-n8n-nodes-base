@@ -29,6 +29,16 @@ ruleTester().run(getRuleName(module), rule, {
 					"Use the multiline editor. Make sure it is in standard PEM key format:<br />-----BEGIN PRIVATE KEY-----<br />KEY DATA GOES HERE<br />-----END PRIVATE KEY-----",
 			};`,
 		},
+		{
+			code: outdent`
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'string',
+				default: '',
+				description: 'This is a sentence.<br><br> This is another.',
+			};`,
+		},
 
 		// option
 		{

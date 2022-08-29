@@ -117,6 +117,31 @@ export function restoreNodeParamOptions(options: TSESTree.ObjectExpression[]) {
 	return restoredOptions;
 }
 
+// @TODO: Deduplicate with restoreNodeParamOptions
+export function restoreNodeParamCollectionOptions(
+	options: TSESTree.ObjectExpression[]
+): {
+	displayName: string;
+	required?: boolean;
+}[] {
+	const isNodeParameterAsValue = (entity: {
+		displayName?: string;
+	}): entity is { displayName: string; required?: boolean } =>
+		entity.displayName !== undefined;
+
+	const restoredOptions: { displayName: string }[] = [];
+
+	for (const option of options) {
+		const restoredOption = restoreObject(option);
+
+		if (!isNodeParameterAsValue(restoredOption)) continue;
+
+		restoredOptions.push(restoredOption);
+	}
+
+	return restoredOptions;
+}
+
 /**
  * Restore the source value of an array of `options` under `credentials`
  * in a node class `description`.

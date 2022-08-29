@@ -122,6 +122,7 @@ In the `community` ruleset, you can define your own defaults for the `*-still-de
 | [node-execute-block-wrong-error-thrown](docs/rules/node-execute-block-wrong-error-thrown.md) | The `execute()` method in a node may only throw `NodeApiError` for failed API requests and `NodeOperationError` for internal errors, not the built-in `Error`. Refer to [`NodeErrors.ts`](https://github.com/n8n-io/n8n/blob/master/packages/workflow/src/NodeErrors.ts). | No |
 | [node-filename-against-convention](docs/rules/node-filename-against-convention.md) | Node filename must match `name` in node class description, excluding the filename suffix. Example: `Test.node.ts` matches `Test` in property `Test.description.name`. | No |
 | [node-param-array-type-assertion](docs/rules/node-param-array-type-assertion.md) | Array of node parameters must be typed, not type-asserted. | Yes |
+| [node-param-collection-type-item-required](docs/rules/node-param-collection-type-item-required.md) | Items in collection-type node parameter must not have a `required` property. | Yes |
 | [node-param-collection-type-unsorted-items](docs/rules/node-param-collection-type-unsorted-items.md) | Items in collection-type node parameter must be alphabetized by `name` if five or more than five. | Yes |
 | [node-param-color-type-unused](docs/rules/node-param-color-type-unused.md) | `string`-type color-related node parameter must be `color`-type. | Yes |
 | [node-param-default-missing](docs/rules/node-param-default-missing.md) | `default` must be present in a node parameter. | Yes |

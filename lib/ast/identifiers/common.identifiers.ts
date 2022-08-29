@@ -86,7 +86,7 @@ export function isBooleanPropertyNamed(
  * Check whether the property has a specific key name and points to an `ObjectExpression`.
  */
 export function isObjectPropertyNamed(
-	keyName: "displayOptions" | "typeOptions" | "show" | "default",
+	keyName: "displayOptions" | "typeOptions" | "show" | "default" | "defaults",
 	property: TSESTree.ObjectLiteralElement
 ) {
 	return isTargetProperty({ keyName, valueType: "object" }, property);

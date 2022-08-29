@@ -2,6 +2,8 @@ import { utils } from "../ast/utils";
 import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
 
+// @TODO: Rename to node-class-description-description-empty-string
+
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {

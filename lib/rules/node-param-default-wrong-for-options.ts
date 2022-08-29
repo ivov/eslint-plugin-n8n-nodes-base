@@ -53,7 +53,9 @@ export default utils.createRule({
 					return;
 				}
 
+				// @ts-ignore @TODO
 				const eligibleOptions = options.value.reduce<unknown[]>(
+					// @ts-ignore @TODO
 					(acc, option) => {
 						return acc.push(option.value), acc;
 					},

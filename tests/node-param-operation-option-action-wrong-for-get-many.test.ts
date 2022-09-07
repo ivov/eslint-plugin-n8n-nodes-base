@@ -80,7 +80,9 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				],
 			};`,
-			errors: [{ messageId: "changeToGetMany" }],
+			errors: [
+				{ messageId: "changeToGetMany", data: { resourceName: "entities" } },
+			],
 			output: outdent`
 			const test = {
 				displayName: 'Operation',
@@ -129,7 +131,9 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				],
 			};`,
-			errors: [{ messageId: "changeToGetMany" }],
+			errors: [
+				{ messageId: "changeToGetMany", data: { resourceName: "entities" } },
+			],
 			output: outdent`
 			const test = {
 				displayName: 'Action',

@@ -173,7 +173,8 @@ function isResourceInShow(
 		property.value.type === AST_NODE_TYPES.ArrayExpression
 	);
 }
-function getOperationName(optionProperties: TSESTree.Property[]) {
+
+export function getOperationName(optionProperties: TSESTree.Property[]) {
 	const operationNameProperty = optionProperties.find(isNameProperty);
 
 	if (!operationNameProperty) return null;

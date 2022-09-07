@@ -179,12 +179,13 @@ In the `community` ruleset, the five `*-still-default` rules allow you to define
 | [node-param-min-value-wrong-for-limit](docs/rules/node-param-min-value-wrong-for-limit.md) | `minValue` for Limit node parameter must be a positive integer. | Yes |
 | [node-param-multi-options-type-unsorted-items](docs/rules/node-param-multi-options-type-unsorted-items.md) | Items in a multi-options-type node parameter must be alphabetized by `name` if five or more than five. | Yes |
 | [node-param-operation-option-action-miscased](docs/rules/node-param-operation-option-action-miscased.md) | The property `action` in an option in an Operation node parameter must be sentence-cased. | Yes |
+| [node-param-operation-option-action-wrong-for-get-many](docs/rules/node-param-operation-option-action-wrong-for-get-many.md) | The property `action` in a Get Many option in an Operation node parameter must start with `Get many`. | Yes |
 | [node-param-operation-option-without-action](docs/rules/node-param-operation-option-without-action.md) | An option in an Operation node parameter must have an `action` property. The `action` property may or may not be identical to the `description` property. | Yes |
 | [node-param-operation-without-no-data-expression](docs/rules/node-param-operation-without-no-data-expression.md) | `noDataExpression` in an Operation node parameter must be present and enabled. | Yes |
 | [node-param-option-description-identical-to-name](docs/rules/node-param-option-description-identical-to-name.md) | `description` in option in options-type node parameter must not be identical to `name`. | Yes |
 | [node-param-option-name-containing-star](docs/rules/node-param-option-name-containing-star.md) | Option `name` in options-type node parameter must not contain `*`. Use `[All]` instead. | Yes |
 | [node-param-option-name-duplicate](docs/rules/node-param-option-name-duplicate.md) | Option `name` in options-type node parameter must not be a duplicate. | Yes |
-| [node-param-option-name-wrong-for-get-all](docs/rules/node-param-option-name-wrong-for-get-all.md) | Option `name` for Get All node parameter must be `Get All` | Yes |
+| [node-param-option-name-wrong-for-get-many](docs/rules/node-param-option-name-wrong-for-get-many.md) | Option `name` for Get Many node parameter must be `Get Many` | Yes |
 | [node-param-option-name-wrong-for-upsert](docs/rules/node-param-option-name-wrong-for-upsert.md) | Option `name` for Upsert node parameter must be `Create or Update`. | Yes |
 | [node-param-option-value-duplicate](docs/rules/node-param-option-value-duplicate.md) | Option `value` in options-type node parameter must not be a duplicate. | Yes |
 | [node-param-options-type-unsorted-items](docs/rules/node-param-options-type-unsorted-items.md) | Items in options-type node parameter must be alphabetized by `name` if five or more than five. | Yes |

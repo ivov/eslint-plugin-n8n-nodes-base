@@ -1,4 +1,4 @@
-import rule from "../lib/rules/node-param-option-name-wrong-for-get-all";
+import rule from "../lib/rules/node-param-option-name-wrong-for-get-many";
 import { ruleTester, getRuleName } from "../lib/ast";
 import outdent from "outdent";
 
@@ -7,7 +7,7 @@ ruleTester().run(getRuleName(module), rule, {
 		{
 			code: outdent`
 			const test = {
-				name: 'Get All',
+				name: 'Get Many',
 				value: 'getAll',
 			};`,
 		},
@@ -19,10 +19,23 @@ ruleTester().run(getRuleName(module), rule, {
 				name: 'List',
 				value: 'getAll',
 			};`,
-			errors: [{ messageId: "useGetAll" }],
+			errors: [{ messageId: "useGetMany" }],
 			output: outdent`
 			const test = {
+				name: 'Get Many',
+				value: 'getAll',
+			};`,
+		},
+		{
+			code: outdent`
+			const test = {
 				name: 'Get All',
+				value: 'getAll',
+			};`,
+			errors: [{ messageId: "useGetMany" }],
+			output: outdent`
+			const test = {
+				name: 'Get Many',
 				value: 'getAll',
 			};`,
 		},

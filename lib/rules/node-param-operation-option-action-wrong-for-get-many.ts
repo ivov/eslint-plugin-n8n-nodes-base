@@ -2,7 +2,6 @@ import { utils } from "../ast/utils";
 import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
-import { getOperationName } from "./node-param-operation-option-without-action";
 
 export default utils.createRule({
 	name: utils.getRuleName(module),
@@ -16,7 +15,7 @@ export default utils.createRule({
 		fixable: "code",
 		schema: [],
 		messages: {
-			changeToGetMany: "Change to 'Get many...' [autofixable]", // TODO: Add pluralize resource name
+			changeToGetMany: "Change to 'Get many {{ resourceName }}' [autofixable]",
 		},
 	},
 	defaultOptions: [],
@@ -37,11 +36,17 @@ export default utils.createRule({
 				if (!Array.isArray(options.ast.value.elements)) return;
 
 				const getAllOption = options.ast.value.elements.find((option) => {
-					const operationName = getOperationName(
-						option.properties as TSESTree.Property[] // TODO: Type properly
-					);
-
-					return operationName === "Get All";
+					return option.properties.find((property) => {
+						return (
+							property.type === AST_NODE_TYPES.Property &&
+							property.computed === false &&
+							property.key.type === AST_NODE_TYPES.Identifier &&
+							property.key.name === "value" &&
+							property.value.type === AST_NODE_TYPES.Literal &&
+							typeof property.value.value === "string" &&
+							property.value.value === "getAll"
+						);
+					});
 				});
 
 				if (!getAllOption) return;
@@ -53,6 +58,8 @@ export default utils.createRule({
 				const actionSentence = action.value.value;
 
 				if (actionSentence.startsWith("Get all")) {
+					const [_, resourceName] = actionSentence.split("Get all");
+
 					const fixed = utils.keyValue(
 						"action",
 						actionSentence.replace("Get all", "Get many")
@@ -62,6 +69,7 @@ export default utils.createRule({
 						messageId: "changeToGetMany",
 						node: action,
 						fix: (fixer) => fixer.replaceText(action, fixed),
+						data: { resourceName: resourceName.trim() }
 					});
 				}
 			},

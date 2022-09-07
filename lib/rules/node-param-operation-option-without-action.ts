@@ -174,7 +174,7 @@ function isResourceInShow(
 	);
 }
 
-export function getOperationName(optionProperties: TSESTree.Property[]) {
+function getOperationName(optionProperties: TSESTree.Property[]) {
 	const operationNameProperty = optionProperties.find(isNameProperty);
 
 	if (!operationNameProperty) return null;

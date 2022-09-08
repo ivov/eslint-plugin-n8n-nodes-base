@@ -215,5 +215,5 @@ export const CREDS_EXEMPTED_FROM_API_SUFFIX = [
 	endOfLine: 'lf',
 	printWidth: 100,
 
-	parser: 'babel' // to silence warning, not part of n8n's config
+	parser: 'babel-ts' // to silence warning, not part of n8n's config
 } as const;

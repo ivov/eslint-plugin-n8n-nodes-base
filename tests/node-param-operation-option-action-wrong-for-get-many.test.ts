@@ -1,6 +1,7 @@
 import rule from "../lib/rules/node-param-operation-option-action-wrong-for-get-many";
-import { ruleTester, getRuleName } from "../lib/ast";
+import { getRuleName } from "../lib/ast";
 import outdent from "outdent";
+import { ruleTester } from "../lib/ast/utils/ruleTester";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [

@@ -1,7 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-
-// @ts-ignore
-import DocRuleTester from "eslint-docgen/src/rule-tester";
 import { ESLintUtils } from "@typescript-eslint/utils";
 
 export const createRule = ESLintUtils.RuleCreator((ruleName) => {
@@ -13,8 +9,3 @@ export const getRuleName = ({ filename }: { filename: string }) =>
 		.split("/")
 		.pop()
 		?.replace(/(\.test)?\.(j|t)s/, "") ?? "Unknown";
-
-export const ruleTester = () =>
-	new DocRuleTester({
-		parser: require.resolve("@typescript-eslint/parser"),
-	});

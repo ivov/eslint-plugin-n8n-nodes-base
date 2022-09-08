@@ -1,7 +1,8 @@
 import { RETURN_ALL_NODE_PARAMETER } from "../lib/constants";
 import rule from "../lib/rules/node-param-description-missing-for-return-all";
-import { ruleTester, getRuleName } from "../lib/ast";
+import { getRuleName } from "../lib/ast";
 import outdent from "outdent";
+import { ruleTester } from "../lib/ast/utils/ruleTester";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [

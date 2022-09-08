@@ -81,7 +81,6 @@ export function toOptions(optionsSource: string): Array<{ name: string }> | null
 	try {
 		return eval(`(${optionsSource})`);
 	} catch (error) {
-		console.error("Failed to eval options source", optionsSource, error);
 		return null;
 	}
 }

@@ -168,7 +168,7 @@ ruleTester().run(getRuleName(module), rule, {
 					{
 						name: 'Date Equal',
 						value: 'date_equal',
-						description: 'Field is date. Format: \\'YYYY-MM-DD\\'',
+						description: "Field is date. Format: 'YYYY-MM-DD'",
 					},
 					{
 						name: 'Invoice Deleted',
@@ -178,12 +178,13 @@ ruleTester().run(getRuleName(module), rule, {
 					{
 						name: 'Invoice Generated',
 						value: 'invoice_generated',
-						description: 'Event triggered when a new invoice is generated. In case of metered billing, this event is triggered when a \\'Pending\\' invoice is closed.',
+						description:
+							'Event triggered when a new invoice is generated. In case of metered billing, this event is triggered when a "Pending" invoice is closed.',
 					},
 					{
 						name: 'Subscription Renewal Reminder',
 						value: 'subscription_renewal_reminder',
-						description: 'Triggered 3 days before each subscription\\'s renewal.',
+						description: "Triggered 3 days before each subscription's renewal.",
 					},
 					{
 						name: 'Transaction Created',
@@ -198,7 +199,8 @@ ruleTester().run(getRuleName(module), rule, {
 					{
 						name: 'Transaction Updated',
 						value: 'transaction_updated',
-						description: 'Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.',
+						description:
+							'Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.',
 					},
 				],
 			};`,

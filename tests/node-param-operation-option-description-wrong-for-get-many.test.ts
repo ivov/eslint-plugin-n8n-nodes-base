@@ -1,4 +1,4 @@
-import rule from "../lib/rules/node-param-operation-option-action-wrong-for-get-many";
+import rule from "../lib/rules/node-param-operation-option-description-wrong-for-get-many";
 import { ruleTester, getRuleName } from "../lib/ast";
 import outdent from "outdent";
 
@@ -50,13 +50,16 @@ ruleTester().run(getRuleName(module), rule, {
 					{
 						name: 'Get Many',
 						value: 'getAll',
-						description: 'Retrieve many entities',
-						action: 'Get all entities',
+						description: 'Retrieve all entities',
+						action: 'Get many entities',
 					},
 				],
 			};`,
 			errors: [
-				{ messageId: "changeToGetMany", data: { resourceName: "entities" } },
+				{
+					messageId: "changeToGetMany",
+					data: { newDescription: "Retrieve many entities" },
+				},
 			],
 			output: outdent`
 			const test = {

@@ -339,3 +339,17 @@ export function isShowSetting(
 ): property is ArrayProperty {
 	return isArrayPropertyNamed(showSettingKey, property);
 }
+
+export function isGetAllOptionProperty(
+	property: TSESTree.ObjectLiteralElement
+) {
+	return (
+		property.type === AST_NODE_TYPES.Property &&
+		property.computed === false &&
+		property.key.type === AST_NODE_TYPES.Identifier &&
+		property.key.name === "value" &&
+		property.value.type === AST_NODE_TYPES.Literal &&
+		typeof property.value.value === "string" &&
+		property.value.value === "getAll"
+	);
+}

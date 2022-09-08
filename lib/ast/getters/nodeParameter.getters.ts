@@ -88,6 +88,18 @@ export function getNumberProperty(
 	};
 }
 
+export function getGetAllOption(nodeParam: TSESTree.ObjectExpression) {
+	const found = nodeParam.properties.find(id.nodeParam.isGetAllOptionProperty);
+
+	if (!found) return null;
+
+	return {
+		ast: found,
+		value: '', // TODO
+	};
+}
+
+
 export function getTypeOptions(nodeParam: TSESTree.ObjectExpression) {
 	const found = nodeParam.properties.find(id.nodeParam.isTypeOptions);
 

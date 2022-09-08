@@ -195,3 +195,25 @@ export const CREDS_EXEMPTED_FROM_API_SUFFIX = [
 	"SshPrivateKey",
 	"TimescaleDb",
 ];
+
+// ----------------------------------
+//            formatting
+// ----------------------------------
+
+/**
+ * From: https://raw.githubusercontent.com/n8n-io/n8n/master/.prettierrc.js
+ */
+ export const PRETTIER_CONFIG = {
+	semi: true,
+	trailingComma: 'all',
+	bracketSpacing: true,
+	useTabs: true,
+	tabWidth: 2,
+	arrowParens: 'always',
+	singleQuote: true,
+	quoteProps: 'as-needed',
+	endOfLine: 'lf',
+	printWidth: 100,
+
+	parser: 'babel' // to silence warning, not part of n8n's config
+} as const;

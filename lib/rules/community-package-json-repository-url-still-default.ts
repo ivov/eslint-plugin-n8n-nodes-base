@@ -12,7 +12,7 @@ export default utils.createRule({
 	meta: {
 		type: "problem",
 		docs: {
-			description: docline`The \`repository.url\` value in the \`package.json\` of a community package must be different from the default value ${COMMUNITY_PACKAGE_JSON.REPOSITORY_URL} or a user-defined default.`,
+			description: docline`The \`repository.url\` value in the \`package.json\` of a community package must be different from the default value \`${COMMUNITY_PACKAGE_JSON.REPOSITORY_URL}\` or a user-defined default.`,
 			recommended: "error",
 		},
 		schema: [

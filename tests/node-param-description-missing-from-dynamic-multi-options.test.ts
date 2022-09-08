@@ -1,7 +1,8 @@
 import { DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER } from "../lib/constants";
 import rule from "../lib/rules/node-param-description-missing-from-dynamic-multi-options";
-import { ruleTester, getRuleName } from "../lib/ast";
+import { getRuleName } from "../lib/ast";
 import outdent from "outdent";
+import { ruleTester } from "../lib/ast/utils/ruleTester";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [

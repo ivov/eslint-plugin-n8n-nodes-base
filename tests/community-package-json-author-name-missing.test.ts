@@ -1,7 +1,8 @@
 import rule from "../lib/rules/community-package-json-author-name-missing";
-import { ruleTester, getRuleName } from "../lib/ast";
+import { getRuleName } from "../lib/ast";
 import outdent from "outdent";
 import { COMMUNITY_PACKAGE_JSON } from "../lib/constants";
+import { ruleTester } from "../lib/ast/utils/ruleTester";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [

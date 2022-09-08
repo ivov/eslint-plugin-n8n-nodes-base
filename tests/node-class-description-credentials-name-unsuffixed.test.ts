@@ -1,7 +1,8 @@
 import { NODE_CLASS_DESCRIPTION_SUBTITLE } from "../lib/constants";
 import rule from "../lib/rules/node-class-description-credentials-name-unsuffixed";
-import { ruleTester, getRuleName } from "../lib/ast";
+import { getRuleName } from "../lib/ast";
 import outdent from "outdent";
+import { ruleTester } from "../lib/ast/utils/ruleTester";
 
 ruleTester().run(getRuleName(module), rule, {
 	valid: [

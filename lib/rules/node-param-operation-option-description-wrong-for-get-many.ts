@@ -9,22 +9,20 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description:
-				"The property `action` in a Get Many option in an Operation node parameter must start with `Get many`.",
+				"The property `description` in a Get Many option in an Operation node parameter must mention `many` instead of `all`.",
 			recommended: "error",
 		},
 		fixable: "code",
 		schema: [],
 		messages: {
-			changeToGetMany: "Change to 'Get many {{ resourceName }}' [autofixable]",
+			changeToGetMany: "Change to '{{ newDescription }}' [autofixable]",
 		},
 	},
 	defaultOptions: [],
 	create(context) {
 		return {
 			ObjectExpression(node) {
-				if (!id.nodeParam.isOperation(node) && !id.nodeParam.isAction(node)) {
-					return;
-				}
+				if (!id.nodeParam.isOperation(node)) return;
 
 				const options = getters.nodeParam.getOptions(node);
 
@@ -39,27 +37,25 @@ export default utils.createRule({
 
 				if (!getAllOption) return;
 
-				const actionNode = getAllOption.properties.find(isActionProperty);
+				const descriptionNode =
+					getAllOption.properties.find(isOptionDescription);
 
-				if (!actionNode) return;
+				if (!descriptionNode) return;
 
-				const { value: action } = actionNode.value;
+				const { value: description } = descriptionNode.value;
 
-				const DEPRECATED_START_OF_ACTION = "Get all ";
+				if (description.includes(" all ")) {
+					const [start, end] = description.split(" all ");
 
-				if (action.startsWith(DEPRECATED_START_OF_ACTION)) {
-					const [_, resourceName] = action.split(DEPRECATED_START_OF_ACTION);
+					const newDescription = [start, "many", end].join(" ");
 
-					const fixed = utils.keyValue(
-						"action",
-						action.replace(DEPRECATED_START_OF_ACTION, "Get many ")
-					);
+					const fixed = utils.keyValue("description", newDescription);
 
 					context.report({
 						messageId: "changeToGetMany",
-						node: actionNode,
-						fix: (fixer) => fixer.replaceText(actionNode, fixed),
-						data: { resourceName },
+						node: descriptionNode,
+						fix: (fixer) => fixer.replaceText(descriptionNode, fixed),
+						data: { newDescription },
 					});
 				}
 			},
@@ -67,15 +63,14 @@ export default utils.createRule({
 	},
 });
 
-// TODO: Deduplicate with version in node-param-operation-option-without-action
-function isActionProperty(
+function isOptionDescription(
 	property: TSESTree.ObjectLiteralElement
 ): property is TSESTree.Property & { value: { value: string } } {
 	return (
 		property.type === AST_NODE_TYPES.Property &&
 		property.computed === false &&
 		property.key.type === AST_NODE_TYPES.Identifier &&
-		property.key.name === "action" &&
+		property.key.name === "description" &&
 		property.value.type === AST_NODE_TYPES.Literal &&
 		typeof property.value.value === "string"
 	);

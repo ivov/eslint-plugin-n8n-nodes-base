@@ -21,6 +21,6 @@ jobs:
         npm install
         npm install eslint-plugin-n8n-nodes-base # self-install required by eslint-plugin-local
         npm run build
-        npm run lint-codebase
+        npm run lint-codebase && exit 0
       env:
         CI: true

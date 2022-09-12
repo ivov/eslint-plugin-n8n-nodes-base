@@ -29,7 +29,7 @@ async function main() {
 main();
 
 async function getFilenames() {
-	const files = listContent.viaTreesApi({
+	const files = await listContent.viaTreesApi({
 		user: "n8n-io",
 		repository: "n8n",
 		ref: "master",

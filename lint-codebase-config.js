@@ -10,6 +10,6 @@ module.exports = {
 		tsconfigRootDir: __dirname,
 		project: ["./tsconfig.json"],
 	},
-	plugins: ["eslint-plugin-n8n-nodes-base"],
-	extends: ["plugin:n8n-nodes-base/nodes", "plugin:n8n-nodes-base/credentials"],
+	plugins: ["eslint-plugin-local"],
+	extends: ["plugin:eslint-plugin-local/nodes", "plugin:eslint-plugin-local/credentials"],
 };

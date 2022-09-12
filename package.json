@@ -24,7 +24,7 @@
     "doc": "npm run build; node scripts/make-docs.mjs",
     "format": "prettier lib scripts tests --write",
     "lint-plugin": "eslint lib tests --ext .ts",
-    "lint-codebase": "node scripts/get-codebase.mjs && eslint --no-eslintrc --config lint-codebase-config.js --ext .ts --rulesdir dist scripts/downloads",
+    "lint-codebase": "node scripts/get-codebase.mjs && node scripts/make-lint-codebase-config.mjs && eslint --no-eslintrc --config lint-codebase-config.js --ext .ts scripts/downloads",
     "test": "jest",
     "test:watch": "jest --watch",
     "prepublishOnly": "npm run lint-plugin && npm run test && npm run build && npm run lint-codebase"
@@ -53,6 +53,7 @@
     "eslint-docgen": "^0.7.1",
     "eslint-plugin-eslint-plugin": "^5.0.2",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-local": "^1.0.0",
     "eslint-plugin-prettier": "^4.2.1",
     "jest": "^28.1.3",
     "list-github-dir-content": "^3.0.0",

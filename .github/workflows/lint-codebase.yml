@@ -1,0 +1,25 @@
+name: Lint codebase
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out commit
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+        cache: 'npm'
+
+    - name: Run checks
+      run: |
+        npm install
+        npm run build
+        npm run lint-codebase
+      env:
+        CI: true

@@ -29,19 +29,17 @@ async function main() {
 main();
 
 async function getFilenames() {
-	return listContent
-		.viaTreesApi({
-			user: "n8n-io",
-			repository: "n8n",
-			ref: "master",
-			directory: decodeURIComponent("packages/nodes-base"),
-			getFullData: true,
-		})
-		.then((files) =>
-			files.filter(
-				(file) => file.path.endsWith(".ts") && !file.path.endsWith(".d.ts")
-			)
-		);
+	const files = listContent.viaTreesApi({
+		user: "n8n-io",
+		repository: "n8n",
+		ref: "master",
+		directory: "packages/nodes-base",
+		getFullData: true,
+	});
+
+	return files.filter(
+		(file) => file.path.endsWith(".ts") && !file.path.endsWith(".d.ts")
+	);
 }
 
 async function fetchFile(file, signal) {

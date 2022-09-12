@@ -19,7 +19,7 @@ jobs:
     - name: Run checks
       run: |
         npm install
-        npm run lint
+        npm run lint-plugin
         npm test
         npm run build
       env:

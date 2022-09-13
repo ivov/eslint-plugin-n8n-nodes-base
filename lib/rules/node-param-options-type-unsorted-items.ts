@@ -27,7 +27,6 @@ export default utils.createRule({
 	create(context) {
 		return {
 			ObjectExpression(node) {
-				throw new Error('Oh no');
 				if (!id.isNodeParameter(node)) return;
 
 				if (!id.nodeParam.isOptionsType(node)) return;

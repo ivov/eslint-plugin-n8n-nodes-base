@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * Create `.eslintplugin.js` based on `dist/index.js` for use by 
+ * Create `.eslintplugin.js` based on `dist/index.js` for use by
  * `lint-codebase-config.js` in the `lint-codebase` command.
  */
 
@@ -20,12 +20,9 @@ const pluginIndexFile = path.resolve(distDir, "index.js");
 
 shell.cp(pluginIndexFile, ".eslintplugin.js");
 
-
 const oldContent = shell.cat(".eslintplugin.js");
 const newContent = oldContent.replace(
 	/__dirname, "lib", "rules"/,
 	'__dirname, "dist", "lib", "rules"' // adjust reference based on new (root) location
 );
 new ShellString(newContent).to(".eslintplugin.js");
-
-

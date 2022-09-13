@@ -7,11 +7,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Check out commit
         uses: actions/checkout@v3
-     
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:

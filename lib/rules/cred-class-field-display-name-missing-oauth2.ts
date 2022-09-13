@@ -13,7 +13,7 @@ export default utils.createRule({
 		},
 		schema: [],
 		messages: {
-			addOAuth2: "Insert 'OAuth2' [non-autofixable]", // unpredictable input
+			addOAuth2: "Add 'OAuth2' [non-autofixable]",
 		},
 	},
 	defaultOptions: [],
@@ -22,16 +22,19 @@ export default utils.createRule({
 			ClassDeclaration(node) {
 				if (!id.isCredentialClass(node)) return;
 
-				const extendsOAuth2 = getters.credClassBody.getExtendsOAuth2(node.body);
+				const extendsValue = getters.credClassBody.getExtendsValue(
+					node.body,
+					context
+				);
 
-				if (!extendsOAuth2) return;
+				if (!extendsValue) return;
 
 				const displayName = getters.credClassBody.getDisplayName(node.body);
 
 				if (!displayName) return;
 
 				if (
-					extendsOAuth2.value.includes("oAuth2Api") &&
+					extendsValue.includes("oAuth2Api") &&
 					!displayName.value.endsWith("OAuth2 API")
 				) {
 					context.report({

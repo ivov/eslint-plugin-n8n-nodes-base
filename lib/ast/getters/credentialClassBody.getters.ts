@@ -1,7 +1,7 @@
 import { TSESTree } from "@typescript-eslint/utils";
 import { id } from "../identifiers";
-import { restoreArray } from "../restorers";
-import type { StringClassField } from "../../types";
+import { restoreValue } from "../utils/restoreValue";
+import type { GenericContext, StringClassField } from "../../types";
 
 // ----------------------------------
 //          credClassBody
@@ -37,13 +37,18 @@ export function getPlaceholder(classBody: TSESTree.ClassBody) {
 	return getStringClassField(id.credClassBody.isPlaceholder, classBody);
 }
 
-export function getExtendsOAuth2(classBody: TSESTree.ClassBody) {
-	const found = classBody.body.find(id.credClassBody.isFieldExtends);
+/**
+ * Get the value for the `extends` field in a cred class, e.g. `[ 'oAuth2Api' ]`
+ */
+export function getExtendsValue(
+	classBody: TSESTree.ClassBody,
+	context: GenericContext
+) {
+	const extendsNode = classBody.body.find(id.credClassBody.isFieldExtends);
 
-	if (!found) return null;
+	if (!extendsNode) return null;
 
-	return {
-		ast: found,
-		value: restoreArray(found.value.elements),
-	};
+	const extendsSource = context.getSourceCode().getText(extendsNode.value);
+
+	return restoreValue<string[]>(extendsSource) ?? null;
 }

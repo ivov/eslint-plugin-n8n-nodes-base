@@ -47,7 +47,3 @@ export default utils.createRule({
 		};
 	},
 });
-
-function getX(context: Readonly<RuleContext<"", unknown[]>>) {
-	return "whoa";
-}

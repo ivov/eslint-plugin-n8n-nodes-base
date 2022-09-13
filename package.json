@@ -23,10 +23,11 @@
     "build": "node scripts/build.mjs",
     "doc": "npm run build; node scripts/make-docs.mjs",
     "format": "prettier lib scripts tests --write",
-    "lint": "eslint lib tests --ext .ts",
+    "lint-plugin": "eslint lib tests --ext .ts",
+    "lint-codebase": "node scripts/get-codebase.mjs && node scripts/make-lint-codebase-config.mjs && npm install eslint-plugin-n8n-nodes-base && chmod +x ./scripts/lint-codebase.sh && ./scripts/lint-codebase.sh",
     "test": "jest",
     "test:watch": "jest --watch",
-    "prepare": "npm run lint; npm run test; npm run build"
+    "prepublishOnly": "npm run lint-plugin && npm run test && npm run build && npm run lint-codebase"
   },
   "dependencies": {
     "@typescript-eslint/utils": "^5.17.0",
@@ -52,9 +53,13 @@
     "eslint-docgen": "^0.7.1",
     "eslint-plugin-eslint-plugin": "^5.0.2",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-local": "^1.0.0",
     "eslint-plugin-prettier": "^4.2.1",
     "jest": "^28.1.3",
+    "list-github-dir-content": "^3.0.0",
+    "node-fetch": "^3.2.10",
     "outdent": "^0.8.0",
+    "p-map": "^5.5.0",
     "shelljs": "^0.8.5",
     "tiny-glob": "^0.2.9",
     "typescript": "^4.6.2"

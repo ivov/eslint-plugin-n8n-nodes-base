@@ -24,16 +24,16 @@ export default utils.createRule({
 
 				const { body: classBody } = node;
 
-				const extendsOAuth2 = getters.credClassBody.getExtendsOAuth2(classBody);
+				const extendsValue = getters.credClassBody.getExtendsValue(classBody, context);
 
-				if (!extendsOAuth2) return;
+				if (!extendsValue) return;
 
 				const name = getters.credClassBody.getName(classBody);
 
 				if (!name) return;
 
 				if (
-					extendsOAuth2.value.includes("oAuth2Api") &&
+					extendsValue.includes("oAuth2Api") &&
 					!name.value.endsWith("OAuth2Api")
 				) {
 					context.report({

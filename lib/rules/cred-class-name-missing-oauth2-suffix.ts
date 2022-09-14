@@ -1,6 +1,7 @@
 import { utils } from "../ast/utils";
 import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
+import { RuleContext } from "@typescript-eslint/utils/dist/ts-eslint";
 
 export default utils.createRule({
 	name: utils.getRuleName(module),
@@ -22,16 +23,19 @@ export default utils.createRule({
 			ClassDeclaration(node) {
 				if (!id.isCredentialClass(node)) return;
 
-				const extendsOAuth2 = getters.credClassBody.getExtendsOAuth2(node.body);
+				const extendsValue = getters.credClassBody.getExtendsValue(
+					node.body,
+					context
+				);
 
-				if (!extendsOAuth2) return;
+				if (!extendsValue) return;
 
 				const className = getters.getClassName(node);
 
 				if (!className) return;
 
 				if (
-					extendsOAuth2.value.includes("oAuth2Api") &&
+					extendsValue.includes("oAuth2Api") &&
 					!className.value.endsWith("OAuth2Api")
 				) {
 					context.report({

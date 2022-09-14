@@ -126,7 +126,7 @@ In the `community` ruleset, the five `*-still-default` rules allow you to define
 | [node-param-collection-type-item-required](docs/rules/node-param-collection-type-item-required.md) | Items in collection-type node parameter must not have a `required` property. | Yes |
 | [node-param-collection-type-unsorted-items](docs/rules/node-param-collection-type-unsorted-items.md) | Items in collection-type node parameter must be alphabetized by `name` if five or more than five. | Yes |
 | [node-param-color-type-unused](docs/rules/node-param-color-type-unused.md) | `string`-type color-related node parameter must be `color`-type. | Yes |
-| [node-param-default-missing](docs/rules/node-param-default-missing.md) | `default` must be present in a node parameter. | Yes |
+| [node-param-default-missing](docs/rules/node-param-default-missing.md) | `default` must be present in a node parameter, except in node parameters under `modes`. | Yes |
 | [node-param-default-wrong-for-boolean](docs/rules/node-param-default-wrong-for-boolean.md) | `default` for boolean-type node parameter must be a boolean. | Yes |
 | [node-param-default-wrong-for-collection](docs/rules/node-param-default-wrong-for-collection.md) | `default` for collection-type node parameter must be an object. | Yes |
 | [node-param-default-wrong-for-fixed-collection](docs/rules/node-param-default-wrong-for-fixed-collection.md) | `default` for fixed-collection-type node parameter must be an object. | Yes |

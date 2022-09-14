@@ -1,4 +1,4 @@
-import { TSESTree } from "@typescript-eslint/utils";
+import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 import { utils } from "../ast/utils";
 import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
@@ -8,7 +8,7 @@ export default utils.createRule({
 	meta: {
 		type: "problem",
 		docs: {
-			description: "`default` must be present in a node parameter.",
+			description: "`default` must be present in a node parameter, except in node parameters under `modes`.",
 			recommended: "error",
 		},
 		fixable: "code",
@@ -22,6 +22,16 @@ export default utils.createRule({
 		return {
 			ObjectExpression(node) {
 				if (!id.isNodeParameter(node, { skipKeys: ["default"] })) return;
+
+				if (node.parent?.parent) {
+					if (
+						node.parent.parent.type === AST_NODE_TYPES.Property &&
+						node.parent.parent.key.type === AST_NODE_TYPES.Identifier &&
+						node.parent.parent.key.name === "modes"
+					) {
+						return;
+					}
+				}
 
 				const type = getters.nodeParam.getType(node); // insertion point
 

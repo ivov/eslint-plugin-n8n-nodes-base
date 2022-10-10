@@ -95,10 +95,9 @@ export function getGetAllOption(nodeParam: TSESTree.ObjectExpression) {
 
 	return {
 		ast: found,
-		value: '', // TODO
+		value: "", // TODO
 	};
 }
-
 
 export function getTypeOptions(nodeParam: TSESTree.ObjectExpression) {
 	const found = nodeParam.properties.find(id.nodeParam.isTypeOptions);
@@ -287,16 +286,19 @@ export function getDescription(nodeParam: TSESTree.ObjectExpression) {
 }
 
 export function getDefault(nodeParam: TSESTree.ObjectExpression) {
+	const isUnparseable = (type: AST_NODE_TYPES) =>
+		[AST_NODE_TYPES.CallExpression, AST_NODE_TYPES.Identifier].includes(type);
+
 	for (const property of nodeParam.properties) {
 		if (
 			property.type === AST_NODE_TYPES.Property &&
 			property.key.type === AST_NODE_TYPES.Identifier &&
 			property.key.name === "default" &&
-			property.value.type === AST_NODE_TYPES.CallExpression
+			isUnparseable(property.value.type)
 		) {
 			return {
 				ast: property,
-				hasCallExpression: true, // default: scopes.join(',')
+				isUnparseable: true, // `default: myVar.join(',')` or `default: myVar`
 			};
 		}
 

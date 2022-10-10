@@ -64,6 +64,13 @@ const test = {
 };
 
 const test = {
+	displayName: "Scope",
+	name: "scope",
+	type: "hidden",
+	default: scopes,
+};
+
+const test = {
 	displayName: "Auth URI Query Parameters",
 	name: "authQueryParameters",
 	type: "hidden",

@@ -36,6 +36,15 @@ ruleTester().run(getRuleName(module), rule, {
 		{
 			code: outdent`
 			const test = {
+				displayName: 'Scope',
+				name: 'scope',
+				type: 'hidden',
+				default: scopes,
+			};`,
+		},
+		{
+			code: outdent`
+			const test = {
 				displayName: 'Auth URI Query Parameters',
 				name: 'authQueryParameters',
 				type: 'hidden',

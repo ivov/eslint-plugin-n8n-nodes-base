@@ -29,6 +29,8 @@ export default utils.createRule({
 
 				if (!_default) return;
 
+				if (_default?.isUnparseable) return;
+
 				const typeOptions = getters.nodeParam.getTypeOptions(node);
 
 				if (

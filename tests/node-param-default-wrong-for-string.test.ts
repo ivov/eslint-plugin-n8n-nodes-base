@@ -27,6 +27,15 @@ ruleTester().run(getRuleName(module), rule, {
 				default: [],
 			};`,
 		},
+		{
+			code: outdent`
+			const test = {
+				displayName: 'Scope',
+				name: 'scope',
+				type: 'hidden',
+				default: scopes,
+			};`,
+		},
 	],
 	invalid: [
 		{

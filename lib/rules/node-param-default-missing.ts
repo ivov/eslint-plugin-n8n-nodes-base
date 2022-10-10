@@ -51,7 +51,7 @@ export default utils.createRule({
 
 				const _default = getters.nodeParam.getDefault(node);
 
-				if (_default?.hasCallExpression) return;
+				if (_default?.isUnparseable) return;
 
 				if (!_default) {
 					const { range, indentation } = utils.getInsertionArgs(type);

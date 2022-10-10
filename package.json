@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-n8n-nodes-base",
-  "version": "1.9.4",
+  "version": "1.9.5",
   "main": "dist/index.js",
   "author": {
     "name": "Iván Ovejero",

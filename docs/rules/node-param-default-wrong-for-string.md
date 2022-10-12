@@ -41,6 +41,13 @@ const test = {
 	},
 	default: [],
 };
+
+const test = {
+	displayName: "Scope",
+	name: "scope",
+	type: "hidden",
+	default: scopes,
+};
 ```
 
 ## Links

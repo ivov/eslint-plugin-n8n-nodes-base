@@ -17,13 +17,13 @@ export type IdentifierKey =
 	| "default" // nodeParameter
 	| "value" // option
 	| "values" // fixedCollectionSection
-	| "icon"; // nodeClassDescription
+	| "group"; // nodeClassDescription
 
 export const IDENTIFIER_KEYS: Record<string, IdentifierKey[]> = {
 	nodeParam: ["displayName", "name", "type", "default"],
 	option: ["name", "value"], // in options-type or multi-options-type node param
 	fixedCollectionSection: ["displayName", "name", "values"],
-	nodeClassDescription: ["displayName", "name", "icon"],
+	nodeClassDescription: ["displayName", "name", "group"],
 };
 
 function isLintableSection(

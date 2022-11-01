@@ -3,15 +3,13 @@ import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
 import { AST_NODE_TYPES } from "@typescript-eslint/utils";
 
-// @TODO: Rename to node-class-description-description-empty-string
-
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
 		type: "problem",
 		docs: {
 			description:
-				"`color` in node class description is deprected and must not be present, except for nodes whose icon is a Font Awesome icon - usually core nodes.",
+				"`color` in node class description is deprecated and must not be present, except for nodes whose icon is a Font Awesome icon - usually core nodes.",
 			recommended: "error",
 		},
 		fixable: "code",

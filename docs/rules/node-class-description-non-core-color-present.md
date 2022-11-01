@@ -2,7 +2,7 @@
 
 # node-class-description-non-core-color-present
 
-`color` in node class description is deprected and must not be present, except for nodes whose icon is a Font Awesome icon - usually core nodes.
+`color` in node class description is deprecated and must not be present, except for nodes whose icon is a Font Awesome icon - usually core nodes.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/nodes` config.
 

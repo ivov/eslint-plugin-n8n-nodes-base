@@ -13,6 +13,14 @@ ruleTester().run(getRuleName(module), rule, {
 				documentationUrl = 'myTest';
 			}`,
 		},
+		{
+			code: outdent`
+			class MyTestApi implements ICredentialType {
+				name = 'myTestApi';
+				displayName = 'n8n API';
+				documentationUrl = 'myTest';
+			}`,
+		},
 	],
 	invalid: [
 		{

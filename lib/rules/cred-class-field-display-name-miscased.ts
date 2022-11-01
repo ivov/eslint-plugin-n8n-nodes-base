@@ -9,7 +9,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description:
-				"`displayName` field in credential class must be title cased.",
+				"`displayName` field in credential class must be title cased, except for `n8n API` and `E-Goi API`",
 			recommended: "error",
 		},
 		fixable: "code",
@@ -26,7 +26,7 @@ export default utils.createRule({
 
 				const displayName = getters.credClassBody.getDisplayName(node.body);
 
-				if (!displayName) return;
+				if (!displayName || EXCEPTIONS.includes(displayName.value)) return;
 
 				if (displayName.value !== titleCase(displayName.value)) {
 					context.report({
@@ -43,3 +43,5 @@ export default utils.createRule({
 		};
 	},
 });
+
+const EXCEPTIONS = ['n8n API', 'E-Goi API']

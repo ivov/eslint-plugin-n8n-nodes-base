@@ -103,7 +103,7 @@ In the `community` ruleset, the five `*-still-default` rules allow you to define
 | [cred-class-field-name-uppercase-first-char](docs/rules/cred-class-field-name-uppercase-first-char.md) | First char in `name` in credential class must be lowercase. | Yes |
 | [cred-class-field-placeholder-url-missing-eg](docs/rules/cred-class-field-placeholder-url-missing-eg.md) | `placeholder` for a URL in credential class must be prepended with `e.g.`. | Yes |
 | [cred-class-field-properties-assertion](docs/rules/cred-class-field-properties-assertion.md) | In a credential class, the field `properties` must be typed `INodeProperties` and individual properties must have no assertions. | Yes |
-| [cred-class-field-type-options-missing-from-sensitive-input](docs/rules/cred-class-field-type-options-missing-from-sensitive-input.md) | `typeOptions.password` must be set to `true` in a sensitive node parameter, to obscure the input. | Yes |
+| [cred-class-field-unobscured-sensitive-input](docs/rules/cred-class-field-unobscured-sensitive-input.md) | `typeOptions.password` must be set to `true` in a sensitive node parameter, to obscure the input. | Yes |
 | [cred-class-name-missing-oauth2-suffix](docs/rules/cred-class-name-missing-oauth2-suffix.md) | Credential class name must mention `OAuth2` if the credential is OAuth2. | No |
 | [cred-class-name-unsuffixed](docs/rules/cred-class-name-unsuffixed.md) | Credential class name must be suffixed with `-Api`. | Yes |
 | [cred-filename-against-convention](docs/rules/cred-filename-against-convention.md) | Credentials filename must match credentials class name, excluding the filename suffix. Example: `TestApi.credentials.ts` matches `TestApi` in `class TestApi implements ICredentialType`. | No |

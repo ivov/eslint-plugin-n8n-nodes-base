@@ -1,4 +1,4 @@
-import rule from "../lib/rules/cred-class-field-type-options-missing-from-sensitive-input";
+import rule from "../lib/rules/cred-class-field-unobscured-sensitive-input";
 import { getRuleName } from "../lib/ast";
 import outdent from "outdent";
 import { ruleTester } from "../lib/ast/utils/ruleTester";

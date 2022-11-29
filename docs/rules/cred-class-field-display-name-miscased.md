@@ -2,7 +2,7 @@
 
 # cred-class-field-display-name-miscased
 
-`displayName` field in credential class must be title cased, except for `n8n API` and `E-Goi API`
+`displayName` field in credential class must be title cased, except for `n8n API` and `E-goi API`
 
 📋 This rule is part of the `plugin:n8n-nodes-base/credentials` config.
 

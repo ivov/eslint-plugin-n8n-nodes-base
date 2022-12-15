@@ -24,6 +24,13 @@ ruleTester().run(getRuleName(module), rule, {
 		{
 			code: outdent`
 			const test = {
+				name: '={{$responseItem.id}}',
+    		value: '={{$responseItem.id}}',
+			};`,
+		},
+		{
+			code: outdent`
+			const test = {
 				name: 'User Identifier',
 				value: 'userId',
 			};`,

@@ -56,6 +56,11 @@ const test = {
 };
 
 const test = {
+	name: "={{$responseItem.id}}",
+	value: "={{$responseItem.id}}",
+};
+
+const test = {
 	name: "User Identifier",
 	value: "userId",
 };

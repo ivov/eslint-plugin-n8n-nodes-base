@@ -2,7 +2,7 @@
 
 # node-param-description-url-missing-protocol
 
-`description` in node parameter must include protocol when containing a URL. Applicable by extension to `description` in option in options-type and multi-options-type node parameter.
+`description` in node parameter must include protocol e.g. `https://` when containing a URL. Applicable by extension to `description` in option in options-type and multi-options-type node parameter.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/nodes` config.
 
@@ -22,9 +22,23 @@ const test = {
 };
 
 const test = {
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "This is a <a href='github.com'>link</a>",
+};
+
+const test = {
 	name: "Test",
 	value: "test",
 	description: 'This is a <a href="github.com">link</a>',
+};
+
+const test = {
+	name: "Test",
+	value: "test",
+	description: "This is a <a href='github.com'>link</a>",
 };
 ```
 
@@ -40,9 +54,23 @@ const test = {
 };
 
 const test = {
+	displayName: "Test",
+	name: "test",
+	type: "string",
+	default: "",
+	description: "This is a <a href='https://github.com'>link</a>",
+};
+
+const test = {
 	name: "Test",
 	value: "test",
 	description: 'This is a <a href="https://github.com">link</a>',
+};
+
+const test = {
+	name: "Test",
+	value: "test",
+	description: "This is a <a href='https://github.com'>link</a>",
 };
 ```
 

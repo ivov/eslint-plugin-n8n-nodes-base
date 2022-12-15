@@ -8,7 +8,7 @@ export default utils.createRule({
 	meta: {
 		type: "problem",
 		docs: {
-			description: `\`description\` in node parameter must include protocol when containing a URL. ${DOCUMENTATION.APPLICABLE_BY_EXTENSION_TO_DESCRIPTION_IN_OPTION}`,
+			description: `\`description\` in node parameter must include protocol e.g. \`https://\` when containing a URL. ${DOCUMENTATION.APPLICABLE_BY_EXTENSION_TO_DESCRIPTION_IN_OPTION}`,
 			recommended: "error",
 		},
 		fixable: "code",
@@ -29,11 +29,11 @@ export default utils.createRule({
 
 				if (
 					/<a href=/.test(description.value) &&
-					!/href="https:\/\//.test(description.value) // opinionated: https, not http
+					!/href=["']https:\/\//.test(description.value) // opinionated: https, not http
 				) {
 					const withProtocol = description.value.replace(
-						/href="/g,
-						'href="https://'
+						/href=(['"])/g,
+						'href=\$1https://'
 					);
 					const fixed = utils.keyValue("description", withProtocol);
 

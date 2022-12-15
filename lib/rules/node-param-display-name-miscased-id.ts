@@ -50,6 +50,8 @@ export default utils.createRule({
 					if (!name) return;
 
 					if (MISCASED_ID_REGEX.test(name.value)) {
+						if (name.value.startsWith('=')) return; // is n8n expression
+
 						const correctlyCased = name.value
 							.replace(/\bid\b/i, "ID")
 							.replace(/\bids\b/i, "IDs");

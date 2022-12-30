@@ -18,7 +18,7 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org
 
-      - name: Install, build, publish
+      - name: Check codebase lint, publish
         run: |
           npm ci
           npm run build

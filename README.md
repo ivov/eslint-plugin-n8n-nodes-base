@@ -114,6 +114,7 @@ In the `community` ruleset, the five `*-still-default` rules allow you to define
 | [node-class-description-inputs-wrong-regular-node](docs/rules/node-class-description-inputs-wrong-regular-node.md) | The number of `inputs` in node class description for regular node should be one, or two for Merge node. | Yes |
 | [node-class-description-inputs-wrong-trigger-node](docs/rules/node-class-description-inputs-wrong-trigger-node.md) | The number of `inputs` in node class description for trigger node should be zero. | Yes |
 | [node-class-description-missing-subtitle](docs/rules/node-class-description-missing-subtitle.md) | `subtitle` in node class description must be present. | Yes |
+| [node-class-description-name-miscased](docs/rules/node-class-description-name-miscased.md) | `name` in node class description must be camel cased. | Yes |
 | [node-class-description-name-unsuffixed-trigger-node](docs/rules/node-class-description-name-unsuffixed-trigger-node.md) | `name` in node class description for trigger node must be suffixed with `-Trigger`. | Yes |
 | [node-class-description-non-core-color-present](docs/rules/node-class-description-non-core-color-present.md) | `color` in node class description is deprecated and must not be present, except for nodes whose icon is a Font Awesome icon - usually core nodes. | Yes |
 | [node-class-description-outputs-wrong](docs/rules/node-class-description-outputs-wrong.md) | The number of `outputs` in node class description for any node must be one, or two for If node, or four for Switch node. | Yes |

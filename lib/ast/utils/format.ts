@@ -159,7 +159,7 @@ export function isAllowedLowercase(value: string) {
 
 	if (VERSION_REGEX.test(value)) return true;
 
-	return ["bmp", "tiff", "gif", "jpg", "jpeg", "png"].includes(value);
+	return ["bmp", "tiff", "gif", "jpg", "jpeg", "png", "webp"].includes(value);
 }
 
 function isUrl(str: string) {

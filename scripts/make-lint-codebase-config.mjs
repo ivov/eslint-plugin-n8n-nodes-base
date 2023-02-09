@@ -25,4 +25,7 @@ const newContent = oldContent.replace(
 	/__dirname, "lib", "rules"/,
 	'__dirname, "dist", "lib", "rules"' // adjust reference based on new (root) location
 );
+
 new ShellString(newContent).to(".eslintplugin.js");
+
+console.log("Created .eslintplugin.js");

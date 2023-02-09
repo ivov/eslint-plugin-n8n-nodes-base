@@ -1,5 +1,7 @@
 /**
- * Config for the `lint-codebase` command.
+ * Base config for the `lint-codebase` command.
+ * 
+ * Implicitly references rules in `.eslintplugin.js` via `eslint-plugin-local`.
  *
  * @type {import('@types/eslint').ESLint.ConfigData}
  */

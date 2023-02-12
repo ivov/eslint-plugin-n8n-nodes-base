@@ -50,6 +50,7 @@ export default utils.createRule({
 				for (const statement of throwStatements) {
 					if (
 						statement.argument === null ||
+						// @ts-ignore @TODO: This does not typecheck but AST check is correct
 						statement.argument.type !== AST_NODE_TYPES.NewExpression
 					) {
 						continue;
@@ -58,7 +59,9 @@ export default utils.createRule({
 					// covered by node-execute-block-wrong-error-thrown
 					if (!isNodeErrorType(statement.argument)) continue;
 
-					const { arguments: errorArguments } = statement.argument;
+					const { arguments: errorArguments } = statement.argument as {
+						arguments: TSESTree.Expression[];
+					};
 
 					if (errorArguments.length !== 3 && indexName === "itemIndex") {
 						context.report({

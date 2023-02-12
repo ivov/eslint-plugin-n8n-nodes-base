@@ -1,11 +1,11 @@
-name: Publish to npm
+name: On release
 
 on:
   release:
     types: [created]
 
 jobs:
-  build:
+  publish-to-npm:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,11 +18,10 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org
 
-      - name: Check codebase lint, publish
-        run: |
-          npm ci
-          npm run build
-          npm run lint-codebase
-          npm publish
+      - name: Lint codebase
+        run: npm run lint-codebase
+
+      - name: Publish to npm
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

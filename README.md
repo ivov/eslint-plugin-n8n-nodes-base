@@ -179,6 +179,7 @@ In the `community` ruleset, the five `*-still-default` rules allow you to define
 | [node-param-display-name-wrong-for-update-fields](docs/rules/node-param-display-name-wrong-for-update-fields.md) | `displayName` for Update operation node parameter must be `Update Fields` | Yes |
 | [node-param-fixed-collection-type-unsorted-items](docs/rules/node-param-fixed-collection-type-unsorted-items.md) | Items in a fixed-collection-type node parameter section must be alphabetized by `displayName` if five or more than five, unless the items are address fields. | Yes |
 | [node-param-hint-untrimmed](docs/rules/node-param-hint-untrimmed.md) | `hint` in node parameter must be trimmed. | Yes |
+| [node-param-hint-url-missing-protocol](docs/rules/node-param-hint-url-missing-protocol.md) | `hint` in node parameter must include protocol e.g. `https://` when containing a URL. | Yes |
 | [node-param-min-value-wrong-for-limit](docs/rules/node-param-min-value-wrong-for-limit.md) | `minValue` for Limit node parameter must be a positive integer. | Yes |
 | [node-param-multi-options-type-unsorted-items](docs/rules/node-param-multi-options-type-unsorted-items.md) | Items in a multi-options-type node parameter must be alphabetized by `name` if five or more than five. | Yes |
 | [node-param-name-untrimmed](docs/rules/node-param-name-untrimmed.md) | `name` in node parameter or in fixed collection section must be trimmed. | Yes |

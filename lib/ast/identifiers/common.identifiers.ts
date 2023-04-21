@@ -56,6 +56,7 @@ export function isStringPropertyNamed(
 		| "loadOptionsMethod"
 		| "subtitle"
 		| "icon"
+		| "hint"
 		| "value", // option in options-type node param,
 	property: TSESTree.ObjectLiteralElement
 ) {

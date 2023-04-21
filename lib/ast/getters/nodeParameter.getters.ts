@@ -44,6 +44,10 @@ export function getName(nodeParam: TSESTree.ObjectExpression) {
 	return getStringProperty(id.nodeParam.isName, nodeParam);
 }
 
+export function getHint(nodeParam: TSESTree.ObjectExpression) {
+	return getStringProperty(id.nodeParam.isHint, nodeParam);
+}
+
 export function getType(nodeParam: TSESTree.ObjectExpression) {
 	return getStringProperty(id.nodeParam.isType, nodeParam);
 }

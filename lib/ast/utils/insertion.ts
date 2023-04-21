@@ -45,6 +45,7 @@ export function keyValue(
 		| "description"
 		| "type"
 		| "placeholder"
+		| "hint"
 		| "action",
 	value: string,
 	{ backtickedValue } = { backtickedValue: false }

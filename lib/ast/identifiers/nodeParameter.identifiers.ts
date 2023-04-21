@@ -188,6 +188,12 @@ export function isName(
 	return isStringPropertyNamed("name", property);
 }
 
+export function isHint(
+	property: TSESTree.ObjectLiteralElement
+): property is StringProperty {
+	return isStringPropertyNamed("hint", property);
+}
+
 export function isValue(
 	property: TSESTree.ObjectLiteralElement
 ): property is StringProperty {

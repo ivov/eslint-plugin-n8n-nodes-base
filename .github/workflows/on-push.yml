@@ -22,5 +22,3 @@ jobs:
           npm run lint-plugin
           npm test
           npm run typecheck
-        env:
-          CI: true # @TODO: Needed?

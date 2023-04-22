@@ -4,4 +4,3 @@ node_modules
 .todo
 scripts/downloads/*
 .eslintplugin.js
-lint-run.log

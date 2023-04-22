@@ -24,8 +24,7 @@ npm i eslint-plugin-n8n-nodes-base
     --no-eslintrc \
     --config lint-codebase-config.js \
     --ext .ts \
-    scripts/downloads \
-    > lint-run.log
+    scripts/downloads
 
 if [[ $? == 2 ]] ; then
     echo 'Linter crashed while running through codebase'

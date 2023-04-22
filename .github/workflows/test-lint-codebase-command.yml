@@ -1,0 +1,22 @@
+# Workflow only meant to be manually run to test the `lint-codebase` command
+name: Test lint-codebase command
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-lint-codebase-command:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out commit
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org
+
+      - name: Lint codebase
+        run: npm run lint-codebase

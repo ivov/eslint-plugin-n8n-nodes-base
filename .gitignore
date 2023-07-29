@@ -1,6 +1,8 @@
 dist
 node_modules
+!scratchpad/node_modules
 .DS_Store
 .todo
 scripts/downloads/*
 .eslintplugin.js
+scratchpad/codebase

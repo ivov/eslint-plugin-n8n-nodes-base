@@ -1,0 +1,10 @@
+{
+	"scripts": {
+		"sample:nodes": "../node_modules/.bin/eslint sample/nodes/**/*.ts",
+		"sample:creds": "../node_modules/.bin/eslint sample/credentials/**/*.ts",
+		"sample:community": "../node_modules/.bin/eslint sample/community/**/*.json",
+		"codebase:prepare": "rm -rf codebase/* && cp -r $LOCAL_N8N_DIR/packages/nodes-base/{credentials,nodes} codebase",
+		"codebase:nodes": "../node_modules/.bin/eslint codebase/nodes/**/*.ts",
+		"codebase:creds": "../node_modules/.bin/eslint codebase/credentials/**/*.ts"
+	}
+}

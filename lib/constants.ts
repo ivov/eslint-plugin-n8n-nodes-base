@@ -81,6 +81,11 @@ export const TOP_LEVEL_FIXED_COLLECTION: {
 
 export const EMAIL_PLACEHOLDER = "name@email.com";
 
+/**
+ * Param names that require `typeOptions.password` to be set to `true` to obscure the input.
+ */
+export const SENSITIVE_INPUTS = new Set(["password", "accessToken", "apiKey"]);
+
 // ----------------------------------
 //             regexes
 // ----------------------------------
@@ -203,17 +208,17 @@ export const CREDS_EXEMPTED_FROM_API_SUFFIX = [
 /**
  * From: https://raw.githubusercontent.com/n8n-io/n8n/master/.prettierrc.js
  */
- export const PRETTIER_CONFIG = {
+export const PRETTIER_CONFIG = {
 	semi: true,
-	trailingComma: 'all',
+	trailingComma: "all",
 	bracketSpacing: true,
 	useTabs: true,
 	tabWidth: 2,
-	arrowParens: 'always',
+	arrowParens: "always",
 	singleQuote: true,
-	quoteProps: 'as-needed',
-	endOfLine: 'lf',
+	quoteProps: "as-needed",
+	endOfLine: "lf",
 	printWidth: 100,
 
-	parser: 'babel-ts' // to silence warning, not part of n8n's config
+	parser: "babel-ts", // to silence warning, not part of n8n's config
 } as const;

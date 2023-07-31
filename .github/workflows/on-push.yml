@@ -19,6 +19,6 @@ jobs:
       - name: Run plugin checks
         run: |
           npm ci
+          npm run typecheck
           npm run lint-plugin
           npm test
-          npm run typecheck

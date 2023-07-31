@@ -2,7 +2,7 @@
 
 # cred-class-field-type-options-password-missing
 
-In a sensitive node parameter, `typeOptions.password` must be set to `true` to obscure the input.
+In a sensitive parameter, `typeOptions.password` must be set to `true` to obscure the input.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/credentials` config.
 

@@ -103,7 +103,7 @@ In the `community` ruleset, the five `*-still-default` rules allow you to define
 | [cred-class-field-name-uppercase-first-char](docs/rules/cred-class-field-name-uppercase-first-char.md) | First char in `name` in credential class must be lowercase. | Yes |
 | [cred-class-field-placeholder-url-missing-eg](docs/rules/cred-class-field-placeholder-url-missing-eg.md) | `placeholder` for a URL in credential class must be prepended with `e.g.`. | Yes |
 | [cred-class-field-properties-assertion](docs/rules/cred-class-field-properties-assertion.md) | In a credential class, the field `properties` must be typed `INodeProperties` and individual properties must have no assertions. | Yes |
-| [cred-class-field-type-options-password-missing](docs/rules/cred-class-field-type-options-password-missing.md) | In a sensitive node parameter, `typeOptions.password` must be set to `true` to obscure the input. | Yes |
+| [cred-class-field-type-options-password-missing](docs/rules/cred-class-field-type-options-password-missing.md) | In a sensitive parameter, `typeOptions.password` must be set to `true` to obscure the input. | Yes |
 | [cred-class-name-missing-oauth2-suffix](docs/rules/cred-class-name-missing-oauth2-suffix.md) | Credential class name must mention `OAuth2` if the credential is OAuth2. | No |
 | [cred-class-name-unsuffixed](docs/rules/cred-class-name-unsuffixed.md) | Credential class name must be suffixed with `-Api`. | Yes |
 | [cred-filename-against-convention](docs/rules/cred-filename-against-convention.md) | Credentials filename must match credentials class name, excluding the filename suffix. Example: `TestApi.credentials.ts` matches `TestApi` in `class TestApi implements ICredentialType`. | No |
@@ -202,7 +202,7 @@ In the `community` ruleset, the five `*-still-default` rules allow you to define
 | [node-param-resource-without-no-data-expression](docs/rules/node-param-resource-without-no-data-expression.md) | `noDataExpression` in a Resource node parameter must be present and enabled. | Yes |
 | [node-param-type-options-max-value-present](docs/rules/node-param-type-options-max-value-present.md) | `maxValue` in `typeOptions` in Limit node parameter is deprecated and must not be present. | Yes |
 | [node-param-type-options-missing-from-limit](docs/rules/node-param-type-options-missing-from-limit.md) | `typeOptions` in Limit node parameter must be present. | Yes |
-| [node-param-type-options-password-missing](docs/rules/node-param-type-options-password-missing.md) | In a sensitive node parameter, `typeOptions.password` must be set to `true` to obscure the input. | Yes |
+| [node-param-type-options-password-missing](docs/rules/node-param-type-options-password-missing.md) | In a sensitive parameter, `typeOptions.password` must be set to `true` to obscure the input. | Yes |
 | [node-resource-description-filename-against-convention](docs/rules/node-resource-description-filename-against-convention.md) | Resource description file must use singular form. Example: `UserDescription.ts`, not `UsersDescription.ts`. | No |
 <!-- /RULES_TABLE -->
 

@@ -8,7 +8,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description:
-				"In a sensitive node parameter, `typeOptions.password` must be set to `true` to obscure the input.",
+				"In a sensitive parameter, `typeOptions.password` must be set to `true` to obscure the input.",
 			recommended: "error",
 		},
 		fixable: "code",

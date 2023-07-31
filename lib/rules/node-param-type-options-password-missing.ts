@@ -1,7 +1,6 @@
 import { utils } from "../ast/utils";
 import { getters } from "../ast/getters";
-
-const SENSITIVE_INPUT_NAMES = ['password', 'accessToken', 'apiKey'];
+import { SENSITIVE_INPUTS } from "../constants";
 
 export default utils.createRule({
 	name: utils.getRuleName(module),
@@ -9,13 +8,14 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description:
-				"`typeOptions.password` must be set to `true` in a sensitive node parameter, to obscure the input.",
+				"In a sensitive parameter, `typeOptions.password` must be set to `true` to obscure the input.",
 			recommended: "error",
 		},
-		fixable: 'code',
+		fixable: "code",
 		schema: [],
 		messages: {
-			addTypeOptionsPassword: "Add `typeOptions.password` [autofixable]",
+			addPasswordAutofixable: "Add `typeOptions.password` [autofixable]",
+			addPasswordNonAutofixable: "Add `typeOptions.password` [non-autofixable]",
 		},
 	},
 	defaultOptions: [],
@@ -24,11 +24,19 @@ export default utils.createRule({
 			ObjectExpression(node) {
 				const name = getters.nodeParam.getName(node);
 
-				if (!name || !SENSITIVE_INPUT_NAMES.includes(name.value)) return;
+				if (!name || !SENSITIVE_INPUTS.has(name.value)) return;
 
 				const typeOptions = getters.nodeParam.getTypeOptions(node);
 
 				if (typeOptions?.value.password === true) return;
+
+				if (typeOptions) {
+					return context.report({
+						messageId: "addPasswordNonAutofixable",
+						node: typeOptions.ast,
+						// @TODO: Autofix this case
+					});
+				}
 
 				const type = getters.nodeParam.getType(node);
 
@@ -37,7 +45,7 @@ export default utils.createRule({
 				const { indentation, range } = utils.getInsertionArgs(type);
 
 				context.report({
-					messageId: "addTypeOptionsPassword",
+					messageId: "addPasswordAutofixable",
 					node: type.ast,
 					fix: (fixer) =>
 						fixer.insertTextAfterRange(

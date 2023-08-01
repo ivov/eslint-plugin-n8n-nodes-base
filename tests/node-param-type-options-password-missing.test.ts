@@ -2,9 +2,19 @@ import rule from "../lib/rules/node-param-type-options-password-missing";
 import { getRuleName } from "../lib/ast";
 import outdent from "outdent";
 import { ruleTester } from "../lib/ast/utils/ruleTester";
-import { SENSITIVE_INPUTS } from "../lib/constants";
+import {
+	FALSE_POSITIVE_NODE_SENSITIVE_PARAM_NAMES,
+	NODE_SENSITIVE_PARAM_NAMES,
+} from "../lib/constants";
 
-const validCases = [...SENSITIVE_INPUTS].map((name) => {
+const TEST_NODE_SENSITIVE_STRINGS = [
+	...NODE_SENSITIVE_PARAM_NAMES,
+	"appPassword",
+	"clientSecret",
+	"accessToken",
+];
+
+const regularValidCases = TEST_NODE_SENSITIVE_STRINGS.map((name) => {
 	return {
 		code: outdent`
 			const test = {
@@ -17,7 +27,22 @@ const validCases = [...SENSITIVE_INPUTS].map((name) => {
 	};
 });
 
-const invalidCasesAutofixable = [...SENSITIVE_INPUTS].map((name) => {
+const falsePositiveValidCases = FALSE_POSITIVE_NODE_SENSITIVE_PARAM_NAMES.map(
+	(name) => {
+		return {
+			code: outdent`
+			const test = {
+				displayName: 'Some Display Name',
+				name: '${name}',
+				type: 'string',
+				typeOptions: { password: true },
+				default: '',
+			}`,
+		};
+	}
+);
+
+const invalidCasesAutofixable = TEST_NODE_SENSITIVE_STRINGS.map((name) => {
 	return {
 		code: outdent`
 			const test = {
@@ -38,7 +63,7 @@ const invalidCasesAutofixable = [...SENSITIVE_INPUTS].map((name) => {
 	};
 });
 
-const invalidCasesNonAutofixable = [...SENSITIVE_INPUTS].map((name) => {
+const invalidCasesNonAutofixable = NODE_SENSITIVE_PARAM_NAMES.map((name) => {
 	return {
 		code: outdent`
 			const test = {
@@ -53,6 +78,6 @@ const invalidCasesNonAutofixable = [...SENSITIVE_INPUTS].map((name) => {
 });
 
 ruleTester().run(getRuleName(module), rule, {
-	valid: validCases,
+	valid: [...regularValidCases, ...falsePositiveValidCases],
 	invalid: [...invalidCasesAutofixable, ...invalidCasesNonAutofixable],
 });

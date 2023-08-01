@@ -82,9 +82,36 @@ export const TOP_LEVEL_FIXED_COLLECTION: {
 export const EMAIL_PLACEHOLDER = "name@email.com";
 
 /**
- * Param names that require `typeOptions.password` to be set to `true` to obscure the input.
+ * Strings that, if found in a cred class field name, require setting the field's `typeOptions.password` to `true`.
  */
-export const SENSITIVE_INPUTS = new Set(["password", "accessToken", "apiKey"]);
+export const CRED_SENSITIVE_CLASS_FIELDS = [
+	"secret",
+	"password",
+	"token",
+	"key",
+];
+
+export const FALSE_POSITIVE_CRED_SENSITIVE_CLASS_FIELDS = [
+	"accessKeyId",
+	"passwordless",
+	"/token", // when part of OAuth token endpoint
+	// plus `-Url` pattern
+];
+
+/**
+ * Strings that, if found in a node param name, require setting the param's `typeOptions.password` to `true`.
+ */
+export const NODE_SENSITIVE_PARAM_NAMES = [
+	"secret",
+	"password",
+	"token",
+	"apiKey", // `"key"` leads to too many false positives
+];
+
+export const FALSE_POSITIVE_NODE_SENSITIVE_PARAM_NAMES = [
+	"maxTokens",
+	"password_needs_reset",
+];
 
 // ----------------------------------
 //             regexes

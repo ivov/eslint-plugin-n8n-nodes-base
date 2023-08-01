@@ -1,21 +1,40 @@
 import { utils } from "../ast/utils";
 import { getters } from "../ast/getters";
-import { SENSITIVE_INPUTS } from "../constants";
+import {
+	FALSE_POSITIVE_NODE_SENSITIVE_PARAM_NAMES,
+	NODE_SENSITIVE_PARAM_NAMES,
+} from "../constants";
+
+const isFalsePositive = (paramName: string) =>
+	FALSE_POSITIVE_NODE_SENSITIVE_PARAM_NAMES.includes(paramName);
+
+const isSensitive = (paramName: string) => {
+	if (isFalsePositive(paramName)) return false;
+
+	return NODE_SENSITIVE_PARAM_NAMES.some((sensitiveName) =>
+		paramName.toLowerCase().includes(sensitiveName.toLowerCase())
+	);
+};
+
+const sensitiveStrings = NODE_SENSITIVE_PARAM_NAMES.map((i) => `\`${i}\``).join(
+	","
+);
 
 export default utils.createRule({
 	name: utils.getRuleName(module),
 	meta: {
 		type: "problem",
 		docs: {
-			description:
-				"In a sensitive parameter, `typeOptions.password` must be set to `true` to obscure the input.",
+			description: `In a sensitive parameter, \`typeOptions.password\` must be set to \`true\` to obscure the input. A node parameter name is sensitive if it contains the strings: ${sensitiveStrings}. See exceptions in source.`,
 			recommended: "error",
 		},
 		fixable: "code",
 		schema: [],
 		messages: {
-			addPasswordAutofixable: "Add `typeOptions.password` [autofixable]",
-			addPasswordNonAutofixable: "Add `typeOptions.password` [non-autofixable]",
+			addPasswordAutofixable:
+				"Add `typeOptions.password` with `true` [autofixable]",
+			addPasswordNonAutofixable:
+				"Add `typeOptions.password` with `true` [non-autofixable]",
 		},
 	},
 	defaultOptions: [],
@@ -24,7 +43,7 @@ export default utils.createRule({
 			ObjectExpression(node) {
 				const name = getters.nodeParam.getName(node);
 
-				if (!name || !SENSITIVE_INPUTS.has(name.value)) return;
+				if (!name || !isSensitive(name.value)) return;
 
 				const typeOptions = getters.nodeParam.getTypeOptions(node);
 

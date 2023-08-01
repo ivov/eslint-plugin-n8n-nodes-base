@@ -2,7 +2,7 @@
 
 # node-param-type-options-password-missing
 
-In a sensitive parameter, `typeOptions.password` must be set to `true` to obscure the input.
+In a sensitive parameter, `typeOptions.password` must be set to `true` to obscure the input. A node parameter name is sensitive if it contains the strings: `secret`,`password`,`token`,`apiKey`. See exceptions in source.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/nodes` config.
 
@@ -15,6 +15,13 @@ In a sensitive parameter, `typeOptions.password` must be set to `true` to obscur
 ```js
 const test = {
 	displayName: "Some Display Name",
+	name: "secret",
+	type: "string",
+	default: "",
+};
+
+const test = {
+	displayName: "Some Display Name",
 	name: "password",
 	type: "string",
 	default: "",
@@ -22,7 +29,7 @@ const test = {
 
 const test = {
 	displayName: "Some Display Name",
-	name: "accessToken",
+	name: "token",
 	type: "string",
 	default: "",
 };
@@ -36,6 +43,35 @@ const test = {
 
 const test = {
 	displayName: "Some Display Name",
+	name: "appPassword",
+	type: "string",
+	default: "",
+};
+
+const test = {
+	displayName: "Some Display Name",
+	name: "clientSecret",
+	type: "string",
+	default: "",
+};
+
+const test = {
+	displayName: "Some Display Name",
+	name: "accessToken",
+	type: "string",
+	default: "",
+};
+
+const test = {
+	displayName: "Some Display Name",
+	name: "secret",
+	type: "string",
+	typeOptions: { someOption: true },
+	default: "",
+};
+
+const test = {
+	displayName: "Some Display Name",
 	name: "password",
 	type: "string",
 	typeOptions: { someOption: true },
@@ -44,7 +80,7 @@ const test = {
 
 const test = {
 	displayName: "Some Display Name",
-	name: "accessToken",
+	name: "token",
 	type: "string",
 	typeOptions: { someOption: true },
 	default: "",
@@ -64,7 +100,47 @@ const test = {
 ```js
 const test = {
 	displayName: "Some Display Name",
+	name: "secret",
+	type: "string",
+	typeOptions: { password: true },
+	default: "",
+};
+
+const test = {
+	displayName: "Some Display Name",
 	name: "password",
+	type: "string",
+	typeOptions: { password: true },
+	default: "",
+};
+
+const test = {
+	displayName: "Some Display Name",
+	name: "token",
+	type: "string",
+	typeOptions: { password: true },
+	default: "",
+};
+
+const test = {
+	displayName: "Some Display Name",
+	name: "apiKey",
+	type: "string",
+	typeOptions: { password: true },
+	default: "",
+};
+
+const test = {
+	displayName: "Some Display Name",
+	name: "appPassword",
+	type: "string",
+	typeOptions: { password: true },
+	default: "",
+};
+
+const test = {
+	displayName: "Some Display Name",
+	name: "clientSecret",
 	type: "string",
 	typeOptions: { password: true },
 	default: "",
@@ -80,7 +156,15 @@ const test = {
 
 const test = {
 	displayName: "Some Display Name",
-	name: "apiKey",
+	name: "maxTokens",
+	type: "string",
+	typeOptions: { password: true },
+	default: "",
+};
+
+const test = {
+	displayName: "Some Display Name",
+	name: "password_needs_reset",
 	type: "string",
 	typeOptions: { password: true },
 	default: "",

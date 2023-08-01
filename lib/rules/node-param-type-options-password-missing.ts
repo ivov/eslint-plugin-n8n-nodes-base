@@ -1,7 +1,6 @@
 import { utils } from "../ast/utils";
 import { getters } from "../ast/getters";
 import {
-	CRED_SENSITIVE_CLASS_FIELDS,
 	FALSE_POSITIVE_NODE_SENSITIVE_PARAM_NAMES,
 	NODE_SENSITIVE_PARAM_NAMES,
 } from "../constants";
@@ -17,9 +16,9 @@ const isSensitive = (paramName: string) => {
 	);
 };
 
-const sensitiveStrings = CRED_SENSITIVE_CLASS_FIELDS.map(
-	(i) => `\`${i}\``
-).join(",");
+const sensitiveStrings = NODE_SENSITIVE_PARAM_NAMES.map((i) => `\`${i}\``).join(
+	","
+);
 
 export default utils.createRule({
 	name: utils.getRuleName(module),

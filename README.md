@@ -202,7 +202,7 @@ In the `community` ruleset, the five `*-still-default` rules allow you to define
 | [node-param-resource-without-no-data-expression](docs/rules/node-param-resource-without-no-data-expression.md) | `noDataExpression` in a Resource node parameter must be present and enabled. | Yes |
 | [node-param-type-options-max-value-present](docs/rules/node-param-type-options-max-value-present.md) | `maxValue` in `typeOptions` in Limit node parameter is deprecated and must not be present. | Yes |
 | [node-param-type-options-missing-from-limit](docs/rules/node-param-type-options-missing-from-limit.md) | `typeOptions` in Limit node parameter must be present. | Yes |
-| [node-param-type-options-password-missing](docs/rules/node-param-type-options-password-missing.md) | In a sensitive parameter, `typeOptions.password` must be set to `true` to obscure the input. A node parameter name is sensitive if it contains the strings: `secret`,`password`,`token`,`key`. See exceptions in source. | Yes |
+| [node-param-type-options-password-missing](docs/rules/node-param-type-options-password-missing.md) | In a sensitive parameter, `typeOptions.password` must be set to `true` to obscure the input. A node parameter name is sensitive if it contains the strings: `secret`,`password`,`token`,`apiKey`. See exceptions in source. | Yes |
 | [node-resource-description-filename-against-convention](docs/rules/node-resource-description-filename-against-convention.md) | Resource description file must use singular form. Example: `UserDescription.ts`, not `UsersDescription.ts`. | No |
 <!-- /RULES_TABLE -->
 

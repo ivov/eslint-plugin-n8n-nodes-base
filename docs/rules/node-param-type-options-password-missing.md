@@ -2,7 +2,7 @@
 
 # node-param-type-options-password-missing
 
-In a sensitive parameter, `typeOptions.password` must be set to `true` to obscure the input. A node parameter name is sensitive if it contains the strings: `secret`,`password`,`token`,`key`. See exceptions in source.
+In a sensitive parameter, `typeOptions.password` must be set to `true` to obscure the input. A node parameter name is sensitive if it contains the strings: `secret`,`password`,`token`,`apiKey`. See exceptions in source.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/nodes` config.
 

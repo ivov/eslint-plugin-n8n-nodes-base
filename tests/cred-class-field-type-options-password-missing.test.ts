@@ -2,9 +2,19 @@ import rule from "../lib/rules/cred-class-field-type-options-password-missing";
 import { getRuleName } from "../lib/ast";
 import outdent from "outdent";
 import { ruleTester } from "../lib/ast/utils/ruleTester";
-import { SENSITIVE_INPUTS } from "../lib/constants";
+import {
+	CRED_SENSITIVE_CLASS_FIELDS,
+	FALSE_POSITIVE_CRED_SENSITIVE_CLASS_FIELDS,
+} from "../lib/constants";
 
-const validCases = [...SENSITIVE_INPUTS].map((name) => {
+const TEST_CRED_SENSITIVE_STRINGS = [
+	...CRED_SENSITIVE_CLASS_FIELDS,
+	"appPassword",
+	"clientSecret",
+	"accessToken",
+];
+
+const regularValidCases = TEST_CRED_SENSITIVE_STRINGS.map((name) => {
 	return {
 		code: outdent`
 			export class TestApi implements ICredentialType {
@@ -25,7 +35,30 @@ const validCases = [...SENSITIVE_INPUTS].map((name) => {
 	};
 });
 
-const invalidCasesAutofixable = [...SENSITIVE_INPUTS].map((name) => {
+const falsePositiveValidCases = FALSE_POSITIVE_CRED_SENSITIVE_CLASS_FIELDS.map(
+	(name) => {
+		return {
+			code: outdent`
+			export class TestApi implements ICredentialType {
+				name = 'testApi';
+				displayName = 'Test API';
+				documentationUrl = 'zammad';
+				properties: INodeProperties[] = [
+					{
+						displayName: 'Some Display Name',
+						name: '${name}',
+						type: 'string',
+						typeOptions: { password: true },
+						default: '',
+						required: true,
+					},
+				];
+			}`,
+		};
+	}
+);
+
+const invalidCasesAutofixable = TEST_CRED_SENSITIVE_STRINGS.map((name) => {
 	return {
 		code: outdent`
 			export class TestApi implements ICredentialType {
@@ -62,7 +95,7 @@ const invalidCasesAutofixable = [...SENSITIVE_INPUTS].map((name) => {
 	};
 });
 
-const invalidCasesNonAutofixable = [...SENSITIVE_INPUTS].map((name) => {
+const invalidCasesNonAutofixable = TEST_CRED_SENSITIVE_STRINGS.map((name) => {
 	return {
 		code: outdent`
 			export class TestApi implements ICredentialType {
@@ -85,6 +118,6 @@ const invalidCasesNonAutofixable = [...SENSITIVE_INPUTS].map((name) => {
 });
 
 ruleTester().run(getRuleName(module), rule, {
-	valid: validCases,
+	valid: [...regularValidCases, ...falsePositiveValidCases],
 	invalid: [...invalidCasesAutofixable, ...invalidCasesNonAutofixable],
 });

@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * Entrypoint copies into `/dist/index.js` during build.
+ * Entrypoint copied into `/dist/index.js` during build.
  */
 
 const fs = require("fs");

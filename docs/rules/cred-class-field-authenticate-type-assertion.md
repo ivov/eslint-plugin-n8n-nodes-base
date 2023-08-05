@@ -32,17 +32,17 @@ class TestApi implements ICredentialType {
 
 ```js
 class TestApi implements ICredentialType {
-	name = "myTestApi";
-	displayName = "My Test API";
-	documentationUrl = "myTest";
-	authenticate: IAuthenticateGeneric = {
-		type: "generic",
-		properties: {
-			headers: {
-				Authorization: "=Token {{$credentials.token}}",
-			},
-		},
-	};
+    name = 'myTestApi';
+    displayName = 'My Test API';
+    documentationUrl = 'myTest';
+    authenticate: IAuthenticateGeneric = {
+        type: 'generic',
+        properties: {
+            headers: {
+                Authorization: '=Token {{$credentials.token}}',
+            },
+        },
+    };
 }
 ```
 

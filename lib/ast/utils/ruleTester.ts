@@ -1,5 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
-
+// eslint-disable-next-line import/no-extraneous-dependencies
 import DocRuleTester from "eslint-docgen/src/rule-tester";
 
 export const ruleTester = () =>

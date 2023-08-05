@@ -130,7 +130,7 @@ ruleTester().run(getRuleName(module), rule, {
 					},
 				],
 			};`,
-		}
+		},
 	],
 	invalid: [
 		{

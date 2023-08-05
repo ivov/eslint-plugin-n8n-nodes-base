@@ -24,7 +24,6 @@ export default utils.createRule({
 
 				const extendsValue = getters.credClassBody.getExtendsValue(
 					node.body,
-					// @ts-ignore @TODO
 					context
 				);
 

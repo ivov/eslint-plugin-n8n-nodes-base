@@ -27,12 +27,12 @@ const test = [
 
 ```js
 const test: INodeProperties[] = [
-	{
-		displayName: "Test",
-		name: "test",
-		type: "string",
-		default: "",
-	},
+    {
+        displayName: 'Test',
+        name: 'test',
+        type: 'string',
+        default: '',
+    },
 ];
 ```
 

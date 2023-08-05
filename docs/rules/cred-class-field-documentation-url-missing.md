@@ -14,8 +14,8 @@
 
 ```js
 class TestApi implements ICredentialType {
-	name = "myTestApi";
-	displayName = "My Test API";
+    name = 'myTestApi';
+    displayName = 'My Test API';
 }
 ```
 
@@ -23,9 +23,9 @@ class TestApi implements ICredentialType {
 
 ```js
 class MyTestApi implements ICredentialType {
-	name = "myTestApi";
-	displayName = "My Test API";
-	documentationUrl = "myTest";
+    name = 'myTestApi';
+    displayName = 'My Test API';
+    documentationUrl = 'myTest';
 }
 ```
 

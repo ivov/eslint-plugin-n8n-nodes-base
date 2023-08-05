@@ -14,220 +14,220 @@ In a sensitive string-type field, `typeOptions.password` must be set to `true` t
 
 ```js
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "test";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Some Display Name",
-			name: "secret",
-			type: "string",
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'test';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Some Display Name',
+            name: 'secret',
+            type: 'string',
+            default: '',
+            required: true,
+        },
+    ];
 }
 
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "test";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Some Display Name",
-			name: "password",
-			type: "string",
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'test';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Some Display Name',
+            name: 'password',
+            type: 'string',
+            default: '',
+            required: true,
+        },
+    ];
 }
 
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "test";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Some Display Name",
-			name: "token",
-			type: "string",
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'test';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Some Display Name',
+            name: 'token',
+            type: 'string',
+            default: '',
+            required: true,
+        },
+    ];
 }
 
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "test";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Some Display Name",
-			name: "key",
-			type: "string",
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'test';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Some Display Name',
+            name: 'key',
+            type: 'string',
+            default: '',
+            required: true,
+        },
+    ];
 }
 
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "test";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Some Display Name",
-			name: "appPassword",
-			type: "string",
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'test';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Some Display Name',
+            name: 'appPassword',
+            type: 'string',
+            default: '',
+            required: true,
+        },
+    ];
 }
 
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "test";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Some Display Name",
-			name: "clientSecret",
-			type: "string",
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'test';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Some Display Name',
+            name: 'clientSecret',
+            type: 'string',
+            default: '',
+            required: true,
+        },
+    ];
 }
 
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "test";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Some Display Name",
-			name: "accessToken",
-			type: "string",
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'test';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Some Display Name',
+            name: 'accessToken',
+            type: 'string',
+            default: '',
+            required: true,
+        },
+    ];
 }
 
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "test";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Some Display Name",
-			name: "secret",
-			type: "string",
-			typeOptions: { someOption: true },
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'test';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Some Display Name',
+            name: 'secret',
+            type: 'string',
+            typeOptions: { someOption: true },
+            default: '',
+            required: true,
+        },
+    ];
 }
 
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "test";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Some Display Name",
-			name: "password",
-			type: "string",
-			typeOptions: { someOption: true },
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'test';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Some Display Name',
+            name: 'password',
+            type: 'string',
+            typeOptions: { someOption: true },
+            default: '',
+            required: true,
+        },
+    ];
 }
 
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "test";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Some Display Name",
-			name: "token",
-			type: "string",
-			typeOptions: { someOption: true },
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'test';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Some Display Name',
+            name: 'token',
+            type: 'string',
+            typeOptions: { someOption: true },
+            default: '',
+            required: true,
+        },
+    ];
 }
 
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "test";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Some Display Name",
-			name: "key",
-			type: "string",
-			typeOptions: { someOption: true },
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'test';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Some Display Name',
+            name: 'key',
+            type: 'string',
+            typeOptions: { someOption: true },
+            default: '',
+            required: true,
+        },
+    ];
 }
 
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "test";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Some Display Name",
-			name: "appPassword",
-			type: "string",
-			typeOptions: { someOption: true },
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'test';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Some Display Name',
+            name: 'appPassword',
+            type: 'string',
+            typeOptions: { someOption: true },
+            default: '',
+            required: true,
+        },
+    ];
 }
 
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "test";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Some Display Name",
-			name: "clientSecret",
-			type: "string",
-			typeOptions: { someOption: true },
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'test';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Some Display Name',
+            name: 'clientSecret',
+            type: 'string',
+            typeOptions: { someOption: true },
+            default: '',
+            required: true,
+        },
+    ];
 }
 
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "test";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Some Display Name",
-			name: "accessToken",
-			type: "string",
-			typeOptions: { someOption: true },
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'test';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Some Display Name',
+            name: 'accessToken',
+            type: 'string',
+            typeOptions: { someOption: true },
+            default: '',
+            required: true,
+        },
+    ];
 }
 ```
 
@@ -235,178 +235,178 @@ export class TestApi implements ICredentialType {
 
 ```js
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "zammad";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Some Display Name",
-			name: "secret",
-			type: "string",
-			typeOptions: { password: true },
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'zammad';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Some Display Name',
+            name: 'secret',
+            type: 'string',
+            typeOptions: { password: true },
+            default: '',
+            required: true,
+        },
+    ];
 }
 
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "zammad";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Some Display Name",
-			name: "password",
-			type: "string",
-			typeOptions: { password: true },
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'zammad';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Some Display Name',
+            name: 'password',
+            type: 'string',
+            typeOptions: { password: true },
+            default: '',
+            required: true,
+        },
+    ];
 }
 
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "zammad";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Some Display Name",
-			name: "token",
-			type: "string",
-			typeOptions: { password: true },
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'zammad';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Some Display Name',
+            name: 'token',
+            type: 'string',
+            typeOptions: { password: true },
+            default: '',
+            required: true,
+        },
+    ];
 }
 
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "zammad";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Some Display Name",
-			name: "key",
-			type: "string",
-			typeOptions: { password: true },
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'zammad';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Some Display Name',
+            name: 'key',
+            type: 'string',
+            typeOptions: { password: true },
+            default: '',
+            required: true,
+        },
+    ];
 }
 
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "zammad";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Some Display Name",
-			name: "appPassword",
-			type: "string",
-			typeOptions: { password: true },
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'zammad';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Some Display Name',
+            name: 'appPassword',
+            type: 'string',
+            typeOptions: { password: true },
+            default: '',
+            required: true,
+        },
+    ];
 }
 
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "zammad";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Some Display Name",
-			name: "clientSecret",
-			type: "string",
-			typeOptions: { password: true },
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'zammad';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Some Display Name',
+            name: 'clientSecret',
+            type: 'string',
+            typeOptions: { password: true },
+            default: '',
+            required: true,
+        },
+    ];
 }
 
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "zammad";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Some Display Name",
-			name: "accessToken",
-			type: "string",
-			typeOptions: { password: true },
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'zammad';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Some Display Name',
+            name: 'accessToken',
+            type: 'string',
+            typeOptions: { password: true },
+            default: '',
+            required: true,
+        },
+    ];
 }
 
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "zammad";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Some Display Name",
-			name: "accessKeyId",
-			type: "string",
-			typeOptions: { password: true },
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'zammad';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Some Display Name',
+            name: 'accessKeyId',
+            type: 'string',
+            typeOptions: { password: true },
+            default: '',
+            required: true,
+        },
+    ];
 }
 
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "zammad";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Some Display Name",
-			name: "passwordless",
-			type: "string",
-			typeOptions: { password: true },
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'zammad';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Some Display Name',
+            name: 'passwordless',
+            type: 'string',
+            typeOptions: { password: true },
+            default: '',
+            required: true,
+        },
+    ];
 }
 
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "zammad";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Some Display Name",
-			name: "/token",
-			type: "string",
-			typeOptions: { password: true },
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'zammad';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Some Display Name',
+            name: '/token',
+            type: 'string',
+            typeOptions: { password: true },
+            default: '',
+            required: true,
+        },
+    ];
 }
 
 export class TestApi implements ICredentialType {
-	name = "testApi";
-	displayName = "Test API";
-	documentationUrl = "zammad";
-	properties: INodeProperties[] = [
-		{
-			displayName: "Access Token",
-			name: "accessToken",
-			type: "hidden",
-			default: "",
-			required: true,
-		},
-	];
+    name = 'testApi';
+    displayName = 'Test API';
+    documentationUrl = 'zammad';
+    properties: INodeProperties[] = [
+        {
+            displayName: 'Access Token',
+            name: 'accessToken',
+            type: 'hidden',
+            default: '',
+            required: true,
+        },
+    ];
 }
 ```
 

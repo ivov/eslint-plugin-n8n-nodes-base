@@ -8,7 +8,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: "`default` for a Simplify node parameter must be `true`.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

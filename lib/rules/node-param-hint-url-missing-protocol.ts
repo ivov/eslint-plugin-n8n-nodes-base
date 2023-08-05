@@ -8,7 +8,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: `\`hint\` in node parameter must include protocol e.g. \`https://\` when containing a URL.`,
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],
@@ -32,7 +32,7 @@ export default utils.createRule({
 				) {
 					const withProtocol = hint.value.replace(
 						/href=(['"])/g,
-						'href=\$1https://'
+						"href=$1https://"
 					);
 					const fixed = utils.keyValue("hint", withProtocol);
 

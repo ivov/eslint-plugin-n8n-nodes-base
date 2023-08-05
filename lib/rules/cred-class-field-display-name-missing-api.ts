@@ -10,7 +10,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`displayName` field in credential class must be end with `API`.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],
@@ -46,4 +46,3 @@ export default utils.createRule({
 		};
 	},
 });
-

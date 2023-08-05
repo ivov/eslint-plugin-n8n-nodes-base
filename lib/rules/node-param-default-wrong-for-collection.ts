@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`default` for collection-type node parameter must be an object.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

@@ -10,7 +10,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`description` in dynamic-options-type node parameter must be present.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		schema: [],
 		fixable: "code",

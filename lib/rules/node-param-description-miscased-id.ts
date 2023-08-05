@@ -9,7 +9,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: `\`ID\` in \`description\` in node parameter must be fully uppercased. ${DOCUMENTATION.APPLICABLE_BY_EXTENSION_TO_DESCRIPTION_IN_OPTION}`,
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

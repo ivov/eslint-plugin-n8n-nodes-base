@@ -1,4 +1,4 @@
-import prettier from "prettier";
+// import prettier from "prettier";
 import {
 	MIN_ITEMS_TO_ALPHABETIZE,
 	MIN_ITEMS_TO_ALPHABETIZE_SPELLED_OUT,
@@ -6,7 +6,7 @@ import {
 import { utils } from "../ast/utils";
 import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
-import { PRETTIER_CONFIG } from "../constants";
+// import { PRETTIER_CONFIG } from "../constants";
 
 export default utils.createRule({
 	name: utils.getRuleName(module),
@@ -14,9 +14,9 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: `Items in options-type node parameter must be alphabetized by \`name\` if ${MIN_ITEMS_TO_ALPHABETIZE_SPELLED_OUT} or more than ${MIN_ITEMS_TO_ALPHABETIZE_SPELLED_OUT}.`,
-			recommended: "error",
+			recommended: "strict",
 		},
-		fixable: "code",
+		// fixable: "code",
 		schema: [],
 		messages: {
 			sortItems:
@@ -52,24 +52,28 @@ export default utils.createRule({
 				if (!utils.areIdenticallySortedOptions(options, sortedOptions)) {
 					const displayOrder = utils.toDisplayOrder(sortedOptions);
 
-					const sortedOptionsSource = JSON.stringify(sortedOptions, null, 2);
+					/**
+					 * @TODO: prettier.format is now async
+					 */
 
-					const unformattedNewSource = context
-						.getSourceCode()
-						.getText()
-						.replace(optionsSource, sortedOptionsSource);
+					// const sortedOptionsSource = JSON.stringify(sortedOptions, null, 2);
 
-					const formattedNewSource = prettier
-						.format(unformattedNewSource, PRETTIER_CONFIG)
-						.trim(); // consume Prettier's EoF newline
+					// const unformattedNewSource = context
+					// 	.getSourceCode()
+					// 	.getText()
+					// 	.replace(optionsSource, sortedOptionsSource);
 
-					const fullAst = context.getSourceCode().ast;
+					// const formattedNewSource = prettier
+					// 	.format(unformattedNewSource, PRETTIER_CONFIG)
+					// 	.trim(); // consume Prettier's EoF newline
+
+					// const fullAst = context.getSourceCode().ast;
 
 					context.report({
 						messageId: "sortItems",
 						node: optionsNode.ast,
 						data: { displayOrder },
-						fix: (fixer) => fixer.replaceText(fullAst, formattedNewSource),
+						// fix: (fixer) => fixer.replaceText(fullAst, formattedNewSource),
 					});
 				}
 			},
@@ -77,7 +81,9 @@ export default utils.createRule({
 	},
 });
 
-export function toOptions(optionsSource: string): Array<{ name: string }> | null {
+export function toOptions(
+	optionsSource: string
+): Array<{ name: string }> | null {
 	try {
 		return eval(`(${optionsSource})`);
 	} catch (error) {

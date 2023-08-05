@@ -6,7 +6,9 @@
 		"outDir": "./dist",
 		"strict": true,
 		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true
+		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true,
+		"moduleResolution": "node16"
 	},
 	"exclude": ["scripts/downloads", "scratchpad"]
 }

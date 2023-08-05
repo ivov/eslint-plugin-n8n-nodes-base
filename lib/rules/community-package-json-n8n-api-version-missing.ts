@@ -10,7 +10,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"The `n8n.n8nNodesApiVersion` key must be present in the `package.json` of a community package.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		schema: [],
 		messages: {

@@ -9,7 +9,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: `\`description\` for Upsert node parameter must be \`${UPSERT_NODE_PARAMETER.DESCRIPTION}\`. The resource name e.g. \`'contact'\` is also allowed instead of \`'record'\`.`,
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

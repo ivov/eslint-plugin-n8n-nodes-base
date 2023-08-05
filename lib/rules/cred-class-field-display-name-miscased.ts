@@ -10,7 +10,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`displayName` field in credential class must be title cased, except for `n8n API` and `E-goi API`",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],
@@ -44,4 +44,4 @@ export default utils.createRule({
 	},
 });
 
-const EXCEPTIONS = ['n8n API', 'E-goi API']
+const EXCEPTIONS = ["n8n API", "E-goi API"];

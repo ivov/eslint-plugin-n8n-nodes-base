@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`default` for boolean-type node parameter must be a boolean.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

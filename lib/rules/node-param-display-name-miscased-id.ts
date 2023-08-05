@@ -9,7 +9,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: `\`ID\` in \`displayName\` in node parameter must be fully uppercased. ${DOCUMENTATION.APPLICABLE_BY_EXTENSION_TO_NAME}`,
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],
@@ -50,7 +50,7 @@ export default utils.createRule({
 					if (!name) return;
 
 					if (MISCASED_ID_REGEX.test(name.value)) {
-						if (name.value.startsWith('=')) return; // is n8n expression
+						if (name.value.startsWith("=")) return; // is n8n expression
 
 						const correctlyCased = name.value
 							.replace(/\bid\b/i, "ID")

@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`name` field in credential class must mention `OAuth2` if the credential is OAuth2.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		schema: [],
 		messages: {
@@ -24,7 +24,11 @@ export default utils.createRule({
 
 				const { body: classBody } = node;
 
-				const extendsValue = getters.credClassBody.getExtendsValue(classBody, context);
+				const extendsValue = getters.credClassBody.getExtendsValue(
+					classBody,
+					// @ts-ignore @TODO
+					context
+				);
 
 				if (!extendsValue) return;
 

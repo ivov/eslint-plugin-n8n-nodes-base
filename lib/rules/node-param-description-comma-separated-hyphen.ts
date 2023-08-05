@@ -9,7 +9,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: `The string \`comma-separated\` in \`description\` must be hyphenated. ${DOCUMENTATION.APPLICABLE_BY_EXTENSION_TO_DESCRIPTION_IN_OPTION}`,
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

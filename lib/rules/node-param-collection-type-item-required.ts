@@ -9,7 +9,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: `Items in collection-type node parameter must not have a \`required\` property.`,
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

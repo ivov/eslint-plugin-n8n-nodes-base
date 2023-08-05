@@ -13,7 +13,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: docline`The \`author.name\` value in the \`package.json\` of a community package must be different from the default value ${COMMUNITY_PACKAGE_JSON.AUTHOR_NAME} or a user-defined default.`,
-			recommended: "error",
+			recommended: "strict",
 		},
 		schema: [
 			{

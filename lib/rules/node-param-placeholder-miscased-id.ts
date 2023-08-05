@@ -10,7 +10,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`ID` in `placeholder` in node parameter must be fully uppercased.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

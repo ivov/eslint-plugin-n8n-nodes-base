@@ -1,7 +1,6 @@
 import { utils } from "../ast/utils";
 import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
-import { RuleContext } from "@typescript-eslint/utils/dist/ts-eslint";
 
 export default utils.createRule({
 	name: utils.getRuleName(module),
@@ -10,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"Credential class name must mention `OAuth2` if the credential is OAuth2.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		schema: [],
 		messages: {
@@ -25,6 +24,7 @@ export default utils.createRule({
 
 				const extendsValue = getters.credClassBody.getExtendsValue(
 					node.body,
+					// @ts-ignore @TODO
 					context
 				);
 

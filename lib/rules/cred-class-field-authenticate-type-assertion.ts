@@ -8,7 +8,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"In a credential class, the field `authenticate` must be typed `IAuthenticateGeneric`",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

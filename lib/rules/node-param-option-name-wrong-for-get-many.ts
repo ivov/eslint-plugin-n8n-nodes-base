@@ -7,8 +7,9 @@ export default utils.createRule({
 	meta: {
 		type: "problem",
 		docs: {
-			description: "Option `name` for Get Many node parameter must be `Get Many`",
-			recommended: "error",
+			description:
+				"Option `name` for Get Many node parameter must be `Get Many`",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

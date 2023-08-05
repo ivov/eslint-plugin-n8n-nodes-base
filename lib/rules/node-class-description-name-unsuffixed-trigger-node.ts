@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`name` in node class description for trigger node must be suffixed with `-Trigger`.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

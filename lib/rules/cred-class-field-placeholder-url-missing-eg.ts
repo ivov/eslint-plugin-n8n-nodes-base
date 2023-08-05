@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`placeholder` for a URL in credential class must be prepended with `e.g.`.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

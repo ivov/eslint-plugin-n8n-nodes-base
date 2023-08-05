@@ -10,7 +10,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"The property `action` in a Get Many option in an Operation node parameter must start with `Get many`.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

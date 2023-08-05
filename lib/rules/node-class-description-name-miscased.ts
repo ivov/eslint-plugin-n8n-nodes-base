@@ -8,9 +8,8 @@ export default utils.createRule({
 	meta: {
 		type: "problem",
 		docs: {
-			description:
-				"`name` in node class description must be camel cased.",
-			recommended: "error",
+			description: "`name` in node class description must be camel cased.",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

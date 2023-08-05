@@ -11,7 +11,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"In a credential class, the field `properties` must be typed `INodeProperties` and individual properties must have no assertions.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

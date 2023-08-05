@@ -10,7 +10,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`documentationUrl` field in credential class must be camel cased. Only applicable to nodes in the main repository.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

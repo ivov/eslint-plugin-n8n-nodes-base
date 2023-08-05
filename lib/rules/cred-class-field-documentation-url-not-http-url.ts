@@ -11,7 +11,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`documentationUrl` field in credential class must be an HTTP URL. Only applicable to community credentials.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		schema: [],
 		messages: {

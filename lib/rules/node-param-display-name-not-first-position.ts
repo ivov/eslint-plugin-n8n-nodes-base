@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"By convention, `displayName` in node parameter must be placed first.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

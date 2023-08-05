@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`default` for a string-type node parameter must be a string, unless `typeOptions.multipleValues` is set to `true`.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

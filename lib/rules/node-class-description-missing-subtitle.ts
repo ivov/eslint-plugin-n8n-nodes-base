@@ -10,7 +10,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: "`subtitle` in node class description must be present.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

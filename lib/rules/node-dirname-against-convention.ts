@@ -7,7 +7,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"Node dirname must match node filename, excluding the filename suffix. Example: `Test` node dirname matches `Test` section of `Test.node.ts` node filename.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		schema: [],
 		messages: {
@@ -23,7 +23,7 @@ export default utils.createRule({
 				if (!filepath.endsWith(".node.ts")) return;
 
 				const [filename, parentDir] = filepath
-					.replace(/\\/g, '/')
+					.replace(/\\/g, "/")
 					.split("/")
 					.reverse()
 					.map((i) => i.replace("trigger", ""));

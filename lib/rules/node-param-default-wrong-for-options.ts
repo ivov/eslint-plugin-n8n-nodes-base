@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`default` for an options-type node parameter must be one of the options.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

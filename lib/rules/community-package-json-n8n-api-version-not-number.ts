@@ -10,7 +10,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"The `n8n.n8nNodesApiVersion` value in the `package.json` of a community package must be a number.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		schema: [],
 		messages: {

@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`description` in option in options-type node parameter must not be identical to `name`.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		schema: [],
 		fixable: "code",

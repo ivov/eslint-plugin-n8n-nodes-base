@@ -9,7 +9,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: `\`description\` for Limit node parameter must be \`${LIMIT_NODE_PARAMETER.DESCRIPTION}\``,
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

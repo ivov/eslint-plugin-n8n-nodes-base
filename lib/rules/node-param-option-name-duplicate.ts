@@ -11,7 +11,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"Option `name` in options-type node parameter must not be a duplicate.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		schema: [],
 		fixable: "code",

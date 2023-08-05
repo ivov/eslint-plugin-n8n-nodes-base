@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"Option `name` for Upsert node parameter must be `Create or Update`.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

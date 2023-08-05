@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`documentationUrl` field in credential class must be present.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

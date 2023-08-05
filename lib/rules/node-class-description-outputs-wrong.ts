@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"The number of `outputs` in node class description for any node must be one, or two for If node, or four for Switch node.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

@@ -8,7 +8,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: "Array of node parameters must be typed, not type-asserted.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],
@@ -65,7 +65,7 @@ function containsArrayOfNodeParams(node: TSESTree.TSAsExpression) {
 
 	return node.expression.elements.every((element) => {
 		return (
-			element.type === AST_NODE_TYPES.ObjectExpression &&
+			element?.type === AST_NODE_TYPES.ObjectExpression &&
 			id.isNodeParameter(element)
 		);
 	});

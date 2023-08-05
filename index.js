@@ -1,5 +1,9 @@
 "use strict";
 
+/**
+ * Entrypoint copies into `/dist/index.js` during build.
+ */
+
 const fs = require("fs");
 const path = require("path");
 
@@ -60,7 +64,7 @@ const allRuleModules = ALL_RULE_NAMES.reduce((acc, rulename) => {
  *       // etc
  *     }
  *  },
- *   "communityy": { ... },
+ *   "community": { ... },
  *   "credentials": { ... },
  *   "nodes": { ... },
  *   "community": { ... },
@@ -84,7 +88,7 @@ const configs = ALL_RULE_NAMES.reduce(
 		return acc;
 	},
 	{
-		all: { ...CONFIG_BASE_PROPERTIES, rules: {} }, // TODO: Remove
+		all: { ...CONFIG_BASE_PROPERTIES, rules: {} }, // @TODO: Remove
 		community: { ...CONFIG_BASE_PROPERTIES, rules: {} },
 		credentials: { ...CONFIG_BASE_PROPERTIES, rules: {} },
 		nodes: { ...CONFIG_BASE_PROPERTIES, rules: {} },

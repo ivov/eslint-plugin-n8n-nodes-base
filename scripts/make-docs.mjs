@@ -13,7 +13,7 @@ const RULES_DOCUMENTATION_DIR = path.resolve(ROOT_DIR, "docs", "rules");
 
 shell.rm("-rf", RULES_DOCUMENTATION_DIR);
 
-shell.exec("DOCGEN=1 npm run test"); // https://github.com/wikimedia/eslint-docgen#-usage
+shell.exec("DOCGEN=1 pnpm test"); // https://github.com/wikimedia/eslint-docgen#-usage
 
 fs.readdirSync(SCRIPTS_DIR)
 	.filter((filename) => filename.startsWith("make-docs-")) // mind the trailing dash

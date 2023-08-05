@@ -10,7 +10,7 @@ ESLint plugin for linting n8n nodes.
 Install this plugin:
 
 ```sh
-npm i -D eslint-plugin-n8n-nodes-base
+pnpm i -D eslint-plugin-n8n-nodes-base
 ```
 
 Create an [ESLint configuration file](<(https://eslint.org/docs/latest/user-guide/configuring/configuration-files)>) and decide how to set up the plugin.

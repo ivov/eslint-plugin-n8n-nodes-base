@@ -2,6 +2,10 @@
   "name": "eslint-plugin-n8n-nodes-base",
   "version": "1.15.0",
   "main": "dist/index.js",
+  "engines": {
+    "node": ">=18.10",
+    "pnpm": ">=8.6"
+  },
   "author": {
     "name": "Iván Ovejero",
     "url": "https://ivov.dev"
@@ -20,9 +24,11 @@
     "eslint-plugin"
   ],
   "scripts": {
+    "preinstall": "npx only-allow pnpm", 
     "build": "node scripts/build.mjs",
     "typecheck": "tsc --noEmit",
-    "doc": "npm run build; node scripts/make-docs.mjs",
+    "doc": "pnpm build; node scripts/make-docs.mjs",
+    "docs": "pnpm doc",
     "format": "prettier lib scripts tests --write",
     "lint-plugin": "eslint lib tests --ext .ts",
     "lint-codebase": "chmod +x scripts/lint-codebase.sh && scripts/lint-codebase.sh",

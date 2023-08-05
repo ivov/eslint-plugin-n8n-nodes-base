@@ -5,20 +5,23 @@ on: push
 jobs:
   run-checks:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
       - name: Check out commit
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Set up Node 18
         uses: actions/setup-node@v3
         with:
-          node-version: "16"
-          cache: "npm"
+          node-version: 18.x
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Run plugin checks
         run: |
-          npm ci
-          npm run typecheck
-          npm run lint-plugin
-          npm test
+          pnpm typecheck
+          pnpm lint-plugin
+          pnpm test

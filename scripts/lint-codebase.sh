@@ -2,8 +2,8 @@
 
 echo 'Step 1: Setting up linter...'
 
-npm ci
-npm run build
+pnpm install --frozen-lockfile
+pnpm build
 node scripts/make-lint-codebase-config.mjs
 
 # `make-lint-codebase-config.mjs` creates `.eslintplugin.js`, based on
@@ -19,7 +19,7 @@ node scripts/get-codebase.mjs
 
 echo 'Step 3: Linting codebase...'
 
-npm i eslint-plugin-n8n-nodes-base
+pnpm i eslint-plugin-n8n-nodes-base
 ./node_modules/eslint/bin/eslint.js \
     --no-eslintrc \
     --config lint-codebase-config.js \

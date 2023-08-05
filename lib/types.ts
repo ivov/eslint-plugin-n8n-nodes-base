@@ -1,5 +1,5 @@
 import type { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
-// import type { RuleContext } from "@typescript-eslint/utils/dist/ts-eslint";
+import type { RuleContext } from "@typescript-eslint/utils/ts-eslint";
 
 type BaseProperty = TSESTree.PropertyNonComputedName;
 
@@ -47,4 +47,4 @@ export type StringClassField = TSESTree.PropertyDefinitionNonComputedName & {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type GenericContext = Readonly<any>; // TODO: Type properly
+export type GenericContext = Readonly<RuleContext<any, any>>; // @TODO: Type properly

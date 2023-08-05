@@ -26,5 +26,5 @@ jobs:
       - name: Run plugin checks
         run: |
           pnpm typecheck
-          pnpm lint-plugin
+          pnpm lint
           pnpm test

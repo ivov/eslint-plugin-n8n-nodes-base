@@ -1,5 +1,5 @@
 # Workflow only meant to be manually run to test the `lint-codebase` command
-name: Test lint-codebase command
+name: Test lint-codebase
 
 on:
   workflow_dispatch:

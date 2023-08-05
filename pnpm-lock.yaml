@@ -20,9 +20,6 @@ dependencies:
   pluralize:
     specifier: ^8.0.0
     version: 8.0.0
-  prettier:
-    specifier: ^3.0.1
-    version: 3.0.1
   sentence-case:
     specifier: ^3.0.4
     version: 3.0.4
@@ -91,6 +88,9 @@ devDependencies:
   p-map:
     specifier: ^6.0.0
     version: 6.0.0
+  prettier:
+    specifier: ^3.0.1
+    version: 3.0.1
   shelljs:
     specifier: ^0.8.5
     version: 0.8.5
@@ -4393,6 +4393,7 @@ packages:
     resolution: {integrity: sha512-fcOWSnnpCrovBsmFZIGIy9UqK2FaI7Hqax+DIO0A9UxeVoY4iweyaFjS5TavZN97Hfehph0nhsZnjlVKzEQSrQ==}
     engines: {node: '>=14'}
     hasBin: true
+    dev: true
 
   /pretty-format@29.6.2:
     resolution: {integrity: sha512-1q0oC8eRveTg5nnBEWMXAU2qpv65Gnuf2eCQzSjxpWFkPaPARwqZZDGuNE0zPAZfTCHzIk3A8dIjwlQKKLphyg==}

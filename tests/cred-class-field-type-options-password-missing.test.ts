@@ -58,6 +58,24 @@ const falsePositiveValidCases = FALSE_POSITIVE_CRED_SENSITIVE_CLASS_FIELDS.map(
 	}
 );
 
+const nonStringValidCase = {
+	code: outdent`
+		export class TestApi implements ICredentialType {
+			name = 'testApi';
+			displayName = 'Test API';
+			documentationUrl = 'zammad';
+			properties: INodeProperties[] = [
+				{
+					displayName: 'Access Token',
+					name: 'accessToken',
+					type: 'hidden',
+					default: '',
+					required: true,
+				},
+			];
+		}`,
+};
+
 const invalidCasesAutofixable = TEST_CRED_SENSITIVE_STRINGS.map((name) => {
 	return {
 		code: outdent`
@@ -118,6 +136,6 @@ const invalidCasesNonAutofixable = TEST_CRED_SENSITIVE_STRINGS.map((name) => {
 });
 
 ruleTester().run(getRuleName(module), rule, {
-	valid: [...regularValidCases, ...falsePositiveValidCases],
+	valid: [...regularValidCases, ...falsePositiveValidCases, nonStringValidCase],
 	invalid: [...invalidCasesAutofixable, ...invalidCasesNonAutofixable],
 });

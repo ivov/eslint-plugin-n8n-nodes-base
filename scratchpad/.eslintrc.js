@@ -1,10 +1,12 @@
 const RULESET = [
 	// "plugin:n8n-nodes-base/credentials",
-	"plugin:n8n-nodes-base/nodes",
+	// "plugin:n8n-nodes-base/nodes",
 	// "plugin:n8n-nodes-base/community",
 ];
 
 const RULES = {
+	"n8n-nodes-base/node-param-type-options-password-missing": "error",
+	// "n8n-nodes-base/cred-class-field-type-options-password-missing": "error",
 	// "n8n-nodes-base/cred-class-field-placeholder-url-missing-eg": "error",
 	// "n8n-nodes-base/node-class-description-name-miscased": "error",
 	// "n8n-nodes-base/community-package-json-license-missing": "error",

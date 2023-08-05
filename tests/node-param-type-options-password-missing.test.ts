@@ -42,6 +42,27 @@ const falsePositiveValidCases = FALSE_POSITIVE_NODE_SENSITIVE_PARAM_NAMES.map(
 	}
 );
 
+const nonStringValidCases = [
+	{
+		code: outdent`
+		const test = {
+			displayName: 'Some Display Name',
+			name: 'accessToken',
+			type: 'hidden',
+			default: '',
+		}`,
+	},
+	{
+		code: outdent`
+		const test = {
+			displayName: 'Is Password Protected',
+			name: 'isPasswordProtected',
+			type: 'boolean',
+			default: '',
+		}`,
+	},
+];
+
 const invalidCasesAutofixable = TEST_NODE_SENSITIVE_STRINGS.map((name) => {
 	return {
 		code: outdent`
@@ -78,6 +99,10 @@ const invalidCasesNonAutofixable = NODE_SENSITIVE_PARAM_NAMES.map((name) => {
 });
 
 ruleTester().run(getRuleName(module), rule, {
-	valid: [...regularValidCases, ...falsePositiveValidCases],
+	valid: [
+		...regularValidCases,
+		...falsePositiveValidCases,
+		...nonStringValidCases,
+	],
 	invalid: [...invalidCasesAutofixable, ...invalidCasesNonAutofixable],
 });

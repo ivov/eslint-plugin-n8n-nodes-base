@@ -6,7 +6,9 @@ This dir is a scratchpad for checking rules against nodes, credentials and commu
 
 To lint sample files:
 
-1. Edit a file in `sample/nodes`, `sample/credentials` or `sample/community`. This is the target to check against one or more rules against.
+0. Edit the lint rule at `lib/rules` and build the project with `pnpm build`.
+
+1. Edit a file at `sample/nodes`, `sample/credentials` or `sample/community`. This is the target to lint.
 
 2. In `.eslintrc.js` enable the ruleset or rule to check.
 
@@ -14,7 +16,7 @@ To lint sample files:
 // to check all rules in the credentials ruleset
 const RULESET = ["plugin:n8n-nodes-base/credentials"];
 
-// to check one node rule against the sample target
+// to check a single node rule against the sample target
 const RULES = {
 	"n8n-nodes-base/node-class-description-name-miscased": "error",
 };

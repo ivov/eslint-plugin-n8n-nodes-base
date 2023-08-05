@@ -2,7 +2,7 @@
 
 # cred-class-field-type-options-password-missing
 
-In a sensitive field, `typeOptions.password` must be set to `true` to obscure the input. A field name is sensitive if it contains the strings: `secret`,`password`,`token`,`key`. See exceptions in source.
+In a sensitive string-type field, `typeOptions.password` must be set to `true` to obscure the input. A field name is sensitive if it contains the strings: `secret`,`password`,`token`,`key`. See exceptions in source.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/credentials` config.
 
@@ -388,6 +388,21 @@ export class TestApi implements ICredentialType {
 			name: "/token",
 			type: "string",
 			typeOptions: { password: true },
+			default: "",
+			required: true,
+		},
+	];
+}
+
+export class TestApi implements ICredentialType {
+	name = "testApi";
+	displayName = "Test API";
+	documentationUrl = "zammad";
+	properties: INodeProperties[] = [
+		{
+			displayName: "Access Token",
+			name: "accessToken",
+			type: "hidden",
 			default: "",
 			required: true,
 		},

@@ -28,6 +28,16 @@ export class Sample implements INodeType {
 		inputs: ["main"],
 		outputs: ["main"],
 		properties: [
+			{
+				displayName: "Access Token",
+				name: "token",
+				type: "hidden",
+				typeOptions: {
+					expirable: true,
+				},
+				default: "",
+			},
+
 			// ----------------------------------
 			//         Resources
 			// ----------------------------------
@@ -51,14 +61,6 @@ export class Sample implements INodeType {
 					},
 				],
 				default: "article",
-			},
-
-			{
-				displayName: "Password",
-				name: "password",
-				type: "string",
-				default: "",
-				typeOptions: { hello: true },
 			},
 
 			// ----------------------------------

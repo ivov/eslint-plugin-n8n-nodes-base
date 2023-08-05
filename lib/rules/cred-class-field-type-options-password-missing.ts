@@ -28,7 +28,7 @@ export default utils.createRule({
 	meta: {
 		type: "problem",
 		docs: {
-			description: `In a sensitive field, \`typeOptions.password\` must be set to \`true\` to obscure the input. A field name is sensitive if it contains the strings: ${sensitiveStrings}. See exceptions in source.`,
+			description: `In a sensitive string-type field, \`typeOptions.password\` must be set to \`true\` to obscure the input. A field name is sensitive if it contains the strings: ${sensitiveStrings}. See exceptions in source.`,
 			recommended: "error",
 		},
 		fixable: "code",
@@ -48,6 +48,10 @@ export default utils.createRule({
 
 				if (!name || !isSensitive(name.value)) return;
 
+				const type = getters.nodeParam.getType(node);
+
+				if (!type || type.value !== "string") return;
+
 				const typeOptions = getters.nodeParam.getTypeOptions(node);
 
 				if (typeOptions?.value.password === true) return;
@@ -59,10 +63,6 @@ export default utils.createRule({
 						// @TODO: Autofix this case
 					});
 				}
-
-				const type = getters.nodeParam.getType(node);
-
-				if (!type) return;
 
 				const { indentation, range } = utils.getInsertionArgs(type);
 

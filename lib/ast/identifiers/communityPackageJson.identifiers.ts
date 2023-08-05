@@ -8,7 +8,6 @@ export function isCommunityPackageJson(
 	filename: string,
 	node: TSESTree.ObjectExpression
 ) {
-
 	if (isProdRun && !filename.includes("package.json")) return false;
 	if (isProdRun && !id.prod.isTopLevelObjectExpression(node)) return false;
 	if (isTestRun && !id.test.isTopLevelObjectExpression(node)) return false;

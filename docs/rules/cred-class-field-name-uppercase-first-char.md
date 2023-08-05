@@ -14,9 +14,9 @@ First char in `name` in credential class must be lowercase.
 
 ```js
 class TestApi implements ICredentialType {
-	name = "MyTestApi";
-	displayName = "My Test API";
-	documentationUrl = "myTest";
+    name = 'MyTestApi';
+    displayName = 'My Test API';
+    documentationUrl = 'myTest';
 }
 ```
 
@@ -24,9 +24,9 @@ class TestApi implements ICredentialType {
 
 ```js
 class MyTestApi implements ICredentialType {
-	name = "myTestApi";
-	displayName = "My Test API";
-	documentationUrl = "myTest";
+    name = 'myTestApi';
+    displayName = 'My Test API';
+    documentationUrl = 'myTest';
 }
 ```
 

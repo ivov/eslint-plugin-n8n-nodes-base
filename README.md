@@ -181,7 +181,7 @@ In the `community` ruleset, the five `*-still-default` rules allow you to define
 | [node-param-hint-untrimmed](docs/rules/node-param-hint-untrimmed.md) | `hint` in node parameter must be trimmed. | Yes |
 | [node-param-hint-url-missing-protocol](docs/rules/node-param-hint-url-missing-protocol.md) | `hint` in node parameter must include protocol e.g. `https://` when containing a URL. | Yes |
 | [node-param-min-value-wrong-for-limit](docs/rules/node-param-min-value-wrong-for-limit.md) | `minValue` for Limit node parameter must be a positive integer. | Yes |
-| [node-param-multi-options-type-unsorted-items](docs/rules/node-param-multi-options-type-unsorted-items.md) | Items in a multi-options-type node parameter must be alphabetized by `name` if five or more than five. | Yes |
+| [node-param-multi-options-type-unsorted-items](docs/rules/node-param-multi-options-type-unsorted-items.md) | Items in a multi-options-type node parameter must be alphabetized by `name` if five or more than five. | No |
 | [node-param-name-untrimmed](docs/rules/node-param-name-untrimmed.md) | `name` in node parameter or in fixed collection section must be trimmed. | Yes |
 | [node-param-operation-option-action-miscased](docs/rules/node-param-operation-option-action-miscased.md) | The property `action` in an option in an Operation node parameter must be sentence-cased. | Yes |
 | [node-param-operation-option-action-wrong-for-get-many](docs/rules/node-param-operation-option-action-wrong-for-get-many.md) | The property `action` in a Get Many option in an Operation node parameter must start with `Get many`. | Yes |
@@ -194,7 +194,7 @@ In the `community` ruleset, the five `*-still-default` rules allow you to define
 | [node-param-option-name-wrong-for-get-many](docs/rules/node-param-option-name-wrong-for-get-many.md) | Option `name` for Get Many node parameter must be `Get Many` | Yes |
 | [node-param-option-name-wrong-for-upsert](docs/rules/node-param-option-name-wrong-for-upsert.md) | Option `name` for Upsert node parameter must be `Create or Update`. | Yes |
 | [node-param-option-value-duplicate](docs/rules/node-param-option-value-duplicate.md) | Option `value` in options-type node parameter must not be a duplicate. | Yes |
-| [node-param-options-type-unsorted-items](docs/rules/node-param-options-type-unsorted-items.md) | Items in options-type node parameter must be alphabetized by `name` if five or more than five. | Yes |
+| [node-param-options-type-unsorted-items](docs/rules/node-param-options-type-unsorted-items.md) | Items in options-type node parameter must be alphabetized by `name` if five or more than five. | No |
 | [node-param-placeholder-miscased-id](docs/rules/node-param-placeholder-miscased-id.md) | `ID` in `placeholder` in node parameter must be fully uppercased. | Yes |
 | [node-param-placeholder-missing-email](docs/rules/node-param-placeholder-missing-email.md) | `placeholder` for Email node parameter must exist. | Yes |
 | [node-param-required-false](docs/rules/node-param-required-false.md) | `required: false` in node parameter must be removed because it is implied. | Yes |

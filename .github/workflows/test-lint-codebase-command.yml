@@ -12,6 +12,9 @@ jobs:
       - name: Check out commit
         uses: actions/checkout@v3
 
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v2.2.4
+
       - name: Set up Node 18
         uses: actions/setup-node@v3
         with:

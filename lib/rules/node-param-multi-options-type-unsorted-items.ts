@@ -1,4 +1,3 @@
-// import prettier from "prettier";
 import {
 	MIN_ITEMS_TO_ALPHABETIZE,
 	MIN_ITEMS_TO_ALPHABETIZE_SPELLED_OUT,
@@ -6,7 +5,6 @@ import {
 import { utils } from "../ast/utils";
 import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
-// import { PRETTIER_CONFIG } from "../constants";
 import { toOptions } from "./node-param-options-type-unsorted-items";
 
 export default utils.createRule({
@@ -17,7 +15,6 @@ export default utils.createRule({
 			description: `Items in a multi-options-type node parameter must be alphabetized by \`name\` if ${MIN_ITEMS_TO_ALPHABETIZE_SPELLED_OUT} or more than ${MIN_ITEMS_TO_ALPHABETIZE_SPELLED_OUT}.`,
 			recommended: "strict",
 		},
-		// fixable: "code",
 		schema: [],
 		messages: {
 			sortItems:
@@ -53,28 +50,10 @@ export default utils.createRule({
 				if (!utils.areIdenticallySortedOptions(options, sortedOptions)) {
 					const displayOrder = utils.toDisplayOrder(sortedOptions);
 
-					/**
-					 * @TODO: prettier.format is now async
-					 */
-
-					// const sortedOptionsSource = JSON.stringify(sortedOptions, null, 2);
-
-					// const unformattedNewSource = context
-					// 	.getSourceCode()
-					// 	.getText()
-					// 	.replace(optionsSource, sortedOptionsSource);
-
-					// const formattedNewSource = prettier
-					// 	.format(unformattedNewSource, PRETTIER_CONFIG)
-					// 	.trim(); // consume Prettier's EoF newline
-
-					// const fullAst = context.getSourceCode().ast;
-
 					context.report({
 						messageId: "sortItems",
 						node: optionsNode.ast,
 						data: { displayOrder },
-						// fix: (fixer) => fixer.replaceText(fullAst, formattedNewSource),
 					});
 				}
 			},

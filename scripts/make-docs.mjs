@@ -10,6 +10,8 @@ const SCRIPTS_DIR = path.dirname(__filename);
 
 const ROOT_DIR = path.resolve(SCRIPTS_DIR, "..");
 const RULES_DOCUMENTATION_DIR = path.resolve(ROOT_DIR, "docs", "rules");
+const PRETTIER_CONFIG_PATH = path.resolve(ROOT_DIR, ".prettierrc.js");
+const FORMAT_TARGET_PATH = path.resolve(RULES_DOCUMENTATION_DIR, "**.md");
 
 shell.rm("-rf", RULES_DOCUMENTATION_DIR);
 
@@ -25,8 +27,10 @@ fs.readdirSync(SCRIPTS_DIR)
 
 const command = [
 	"prettier",
-	path.resolve(RULES_DOCUMENTATION_DIR, "**.md"),
+	FORMAT_TARGET_PATH,
 	"--write",
+	"--config",
+	PRETTIER_CONFIG_PATH,
 ].join(" ");
 
 shell.exec(command);

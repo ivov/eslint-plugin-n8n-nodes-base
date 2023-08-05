@@ -10,7 +10,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`color` in node class description is deprecated and must not be present, except for nodes whose icon is a Font Awesome icon - usually core nodes.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

@@ -9,7 +9,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: `\`description\` in node parameter must include protocol e.g. \`https://\` when containing a URL. ${DOCUMENTATION.APPLICABLE_BY_EXTENSION_TO_DESCRIPTION_IN_OPTION}`,
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],
@@ -33,7 +33,7 @@ export default utils.createRule({
 				) {
 					const withProtocol = description.value.replace(
 						/href=(['"])/g,
-						'href=\$1https://'
+						"href=$1https://"
 					);
 					const fixed = utils.keyValue("description", withProtocol);
 

@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`name` field in credential class must mention `OAuth2` if the credential is OAuth2.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		schema: [],
 		messages: {

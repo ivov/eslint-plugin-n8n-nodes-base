@@ -9,7 +9,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: `\`description\` in node parameter must not contain an HTML line break. ${DOCUMENTATION.APPLICABLE_BY_EXTENSION_TO_DESCRIPTION_IN_OPTION}`,
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],
@@ -30,7 +30,7 @@ export default utils.createRule({
 				if (!description) return;
 
 				if (description.value.includes("PRIVATE KEY")) return; // <br> allowed in PEM key example
-				
+
 				if (description.value.includes("<br><br>")) return; // <br><br> allowed (temp until fixed in client)
 
 				if (LINE_BREAK_HTML_TAG_REGEX.test(description.value)) {

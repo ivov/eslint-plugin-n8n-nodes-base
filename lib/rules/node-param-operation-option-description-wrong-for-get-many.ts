@@ -10,7 +10,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"The property `description` in a Get Many option in an Operation node parameter must mention `many` instead of `all`.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

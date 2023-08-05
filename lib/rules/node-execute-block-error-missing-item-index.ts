@@ -16,7 +16,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"In the operations in the `execute()` method in a node, `NodeApiError` and `NodeOperationError` must specify `itemIndex` as the third argument.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		schema: [],
 		messages: {

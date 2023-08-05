@@ -26,7 +26,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: `In a sensitive string-type parameter, \`typeOptions.password\` must be set to \`true\` to obscure the input. A node parameter name is sensitive if it contains the strings: ${sensitiveStrings}. See exceptions in source.`,
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

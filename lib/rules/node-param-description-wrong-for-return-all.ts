@@ -9,7 +9,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: `\`description\` for Return All node parameter must be \`${RETURN_ALL_NODE_PARAMETER.DESCRIPTION}\``,
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`maxValue` in `typeOptions` in Limit node parameter is deprecated and must not be present.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"The number of `inputs` in node class description for regular node should be one, or two for Merge node.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

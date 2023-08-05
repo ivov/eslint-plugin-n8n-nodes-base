@@ -12,7 +12,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"Option `name` for a Resource node parameter must be singular.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

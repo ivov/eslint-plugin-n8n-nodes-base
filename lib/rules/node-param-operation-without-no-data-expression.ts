@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`noDataExpression` in an Operation node parameter must be present and enabled.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

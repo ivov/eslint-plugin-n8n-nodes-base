@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`default` for a multi-options-type node parameter must be an array.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`string`-type color-related node parameter must be `color`-type.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

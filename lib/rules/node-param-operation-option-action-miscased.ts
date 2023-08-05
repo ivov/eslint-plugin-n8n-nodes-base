@@ -11,7 +11,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"The property `action` in an option in an Operation node parameter must be sentence-cased.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

@@ -10,7 +10,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`name` under `credentials` in node class description must be suffixed with `-Api`.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

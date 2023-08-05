@@ -11,7 +11,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"Resource description file must use singular form. Example: `UserDescription.ts`, not `UsersDescription.ts`.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		schema: [],
 		messages: {
@@ -32,7 +32,11 @@ export default utils.createRule({
 
 				const resourceName = parts.shift();
 
-				if (resourceName && isPlural(resourceName) && !isPluralException(resourceName)) {
+				if (
+					resourceName &&
+					isPlural(resourceName) &&
+					!isPluralException(resourceName)
+				) {
 					const topOfFile = { line: 1, column: 1 };
 
 					context.report({

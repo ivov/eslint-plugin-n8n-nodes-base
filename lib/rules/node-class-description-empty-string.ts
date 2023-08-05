@@ -11,7 +11,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`description` in node class description must be filled out.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		schema: [],
 		messages: {

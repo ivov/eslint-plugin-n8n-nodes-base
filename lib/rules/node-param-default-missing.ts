@@ -8,8 +8,9 @@ export default utils.createRule({
 	meta: {
 		type: "problem",
 		docs: {
-			description: "`default` must be present in a node parameter, except in node parameters under `modes`.",
-			recommended: "error",
+			description:
+				"`default` must be present in a node parameter, except in node parameters under `modes`.",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

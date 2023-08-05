@@ -9,7 +9,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: `The \`license\` key in the \`package.json\` of a community package must be the default value \`${COMMUNITY_PACKAGE_JSON.LICENSE}\`.`,
-			recommended: "error",
+			recommended: "strict",
 		},
 		schema: [],
 		messages: {

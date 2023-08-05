@@ -11,7 +11,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: "`icon` in node class description should be an SVG icon.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		schema: [],
 		messages: {

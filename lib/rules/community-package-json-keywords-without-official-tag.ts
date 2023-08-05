@@ -10,7 +10,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: `The \`keywords\` value in the \`package.json\` of a community package must be an array containing the value \`'${COMMUNITY_PACKAGE_JSON.OFFICIAL_TAG}'\`.`,
-			recommended: "error",
+			recommended: "strict",
 		},
 		schema: [],
 		messages: {
@@ -48,7 +48,7 @@ function hasOfficialTag(keywords: {
 	) {
 		return keywords.ast.value.elements.some(
 			(element) =>
-				element.type === AST_NODE_TYPES.Literal &&
+				element?.type === AST_NODE_TYPES.Literal &&
 				element.value === COMMUNITY_PACKAGE_JSON.OFFICIAL_TAG
 		);
 	}

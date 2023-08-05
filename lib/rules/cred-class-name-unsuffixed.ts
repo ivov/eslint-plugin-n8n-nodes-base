@@ -9,7 +9,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: "Credential class name must be suffixed with `-Api`.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],
@@ -42,4 +42,3 @@ export default utils.createRule({
 		};
 	},
 });
-

@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`required: false` in node parameter must be removed because it is implied.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

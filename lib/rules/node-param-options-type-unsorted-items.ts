@@ -14,7 +14,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: `Items in options-type node parameter must be alphabetized by \`name\` if ${MIN_ITEMS_TO_ALPHABETIZE_SPELLED_OUT} or more than ${MIN_ITEMS_TO_ALPHABETIZE_SPELLED_OUT}.`,
-			recommended: "error",
+			recommended: "strict",
 		},
 		// fixable: "code",
 		schema: [],
@@ -81,7 +81,9 @@ export default utils.createRule({
 	},
 });
 
-export function toOptions(optionsSource: string): Array<{ name: string }> | null {
+export function toOptions(
+	optionsSource: string
+): Array<{ name: string }> | null {
 	try {
 		return eval(`(${optionsSource})`);
 	} catch (error) {

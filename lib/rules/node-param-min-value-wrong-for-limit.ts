@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`minValue` for Limit node parameter must be a positive integer.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

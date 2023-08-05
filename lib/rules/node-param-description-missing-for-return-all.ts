@@ -10,7 +10,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`description` for Return All node parameter must be present.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

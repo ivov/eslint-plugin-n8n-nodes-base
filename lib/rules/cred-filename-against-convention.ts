@@ -11,7 +11,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"Credentials filename must match credentials class name, excluding the filename suffix. Example: `TestApi.credentials.ts` matches `TestApi` in `class TestApi implements ICredentialType`.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		schema: [],
 		messages: {

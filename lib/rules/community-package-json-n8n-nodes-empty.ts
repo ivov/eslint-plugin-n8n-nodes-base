@@ -10,7 +10,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"The `n8n.nodes` value in the `package.json` of a community package must contain at least one filepath.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		schema: [],
 		messages: {
@@ -53,7 +53,7 @@ function hasAtLeastOneFilepath(n8n: { ast: TSESTree.ObjectLiteralElement }) {
 			nodes.value.type === AST_NODE_TYPES.ArrayExpression
 		) {
 			return nodes.value.elements.some(
-				(element) => element.type === AST_NODE_TYPES.Literal
+				(element) => element?.type === AST_NODE_TYPES.Literal
 			);
 		}
 	}

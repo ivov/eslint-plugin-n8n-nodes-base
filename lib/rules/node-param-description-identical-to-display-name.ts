@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`description` in node parameter must not be identical to `displayName`.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		schema: [],
 		fixable: "code",

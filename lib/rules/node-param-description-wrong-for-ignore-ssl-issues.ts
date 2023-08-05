@@ -9,7 +9,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: `\`description\` for Ignore SSL node parameter must be \`${IGNORE_SSL_ISSUES_NODE_PARAMETER.DESCRIPTION}\``,
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"The number of `inputs` in node class description for trigger node should be zero.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

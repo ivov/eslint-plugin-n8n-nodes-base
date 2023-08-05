@@ -9,7 +9,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: `\`displayName\` for dynamic-options-type node parameter must end with \`${DYNAMIC_OPTIONS_NODE_PARAMETER.DISPLAY_NAME_SUFFIX}\``,
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

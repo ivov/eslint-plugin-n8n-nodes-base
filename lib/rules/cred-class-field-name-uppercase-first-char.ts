@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"First char in `name` in credential class must be lowercase.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

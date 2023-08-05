@@ -7,8 +7,8 @@ export default utils.createRule({
 	meta: {
 		type: "problem",
 		docs: {
-			description: '\`hint\` in node parameter must be trimmed.',
-			recommended: "error",
+			description: "`hint` in node parameter must be trimmed.",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

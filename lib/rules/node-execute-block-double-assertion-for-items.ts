@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"In the `execute()` method there is no need to double assert the type of `items.length`.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

@@ -7,8 +7,9 @@ export default utils.createRule({
 	meta: {
 		type: "problem",
 		docs: {
-			description: '\`name\` in node parameter or in fixed collection section must be trimmed.',
-			recommended: "error",
+			description:
+				"`name` in node parameter or in fixed collection section must be trimmed.",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

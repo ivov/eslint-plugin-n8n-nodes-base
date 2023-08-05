@@ -9,7 +9,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: `\`displayName\` for Update operation node parameter must be \`${UPDATE_FIELDS_NODE_PARAM_DISPLAY_NAME}\``,
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

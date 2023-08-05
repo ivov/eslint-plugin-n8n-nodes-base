@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`noDataExpression` in a Resource node parameter must be present and enabled.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],

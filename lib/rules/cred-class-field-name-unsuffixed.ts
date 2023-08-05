@@ -10,7 +10,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`name` field in credential class must be suffixed with `-Api`.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		fixable: "code",
 		schema: [],
@@ -43,4 +43,3 @@ export default utils.createRule({
 		};
 	},
 });
-

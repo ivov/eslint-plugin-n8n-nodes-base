@@ -9,7 +9,7 @@ export default utils.createRule({
 		docs: {
 			description:
 				"`description` in a boolean node parameter must start with `Whether`.",
-			recommended: "error",
+			recommended: "strict",
 		},
 		schema: [],
 		messages: {

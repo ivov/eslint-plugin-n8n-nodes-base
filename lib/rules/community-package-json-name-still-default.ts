@@ -14,7 +14,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description: `The \`name\` key in the \`package.json\` of a community package must be different from the default value \`${COMMUNITY_PACKAGE_JSON.NAME}\` or a user-defined default.`,
-			recommended: "error",
+			recommended: "strict",
 		},
 		schema: [
 			{

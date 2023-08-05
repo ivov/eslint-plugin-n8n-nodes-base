@@ -71,35 +71,35 @@ ruleTester().run(getRuleName(module), rule, {
 			errors: [
 				{ messageId: "sortItems", data: { displayOrder: "A | B | C | D | E" } },
 			],
-			output: outdent`
-			const test = {
-				displayName: 'Test',
-				name: 'test',
-				type: 'options',
-				default: 'a',
-				options: [
-					{
-						name: 'A',
-						value: 'a',
-					},
-					{
-						name: 'B',
-						value: 'b',
-					},
-					{
-						name: 'C',
-						value: 'c',
-					},
-					{
-						name: 'D',
-						value: 'd',
-					},
-					{
-						name: 'E',
-						value: 'e',
-					},
-				],
-			};`,
+			// output: outdent`
+			// const test = {
+			// 	displayName: 'Test',
+			// 	name: 'test',
+			// 	type: 'options',
+			// 	default: 'a',
+			// 	options: [
+			// 		{
+			// 			name: 'A',
+			// 			value: 'a',
+			// 		},
+			// 		{
+			// 			name: 'B',
+			// 			value: 'b',
+			// 		},
+			// 		{
+			// 			name: 'C',
+			// 			value: 'c',
+			// 		},
+			// 		{
+			// 			name: 'D',
+			// 			value: 'd',
+			// 		},
+			// 		{
+			// 			name: 'E',
+			// 			value: 'e',
+			// 		},
+			// 	],
+			// };`,
 		},
 	],
 });

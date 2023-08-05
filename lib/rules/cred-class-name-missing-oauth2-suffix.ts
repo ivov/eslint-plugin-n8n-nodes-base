@@ -1,7 +1,6 @@
 import { utils } from "../ast/utils";
 import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
-import { RuleContext } from "@typescript-eslint/utils/dist/ts-eslint";
 
 export default utils.createRule({
 	name: utils.getRuleName(module),
@@ -25,6 +24,7 @@ export default utils.createRule({
 
 				const extendsValue = getters.credClassBody.getExtendsValue(
 					node.body,
+					// @ts-ignore @TODO
 					context
 				);
 

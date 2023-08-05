@@ -46,4 +46,5 @@ export type StringClassField = TSESTree.PropertyDefinitionNonComputedName & {
 	value: { value: string };
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type GenericContext = Readonly<RuleContext<any, any>>; // TODO: Type properly

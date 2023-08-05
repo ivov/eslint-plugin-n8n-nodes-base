@@ -6,7 +6,8 @@
 		"outDir": "./dist",
 		"strict": true,
 		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true
+		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true
 	},
 	"exclude": ["scripts/downloads", "scratchpad"]
 }

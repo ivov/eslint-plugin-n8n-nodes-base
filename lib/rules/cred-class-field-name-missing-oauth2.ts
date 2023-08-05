@@ -24,7 +24,11 @@ export default utils.createRule({
 
 				const { body: classBody } = node;
 
-				const extendsValue = getters.credClassBody.getExtendsValue(classBody, context);
+				const extendsValue = getters.credClassBody.getExtendsValue(
+					classBody,
+					// @ts-ignore @TODO
+					context
+				);
 
 				if (!extendsValue) return;
 

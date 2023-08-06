@@ -33,6 +33,7 @@
 		"format": "prettier lib scripts tests --write",
 		"lint": "eslint lib tests --ext .ts",
 		"lint-codebase": "chmod +x scripts/lint-codebase.sh && scripts/lint-codebase.sh",
+		"track-pending": "node scripts/track-pending-rules.mjs",
 		"test": "jest",
 		"test:watch": "jest --watch"
 	},

@@ -6,3 +6,4 @@ node_modules
 scripts/downloads/*
 .eslintplugin.js
 scratchpad/codebase/*
+package-lock.json

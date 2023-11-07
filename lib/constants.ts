@@ -25,7 +25,7 @@ export const SVG_ICON_SOURCES = [
 
 export const RESOURCE_DESCRIPTION_SUFFIX = "Description.ts";
 
-const EXPRESSIONS_DOCS_URL = "https://docs.n8n.io/code-examples/expressions/";
+const EXPRESSIONS_DOCS_URL = "https://docs.n8n.io/code/expressions/";
 
 export const DYNAMIC_MULTI_OPTIONS_NODE_PARAMETER = {
 	DISPLAY_NAME_SUFFIX: "Names or IDs",

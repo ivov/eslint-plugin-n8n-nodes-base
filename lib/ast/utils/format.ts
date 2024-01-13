@@ -120,6 +120,16 @@ export function toDisplayOrder(options: Array<{ name: string }>) {
 		.join(" | ");
 }
 
+export function toDisplayOrderForCollection(
+	options: Array<{ displayName: string }>
+) {
+	return options
+		.reduce<string[]>((acc, cur) => {
+			return acc.push(cur.displayName), acc;
+		}, [])
+		.join(" | ");
+}
+
 // ----------------------------------
 //           indentation
 // ----------------------------------

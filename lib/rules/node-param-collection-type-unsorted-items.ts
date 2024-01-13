@@ -29,20 +29,27 @@ export default utils.createRule({
 
 				if (!id.nodeParam.isCollectionType(node)) return;
 
-				const options = getters.nodeParam.getOptions(node);
+				const options = getters.nodeParam.getCollectionOptions(node);
 
 				if (!options) return;
 
 				if (options.value.length < MIN_ITEMS_TO_ALPHABETIZE) return;
 
-				const sortedOptions = [...options.value].sort(utils.optionComparator);
+				const sortedOptions = [...options.value].sort(
+					utils.optionComparatorForCollection
+				);
 
-				if (!utils.areIdenticallySortedOptions(options.value, sortedOptions)) {
+				if (
+					!utils.areIdenticallySortedOptionsForCollection(
+						options.value,
+						sortedOptions
+					)
+				) {
 					const baseIndentation = utils.getBaseIndentationForOption(options);
 
 					const sorted = utils.formatItems(sortedOptions, baseIndentation);
 
-					const displayOrder = utils.toDisplayOrder(sortedOptions);
+					const displayOrder = utils.toDisplayOrderForCollection(sortedOptions);
 
 					context.report({
 						messageId: "sortItems",

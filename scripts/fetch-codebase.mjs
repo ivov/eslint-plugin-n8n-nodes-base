@@ -37,16 +37,14 @@ async function getFilenames() {
 		getFullData: true,
 	});
 
-	return files
-		.filter(
-			(file) =>
-				file.path.endsWith(".ts") &&
-				!file.path.endsWith(".d.ts") &&
-				!file.path.endsWith(".test.ts") &&
-				!file.path.includes("nodes-base/test") &&
-				!file.path.includes("nodes-base/utils")
-		)
-		.slice(0, 10); // @TEMP
+	return files.filter(
+		(file) =>
+			file.path.endsWith(".ts") &&
+			!file.path.endsWith(".d.ts") &&
+			!file.path.endsWith(".test.ts") &&
+			!file.path.includes("nodes-base/test") &&
+			!file.path.includes("nodes-base/utils")
+	);
 }
 
 async function fetchFile(file, signal) {

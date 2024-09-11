@@ -12,7 +12,7 @@
 echo 'Step 0: Setting up...'
 
 npm install --ignore-scripts
-npm install eslint-plugin-local@4.0.0
+npm install eslint-plugin-local@1.0.0
 pnpm build
 
 # ----- #

@@ -208,7 +208,7 @@ In the `community` ruleset, the five `*-still-default` rules allow you to define
 
 ## Author
 
-© 2022 [Iván Ovejero](https://github.com/ivov)
+© 2024 [Iván Ovejero](https://github.com/ivov)
 
 ## License
 

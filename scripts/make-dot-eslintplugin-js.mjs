@@ -16,10 +16,12 @@ const pluginIndexFile = path.resolve(DIST_DIR, "index.js");
 shell.cp(pluginIndexFile, ".eslintplugin.js");
 
 const oldContent = shell.cat(".eslintplugin.js");
-const newContent = oldContent.replace(
-	/__dirname, "lib", "rules"/,
-	'__dirname, "dist", "lib", "rules"' // adjust reference based on new location (root)
-);
+const newContent = oldContent
+	.replace(
+		/__dirname, "lib", "rules"/,
+		'__dirname, "dist", "lib", "rules"' // adjust reference based on new location (root)
+	)
+	.replace(/n8n-nodes-base/g, "local");
 
 new ShellString(newContent).to(".eslintplugin.js");
 

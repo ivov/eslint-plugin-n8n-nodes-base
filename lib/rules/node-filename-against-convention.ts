@@ -8,7 +8,7 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description:
-				"`name` in node class description must match the node filename without the `.node.ts` suffix. Example: If `description.name` is `Test`, then filename must be `Test.node.ts`.",
+				"`name` in node class description must match the node filename without the `.node.ts` suffix. Example: If `description.name` is `Test`, then filename must be `Test.node.ts`. Version suffix in filename (e.g. `-V2`) is disregarded.",
 			recommended: "strict",
 		},
 		schema: [],
@@ -26,9 +26,9 @@ export default utils.createRule({
 
 				if (!name) return;
 
-				const actual = utils.getNodeFilename(
-					context.getFilename().replace(/\\/g, "/")
-				);
+				const actual = utils
+					.getNodeFilename(context.getFilename().replace(/\\/g, "/"))
+					.replace(/V\d+\.node\.ts$/, ".node.ts"); // disregard version suffix
 				const expected = utils.toExpectedNodeFilename(name.value);
 
 				if (actual !== expected) {

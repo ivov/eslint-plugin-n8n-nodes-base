@@ -2,7 +2,7 @@
 
 # node-filename-against-convention
 
-`name` in node class description must match the node filename without the `.node.ts` suffix. Example: If `description.name` is `Test`, then filename must be `Test.node.ts`.
+`name` in node class description must match the node filename without the `.node.ts` suffix. Example: If `description.name` is `Test`, then filename must be `Test.node.ts`. Version suffix in filename (e.g. `-V2`) is disregarded.
 
 📋 This rule is part of the `plugin:eslint-plugin-n8n-nodes-base/non-autofixable` config.
 

@@ -22,7 +22,7 @@ If you specify only the plugin, all rules in the plugin are **disabled by defaul
 {
   plugins: [ "eslint-plugin-n8n-nodes-base" ],
   rules: {
-    "n8n-nodes-base/node-param-array-type-assertion": "warning",
+    "n8n-nodes-base/node-param-array-type-assertion": "warn",
     "n8n-nodes-base/node-param-default-wrong-for-collection": "error"
   }
 }

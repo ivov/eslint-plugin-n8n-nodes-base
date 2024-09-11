@@ -1,11 +1,17 @@
-# Workflow only meant to be manually run to test the `lint-codebase` command
+# `lint-codebase` runs all rules in `eslint-plugin-n8n-nodes-base` (as they
+# exist in this commit) on `n8n-io/n8n/packages/nodes-base`. The purpose is to
+# ensure the linter runs successfully (does not crash) on the entire codebase.
+# `lint-codebase` is part of the `ci-release` action.
+
+# This GitHub action `test-lint-codebase` is meant to be run manually for debugging.
+
 name: Test lint-codebase
 
 on:
   workflow_dispatch:
 
 jobs:
-  test-lint-codebase-command:
+  test-lint-codebase:
     runs-on: ubuntu-latest
 
     steps:

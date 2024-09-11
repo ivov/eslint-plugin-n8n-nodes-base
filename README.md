@@ -205,6 +205,21 @@ In the `community` ruleset, the five `*-still-default` rules allow you to define
 | [node-resource-description-filename-against-convention](docs/rules/node-resource-description-filename-against-convention.md) | Resource description file must use singular form. Example: `UserDescription.ts`, not `UsersDescription.ts`. | No |
 <!-- /RULES_TABLE -->
 
+## Release
+
+1. Make a PR updating `version` in `package.json` to the new version following semver. Merge it. 
+
+2. Make a tag for the new version:
+
+```sh
+git tag v1.16.2
+git push origin v1.16.2
+```
+
+3. Create a [release](https://github.com/ivov/eslint-plugin-n8n-nodes-base/releases/new) using the tag.
+
+4. Check that the [npm publish](https://github.com/ivov/eslint-plugin-n8n-nodes-base/actions/workflows/ci-release.yml) succeeds. 
+
 ## Author
 
 © 2024 [Iván Ovejero](https://github.com/ivov)

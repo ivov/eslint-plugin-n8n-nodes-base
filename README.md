@@ -218,7 +218,7 @@ git push origin v1.16.2
 
 3. Create a [release](https://github.com/ivov/eslint-plugin-n8n-nodes-base/releases/new) using the tag.
 
-4. Check that the [npm publish](https://github.com/ivov/eslint-plugin-n8n-nodes-base/actions/workflows/ci-release.yml) succeeds. 
+4. Check that the [npm publish action](https://github.com/ivov/eslint-plugin-n8n-nodes-base/actions/workflows/ci-release.yml) succeeds. 
 
 ## Author
 

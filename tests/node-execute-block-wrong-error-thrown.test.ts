@@ -21,6 +21,22 @@ ruleTester().run(getRuleName(module), rule, {
 				}
 			}`,
 		},
+		{
+			code: outdent`
+			class TestNode {
+				execute() {
+					throw new ApplicationError('An error occurred', { level: "warning" });
+				}
+			}`,
+		},
+		{
+			code: outdent`
+			class TestNode {
+				execute() {
+					throw new TriggerCloseError(this.getNode();
+				}
+			}`,
+		},
 	],
 	invalid: [
 		{

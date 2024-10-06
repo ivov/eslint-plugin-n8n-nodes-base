@@ -8,13 +8,13 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description:
-				"The `execute()` method in a node may only throw `NodeApiError` for failed API requests and `NodeOperationError` for internal errors, not the built-in `Error`. Refer to [`NodeErrors.ts`](https://github.com/n8n-io/n8n/blob/master/packages/workflow/src/NodeErrors.ts).",
+				"The `execute()` method in a node may only throw `ApplicationError`, NodeApiError`, `NodeOperationError`, or `TriggerCloseError`.",
 			recommended: "strict",
 		},
 		schema: [],
 		messages: {
 			useProperError:
-				"Use `NodeApiError` or `NodeOperationError` [non-autofixable]",
+				"Use `ApplicationError`, NodeApiError`, `NodeOperationError`, or `TriggerCloseError` [non-autofixable]",
 		},
 	},
 	defaultOptions: [],

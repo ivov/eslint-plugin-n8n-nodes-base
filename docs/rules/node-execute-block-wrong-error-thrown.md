@@ -2,7 +2,7 @@
 
 # node-execute-block-wrong-error-thrown
 
-The `execute()` method in a node may only throw `NodeApiError` for failed API requests and `NodeOperationError` for internal errors, not the built-in `Error`. Refer to [`NodeErrors.ts`](https://github.com/n8n-io/n8n/blob/master/packages/workflow/src/NodeErrors.ts).
+The `execute()` method in a node may only throw `ApplicationError`, NodeApiError`, `NodeOperationError`, or `TriggerCloseError`.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/nodes` config.
 
@@ -30,6 +30,18 @@ class TestNode {
 class TestNode {
 	execute() {
 		throw new NodeOperationError(this.getNode(), "An error occurred");
+	}
+}
+
+class TestNode {
+	execute() {
+		throw new ApplicationError("An error occurred", { level: "warning" });
+	}
+}
+
+class TestNode {
+	execute() {
+		throw new TriggerCloseError(this.getNode);
 	}
 }
 ```

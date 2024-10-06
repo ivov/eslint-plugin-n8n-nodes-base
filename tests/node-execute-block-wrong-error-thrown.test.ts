@@ -33,7 +33,7 @@ ruleTester().run(getRuleName(module), rule, {
 			code: outdent`
 			class TestNode {
 				execute() {
-					throw new TriggerCloseError(this.getNode();
+					throw new TriggerCloseError(this.getNode());
 				}
 			}`,
 		},

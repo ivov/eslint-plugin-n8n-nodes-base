@@ -14,11 +14,10 @@ export default utils.createRule({
 			description: `Items in collection-type node parameter must be alphabetized by \`name\` if ${MIN_ITEMS_TO_ALPHABETIZE_SPELLED_OUT} or more than ${MIN_ITEMS_TO_ALPHABETIZE_SPELLED_OUT}.`,
 			recommended: "strict",
 		},
-		fixable: "code",
 		schema: [],
 		messages: {
 			sortItems:
-				"Alphabetize by 'name'. Order: {{ displayOrder }} [autofixable]",
+				"Alphabetize by 'name'. Order: {{ displayOrder }} [non-autofixable]",
 		},
 	},
 	defaultOptions: [],
@@ -45,18 +44,12 @@ export default utils.createRule({
 						sortedOptions
 					)
 				) {
-					const baseIndentation = utils.getBaseIndentationForOption(options);
-
-					const sorted = utils.formatItems(sortedOptions, baseIndentation);
-
 					const displayOrder = utils.toDisplayOrderForCollection(sortedOptions);
 
 					context.report({
 						messageId: "sortItems",
 						node: options.ast,
 						data: { displayOrder },
-						fix: (fixer) =>
-							fixer.replaceText(options.ast, `options: ${sorted}`),
 					});
 				}
 			},

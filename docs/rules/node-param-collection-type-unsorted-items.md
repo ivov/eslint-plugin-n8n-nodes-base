@@ -6,8 +6,6 @@ Items in collection-type node parameter must be alphabetized by `name` if five o
 
 📋 This rule is part of the `plugin:n8n-nodes-base/nodes` config.
 
-🔧 Run ESLint with `--fix` option to autofix the issue flagged by this rule.
-
 ## Examples
 
 ❌ Example of **incorrect** code:

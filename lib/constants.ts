@@ -187,7 +187,12 @@ export const DOCUMENTATION = {
 //              misc
 // ----------------------------------
 
-export const N8N_NODE_ERROR_TYPES = ["NodeOperationError", "NodeApiError"];
+export const N8N_NODE_ERROR_TYPES = [
+	"ApplicationError",
+	"NodeOperationError",
+	"NodeApiError",
+	"TriggerCloseError",
+];
 
 /**
  * Credentials exempted from these rules:

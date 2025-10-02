@@ -32,6 +32,8 @@ export default utils.createRule({
 
 				if (!options) return;
 
+				if (options.hasPropertyPointingToIdentifier) return;
+
 				const pluralOption = findPluralOption(options);
 
 				if (pluralOption && !isAllowedPlural(pluralOption.value)) {

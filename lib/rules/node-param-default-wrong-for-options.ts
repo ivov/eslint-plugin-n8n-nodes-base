@@ -30,6 +30,17 @@ export default utils.createRule({
 
 				if (!_default) return;
 
+				// If typeOptions.loadOptionsMethod or typeOptions.loadOptions is present,
+				// options are loaded dynamically and any default should be allowed
+				const loadOptionsMethod = getters.nodeParam.getLoadOptionsMethod(node);
+				const loadOptions = getters.nodeParam.getLoadOptions(node);
+				if (loadOptionsMethod || loadOptions) return;
+
+				// If default is a variable or expression (not a literal), allow it
+				if (_default.isUnparseable) {
+					return;
+				}
+
 				const options = getters.nodeParam.getOptions(node);
 
 				/**
@@ -53,13 +64,8 @@ export default utils.createRule({
 					return;
 				}
 
-				// @ts-ignore @TODO
-				const eligibleOptions = options.value.reduce<unknown[]>(
-					// @ts-ignore @TODO
-					(acc, option) => {
-						return acc.push(option.value), acc;
-					},
-					[]
+				const eligibleOptions: unknown[] = options.value.map(
+					(option) => option.value
 				);
 
 				if (!eligibleOptions.includes(_default.value)) {

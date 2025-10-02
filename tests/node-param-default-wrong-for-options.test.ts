@@ -55,6 +55,106 @@ ruleTester().run(getRuleName(module), rule, {
 				],
 			};`,
 		},
+		{
+			code: outdent`
+			const test = {
+				displayName: "Test",
+				name: "test",
+				type: "options",
+				default: "any_value",
+				typeOptions: {
+					loadOptionsMethod: "getFields",
+				},
+			};`,
+		},
+		{
+			code: outdent`
+			const test = {
+				displayName: "Model",
+				name: "model",
+				type: "options",
+				default: "gpt-3.5-turbo-1106",
+				typeOptions: {
+					loadOptions: {
+						routing: {
+							request: {
+								method: "GET",
+								url: "=/v1/models",
+							},
+						},
+					},
+				},
+			};`,
+		},
+		{
+			code: outdent`
+			const myVariable = "first";
+			const test = {
+				displayName: "Test",
+				name: "test",
+				type: "options",
+				default: myVariable,
+				options: [
+					{
+						name: 'First',
+						value: 'first',
+					},
+					{
+						name: 'Second',
+						value: 'second',
+					},
+				],
+			};`,
+		},
+		{
+			code: outdent`
+			const test = {
+				displayName: "Test",
+				name: "test",
+				type: "options",
+				default: myObject.getValue(),
+				typeOptions: {
+					loadOptionsMethod: "getFields",
+				},
+			};`,
+		},
+		{
+			code: outdent`
+			const currencies = [{name: 'USD', value: 'USD'}, {name: 'EUR', value: 'EUR'}];
+			const test = {
+				displayName: 'Currency',
+				name: 'currency',
+				type: 'options',
+				default: 'USD',
+				options: currencies.sort((a, b) => a.name.localeCompare(b.name)),
+			};`,
+		},
+		{
+			code: outdent`
+			const config = {
+				currencyOptions: [{name: 'USD', value: 'USD'}, {name: 'EUR', value: 'EUR'}]
+			};
+			const test = {
+				displayName: 'Currency',
+				name: 'currency',
+				type: 'options',
+				default: 'EUR',
+				options: config.currencyOptions,
+			};`,
+		},
+		{
+			code: outdent`
+			const lastNodeResponseMode = {name: 'Last Node', value: 'lastNode'};
+			const respondToWebhookResponseMode = {name: 'Respond to Webhook', value: 'respondToWebhook'};
+			const test = {
+				displayName: 'Response Mode',
+				name: 'responseMode',
+				type: 'options',
+				options: [lastNodeResponseMode, respondToWebhookResponseMode],
+				default: 'lastNode',
+				description: 'When and how to respond to the webhook',
+			};`,
+		},
 	],
 	invalid: [
 		{

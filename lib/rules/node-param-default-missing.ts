@@ -87,5 +87,8 @@ function getDefaultForOptionsTypeParam(node: TSESTree.ObjectExpression) {
 function getZerothOption(nodeParamArg: TSESTree.ObjectExpression) {
 	if (!id.nodeParam.isOptionsType(nodeParamArg)) return null;
 
-	return getters.nodeParam.getOptions(nodeParamArg)?.value[0] ?? null;
+	const options = getters.nodeParam.getOptions(nodeParamArg);
+	if (!options || options.hasPropertyPointingToIdentifier) return null;
+
+	return options.value[0] ?? null;
 }

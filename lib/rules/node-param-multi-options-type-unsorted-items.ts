@@ -33,6 +33,8 @@ export default utils.createRule({
 
 				if (!optionsNode) return;
 
+				if (optionsNode.hasPropertyPointingToIdentifier) return;
+
 				if (optionsNode.value.length < MIN_ITEMS_TO_ALPHABETIZE) return;
 
 				if (/^\d+$/.test(optionsNode.value[0].value)) return; // do not sort numeric strings

@@ -15,7 +15,6 @@ import {
 	isArrayPropertyNamed,
 	isBooleanPropertyNamed,
 	isObjectPropertyNamed,
-	isIdentifierPropertyNamed,
 	isStringPropertyNamed,
 } from "./common.identifiers";
 
@@ -263,8 +262,10 @@ export function isOptions(
 	property: TSESTree.ObjectLiteralElement
 ): property is OptionsProperty {
 	return (
-		isArrayPropertyNamed("options", property) ||
-		isIdentifierPropertyNamed("options", property)
+		property.type === AST_NODE_TYPES.Property &&
+		property.computed === false &&
+		property.key.type === AST_NODE_TYPES.Identifier &&
+		property.key.name === "options"
 	);
 }
 
@@ -307,6 +308,12 @@ export function isLoadOptionsMethod(
 	property: TSESTree.ObjectLiteralElement
 ): property is NumberProperty {
 	return isStringPropertyNamed("loadOptionsMethod", property);
+}
+
+export function isLoadOptions(
+	property: TSESTree.ObjectLiteralElement
+): property is ObjectProperty {
+	return isObjectPropertyNamed("loadOptions", property);
 }
 
 export function isDescription(

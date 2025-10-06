@@ -119,7 +119,11 @@ export function getOptions(nodeParam: TSESTree.ObjectExpression) {
 
 	if (!found) return null;
 
-	if (!found.value.elements) {
+	// Only process ArrayExpression as literal options, treat everything else as non-literal
+	if (
+		found.value.type !== AST_NODE_TYPES.ArrayExpression ||
+		!found.value.elements
+	) {
 		return {
 			ast: found,
 			value: [{ name: "", value: "", description: "", action: "" }], // unused placeholder
@@ -128,10 +132,17 @@ export function getOptions(nodeParam: TSESTree.ObjectExpression) {
 	}
 
 	const elements = found.value.elements.filter(
-		(i) => i.type === "ObjectExpression"
+		(i) => i?.type === "ObjectExpression"
 	);
 
-	if (!elements.length) return null;
+	if (!elements.length) {
+		// Array exists but contains non-object elements (e.g., variables), treat as non-literal
+		return {
+			ast: found,
+			value: [{ name: "", value: "", description: "", action: "" }], // unused placeholder
+			hasPropertyPointingToIdentifier: true,
+		};
+	}
 
 	if (hasMemberExpression(elements)) {
 		return {
@@ -162,7 +173,7 @@ export function getCollectionOptions(nodeParam: TSESTree.ObjectExpression) {
 	}
 
 	const elements = found.value.elements.filter(
-		(i) => i.type === "ObjectExpression"
+		(i) => i?.type === "ObjectExpression"
 	);
 
 	if (!elements.length) return null;
@@ -247,6 +258,23 @@ export function getLoadOptionsMethod(nodeParam: TSESTree.ObjectExpression) {
 	return {
 		ast: found,
 		value: found.value.value,
+	};
+}
+
+export function getLoadOptions(nodeParam: TSESTree.ObjectExpression) {
+	const typeOptions = getTypeOptions(nodeParam);
+
+	if (!typeOptions) return null;
+
+	const { properties } = typeOptions.ast.value;
+
+	const found = properties.find(id.nodeParam.isLoadOptions);
+
+	if (!found) return null;
+
+	return {
+		ast: found,
+		value: found.value, // Object value, not string like loadOptionsMethod
 	};
 }
 

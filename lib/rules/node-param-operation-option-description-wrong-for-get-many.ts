@@ -28,6 +28,8 @@ export default utils.createRule({
 
 				if (!options) return;
 
+				if (options.hasPropertyPointingToIdentifier) return;
+
 				// skip `options: [...].sort()`, see EditImage.node.ts
 				if (!Array.isArray(options.ast.value.elements)) return;
 

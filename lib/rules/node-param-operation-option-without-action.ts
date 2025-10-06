@@ -34,6 +34,8 @@ export default utils.createRule({
 
 				if (!options) return;
 
+				if (options.hasPropertyPointingToIdentifier) return;
+
 				if (allOptionsHaveActions(options)) return; // quick check via `value`
 
 				for (const option of options.ast.value.elements) {

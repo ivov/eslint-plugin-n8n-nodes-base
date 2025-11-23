@@ -14,6 +14,16 @@ ruleTester().run(getRuleName(module), rule, {
 				default: false,
 			};`,
 		},
+		{
+			code: outdent`
+			const IS_ENABLED = true;
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'boolean',
+				default: IS_ENABLED,
+			};`,
+		},
 	],
 	invalid: [
 		{
@@ -32,6 +42,28 @@ ruleTester().run(getRuleName(module), rule, {
 				type: 'boolean',
 				default: false,
 			};`,
+		},
+		{
+			code: outdent`
+			const IS_ENABLED = 'true';
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'boolean',
+				default: IS_ENABLED,
+			};`,
+			errors: [{ messageId: "constWrongType" }],
+		},
+		{
+			code: outdent`
+			const IS_ENABLED = 1;
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'boolean',
+				default: IS_ENABLED,
+			};`,
+			errors: [{ messageId: "constWrongType" }],
 		},
 	],
 });

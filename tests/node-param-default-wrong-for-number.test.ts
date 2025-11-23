@@ -33,6 +33,17 @@ ruleTester().run(getRuleName(module), rule, {
 				required: true,
 			};`,
 		},
+		{
+			code: outdent`
+			const DEFAULT_VALUE = 42;
+			const test = {
+				displayName: 'Account Contact ID',
+				name: 'accountContactId',
+				type: 'number',
+				default: DEFAULT_VALUE,
+				required: true,
+			};`,
+		},
 	],
 	invalid: [
 		{
@@ -51,6 +62,18 @@ ruleTester().run(getRuleName(module), rule, {
 				type: 'number',
 				default: 0,
 			};`,
+		},
+		{
+			code: outdent`
+			const DEFAULT_VALUE = '42';
+			const test = {
+				displayName: 'Account Contact ID',
+				name: 'accountContactId',
+				type: 'number',
+				default: DEFAULT_VALUE,
+				required: true,
+			};`,
+			errors: [{ messageId: "constWrongType" }],
 		},
 	],
 });

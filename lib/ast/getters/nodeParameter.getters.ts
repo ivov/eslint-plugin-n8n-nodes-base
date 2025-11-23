@@ -319,7 +319,7 @@ export function getDescription(nodeParam: TSESTree.ObjectExpression) {
 
 export function getDefault(nodeParam: TSESTree.ObjectExpression) {
 	const isUnparseable = (type: AST_NODE_TYPES) =>
-		[AST_NODE_TYPES.CallExpression, AST_NODE_TYPES.Identifier].includes(type);
+		[AST_NODE_TYPES.CallExpression, AST_NODE_TYPES.Identifier, AST_NODE_TYPES.MemberExpression].includes(type);
 
 	for (const property of nodeParam.properties) {
 		if (

@@ -14,6 +14,36 @@ ruleTester().run(getRuleName(module), rule, {
 				default: {},
 			};`,
 		},
+		{
+			code: outdent`
+			const MY_DEFAULT = {};
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'fixedCollection',
+				default: MY_DEFAULT,
+			};`,
+		},
+		{
+			code: outdent`
+			const MY_DEFAULT = null;
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'fixedCollection',
+				default: MY_DEFAULT,
+			};`,
+		},
+		{
+			code: outdent`
+			const MY_DEFAULT = [];
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'fixedCollection',
+				default: MY_DEFAULT,
+			};`,
+		},
 	],
 	invalid: [
 		{
@@ -32,6 +62,39 @@ ruleTester().run(getRuleName(module), rule, {
 				type: 'fixedCollection',
 				default: {},
 			};`,
+		},
+		{
+			code: outdent`
+			const MY_DEFAULT = 'string';
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'fixedCollection',
+				default: MY_DEFAULT,
+			};`,
+			errors: [{ messageId: "constWrongType" }],
+		},
+		{
+			code: outdent`
+			const MY_DEFAULT = 123;
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'fixedCollection',
+				default: MY_DEFAULT,
+			};`,
+			errors: [{ messageId: "constWrongType" }],
+		},
+		{
+			code: outdent`
+			const MY_DEFAULT = true;
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'fixedCollection',
+				default: MY_DEFAULT,
+			};`,
+			errors: [{ messageId: "constWrongType" }],
 		},
 	],
 });

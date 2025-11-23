@@ -108,6 +108,26 @@ ruleTester().run(getRuleName(module), rule, {
 		},
 		{
 			code: outdent`
+			const MY_DEFAULT = 123;
+			const test = {
+				displayName: "Test",
+				name: "test",
+				type: "options",
+				default: MY_DEFAULT,
+				options: [
+					{
+						name: 'First',
+						value: 123,
+					},
+					{
+						name: 'Second',
+						value: 456,
+					},
+				],
+			};`,
+		},
+		{
+			code: outdent`
 			const test = {
 				displayName: "Test",
 				name: "test",
@@ -271,6 +291,58 @@ ruleTester().run(getRuleName(module), rule, {
 				type: 'options',
 				default: '',
 			};`,
+		},
+		{
+			code: outdent`
+			const MY_DEFAULT = 'wrong';
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'options',
+				default: MY_DEFAULT,
+				options: [
+					{
+						name: 'First',
+						value: 'first',
+					},
+					{
+						name: 'Second',
+						value: 'second',
+					},
+				],
+			};`,
+			errors: [
+				{
+					messageId: "constWrongValue",
+					data: { eligibleOptions: "first or second" },
+				},
+			],
+		},
+		{
+			code: outdent`
+			const MY_DEFAULT = 789;
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'options',
+				default: MY_DEFAULT,
+				options: [
+					{
+						name: 'First',
+						value: 123,
+					},
+					{
+						name: 'Second',
+						value: 456,
+					},
+				],
+			};`,
+			errors: [
+				{
+					messageId: "constWrongValue",
+					data: { eligibleOptions: "123 or 456" },
+				},
+			],
 		},
 	],
 });

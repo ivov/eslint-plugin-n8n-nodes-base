@@ -1,6 +1,7 @@
 import { utils } from "../ast/utils";
 import { id } from "../ast/identifiers";
 import { getters } from "../ast/getters";
+import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 
 export default utils.createRule({
 	name: utils.getRuleName(module),
@@ -15,6 +16,7 @@ export default utils.createRule({
 		schema: [],
 		messages: {
 			setStringDefault: "Set a string default [autofixable]",
+			constWrongType: "Const used in default has wrong type. Change const to string type",
 		},
 	},
 	defaultOptions: [],
@@ -29,9 +31,25 @@ export default utils.createRule({
 
 				if (!_default) return;
 
-				if (_default?.isUnparseable) return;
-
 				const typeOptions = getters.nodeParam.getTypeOptions(node);
+
+				// Handle unparseable defaults (Identifiers, CallExpressions, MemberExpressions)
+				if (_default.isUnparseable) {
+					// Check if it's an Identifier reference
+					const property = _default.ast as TSESTree.Property;
+					if (property.value.type === AST_NODE_TYPES.Identifier) {
+						const resolvedValue = utils.resolveIdentifierValue(property.value, context);
+
+						// If resolved to a non-string value, report error
+						if (resolvedValue !== null && typeof resolvedValue !== "string") {
+							context.report({
+								messageId: "constWrongType",
+								node: _default.ast,
+							});
+						}
+					}
+					return;
+				}
 
 				if (
 					typeOptions?.value.multipleValues &&

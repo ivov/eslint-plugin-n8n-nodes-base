@@ -14,6 +14,16 @@ ruleTester().run(getRuleName(module), rule, {
 				default: true,
 			};`,
 		},
+		{
+			code: outdent`
+			const SIMPLIFY = true;
+			const test = {
+				displayName: 'Simplify',
+				name: 'simpl',
+				type: 'boolean',
+				default: SIMPLIFY,
+			};`,
+		},
 	],
 	invalid: [
 		{
@@ -32,6 +42,17 @@ ruleTester().run(getRuleName(module), rule, {
 				type: 'boolean',
 				default: true,
 			};`,
+		},
+		{
+			code: outdent`
+			const SIMPLIFY = false;
+			const test = {
+				displayName: 'Simplify',
+				name: 'simple',
+				type: 'boolean',
+				default: SIMPLIFY,
+			};`,
+			errors: [{ messageId: "constWrongValue" }],
 		},
 	],
 });

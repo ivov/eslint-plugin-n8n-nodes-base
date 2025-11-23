@@ -26,6 +26,29 @@ ruleTester().run(getRuleName(module), rule, {
 		},
 		{
 			code: outdent`
+			const OPTIONS = {
+				FIRST_OPTION: 'firstOption',
+				SECOND_OPTION: 'secondOption',
+			};
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'options',
+				default: OPTIONS.FIRST_OPTION,
+				options: [
+					{
+						name: 'First Option',
+						value: OPTIONS.FIRST_OPTION,
+					},
+					{
+						name: 'Second Option',
+						value: OPTIONS.SECOND_OPTION,
+					},
+				],
+			};`,
+		},
+		{
+			code: outdent`
 			const test = {
 				displayName: 'Scope',
 				name: 'scope',

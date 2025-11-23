@@ -36,6 +36,16 @@ ruleTester().run(getRuleName(module), rule, {
 				default: scopes,
 			};`,
 		},
+		{
+			code: outdent`
+			const DEFAULT_NAME = 'John';
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'string',
+				default: DEFAULT_NAME,
+			};`,
+		},
 	],
 	invalid: [
 		{
@@ -54,6 +64,28 @@ ruleTester().run(getRuleName(module), rule, {
 				type: 'string',
 				default: '',
 			};`,
+		},
+		{
+			code: outdent`
+			const DEFAULT_NAME = 123;
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'string',
+				default: DEFAULT_NAME,
+			};`,
+			errors: [{ messageId: "constWrongType" }],
+		},
+		{
+			code: outdent`
+			const DEFAULT_NAME = true;
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'string',
+				default: DEFAULT_NAME,
+			};`,
+			errors: [{ messageId: "constWrongType" }],
 		},
 	],
 });

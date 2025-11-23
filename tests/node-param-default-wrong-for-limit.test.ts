@@ -14,6 +14,16 @@ ruleTester().run(getRuleName(module), rule, {
 				default: 50,
 			};`,
 		},
+		{
+			code: outdent`
+			const MY_LIMIT = 50;
+			const test = {
+				displayName: 'Limit',
+				name: 'limit',
+				type: 'number',
+				default: MY_LIMIT,
+			};`,
+		},
 	],
 	invalid: [
 		{
@@ -32,6 +42,17 @@ ruleTester().run(getRuleName(module), rule, {
 				type: 'number',
 				default: 50,
 			};`,
+		},
+		{
+			code: outdent`
+			const MY_LIMIT = 100;
+			const test = {
+				displayName: 'Limit',
+				name: 'limit',
+				type: 'number',
+				default: MY_LIMIT,
+			};`,
+			errors: [{ messageId: "constWrongValue" }],
 		},
 	],
 });

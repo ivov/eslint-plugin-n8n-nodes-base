@@ -14,6 +14,60 @@ ruleTester().run(getRuleName(module), rule, {
 				default: {},
 			};`,
 		},
+		{
+			code: outdent`
+			const MY_DEFAULT = {};
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'collection',
+				default: MY_DEFAULT,
+			};`,
+		},
+		{
+			code: outdent`
+			const MY_DEFAULT = null;
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'collection',
+				default: MY_DEFAULT,
+			};`,
+		},
+		{
+			code: outdent`
+			const MY_DEFAULT = [];
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'collection',
+				default: MY_DEFAULT,
+			};`,
+		},
+		{
+			code: outdent`
+			const OPTIONS = {
+				FIRST_OPTION: 'firstOption',
+				SECOND_OPTION: 'secondOption',
+			};
+			const MY_DEFAULT = OPTIONS.FIRST_OPTION;
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'collection',
+				default: MY_DEFAULT,
+				options: [
+					{
+						name: 'First Option',
+						value: OPTIONS.FIRST_OPTION,
+					},
+					{
+						name: 'Second Option',
+						value: OPTIONS.SECOND_OPTION,
+					},
+				],	
+			};`,
+		},
 	],
 	invalid: [
 		{
@@ -32,6 +86,39 @@ ruleTester().run(getRuleName(module), rule, {
 				type: 'collection',
 				default: {},
 			};`,
+		},
+		{
+			code: outdent`
+			const MY_DEFAULT = 'string';
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'collection',
+				default: MY_DEFAULT,
+			};`,
+			errors: [{ messageId: "constWrongType" }],
+		},
+		{
+			code: outdent`
+			const MY_DEFAULT = 123;
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'collection',
+				default: MY_DEFAULT,
+			};`,
+			errors: [{ messageId: "constWrongType" }],
+		},
+		{
+			code: outdent`
+			const MY_DEFAULT = true;
+			const test = {
+				displayName: 'Test',
+				name: 'test',
+				type: 'collection',
+				default: MY_DEFAULT,
+			};`,
+			errors: [{ messageId: "constWrongType" }],
 		},
 	],
 });

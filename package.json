@@ -1,6 +1,6 @@
 {
 	"name": "eslint-plugin-n8n-nodes-base",
-	"version": "1.16.4",
+	"version": "1.16.5",
 	"main": "dist/index.js",
 	"engines": {
 		"node": ">=20.15",

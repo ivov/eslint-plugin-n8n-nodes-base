@@ -203,6 +203,7 @@ export const CREDS_EXEMPTED_FROM_API_SUFFIX = [
 	"Amqp",
 	"Aws",
 	"CrateDb",
+	"Crypto",
 	"FileMaker",
 	"Ftp",
 	"GitPassword",

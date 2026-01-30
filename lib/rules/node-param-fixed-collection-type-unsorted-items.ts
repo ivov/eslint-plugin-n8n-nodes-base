@@ -85,11 +85,13 @@ function isAddressFixedCollectionSection(node: TSESTree.ObjectExpression) {
 		// fixed collection _section_ does not mention "address",
 		// but the containing fixed collection may mention it
 
-		const fixedCollectionParam = property?.parent?.parent?.parent?.parent as
-			| TSESTree.ObjectExpression
-			| undefined;
+		const fixedCollectionParam = property?.parent?.parent?.parent?.parent;
 
-		if (!fixedCollectionParam) continue;
+		if (
+			!fixedCollectionParam ||
+			fixedCollectionParam.type !== AST_NODE_TYPES.ObjectExpression
+		)
+			continue;
 
 		const displayName = getters.nodeParam.getDisplayName(fixedCollectionParam);
 

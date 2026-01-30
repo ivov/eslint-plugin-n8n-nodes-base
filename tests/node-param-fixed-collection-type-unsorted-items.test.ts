@@ -107,6 +107,49 @@ ruleTester().run(getRuleName(module), rule, {
 			};`,
 		},
 		{
+			// section in a standalone array, not nested in a fixedCollection -
+			// parent chain does not reach an ObjectExpression
+			code: outdent`
+			const formSections = [
+				{
+					displayName: 'Details',
+					name: 'details',
+					values: [
+						{
+							displayName: 'A',
+							name: 'a',
+							type: 'string',
+							default: '',
+						},
+						{
+							displayName: 'B',
+							name: 'b',
+							type: 'string',
+							default: '',
+						},
+						{
+							displayName: 'C',
+							name: 'c',
+							type: 'string',
+							default: '',
+						},
+						{
+							displayName: 'D',
+							name: 'd',
+							type: 'string',
+							default: '',
+						},
+						{
+							displayName: 'E',
+							name: 'e',
+							type: 'string',
+							default: '',
+						},
+					],
+				},
+			];`,
+		},
+		{
 			code: outdent`
 			const test = {
 				displayName: 'Address',

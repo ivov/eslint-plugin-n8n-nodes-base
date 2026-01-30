@@ -8,6 +8,9 @@ jobs:
   publish-to-npm:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - name: Check out commit
@@ -26,6 +29,4 @@ jobs:
         run: pnpm lint-codebase
 
       - name: Publish to npm
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        uses: JS-DevTools/npm-publish@v4

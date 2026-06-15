@@ -192,6 +192,9 @@ export const N8N_NODE_ERROR_TYPES = [
 	"NodeOperationError",
 	"NodeApiError",
 	"TriggerCloseError",
+	"UserError",
+	"OperationalError",
+	"UnexpectedError",
 ];
 
 /**

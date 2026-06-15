@@ -8,13 +8,13 @@ export default utils.createRule({
 		type: "problem",
 		docs: {
 			description:
-				"The `execute()` method in a node may only throw `ApplicationError`, NodeApiError`, `NodeOperationError`, or `TriggerCloseError`.",
+				"The `execute()` method in a node may only throw `NodeOperationError`, `NodeApiError`, `TriggerCloseError`, `UserError`, `OperationalError`, `UnexpectedError`, or the deprecated `ApplicationError`.",
 			recommended: "strict",
 		},
 		schema: [],
 		messages: {
 			useProperError:
-				"Use `ApplicationError`, NodeApiError`, `NodeOperationError`, or `TriggerCloseError` [non-autofixable]",
+				"Use `NodeOperationError`, `NodeApiError`, `TriggerCloseError`, `UserError`, `OperationalError`, or `UnexpectedError` [non-autofixable]",
 		},
 	},
 	defaultOptions: [],

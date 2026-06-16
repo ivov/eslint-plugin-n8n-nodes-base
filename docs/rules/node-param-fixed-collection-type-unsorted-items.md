@@ -236,6 +236,45 @@ const test = {
 	],
 };
 
+const formSections = [
+	{
+		displayName: "Details",
+		name: "details",
+		values: [
+			{
+				displayName: "A",
+				name: "a",
+				type: "string",
+				default: "",
+			},
+			{
+				displayName: "B",
+				name: "b",
+				type: "string",
+				default: "",
+			},
+			{
+				displayName: "C",
+				name: "c",
+				type: "string",
+				default: "",
+			},
+			{
+				displayName: "D",
+				name: "d",
+				type: "string",
+				default: "",
+			},
+			{
+				displayName: "E",
+				name: "e",
+				type: "string",
+				default: "",
+			},
+		],
+	},
+];
+
 const test = {
 	displayName: "Address",
 	name: "address",

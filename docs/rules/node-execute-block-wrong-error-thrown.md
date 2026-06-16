@@ -2,7 +2,7 @@
 
 # node-execute-block-wrong-error-thrown
 
-The `execute()` method in a node may only throw `ApplicationError`, NodeApiError`, `NodeOperationError`, or `TriggerCloseError`.
+The `execute()` method in a node may only throw `NodeOperationError`, `NodeApiError`, `TriggerCloseError`, `UserError`, `OperationalError`, `UnexpectedError`, or the deprecated `ApplicationError`.
 
 📋 This rule is part of the `plugin:n8n-nodes-base/nodes` config.
 

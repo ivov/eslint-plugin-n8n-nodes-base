@@ -105,6 +105,101 @@ const test = {
 		},
 	],
 };
+
+const test = {
+	displayName: "Test",
+	name: "test",
+	type: "options",
+	default: "any_value",
+	typeOptions: {
+		loadOptionsMethod: "getFields",
+	},
+};
+
+const test = {
+	displayName: "Model",
+	name: "model",
+	type: "options",
+	default: "gpt-3.5-turbo-1106",
+	typeOptions: {
+		loadOptions: {
+			routing: {
+				request: {
+					method: "GET",
+					url: "=/v1/models",
+				},
+			},
+		},
+	},
+};
+
+const myVariable = "first";
+const test = {
+	displayName: "Test",
+	name: "test",
+	type: "options",
+	default: myVariable,
+	options: [
+		{
+			name: "First",
+			value: "first",
+		},
+		{
+			name: "Second",
+			value: "second",
+		},
+	],
+};
+
+const test = {
+	displayName: "Test",
+	name: "test",
+	type: "options",
+	default: myObject.getValue(),
+	typeOptions: {
+		loadOptionsMethod: "getFields",
+	},
+};
+
+const currencies = [
+	{ name: "USD", value: "USD" },
+	{ name: "EUR", value: "EUR" },
+];
+const test = {
+	displayName: "Currency",
+	name: "currency",
+	type: "options",
+	default: "USD",
+	options: currencies.sort((a, b) => a.name.localeCompare(b.name)),
+};
+
+const config = {
+	currencyOptions: [
+		{ name: "USD", value: "USD" },
+		{ name: "EUR", value: "EUR" },
+	],
+};
+const test = {
+	displayName: "Currency",
+	name: "currency",
+	type: "options",
+	default: "EUR",
+	options: config.currencyOptions,
+};
+
+const lastNodeResponseMode = { name: "Last Node", value: "lastNode" };
+const respondToWebhookResponseMode = {
+	name: "Respond to Webhook",
+	value: "respondToWebhook",
+};
+const test = {
+	displayName: "Response Mode",
+	name: "responseMode",
+	type: "options",
+	options: [lastNodeResponseMode, respondToWebhookResponseMode],
+	default: "lastNode",
+	description: "When and how to respond to the webhook",
+};
 ```
 
 ## Links

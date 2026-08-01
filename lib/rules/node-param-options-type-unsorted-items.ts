@@ -38,9 +38,7 @@ export default utils.createRule({
 
 				if (/^\d+$/.test(optionsNode.value[0].value)) return; // do not sort numeric strings
 
-				const optionsSource = context
-					.getSourceCode()
-					.getText(optionsNode.ast.value);
+				const optionsSource = context.sourceCode.getText(optionsNode.ast.value);
 
 				const options = toOptions(optionsSource);
 

@@ -22,7 +22,7 @@ export default utils.createRule({
 	create(context) {
 		return {
 			TSAsExpression(node) {
-				if (!utils.isCredentialFile(context.getFilename())) return;
+				if (!utils.isCredentialFile(context.filename)) return;
 
 				if (
 					node.typeAnnotation.type === AST_NODE_TYPES.TSTypeReference &&

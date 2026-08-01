@@ -21,7 +21,7 @@ export default utils.createRule({
 	create(context) {
 		return {
 			MethodDefinition(node) {
-				if (!utils.isNodeFile(context.getFilename())) return;
+				if (!utils.isNodeFile(context.filename)) return;
 
 				const executeContent = getters.nodeExecuteBlock.getExecuteContent(node);
 

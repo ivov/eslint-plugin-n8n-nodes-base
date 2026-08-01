@@ -23,7 +23,7 @@ export default utils.createRule({
 	create(context) {
 		return {
 			ClassDeclaration(node) {
-				const filename = context.getFilename();
+				const filename = context.filename;
 
 				// only apply to community credential
 				if (!id.isCredentialClass(node) || !isCommunityCredential(filename)) {

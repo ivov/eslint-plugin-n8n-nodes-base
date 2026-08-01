@@ -24,7 +24,7 @@ export default utils.createRule({
 			ClassDeclaration(node) {
 				if (!id.isCredentialClass(node)) return;
 
-				if (isExemptedFromApiSuffix(context.getFilename())) return;
+				if (isExemptedFromApiSuffix(context.filename)) return;
 
 				const name = getters.credClassBody.getName(node.body);
 

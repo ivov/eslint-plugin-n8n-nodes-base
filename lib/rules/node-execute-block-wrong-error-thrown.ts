@@ -21,7 +21,7 @@ export default utils.createRule({
 	create(context) {
 		return {
 			"ThrowStatement > NewExpression"(node: TSESTree.NewExpression) {
-				if (!utils.isNodeFile(context.getFilename())) return;
+				if (!utils.isNodeFile(context.filename)) return;
 
 				if (node.callee.type !== AST_NODE_TYPES.Identifier) return;
 

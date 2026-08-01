@@ -22,7 +22,7 @@ export default utils.createRule({
 	create(context) {
 		return {
 			ObjectExpression(node) {
-				const filename = utils.getNodeFilename(context.getFilename());
+				const filename = utils.getNodeFilename(context.filename);
 
 				// skip params in GenericFunctions.ts, e.g. Supabase
 				if (filename === "GenericFunctions.ts") return;

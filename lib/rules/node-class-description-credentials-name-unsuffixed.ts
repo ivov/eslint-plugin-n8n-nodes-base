@@ -24,7 +24,7 @@ export default utils.createRule({
 			ObjectExpression(node) {
 				if (!id.isNodeClassDescription(node)) return;
 
-				if (hasCredExemptedFromApiSuffix(context.getFilename())) return;
+				if (hasCredExemptedFromApiSuffix(context.filename)) return;
 
 				const credOptions = getters.nodeClassDescription.getCredOptions(node);
 

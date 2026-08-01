@@ -25,7 +25,7 @@ export default utils.createRule({
 				if (!id.isCredentialClass(node)) return;
 
 				const actual = context
-					.getFilename()
+					.filename
 					.replace(/\\/g, "/")
 					.split("/")
 					.pop();

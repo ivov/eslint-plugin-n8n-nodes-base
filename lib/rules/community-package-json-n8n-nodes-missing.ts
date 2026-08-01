@@ -21,7 +21,7 @@ export default utils.createRule({
 	create(context) {
 		return {
 			ObjectExpression(node) {
-				if (!id.isCommunityPackageJson(context.getFilename(), node)) return;
+				if (!id.isCommunityPackageJson(context.filename, node)) return;
 
 				const n8n = getters.communityPackageJson.getN8n(node);
 

@@ -27,7 +27,7 @@ export default utils.createRule({
 				if (!name) return;
 
 				const actual = utils
-					.getNodeFilename(context.getFilename().replace(/\\/g, "/"))
+					.getNodeFilename(context.filename.replace(/\\/g, "/"))
 					.replace(/V\d+\.node\.ts$/, ".node.ts"); // disregard version suffix
 				const expected = utils.toExpectedNodeFilename(name.value);
 

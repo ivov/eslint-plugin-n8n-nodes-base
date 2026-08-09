@@ -48,7 +48,7 @@ export function getExtendsValue(
 
 	if (!extendsNode) return null;
 
-	const extendsSource = context.getSourceCode().getText(extendsNode.value);
+	const extendsSource = context.sourceCode.getText(extendsNode.value);
 
 	return restoreValue<string[]>(extendsSource) ?? null;
 }

@@ -23,7 +23,7 @@ export default utils.createRule({
 			ObjectExpression(node) {
 				if (!id.isNodeClassDescription(node)) return;
 
-				if (!utils.isTriggerNodeFile(context.getFilename())) return;
+				if (!utils.isTriggerNodeFile(context.filename)) return;
 
 				const name = getters.nodeClassDescription.getName(node);
 

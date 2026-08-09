@@ -32,7 +32,7 @@ export default utils.createRule({
 	create(context, options) {
 		return {
 			ObjectExpression(node) {
-				if (!id.isCommunityPackageJson(context.getFilename(), node)) return;
+				if (!id.isCommunityPackageJson(context.filename, node)) return;
 
 				const description = getters.communityPackageJson.getDescription(node);
 

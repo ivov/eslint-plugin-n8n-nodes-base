@@ -34,7 +34,7 @@ export default utils.createRule({
 	create(context, options) {
 		return {
 			ObjectExpression(node) {
-				const filename = context.getFilename();
+				const filename = context.filename;
 
 				if (isProdRun && !filename.includes("package.json")) return;
 				if (isProdRun && !id.prod.isTopLevelObjectExpression(node)) return;

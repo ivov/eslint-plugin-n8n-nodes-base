@@ -18,7 +18,7 @@ export default utils.createRule({
 	create(context) {
 		return {
 			ClassDeclaration() {
-				const filepath = context.getFilename();
+				const filepath = context.filename;
 
 				if (!filepath.endsWith(".node.ts")) return;
 

@@ -28,7 +28,7 @@ export default utils.createRule({
 
 				if (!inputs) return;
 
-				const filename = context.getFilename();
+				const filename = context.filename;
 
 				if (!utils.isRegularNodeFile(filename)) return;
 

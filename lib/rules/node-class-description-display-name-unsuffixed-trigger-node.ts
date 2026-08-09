@@ -21,7 +21,7 @@ export default utils.createRule({
 	create(context) {
 		return {
 			ObjectExpression(node) {
-				if (!utils.isTriggerNodeFile(context.getFilename())) return;
+				if (!utils.isTriggerNodeFile(context.filename)) return;
 
 				if (!id.isNodeClassDescription(node)) return;
 

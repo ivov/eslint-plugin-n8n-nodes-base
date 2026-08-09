@@ -24,7 +24,7 @@ export default utils.createRule({
 			ObjectExpression(node) {
 				if (!id.isNodeParameter(node)) return;
 
-				const filename = utils.getNodeFilename(context.getFilename());
+				const filename = utils.getNodeFilename(context.filename);
 
 				const parts = filename.split(RESOURCE_DESCRIPTION_SUFFIX);
 
